@@ -1,0 +1,60 @@
+name: survey
+
+on:
+  workflow_dispatch:
+    inputs:
+      limit:
+        description: "Nombre de serveurs à scanner"
+        required: false
+        default: "120"
+  push:
+    paths:
+      - "survey/**"
+      - "data/catalog.json"
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Install mcp-scrutiny
+        run: pip install "mcp-scrutiny==0.1.2"
+
+      - name: Scan
+        env:
+          LIMIT: ${{ github.event.inputs.limit || '120' }}
+          WORKERS: "8"
+          PROBE_TIMEOUT: "40"
+        run: python survey/scan.py
+
+      - name: Aggregate
+        run: python survey/aggregate.py
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: survey-results
+          path: |
+            data/run.json
+            data/summary.json
+            results/
+
+      - name: Commit results
+        if: always()
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/run.json data/summary.json results/ || true
+          git commit -m "data: scan results" || echo "nothing to commit"
+          git push || echo "push skipped"
