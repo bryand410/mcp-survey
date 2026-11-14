@@ -60,6 +60,6 @@
     }
   ],
   "errors": [
-    "vite-plugin-mcp: the server exited with status 1 before answering initialize; stderr: npm error could not determine executable to run | npm error A complete log of this run can be found in: /home/runner/.npm/_logs/2026-11-14T10_41_21_027Z-debug-0.log"
+    "vite-plugin-mcp: the server exited with status 1 before answering initialize; stderr: npm error could not determine executable to run | npm error A complete log of this run can be found in: /home/runner/.npm/_logs/2026-11-14T10_58_36_244Z-debug-0.log"
   ]
 }

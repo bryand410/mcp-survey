@@ -60,6 +60,6 @@
     }
   ],
   "errors": [
-    "currents__mcp: the server exited with status 1 before answering initialize; stderr: [10:40:50.844] \u001b[31mERROR\u001b[39m (2680): \u001b[36mCURRENTS_API_KEY is not set. Add your Currents API key to the environment (for example: export CURRENTS_API_KEY=<your-key>).\u001b[39m"
+    "currents__mcp: the server exited with status 1 before answering initialize; stderr: [10:58:04.288] \u001b[31mERROR\u001b[39m (2691): \u001b[36mCURRENTS_API_KEY is not set. Add your Currents API key to the environment (for example: export CURRENTS_API_KEY=<your-key>).\u001b[39m"
   ]
 }
