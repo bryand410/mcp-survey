@@ -16,6 +16,8 @@ jobs:
   scan:
     runs-on: ubuntu-latest
     timeout-minutes: 90
+    permissions:
+      contents: write
 
     steps:
       - uses: actions/checkout@v4
@@ -29,7 +31,10 @@ jobs:
           node-version: "22"
 
       - name: Install mcp-scrutiny
-        run: pip install "mcp-scrutiny==0.1.2"
+        run: pip install "git+https://github.com/bryand410/mcp-scrutiny@main"
+
+      - name: Scanner version
+        run: mcp-scrutiny --version
 
       - name: Scan
         env:
