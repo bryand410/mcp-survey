@@ -2,27 +2,40 @@
 
 What the most-installed public MCP servers actually expose to the model.
 
-This repository answers one question with measurements rather than opinion:
-**among the MCP servers people install every day, how many carry tool
-descriptions that a scanner scores as hostile, and what do those descriptions
-say?**
+Most scanners in this space publish benchmarks against synthetic fixtures. This
+one runs against the real catalogue and publishes what comes back, including
+its own defects.
 
-The scanners in this space mostly publish benchmarks against synthetic
-fixtures. This one runs against the real catalogue.
+**Read the report: [What 71 public MCP servers expose to the model](docs/2026-11-public-mcp-survey.md)**
+
+---
+
+## The result in one table
+
+| | |
+|---|---|
+| servers launched | 71 |
+| servers that answered `initialize` | 26 (37%) |
+| tool definitions inspected | 420 |
+| findings after excluding harness artefacts | 10 — 7 high, 3 medium |
+| — all of them | `toxic_flow`, intra-server |
+| critical findings | 4 in the first run, **all false positives**, fixed |
 
 ## Method
 
 1. **Catalogue** — npm packages tagged `mcp-server`, `mcp` or
    `modelcontextprotocol`, ranked by real weekly download counts, not by the
    registry's popularity score (which saturates at 1.000 for hundreds of
-   packages and therefore ranks nothing).
+   packages and therefore ranks nothing). 374 candidates, 71 with a measurable
+   install base.
 2. **Scan** — each server is started through `npx -y <package>`, exactly as a
-   client would start it, and asked for its tool list. `mcp-scrutiny 0.1.2`
-   then scores every description with its trained feature model, plus the
-   deterministic checks (invisible Unicode, encoded payloads, cross-server
-   shadowing, toxic flows).
+   client would start it, and asked for its tool list. `mcp-scrutiny` scores
+   every description with its trained feature model plus the deterministic
+   checks (invisible Unicode, encoded payloads, cross-server shadowing, toxic
+   flows).
 3. **Measure** — a server that never answers is recorded as silent, never
-   dropped. The response rate is part of the result.
+   dropped. The response rate is part of the result, and 39 of the 45 silent
+   servers exited because they need credentials the harness does not supply.
 
 ## What is deliberately excluded
 
@@ -48,7 +61,3 @@ gh workflow run survey.yml -f limit=120
 
 Results land in `data/run.json` (raw, one entry per server), `data/summary.json`
 (aggregate) and `results/` (one scanner report per server, unmodified).
-
-## Status
-
-Catalogue built. Scan pending.
