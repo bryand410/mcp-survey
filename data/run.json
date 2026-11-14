@@ -1,0 +1,3839 @@
+[
+ {
+  "package": "@upstash/context7-mcp",
+  "status": "ok",
+  "seconds": 18.0,
+  "tools": 2,
+  "errors": [],
+  "findings": [
+   {
+    "detector": "pinning",
+    "severity": "high",
+    "title": "Unpinned package executed on every start: @upstash/context7-mcp",
+    "detail": "'upstash__context7-mcp' launches @upstash/context7-mcp through npx without a version. The client resolves the version at start time, so any future publish to that package name runs with your credentials. This is how postmark-mcp (Sept 2025) reached roughly 300 organisations.",
+    "server": "upstash__context7-mcp",
+    "tool": null,
+    "location": "upstash__context7-mcp",
+    "evidence": {
+     "package": "@upstash/context7-mcp",
+     "runner": "npx",
+     "auto_confirm": true
+    },
+    "remediation": "Pin an exact version and an integrity hash: \"args\": [\"@upstash/context7-mcp@<version>\"] and drop the -y flag. Re-pin deliberately, after reviewing the diff."
+   },
+   {
+    "detector": "drift",
+    "severity": "info",
+    "title": "No baseline supplied - drift detection is disabled",
+    "detail": "Without an approved snapshot the scanner cannot tell a tool that has always been there from one that appeared yesterday. The single most effective MCP control is the diff, and it needs a baseline to diff against.",
+    "server": "*",
+    "tool": null,
+    "location": "*",
+    "evidence": {},
+    "remediation": "Run 'mcp-scrutiny baseline --config <file> --out mcp-baseline.json', commit the file, and pass it back with --baseline on every later scan."
+   }
+  ],
+  "servers": [
+   {
+    "name": "upstash__context7-mcp",
+    "transport": "stdio",
+    "command": "npx",
+    "args": [
+     "-y",
+     "@upstash/context7-mcp"
+    ],
+    "url": null,
+    "pinned": false,
+    "floating_package": "@upstash/context7-mcp",
+    "tools": 2
+   }
+  ]
+ },
+ {
+  "package": "agent-device",
+  "status": "no-tools",
+  "seconds": 5.6,
+  "tools": 0,
+  "errors": [
+   "agent-device: the server exited with status 1 before answering initialize"
+  ],
+  "findings": [
+   {
+    "detector": "pinning",
+    "severity": "high",
+    "title": "Unpinned package executed on every start: agent-device",
+    "detail": "'agent-device' launches agent-device through npx without a version. The client resolves the version at start time, so any future publish to that package name runs with your credentials. This is how postmark-mcp (Sept 2025) reached roughly 300 organisations.",
+    "server": "agent-device",
+    "tool": null,
+    "location": "agent-device",
+    "evidence": {
+     "package": "agent-device",
+     "runner": "npx",
+     "auto_confirm": true
+    },
+    "remediation": "Pin an exact version and an integrity hash: \"args\": [\"agent-device@<version>\"] and drop the -y flag. Re-pin deliberately, after reviewing the diff."
+   },
+   {
+    "detector": "drift",
+    "severity": "info",
+    "title": "No baseline supplied - drift detection is disabled",
+    "detail": "Without an approved snapshot the scanner cannot tell a tool that has always been there from one that appeared yesterday. The single most effective MCP control is the diff, and it needs a baseline to diff against.",
+    "server": "*",
+    "tool": null,
+    "location": "*",
+    "evidence": {},
+    "remediation": "Run 'mcp-scrutiny baseline --config <file> --out mcp-baseline.json', commit the file, and pass it back with --baseline on every later scan."
+   }
+  ],
+  "servers": [
+   {
+    "name": "agent-device",
+    "transport": "stdio",
+    "command": "npx",
+    "args": [
+     "-y",
+     "agent-device"
+    ],
+    "url": null,
+    "pinned": false,
+    "floating_package": "agent-device",
+    "tools": 0
+   }
+  ]
+ },
+ {
+  "package": "rea-agents",
+  "status": "no-tools",
+  "seconds": 70.9,
+  "tools": 0,
+  "errors": [
+   "rea-agents: no response to initialize within 40s"
+  ],
+  "findings": [
+   {
+    "detector": "pinning",
+    "severity": "high",
+    "title": "Unpinned package executed on every start: rea-agents",
+    "detail": "'rea-agents' launches rea-agents through npx without a version. The client resolves the version at start time, so any future publish to that package name runs with your credentials. This is how postmark-mcp (Sept 2025) reached roughly 300 organisations.",
+    "server": "rea-agents",
+    "tool": null,
+    "location": "rea-agents",
+    "evidence": {
+     "package": "rea-agents",
+     "runner": "npx",
+     "auto_confirm": true
+    },
+    "remediation": "Pin an exact version and an integrity hash: \"args\": [\"rea-agents@<version>\"] and drop the -y flag. Re-pin deliberately, after reviewing the diff."
+   },
+   {
+    "detector": "drift",
+    "severity": "info",
+    "title": "No baseline supplied - drift detection is disabled",
+    "detail": "Without an approved snapshot the scanner cannot tell a tool that has always been there from one that appeared yesterday. The single most effective MCP control is the diff, and it needs a baseline to diff against.",
+    "server": "*",
+    "tool": null,
+    "location": "*",
+    "evidence": {},
+    "remediation": "Run 'mcp-scrutiny baseline --config <file> --out mcp-baseline.json', commit the file, and pass it back with --baseline on every later scan."
+   }
+  ],
+  "servers": [
+   {
+    "name": "rea-agents",
+    "transport": "stdio",
+    "command": "npx",
+    "args": [
+     "-y",
+     "rea-agents"
+    ],
+    "url": null,
+    "pinned": false,
+    "floating_package": "rea-agents",
+    "tools": 0
+   }
+  ]
+ },
+ {
+  "package": "@zereight/mcp-gitlab",
+  "status": "no-tools",
+  "seconds": 16.7,
+  "tools": 0,
+  "errors": [
+   "zereight__mcp-gitlab: the server exited with status 1 before answering initialize; stderr: \u001b[31mERROR\u001b[39m [10:40:54.186] (2694): \u001b[36mGITLAB_PERSONAL_ACCESS_TOKEN environment variable is not set\u001b[39m | \u001b[32mINFO\u001b[39m [10:40:54.190] (2694): \u001b[36mEither set GITLAB_PERSONAL_ACCESS_TOKEN (or --token, or GITLAB_PERSONAL_ACCESS_TOKEN_FILE), GITLAB_JOB_TOKEN, or GITLAB_AUTH_COOKIE_PATH, or enable OAuth with GITLAB_USE_OAUTH=true. Setup guide: https://zereight.github.io/gitlab-mcp/getting-started/\u001b[39m"
+  ],
+  "findings": [
+   {
+    "detector": "pinning",
+    "severity": "high",
+    "title": "Unpinned package executed on every start: @zereight/mcp-gitlab",
+    "detail": "'zereight__mcp-gitlab' launches @zereight/mcp-gitlab through npx without a version. The client resolves the version at start time, so any future publish to that package name runs with your credentials. This is how postmark-mcp (Sept 2025) reached roughly 300 organisations.",
+    "server": "zereight__mcp-gitlab",
+    "tool": null,
+    "location": "zereight__mcp-gitlab",
+    "evidence": {
+     "package": "@zereight/mcp-gitlab",
+     "runner": "npx",
+     "auto_confirm": true
+    },
+    "remediation": "Pin an exact version and an integrity hash: \"args\": [\"@zereight/mcp-gitlab@<version>\"] and drop the -y flag. Re-pin deliberately, after reviewing the diff."
+   },
+   {
+    "detector": "drift",
+    "severity": "info",
+    "title": "No baseline supplied - drift detection is disabled",
+    "detail": "Without an approved snapshot the scanner cannot tell a tool that has always been there from one that appeared yesterday. The single most effective MCP control is the diff, and it needs a baseline to diff against.",
+    "server": "*",
+    "tool": null,
+    "location": "*",
+    "evidence": {},
+    "remediation": "Run 'mcp-scrutiny baseline --config <file> --out mcp-baseline.json', commit the file, and pass it back with --baseline on every later scan."
+   }
+  ],
+  "servers": [
+   {
+    "name": "zereight__mcp-gitlab",
+    "transport": "stdio",
+    "command": "npx",
+    "args": [
+     "-y",
+     "@zereight/mcp-gitlab"
+    ],
+    "url": null,
+    "pinned": false,
+    "floating_package": "@zereight/mcp-gitlab",
+    "tools": 0
+   }
+  ]
+ },
+ {
+  "package": "@launchdarkly/mcp-server",
+  "status": "no-tools",
+  "seconds": 16.5,
+  "tools": 0,
+  "errors": [
+   "launchdarkly__mcp-server: the server exited with status 0 before answering initialize"
+  ],
+  "findings": [
+   {
+    "detector": "pinning",
+    "severity": "high",
+    "title": "Unpinned package executed on every start: @launchdarkly/mcp-server",
+    "detail": "'launchdarkly__mcp-server' launches @launchdarkly/mcp-server through npx without a version. The client resolves the version at start time, so any future publish to that package name runs with your credentials. This is how postmark-mcp (Sept 2025) reached roughly 300 organisations.",
+    "server": "launchdarkly__mcp-server",
+    "tool": null,
+    "location": "launchdarkly__mcp-server",
+    "evidence": {
+     "package": "@launchdarkly/mcp-server",
+     "runner": "npx",
+     "auto_confirm": true
+    },
+    "remediation": "Pin an exact version and an integrity hash: \"args\": [\"@launchdarkly/mcp-server@<version>\"] and drop the -y flag. Re-pin deliberately, after reviewing the diff."
+   },
+   {
+    "detector": "drift",
+    "severity": "info",
+    "title": "No baseline supplied - drift detection is disabled",
+    "detail": "Without an approved snapshot the scanner cannot tell a tool that has always been there from one that appeared yesterday. The single most effective MCP control is the diff, and it needs a baseline to diff against.",
+    "server": "*",
+    "tool": null,
+    "location": "*",
+    "evidence": {},
+    "remediation": "Run 'mcp-scrutiny baseline --config <file> --out mcp-baseline.json', commit the file, and pass it back with --baseline on every later scan."
+   }
+  ],
+  "servers": [
+   {
+    "name": "launchdarkly__mcp-server",
+    "transport": "stdio",
+    "command": "npx",
+    "args": [
+     "-y",
+     "@launchdarkly/mcp-server"
+    ],
+    "url": null,
+    "pinned": false,
+    "floating_package": "@launchdarkly/mcp-server",
+    "tools": 0
+   }
+  ]
+ },
+ {
+  "package": "xcodebuildmcp",
+  "status": "no-tools",
+  "seconds": 25.8,
+  "tools": 0,
+  "errors": [
+   "xcodebuildmcp: the server exited with status 1 before answering initialize; stderr:   utilities             Build Utilities |   xcode-ide             Xcode IDE Integration |   daemon <action>       Manage the xcodebuildmcp daemon | Options: |       --log-level               Set log verbosity level  [string] [choices: \"none\", \"error\", \"warn\", \"info\", \"debug\"] [default: \"none\"] |       --style                   Output style (normal is detailed; minimal is compact MCP-like output)  [string] [choices: \"normal\", \"minimal\"] [default: \"normal\"] |       --file-path-render-style  Render file artifacts as a compact tree or labeled list in text output  [string] [choices: \"tree\", \"list\"] |   -h, --help                    Show help  [boolean] |   -v, --version                 Show version number  [boolean] | Run 'xcodebuildmcp mcp' to start the MCP server. | Run 'xcodebuildmcp tools' to see all available tools. | Run 'xcodebuildmcp <workflow> <tool> --help' for tool-specific help."
+  ],
+  "findings": [
+   {
+    "detector": "pinning",
+    "severity": "high",
+    "title": "Unpinned package executed on every start: xcodebuildmcp",
+    "detail": "'xcodebuildmcp' launches xcodebuildmcp through npx without a version. The client resolves the version at start time, so any future publish to that package name runs with your credentials. This is how postmark-mcp (Sept 2025) reached roughly 300 organisations.",
+    "server": "xcodebuildmcp",
+    "tool": null,
+    "location": "xcodebuildmcp",
+    "evidence": {
+     "package": "xcodebuildmcp",
+     "runner": "npx",
+     "auto_confirm": true
+    },
+    "remediation": "Pin an exact version and an integrity hash: \"args\": [\"xcodebuildmcp@<version>\"] and drop the -y flag. Re-pin deliberately, after reviewing the diff."
+   },
+   {
+    "detector": "drift",
+    "severity": "info",
+    "title": "No baseline supplied - drift detection is disabled",
+    "detail": "Without an approved snapshot the scanner cannot tell a tool that has always been there from one that appeared yesterday. The single most effective MCP control is the diff, and it needs a baseline to diff against.",
+    "server": "*",
+    "tool": null,
+    "location": "*",
+    "evidence": {},
+    "remediation": "Run 'mcp-scrutiny baseline --config <file> --out mcp-baseline.json', commit the file, and pass it back with --baseline on every later scan."
+   }
+  ],
+  "servers": [
+   {
+    "name": "xcodebuildmcp",
+    "transport": "stdio",
+    "command": "npx",
+    "args": [
+     "-y",
+     "xcodebuildmcp"
+    ],
+    "url": null,
+    "pinned": false,
+    "floating_package": "xcodebuildmcp",
+    "tools": 0
+   }
+  ]
+ },
+ {
+  "package": "@currents/mcp",
+  "status": "no-tools",
+  "seconds": 14.0,
+  "tools": 0,
+  "errors": [
+   "currents__mcp: the server exited with status 1 before answering initialize; stderr: [10:40:50.844] \u001b[31mERROR\u001b[39m (2680): \u001b[36mCURRENTS_API_KEY is not set. Add your Currents API key to the environment (for example: export CURRENTS_API_KEY=<your-key>).\u001b[39m"
+  ],
+  "findings": [
+   {
+    "detector": "pinning",
+    "severity": "high",
+    "title": "Unpinned package executed on every start: @currents/mcp",
+    "detail": "'currents__mcp' launches @currents/mcp through npx without a version. The client resolves the version at start time, so any future publish to that package name runs with your credentials. This is how postmark-mcp (Sept 2025) reached roughly 300 organisations.",
+    "server": "currents__mcp",
+    "tool": null,
+    "location": "currents__mcp",
+    "evidence": {
+     "package": "@currents/mcp",
+     "runner": "npx",
+     "auto_confirm": true
+    },
+    "remediation": "Pin an exact version and an integrity hash: \"args\": [\"@currents/mcp@<version>\"] and drop the -y flag. Re-pin deliberately, after reviewing the diff."
+   },
+   {
+    "detector": "drift",
+    "severity": "info",
+    "title": "No baseline supplied - drift detection is disabled",
+    "detail": "Without an approved snapshot the scanner cannot tell a tool that has always been there from one that appeared yesterday. The single most effective MCP control is the diff, and it needs a baseline to diff against.",
+    "server": "*",
+    "tool": null,
+    "location": "*",
+    "evidence": {},
+    "remediation": "Run 'mcp-scrutiny baseline --config <file> --out mcp-baseline.json', commit the file, and pass it back with --baseline on every later scan."
+   }
+  ],
+  "servers": [
+   {
+    "name": "currents__mcp",
+    "transport": "stdio",
+    "command": "npx",
+    "args": [
+     "-y",
+     "@currents/mcp"
+    ],
+    "url": null,
+    "pinned": false,
+    "floating_package": "@currents/mcp",
+    "tools": 0
+   }
+  ]
+ },
+ {
+  "package": "kordoc",
+  "status": "no-tools",
+  "seconds": 36.0,
+  "tools": 0,
+  "errors": [
+   "kordoc: the server exited with status 1 before answering initialize; stderr: error: missing required argument 'files'"
+  ],
+  "findings": [
+   {
+    "detector": "pinning",
+    "severity": "high",
+    "title": "Unpinned package executed on every start: kordoc",
+    "detail": "'kordoc' launches kordoc through npx without a version. The client resolves the version at start time, so any future publish to that package name runs with your credentials. This is how postmark-mcp (Sept 2025) reached roughly 300 organisations.",
+    "server": "kordoc",
+    "tool": null,
+    "location": "kordoc",
+    "evidence": {
+     "package": "kordoc",
+     "runner": "npx",
+     "auto_confirm": true
+    },
+    "remediation": "Pin an exact version and an integrity hash: \"args\": [\"kordoc@<version>\"] and drop the -y flag. Re-pin deliberately, after reviewing the diff."
+   },
+   {
+    "detector": "drift",
+    "severity": "info",
+    "title": "No baseline supplied - drift detection is disabled",
+    "detail": "Without an approved snapshot the scanner cannot tell a tool that has always been there from one that appeared yesterday. The single most effective MCP control is the diff, and it needs a baseline to diff against.",
+    "server": "*",
+    "tool": null,
+    "location": "*",
+    "evidence": {},
+    "remediation": "Run 'mcp-scrutiny baseline --config <file> --out mcp-baseline.json', commit the file, and pass it back with --baseline on every later scan."
+   }
+  ],
+  "servers": [
+   {
+    "name": "kordoc",
+    "transport": "stdio",
+    "command": "npx",
+    "args": [
+     "-y",
+     "kordoc"
+    ],
+    "url": null,
+    "pinned": false,
+    "floating_package": "kordoc",
+    "tools": 0
+   }
+  ]
+ },
+ {
+  "package": "@serdnaley/metabase-mcp",
+  "status": "no-tools",
+  "seconds": 10.1,
+  "tools": 0,
+  "errors": [
+   "serdnaley__metabase-mcp: the server exited with status 1 before answering initialize; stderr: Configuration error: Invalid input: expected string, received undefined"
+  ],
+  "findings": [
+   {
+    "detector": "pinning",
+    "severity": "high",
+    "title": "Unpinned package executed on every start: @serdnaley/metabase-mcp",
+    "detail": "'serdnaley__metabase-mcp' launches @serdnaley/metabase-mcp through npx without a version. The client resolves the version at start time, so any future publish to that package name runs with your credentials. This is how postmark-mcp (Sept 2025) reached roughly 300 organisations.",
+    "server": "serdnaley__metabase-mcp",
+    "tool": null,
+    "location": "serdnaley__metabase-mcp",
+    "evidence": {
+     "package": "@serdnaley/metabase-mcp",
+     "runner": "npx",
+     "auto_confirm": true
+    },
+    "remediation": "Pin an exact version and an integrity hash: \"args\": [\"@serdnaley/metabase-mcp@<version>\"] and drop the -y flag. Re-pin deliberately, after reviewing the diff."
+   },
+   {
+    "detector": "drift",
+    "severity": "info",
+    "title": "No baseline supplied - drift detection is disabled",
+    "detail": "Without an approved snapshot the scanner cannot tell a tool that has always been there from one that appeared yesterday. The single most effective MCP control is the diff, and it needs a baseline to diff against.",
+    "server": "*",
+    "tool": null,
+    "location": "*",
+    "evidence": {},
+    "remediation": "Run 'mcp-scrutiny baseline --config <file> --out mcp-baseline.json', commit the file, and pass it back with --baseline on every later scan."
+   }
+  ],
+  "servers": [
+   {
+    "name": "serdnaley__metabase-mcp",
+    "transport": "stdio",
+    "command": "npx",
+    "args": [
+     "-y",
+     "@serdnaley/metabase-mcp"
+    ],
+    "url": null,
+    "pinned": false,
+    "floating_package": "@serdnaley/metabase-mcp",
+    "tools": 0
+   }
+  ]
+ },
+ {
+  "package": "@shopify/dev-mcp",
+  "status": "no-tools",
+  "seconds": 93.9,
+  "tools": 0,
+  "errors": [
+   "shopify__dev-mcp: no response to initialize within 40s; stderr: npm warn deprecated inflight@1.0.6: This module is not supported, and leaks memory. Do not use it. Check out lru-cache if you want a good and tested way to coalesce async requests by a key value, which is much more comprehensive and powerful. | npm warn deprecated glob@8.1.0: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me | npm warn deprecated boolean@3.2.0: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info."
+  ],
+  "findings": [
+   {
+    "detector": "pinning",
+    "severity": "high",
+    "title": "Unpinned package executed on every start: @shopify/dev-mcp",
+    "detail": "'shopify__dev-mcp' launches @shopify/dev-mcp through npx without a version. The client resolves the version at start time, so any future publish to that package name runs with your credentials. This is how postmark-mcp (Sept 2025) reached roughly 300 organisations.",
+    "server": "shopify__dev-mcp",
+    "tool": null,
+    "location": "shopify__dev-mcp",
+    "evidence": {
+     "package": "@shopify/dev-mcp",
+     "runner": "npx",
+     "auto_confirm": true
+    },
+    "remediation": "Pin an exact version and an integrity hash: \"args\": [\"@shopify/dev-mcp@<version>\"] and drop the -y flag. Re-pin deliberately, after reviewing the diff."
+   },
+   {
+    "detector": "drift",
+    "severity": "info",
+    "title": "No baseline supplied - drift detection is disabled",
+    "detail": "Without an approved snapshot the scanner cannot tell a tool that has always been there from one that appeared yesterday. The single most effective MCP control is the diff, and it needs a baseline to diff against.",
+    "server": "*",
+    "tool": null,
+    "location": "*",
+    "evidence": {},
+    "remediation": "Run 'mcp-scrutiny baseline --config <file> --out mcp-baseline.json', commit the file, and pass it back with --baseline on every later scan."
+   }
+  ],
+  "servers": [
+   {
+    "name": "shopify__dev-mcp",
+    "transport": "stdio",
+    "command": "npx",
+    "args": [
+     "-y",
+     "@shopify/dev-mcp"
+    ],
+    "url": null,
+    "pinned": false,
+    "floating_package": "@shopify/dev-mcp",
+    "tools": 0
+   }
+  ]
+ },
+ {
+  "package": "mcp-echo-server",
+  "status": "ok",
+  "seconds": 10.3,
+  "tools": 1,
+  "errors": [],
+  "findings": [
+   {
+    "detector": "pinning",
+    "severity": "high",
+    "title": "Unpinned package executed on every start: mcp-echo-server",
+    "detail": "'mcp-echo-server' launches mcp-echo-server through npx without a version. The client resolves the version at start time, so any future publish to that package name runs with your credentials. This is how postmark-mcp (Sept 2025) reached roughly 300 organisations.",
+    "server": "mcp-echo-server",
+    "tool": null,
+    "location": "mcp-echo-server",
+    "evidence": {
+     "package": "mcp-echo-server",
+     "runner": "npx",
+     "auto_confirm": true
+    },
+    "remediation": "Pin an exact version and an integrity hash: \"args\": [\"mcp-echo-server@<version>\"] and drop the -y flag. Re-pin deliberately, after reviewing the diff."
+   },
+   {
+    "detector": "drift",
+    "severity": "info",
+    "title": "No baseline supplied - drift detection is disabled",
+    "detail": "Without an approved snapshot the scanner cannot tell a tool that has always been there from one that appeared yesterday. The single most effective MCP control is the diff, and it needs a baseline to diff against.",
+    "server": "*",
+    "tool": null,
+    "location": "*",
+    "evidence": {},
+    "remediation": "Run 'mcp-scrutiny baseline --config <file> --out mcp-baseline.json', commit the file, and pass it back with --baseline on every later scan."
+   }
+  ],
+  "servers": [
+   {
+    "name": "mcp-echo-server",
+    "transport": "stdio",
+    "command": "npx",
+    "args": [
+     "-y",
+     "mcp-echo-server"
+    ],
+    "url": null,
+    "pinned": false,
+    "floating_package": "mcp-echo-server",
+    "tools": 1
+   }
+  ]
+ },
+ {
+  "package": "@next-ai-drawio/mcp-server",
+  "status": "ok",
+  "seconds": 21.9,
+  "tools": 17,
+  "errors": [],
+  "findings": [
+   {
+    "detector": "pinning",
+    "severity": "high",
+    "title": "Unpinned package executed on every start: @next-ai-drawio/mcp-server",
+    "detail": "'next-ai-drawio__mcp-server' launches @next-ai-drawio/mcp-server through npx without a version. The client resolves the version at start time, so any future publish to that package name runs with your credentials. This is how postmark-mcp (Sept 2025) reached roughly 300 organisations.",
+    "server": "next-ai-drawio__mcp-server",
+    "tool": null,
+    "location": "next-ai-drawio__mcp-server",
+    "evidence": {
+     "package": "@next-ai-drawio/mcp-server",
+     "runner": "npx",
+     "auto_confirm": true
+    },
+    "remediation": "Pin an exact version and an integrity hash: \"args\": [\"@next-ai-drawio/mcp-server@<version>\"] and drop the -y flag. Re-pin deliberately, after reviewing the diff."
+   },
+   {
+    "detector": "drift",
+    "severity": "info",
+    "title": "No baseline supplied - drift detection is disabled",
+    "detail": "Without an approved snapshot the scanner cannot tell a tool that has always been there from one that appeared yesterday. The single most effective MCP control is the diff, and it needs a baseline to diff against.",
+    "server": "*",
+    "tool": null,
+    "location": "*",
+    "evidence": {},
+    "remediation": "Run 'mcp-scrutiny baseline --config <file> --out mcp-baseline.json', commit the file, and pass it back with --baseline on every later scan."
+   }
+  ],
+  "servers": [
+   {
+    "name": "next-ai-drawio__mcp-server",
+    "transport": "stdio",
+    "command": "npx",
+    "args": [
+     "-y",
+     "@next-ai-drawio/mcp-server"
+    ],
+    "url": null,
+    "pinned": false,
+    "floating_package": "@next-ai-drawio/mcp-server",
+    "tools": 17
+   }
+  ]
+ },
+ {
+  "package": "@benborla29/mcp-server-mysql",
+  "status": "no-tools",
+  "seconds": 23.4,
+  "tools": 0,
+  "errors": [
+   "benborla29__mcp-server-mysql: the server exited with status 1 before answering tools/list; stderr: npm warn deprecated node-domexception@1.0.0: Use your platform's native DOMException instead"
+  ],
+  "findings": [
+   {
+    "detector": "pinning",
+    "severity": "high",
+    "title": "Unpinned package executed on every start: @benborla29/mcp-server-mysql",
+    "detail": "'benborla29__mcp-server-mysql' launches @benborla29/mcp-server-mysql through npx without a version. The client resolves the version at start time, so any future publish to that package name runs with your credentials. This is how postmark-mcp (Sept 2025) reached roughly 300 organisations.",
+    "server": "benborla29__mcp-server-mysql",
+    "tool": null,
+    "location": "benborla29__mcp-server-mysql",
+    "evidence": {
+     "package": "@benborla29/mcp-server-mysql",
+     "runner": "npx",
+     "auto_confirm": true
+    },
+    "remediation": "Pin an exact version and an integrity hash: \"args\": [\"@benborla29/mcp-server-mysql@<version>\"] and drop the -y flag. Re-pin deliberately, after reviewing the diff."
+   },
+   {
+    "detector": "drift",
+    "severity": "info",
+    "title": "No baseline supplied - drift detection is disabled",
+    "detail": "Without an approved snapshot the scanner cannot tell a tool that has always been there from one that appeared yesterday. The single most effective MCP control is the diff, and it needs a baseline to diff against.",
+    "server": "*",
+    "tool": null,
+    "location": "*",
+    "evidence": {},
+    "remediation": "Run 'mcp-scrutiny baseline --config <file> --out mcp-baseline.json', commit the file, and pass it back with --baseline on every later scan."
+   }
+  ],
+  "servers": [
+   {
+    "name": "benborla29__mcp-server-mysql",
+    "transport": "stdio",
+    "command": "npx",
+    "args": [
+     "-y",
+     "@benborla29/mcp-server-mysql"
+    ],
+    "url": null,
+    "pinned": false,
+    "floating_package": "@benborla29/mcp-server-mysql",
+    "tools": 0
+   }
+  ]
+ },
+ {
+  "package": "sharp-mcp",
+  "status": "ok",
+  "seconds": 40.0,
+  "tools": 8,
+  "errors": [],
+  "findings": [
+   {
+    "detector": "pinning",
+    "severity": "high",
+    "title": "Unpinned package executed on every start: sharp-mcp",
+    "detail": "'sharp-mcp' launches sharp-mcp through npx without a version. The client resolves the version at start time, so any future publish to that package name runs with your credentials. This is how postmark-mcp (Sept 2025) reached roughly 300 organisations.",
+    "server": "sharp-mcp",
+    "tool": null,
+    "location": "sharp-mcp",
+    "evidence": {
+     "package": "sharp-mcp",
+     "runner": "npx",
+     "auto_confirm": true
+    },
+    "remediation": "Pin an exact version and an integrity hash: \"args\": [\"sharp-mcp@<version>\"] and drop the -y flag. Re-pin deliberately, after reviewing the diff."
+   },
+   {
+    "detector": "drift",
+    "severity": "info",
+    "title": "No baseline supplied - drift detection is disabled",
+    "detail": "Without an approved snapshot the scanner cannot tell a tool that has always been there from one that appeared yesterday. The single most effective MCP control is the diff, and it needs a baseline to diff against.",
+    "server": "*",
+    "tool": null,
+    "location": "*",
+    "evidence": {},
+    "remediation": "Run 'mcp-scrutiny baseline --config <file> --out mcp-baseline.json', commit the file, and pass it back with --baseline on every later scan."
+   }
+  ],
+  "servers": [
+   {
+    "name": "sharp-mcp",
+    "transport": "stdio",
+    "command": "npx",
+    "args": [
+     "-y",
+     "sharp-mcp"
+    ],
+    "url": null,
+    "pinned": false,
+    "floating_package": "sharp-mcp",
+    "tools": 8
+   }
+  ]
+ },
+ {
+  "package": "@aashari/mcp-server-atlassian-jira",
+  "status": "ok",
+  "seconds": 12.6,
+  "tools": 5,
+  "errors": [],
+  "findings": [
+   {
+    "detector": "pinning",
+    "severity": "high",
+    "title": "Unpinned package executed on every start: @aashari/mcp-server-atlassian-jira",
+    "detail": "'aashari__mcp-server-atlassian-jira' launches @aashari/mcp-server-atlassian-jira through npx without a version. The client resolves the version at start time, so any future publish to that package name runs with your credentials. This is how postmark-mcp (Sept 2025) reached roughly 300 organisations.",
+    "server": "aashari__mcp-server-atlassian-jira",
+    "tool": null,
+    "location": "aashari__mcp-server-atlassian-jira",
+    "evidence": {
+     "package": "@aashari/mcp-server-atlassian-jira",
+     "runner": "npx",
+     "auto_confirm": true
+    },
+    "remediation": "Pin an exact version and an integrity hash: \"args\": [\"@aashari/mcp-server-atlassian-jira@<version>\"] and drop the -y flag. Re-pin deliberately, after reviewing the diff."
+   },
+   {
+    "detector": "drift",
+    "severity": "info",
+    "title": "No baseline supplied - drift detection is disabled",
+    "detail": "Without an approved snapshot the scanner cannot tell a tool that has always been there from one that appeared yesterday. The single most effective MCP control is the diff, and it needs a baseline to diff against.",
+    "server": "*",
+    "tool": null,
+    "location": "*",
+    "evidence": {},
+    "remediation": "Run 'mcp-scrutiny baseline --config <file> --out mcp-baseline.json', commit the file, and pass it back with --baseline on every later scan."
+   }
+  ],
+  "servers": [
+   {
+    "name": "aashari__mcp-server-atlassian-jira",
+    "transport": "stdio",
+    "command": "npx",
+    "args": [
+     "-y",
+     "@aashari/mcp-server-atlassian-jira"
+    ],
+    "url": null,
+    "pinned": false,
+    "floating_package": "@aashari/mcp-server-atlassian-jira",
+    "tools": 5
+   }
+  ]
+ },
+ {
+  "package": "mcp-searxng",
+  "status": "ok",
+  "seconds": 12.3,
+  "tools": 4,
+  "errors": [],
+  "findings": [
+   {
+    "detector": "pinning",
+    "severity": "high",
+    "title": "Unpinned package executed on every start: mcp-searxng",
+    "detail": "'mcp-searxng' launches mcp-searxng through npx without a version. The client resolves the version at start time, so any future publish to that package name runs with your credentials. This is how postmark-mcp (Sept 2025) reached roughly 300 organisations.",
+    "server": "mcp-searxng",
+    "tool": null,
+    "location": "mcp-searxng",
+    "evidence": {
+     "package": "mcp-searxng",
+     "runner": "npx",
+     "auto_confirm": true
+    },
+    "remediation": "Pin an exact version and an integrity hash: \"args\": [\"mcp-searxng@<version>\"] and drop the -y flag. Re-pin deliberately, after reviewing the diff."
+   },
+   {
+    "detector": "drift",
+    "severity": "info",
+    "title": "No baseline supplied - drift detection is disabled",
+    "detail": "Without an approved snapshot the scanner cannot tell a tool that has always been there from one that appeared yesterday. The single most effective MCP control is the diff, and it needs a baseline to diff against.",
+    "server": "*",
+    "tool": null,
+    "location": "*",
+    "evidence": {},
+    "remediation": "Run 'mcp-scrutiny baseline --config <file> --out mcp-baseline.json', commit the file, and pass it back with --baseline on every later scan."
+   }
+  ],
+  "servers": [
+   {
+    "name": "mcp-searxng",
+    "transport": "stdio",
+    "command": "npx",
+    "args": [
+     "-y",
+     "mcp-searxng"
+    ],
+    "url": null,
+    "pinned": false,
+    "floating_package": "mcp-searxng",
+    "tools": 4
+   }
+  ]
+ },
+ {
+  "package": "ios-simulator-mcp",
+  "status": "ok",
+  "seconds": 4.4,
+  "tools": 17,
+  "errors": [],
+  "findings": [
+   {
+    "detector": "pinning",
+    "severity": "high",
+    "title": "Unpinned package executed on every start: ios-simulator-mcp",
+    "detail": "'ios-simulator-mcp' launches ios-simulator-mcp through npx without a version. The client resolves the version at start time, so any future publish to that package name runs with your credentials. This is how postmark-mcp (Sept 2025) reached roughly 300 organisations.",
+    "server": "ios-simulator-mcp",
+    "tool": null,
+    "location": "ios-simulator-mcp",
+    "evidence": {
+     "package": "ios-simulator-mcp",
+     "runner": "npx",
+     "auto_confirm": true
+    },
+    "remediation": "Pin an exact version and an integrity hash: \"args\": [\"ios-simulator-mcp@<version>\"] and drop the -y flag. Re-pin deliberately, after reviewing the diff."
+   },
+   {
+    "detector": "drift",
+    "severity": "info",
+    "title": "No baseline supplied - drift detection is disabled",
+    "detail": "Without an approved snapshot the scanner cannot tell a tool that has always been there from one that appeared yesterday. The single most effective MCP control is the diff, and it needs a baseline to diff against.",
+    "server": "*",
+    "tool": null,
+    "location": "*",
+    "evidence": {},
+    "remediation": "Run 'mcp-scrutiny baseline --config <file> --out mcp-baseline.json', commit the file, and pass it back with --baseline on every later scan."
+   }
+  ],
+  "servers": [
+   {
+    "name": "ios-simulator-mcp",
+    "transport": "stdio",
+    "command": "npx",
+    "args": [
+     "-y",
+     "ios-simulator-mcp"
+    ],
+    "url": null,
+    "pinned": false,
+    "floating_package": "ios-simulator-mcp",
+    "tools": 17
+   }
+  ]
+ },
+ {
+  "package": "12306-mcp",
+  "status": "no-tools",
+  "seconds": 39.0,
+  "tools": 0,
+  "errors": [
+   "12306-mcp: the server exited with status 1 before answering initialize; stderr:     code: 'ETIMEDOUT', |     [errors]: [ [Error], [Error], [Error], [Error] ] |   } | } | file:///home/runner/.npm/_npx/ed2d86c30172f167/node_modules/12306-mcp/build/index.js:1222 |         throw new Error('Error: get 12306 web page failed.'); |               ^ | Error: Error: get 12306 web page failed. |     at getLCQueryPath (file:///home/runner/.npm/_npx/ed2d86c30172f167/node_modules/12306-mcp/build/index.js:1222:15) |     at process.processTicksAndRejections (node:internal/process/task_queues:103:5) |     at async file:///home/runner/.npm/_npx/ed2d86c30172f167/node_modules/12306-mcp/build/index.js:18:22 | Node.js v22.23.4"
+  ],
+  "findings": [
+   {
+    "detector": "pinning",
+    "severity": "high",
+    "title": "Unpinned package executed on every start: 12306-mcp",
+    "detail": "'12306-mcp' launches 12306-mcp through npx without a version. The client resolves the version at start time, so any future publish to that package name runs with your credentials. This is how postmark-mcp (Sept 2025) reached roughly 300 organisations.",
+    "server": "12306-mcp",
+    "tool": null,
+    "location": "12306-mcp",
+    "evidence": {
+     "package": "12306-mcp",
+     "runner": "npx",
+     "auto_confirm": true
+    },
+    "remediation": "Pin an exact version and an integrity hash: \"args\": [\"12306-mcp@<version>\"] and drop the -y flag. Re-pin deliberately, after reviewing the diff."
+   },
+   {
+    "detector": "drift",
+    "severity": "info",
+    "title": "No baseline supplied - drift detection is disabled",
+    "detail": "Without an approved snapshot the scanner cannot tell a tool that has always been there from one that appeared yesterday. The single most effective MCP control is the diff, and it needs a baseline to diff against.",
+    "server": "*",
+    "tool": null,
+    "location": "*",
+    "evidence": {},
+    "remediation": "Run 'mcp-scrutiny baseline --config <file> --out mcp-baseline.json', commit the file, and pass it back with --baseline on every later scan."
+   }
+  ],
+  "servers": [
+   {
+    "name": "12306-mcp",
+    "transport": "stdio",
+    "command": "npx",
+    "args": [
+     "-y",
+     "12306-mcp"
+    ],
+    "url": null,
+    "pinned": false,
+    "floating_package": "12306-mcp",
+    "tools": 0
+   }
+  ]
+ },
+ {
+  "package": "@flyle/ai-cx-mcp",
+  "status": "no-tools",
+  "seconds": 4.3,
+  "tools": 0,
+  "errors": [
+   "flyle__ai-cx-mcp: the server exited with status 1 before answering initialize; stderr: この作業ディレクトリはまだログインしていません。このディレクトリで `npx @flyle/ai-cx-mcp@latest login --tenant <テナント名>` を実行してから、MCP サーバーを起動し直してください。"
+  ],
+  "findings": [
+   {
+    "detector": "pinning",
+    "severity": "high",
+    "title": "Unpinned package executed on every start: @flyle/ai-cx-mcp",
+    "detail": "'flyle__ai-cx-mcp' launches @flyle/ai-cx-mcp through npx without a version. The client resolves the version at start time, so any future publish to that package name runs with your credentials. This is how postmark-mcp (Sept 2025) reached roughly 300 organisations.",
+    "server": "flyle__ai-cx-mcp",
+    "tool": null,
+    "location": "flyle__ai-cx-mcp",
+    "evidence": {
+     "package": "@flyle/ai-cx-mcp",
+     "runner": "npx",
+     "auto_confirm": true
+    },
+    "remediation": "Pin an exact version and an integrity hash: \"args\": [\"@flyle/ai-cx-mcp@<version>\"] and drop the -y flag. Re-pin deliberately, after reviewing the diff."
+   },
+   {
+    "detector": "drift",
+    "severity": "info",
+    "title": "No baseline supplied - drift detection is disabled",
+    "detail": "Without an approved snapshot the scanner cannot tell a tool that has always been there from one that appeared yesterday. The single most effective MCP control is the diff, and it needs a baseline to diff against.",
+    "server": "*",
+    "tool": null,
+    "location": "*",
+    "evidence": {},
+    "remediation": "Run 'mcp-scrutiny baseline --config <file> --out mcp-baseline.json', commit the file, and pass it back with --baseline on every later scan."
+   }
+  ],
+  "servers": [
+   {
+    "name": "flyle__ai-cx-mcp",
+    "transport": "stdio",
+    "command": "npx",
+    "args": [
+     "-y",
+     "@flyle/ai-cx-mcp"
+    ],
+    "url": null,
+    "pinned": false,
+    "floating_package": "@flyle/ai-cx-mcp",
+    "tools": 0
+   }
+  ]
+ },
+ {
+  "package": "@hypequery/mcp",
+  "status": "no-tools",
+  "seconds": 13.1,
+  "tools": 0,
+  "errors": [
+   "hypequery__mcp: the server exited with status 1 before answering initialize; stderr: Error: --config flag is required | Usage: hypequery-mcp --config ./mcp-config.mjs | The config file should export { datasets, analytics }: |   export const datasets = { ... }; |   export const analytics = createDatasetClient({ ... });"
+  ],
+  "findings": [
+   {
+    "detector": "pinning",
+    "severity": "high",
+    "title": "Unpinned package executed on every start: @hypequery/mcp",
+    "detail": "'hypequery__mcp' launches @hypequery/mcp through npx without a version. The client resolves the version at start time, so any future publish to that package name runs with your credentials. This is how postmark-mcp (Sept 2025) reached roughly 300 organisations.",
+    "server": "hypequery__mcp",
+    "tool": null,
+    "location": "hypequery__mcp",
+    "evidence": {
+     "package": "@hypequery/mcp",
+     "runner": "npx",
+     "auto_confirm": true
+    },
+    "remediation": "Pin an exact version and an integrity hash: \"args\": [\"@hypequery/mcp@<version>\"] and drop the -y flag. Re-pin deliberately, after reviewing the diff."
+   },
+   {
+    "detector": "drift",
+    "severity": "info",
+    "title": "No baseline supplied - drift detection is disabled",
+    "detail": "Without an approved snapshot the scanner cannot tell a tool that has always been there from one that appeared yesterday. The single most effective MCP control is the diff, and it needs a baseline to diff against.",
+    "server": "*",
+    "tool": null,
+    "location": "*",
+    "evidence": {},
+    "remediation": "Run 'mcp-scrutiny baseline --config <file> --out mcp-baseline.json', commit the file, and pass it back with --baseline on every later scan."
+   }
+  ],
+  "servers": [
+   {
+    "name": "hypequery__mcp",
+    "transport": "stdio",
+    "command": "npx",
+    "args": [
+     "-y",
+     "@hypequery/mcp"
+    ],
+    "url": null,
+    "pinned": false,
+    "floating_package": "@hypequery/mcp",
+    "tools": 0
+   }
+  ]
+ },
+ {
+  "package": "comfyui-mcp",
+  "status": "no-tools",
+  "seconds": 58.8,
+  "tools": 0,
+  "errors": [
+   "comfyui-mcp: no response to initialize within 40s"
+  ],
+  "findings": [
+   {
+    "detector": "pinning",
+    "severity": "high",
+    "title": "Unpinned package executed on every start: comfyui-mcp",
+    "detail": "'comfyui-mcp' launches comfyui-mcp through npx without a version. The client resolves the version at start time, so any future publish to that package name runs with your credentials. This is how postmark-mcp (Sept 2025) reached roughly 300 organisations.",
+    "server": "comfyui-mcp",
+    "tool": null,
+    "location": "comfyui-mcp",
+    "evidence": {
+     "package": "comfyui-mcp",
+     "runner": "npx",
+     "auto_confirm": true
+    },
+    "remediation": "Pin an exact version and an integrity hash: \"args\": [\"comfyui-mcp@<version>\"] and drop the -y flag. Re-pin deliberately, after reviewing the diff."
+   },
+   {
+    "detector": "drift",
+    "severity": "info",
+    "title": "No baseline supplied - drift detection is disabled",
+    "detail": "Without an approved snapshot the scanner cannot tell a tool that has always been there from one that appeared yesterday. The single most effective MCP control is the diff, and it needs a baseline to diff against.",
+    "server": "*",
+    "tool": null,
+    "location": "*",
+    "evidence": {},
+    "remediation": "Run 'mcp-scrutiny baseline --config <file> --out mcp-baseline.json', commit the file, and pass it back with --baseline on every later scan."
+   }
+  ],
+  "servers": [
+   {
+    "name": "comfyui-mcp",
+    "transport": "stdio",
+    "command": "npx",
+    "args": [
+     "-y",
+     "comfyui-mcp"
+    ],
+    "url": null,
+    "pinned": false,
+    "floating_package": "comfyui-mcp",
+    "tools": 0
+   }
+  ]
+ },
+ {
+  "package": "@shortcut/mcp",
+  "status": "no-tools",
+  "seconds": 12.5,
+  "tools": 0,
+  "errors": [
+   "shortcut__mcp: the server exited with status 1 before answering initialize; stderr: A Shortcut api token is required."
+  ],
+  "findings": [
+   {
+    "detector": "pinning",
+    "severity": "high",
+    "title": "Unpinned package executed on every start: @shortcut/mcp",
+    "detail": "'shortcut__mcp' launches @shortcut/mcp through npx without a version. The client resolves the version at start time, so any future publish to that package name runs with your credentials. This is how postmark-mcp (Sept 2025) reached roughly 300 organisations.",
+    "server": "shortcut__mcp",
+    "tool": null,
+    "location": "shortcut__mcp",
+    "evidence": {
+     "package": "@shortcut/mcp",
+     "runner": "npx",
+     "auto_confirm": true
+    },
+    "remediation": "Pin an exact version and an integrity hash: \"args\": [\"@shortcut/mcp@<version>\"] and drop the -y flag. Re-pin deliberately, after reviewing the diff."
+   },
+   {
+    "detector": "drift",
+    "severity": "info",
+    "title": "No baseline supplied - drift detection is disabled",
+    "detail": "Without an approved snapshot the scanner cannot tell a tool that has always been there from one that appeared yesterday. The single most effective MCP control is the diff, and it needs a baseline to diff against.",
+    "server": "*",
+    "tool": null,
+    "location": "*",
+    "evidence": {},
+    "remediation": "Run 'mcp-scrutiny baseline --config <file> --out mcp-baseline.json', commit the file, and pass it back with --baseline on every later scan."
+   }
+  ],
+  "servers": [
+   {
+    "name": "shortcut__mcp",
+    "transport": "stdio",
+    "command": "npx",
+    "args": [
+     "-y",
+     "@shortcut/mcp"
+    ],
+    "url": null,
+    "pinned": false,
+    "floating_package": "@shortcut/mcp",
+    "tools": 0
+   }
+  ]
+ },
+ {
+  "package": "vite-plugin-mcp",
+  "status": "no-tools",
+  "seconds": 1.2,
+  "tools": 0,
+  "errors": [
+   "vite-plugin-mcp: the server exited with status 1 before answering initialize; stderr: npm error could not determine executable to run | npm error A complete log of this run can be found in: /home/runner/.npm/_logs/2026-11-14T10_41_21_027Z-debug-0.log"
+  ],
+  "findings": [
+   {
+    "detector": "pinning",
+    "severity": "high",
+    "title": "Unpinned package executed on every start: vite-plugin-mcp",
+    "detail": "'vite-plugin-mcp' launches vite-plugin-mcp through npx without a version. The client resolves the version at start time, so any future publish to that package name runs with your credentials. This is how postmark-mcp (Sept 2025) reached roughly 300 organisations.",
+    "server": "vite-plugin-mcp",
+    "tool": null,
+    "location": "vite-plugin-mcp",
+    "evidence": {
+     "package": "vite-plugin-mcp",
+     "runner": "npx",
+     "auto_confirm": true
+    },
+    "remediation": "Pin an exact version and an integrity hash: \"args\": [\"vite-plugin-mcp@<version>\"] and drop the -y flag. Re-pin deliberately, after reviewing the diff."
+   },
+   {
+    "detector": "drift",
+    "severity": "info",
+    "title": "No baseline supplied - drift detection is disabled",
+    "detail": "Without an approved snapshot the scanner cannot tell a tool that has always been there from one that appeared yesterday. The single most effective MCP control is the diff, and it needs a baseline to diff against.",
+    "server": "*",
+    "tool": null,
+    "location": "*",
+    "evidence": {},
+    "remediation": "Run 'mcp-scrutiny baseline --config <file> --out mcp-baseline.json', commit the file, and pass it back with --baseline on every later scan."
+   }
+  ],
+  "servers": [
+   {
+    "name": "vite-plugin-mcp",
+    "transport": "stdio",
+    "command": "npx",
+    "args": [
+     "-y",
+     "vite-plugin-mcp"
+    ],
+    "url": null,
+    "pinned": false,
+    "floating_package": "vite-plugin-mcp",
+    "tools": 0
+   }
+  ]
+ },
+ {
+  "package": "@microsoft/workiq",
+  "status": "no-tools",
+  "seconds": 12.5,
+  "tools": 0,
+  "errors": [
+   "microsoft__workiq: the server exited with status 1 before answering initialize; stderr: Required command was not provided."
+  ],
+  "findings": [
+   {
+    "detector": "pinning",
+    "severity": "high",
+    "title": "Unpinned package executed on every start: @microsoft/workiq",
+    "detail": "'microsoft__workiq' launches @microsoft/workiq through npx without a version. The client resolves the version at start time, so any future publish to that package name runs with your credentials. This is how postmark-mcp (Sept 2025) reached roughly 300 organisations.",
+    "server": "microsoft__workiq",
+    "tool": null,
+    "location": "microsoft__workiq",
+    "evidence": {
+     "package": "@microsoft/workiq",
+     "runner": "npx",
+     "auto_confirm": true
+    },
+    "remediation": "Pin an exact version and an integrity hash: \"args\": [\"@microsoft/workiq@<version>\"] and drop the -y flag. Re-pin deliberately, after reviewing the diff."
+   },
+   {
+    "detector": "drift",
+    "severity": "info",
+    "title": "No baseline supplied - drift detection is disabled",
+    "detail": "Without an approved snapshot the scanner cannot tell a tool that has always been there from one that appeared yesterday. The single most effective MCP control is the diff, and it needs a baseline to diff against.",
+    "server": "*",
+    "tool": null,
+    "location": "*",
+    "evidence": {},
+    "remediation": "Run 'mcp-scrutiny baseline --config <file> --out mcp-baseline.json', commit the file, and pass it back with --baseline on every later scan."
+   }
+  ],
+  "servers": [
+   {
+    "name": "microsoft__workiq",
+    "transport": "stdio",
+    "command": "npx",
+    "args": [
+     "-y",
+     "@microsoft/workiq"
+    ],
+    "url": null,
+    "pinned": false,
+    "floating_package": "@microsoft/workiq",
+    "tools": 0
+   }
+  ]
+ },
+ {
+  "package": "@growthbook/mcp",
+  "status": "ok",
+  "seconds": 10.4,
+  "tools": 4,
+  "errors": [],
+  "findings": [
+   {
+    "detector": "pinning",
+    "severity": "high",
+    "title": "Unpinned package executed on every start: @growthbook/mcp",
+    "detail": "'growthbook__mcp' launches @growthbook/mcp through npx without a version. The client resolves the version at start time, so any future publish to that package name runs with your credentials. This is how postmark-mcp (Sept 2025) reached roughly 300 organisations.",
+    "server": "growthbook__mcp",
+    "tool": null,
+    "location": "growthbook__mcp",
+    "evidence": {
+     "package": "@growthbook/mcp",
+     "runner": "npx",
+     "auto_confirm": true
+    },
+    "remediation": "Pin an exact version and an integrity hash: \"args\": [\"@growthbook/mcp@<version>\"] and drop the -y flag. Re-pin deliberately, after reviewing the diff."
+   },
+   {
+    "detector": "toxic_flow",
+    "severity": "high",
+    "title": "Toxic flow within 'growthbook__mcp': executes commands + sends data outbound",
+    "detail": "1 combination(s) exist where one tool executes commands and another sends data outbound. Neither tool is malicious on its own; together they executes commands and can reach the network, which is remote code execution with a delivery channel rather than a hint of one. Both sides live in the same server, which may well be by design; confirm it.",
+    "server": "growthbook__mcp",
+    "tool": "growthbook_list_skills",
+    "location": "growthbook__mcp.growthbook_list_skills",
+    "evidence": {
+     "source_capability": "exec",
+     "sink_capability": "network_out",
+     "cross_server": false,
+     "pair_count": 1,
+     "example": {
+      "source": "growthbook__mcp.growthbook_list_skills",
+      "sink": "growthbook__mcp.growthbook_api_read"
+     },
+     "sources": [
+      "growthbook__mcp.growthbook_list_skills"
+     ],
+     "sinks": [
+      "growthbook__mcp.growthbook_api_read"
+     ],
+     "servers": [
+      "growthbook__mcp"
+     ]
+    },
+    "remediation": "Break the path, not the tools: scope the credential so the source tool cannot reach anything valuable, or require explicit user confirmation on the sink tool (destructiveHint / human-in-the-loop), or split the two capabilities across trust boundaries that cannot share a context window."
+   },
+   {
+    "detector": "drift",
+    "severity": "info",
+    "title": "No baseline supplied - drift detection is disabled",
+    "detail": "Without an approved snapshot the scanner cannot tell a tool that has always been there from one that appeared yesterday. The single most effective MCP control is the diff, and it needs a baseline to diff against.",
+    "server": "*",
+    "tool": null,
+    "location": "*",
+    "evidence": {},
+    "remediation": "Run 'mcp-scrutiny baseline --config <file> --out mcp-baseline.json', commit the file, and pass it back with --baseline on every later scan."
+   }
+  ],
+  "servers": [
+   {
+    "name": "growthbook__mcp",
+    "transport": "stdio",
+    "command": "npx",
+    "args": [
+     "-y",
+     "@growthbook/mcp"
+    ],
+    "url": null,
+    "pinned": false,
+    "floating_package": "@growthbook/mcp",
+    "tools": 4
+   }
+  ]
+ },
+ {
+  "package": "@flyle/ai-operator-mcp",
+  "status": "no-tools",
+  "seconds": 6.0,
+  "tools": 0,
+  "errors": [
+   "flyle__ai-operator-mcp: the server exited with status 1 before answering initialize; stderr: この作業ディレクトリはまだログインしていません。このディレクトリで `npx @flyle/ai-operator-mcp@latest login --tenant <テナント名>` を実行してから、MCP サーバーを起動し直してください。"
+  ],
+  "findings": [
+   {
+    "detector": "pinning",
+    "severity": "high",
+    "title": "Unpinned package executed on every start: @flyle/ai-operator-mcp",
+    "detail": "'flyle__ai-operator-mcp' launches @flyle/ai-operator-mcp through npx without a version. The client resolves the version at start time, so any future publish to that package name runs with your credentials. This is how postmark-mcp (Sept 2025) reached roughly 300 organisations.",
+    "server": "flyle__ai-operator-mcp",
+    "tool": null,
+    "location": "flyle__ai-operator-mcp",
+    "evidence": {
+     "package": "@flyle/ai-operator-mcp",
+     "runner": "npx",
+     "auto_confirm": true
+    },
+    "remediation": "Pin an exact version and an integrity hash: \"args\": [\"@flyle/ai-operator-mcp@<version>\"] and drop the -y flag. Re-pin deliberately, after reviewing the diff."
+   },
+   {
+    "detector": "drift",
+    "severity": "info",
+    "title": "No baseline supplied - drift detection is disabled",
+    "detail": "Without an approved snapshot the scanner cannot tell a tool that has always been there from one that appeared yesterday. The single most effective MCP control is the diff, and it needs a baseline to diff against.",
+    "server": "*",
+    "tool": null,
+    "location": "*",
+    "evidence": {},
+    "remediation": "Run 'mcp-scrutiny baseline --config <file> --out mcp-baseline.json', commit the file, and pass it back with --baseline on every later scan."
+   }
+  ],
+  "servers": [
+   {
+    "name": "flyle__ai-operator-mcp",
+    "transport": "stdio",
+    "command": "npx",
+    "args": [
+     "-y",
+     "@flyle/ai-operator-mcp"
+    ],
+    "url": null,
+    "pinned": false,
+    "floating_package": "@flyle/ai-operator-mcp",
+    "tools": 0
+   }
+  ]
+ },
+ {
+  "package": "@postman/postman-mcp-server",
+  "status": "no-tools",
+  "seconds": 24.8,
+  "tools": 0,
+  "errors": [
+   "postman__postman-mcp-server: the server exited with status 1 before answering initialize; stderr: npm warn deprecated har-validator@5.1.5: this library is no longer supported | npm warn deprecated uuid@3.4.0: uuid@10 and below is no longer supported.  For ESM codebases, update to uuid@latest.  For CommonJS codebases, use uuid@11 (but be aware this version will likely be deprecated in 2028). | npm warn deprecated uuid@8.3.2: uuid@10 and below is no longer supported.  For ESM codebases, update to uuid@latest.  For CommonJS codebases, use uuid@11 (but be aware this version will likely be deprecated in 2028). | npm warn deprecated uuid@8.3.2: uuid@10 and below is no longer supported.  For ESM codebases, update to uuid@latest.  For CommonJS codebases, use uuid@11 (but be aware this version will likely be deprecated in 2028). | npm warn deprecated uuid@8.3.2: uuid@10 and below is no longer supported.  For ESM codebases, update to uuid@latest.  For CommonJS codebases, use uuid@11 (but be aware this version will likely be deprecated in 2028). | npm warn deprecated @faker-js/faker@5.5.3: Please update to a newer version. | Invalid environment variables for Postman MCP server: { _errors: [], POSTMAN_API_KEY: { _errors: [ 'Required' ] } }"
+  ],
+  "findings": [
+   {
+    "detector": "pinning",
+    "severity": "high",
+    "title": "Unpinned package executed on every start: @postman/postman-mcp-server",
+    "detail": "'postman__postman-mcp-server' launches @postman/postman-mcp-server through npx without a version. The client resolves the version at start time, so any future publish to that package name runs with your credentials. This is how postmark-mcp (Sept 2025) reached roughly 300 organisations.",
+    "server": "postman__postman-mcp-server",
+    "tool": null,
+    "location": "postman__postman-mcp-server",
+    "evidence": {
+     "package": "@postman/postman-mcp-server",
+     "runner": "npx",
+     "auto_confirm": true
+    },
+    "remediation": "Pin an exact version and an integrity hash: \"args\": [\"@postman/postman-mcp-server@<version>\"] and drop the -y flag. Re-pin deliberately, after reviewing the diff."
+   },
+   {
+    "detector": "drift",
+    "severity": "info",
+    "title": "No baseline supplied - drift detection is disabled",
+    "detail": "Without an approved snapshot the scanner cannot tell a tool that has always been there from one that appeared yesterday. The single most effective MCP control is the diff, and it needs a baseline to diff against.",
+    "server": "*",
+    "tool": null,
+    "location": "*",
+    "evidence": {},
+    "remediation": "Run 'mcp-scrutiny baseline --config <file> --out mcp-baseline.json', commit the file, and pass it back with --baseline on every later scan."
+   }
+  ],
+  "servers": [
+   {
+    "name": "postman__postman-mcp-server",
+    "transport": "stdio",
+    "command": "npx",
+    "args": [
+     "-y",
+     "@postman/postman-mcp-server"
+    ],
+    "url": null,
+    "pinned": false,
+    "floating_package": "@postman/postman-mcp-server",
+    "tools": 0
+   }
+  ]
+ },
+ {
+  "package": "notion-mcp-server",
+  "status": "ok",
+  "seconds": 11.1,
+  "tools": 7,
+  "errors": [],
+  "findings": [
+   {
+    "detector": "pinning",
+    "severity": "high",
+    "title": "Unpinned package executed on every start: notion-mcp-server",
+    "detail": "'notion-mcp-server' launches notion-mcp-server through npx without a version. The client resolves the version at start time, so any future publish to that package name runs with your credentials. This is how postmark-mcp (Sept 2025) reached roughly 300 organisations.",
+    "server": "notion-mcp-server",
+    "tool": null,
+    "location": "notion-mcp-server",
+    "evidence": {
+     "package": "notion-mcp-server",
+     "runner": "npx",
+     "auto_confirm": true
+    },
+    "remediation": "Pin an exact version and an integrity hash: \"args\": [\"notion-mcp-server@<version>\"] and drop the -y flag. Re-pin deliberately, after reviewing the diff."
+   },
+   {
+    "detector": "drift",
+    "severity": "info",
+    "title": "No baseline supplied - drift detection is disabled",
+    "detail": "Without an approved snapshot the scanner cannot tell a tool that has always been there from one that appeared yesterday. The single most effective MCP control is the diff, and it needs a baseline to diff against.",
+    "server": "*",
+    "tool": null,
+    "location": "*",
+    "evidence": {},
+    "remediation": "Run 'mcp-scrutiny baseline --config <file> --out mcp-baseline.json', commit the file, and pass it back with --baseline on every later scan."
+   }
+  ],
+  "servers": [
+   {
+    "name": "notion-mcp-server",
+    "transport": "stdio",
+    "command": "npx",
+    "args": [
+     "-y",
+     "notion-mcp-server"
+    ],
+    "url": null,
+    "pinned": false,
+    "floating_package": "notion-mcp-server",
+    "tools": 7
+   }
+  ]
+ },
+ {
+  "package": "gamealia-mcp",
+  "status": "ok",
+  "seconds": 6.9,
+  "tools": 30,
+  "errors": [],
+  "findings": [
+   {
+    "detector": "pinning",
+    "severity": "high",
+    "title": "Unpinned package executed on every start: gamealia-mcp",
+    "detail": "'gamealia-mcp' launches gamealia-mcp through npx without a version. The client resolves the version at start time, so any future publish to that package name runs with your credentials. This is how postmark-mcp (Sept 2025) reached roughly 300 organisations.",
+    "server": "gamealia-mcp",
+    "tool": null,
+    "location": "gamealia-mcp",
+    "evidence": {
+     "package": "gamealia-mcp",
+     "runner": "npx",
+     "auto_confirm": true
+    },
+    "remediation": "Pin an exact version and an integrity hash: \"args\": [\"gamealia-mcp@<version>\"] and drop the -y flag. Re-pin deliberately, after reviewing the diff."
+   },
+   {
+    "detector": "toxic_flow",
+    "severity": "high",
+    "title": "Toxic flow within 'gamealia-mcp': executes commands + sends data outbound",
+    "detail": "1 combination(s) exist where one tool executes commands and another sends data outbound. Neither tool is malicious on its own; together they executes commands and can reach the network, which is remote code execution with a delivery channel rather than a hint of one. Both sides live in the same server, which may well be by design; confirm it.",
+    "server": "gamealia-mcp",
+    "tool": "gamealia_build",
+    "location": "gamealia-mcp.gamealia_build",
+    "evidence": {
+     "source_capability": "exec",
+     "sink_capability": "network_out",
+     "cross_server": false,
+     "pair_count": 1,
+     "example": {
+      "source": "gamealia-mcp.gamealia_build",
+      "sink": "gamealia-mcp.gamealia_install_agent_kit"
+     },
+     "sources": [
+      "gamealia-mcp.gamealia_build"
+     ],
+     "sinks": [
+      "gamealia-mcp.gamealia_install_agent_kit"
+     ],
+     "servers": [
+      "gamealia-mcp"
+     ]
+    },
+    "remediation": "Break the path, not the tools: scope the credential so the source tool cannot reach anything valuable, or require explicit user confirmation on the sink tool (destructiveHint / human-in-the-loop), or split the two capabilities across trust boundaries that cannot share a context window."
+   },
+   {
+    "detector": "toxic_flow",
+    "severity": "high",
+    "title": "Toxic flow within 'gamealia-mcp': reads credentials or secrets + sends data outbound",
+    "detail": "1 combination(s) exist where one tool reads credentials or secrets and another sends data outbound. Neither tool is malicious on its own; together they reads credentials and can send data to an address it controls. A single prompt is enough to turn 'summarise this config' into a credential leak. Both sides live in the same server, which may well be by design; confirm it.",
+    "server": "gamealia-mcp",
+    "tool": "gamealia_login",
+    "location": "gamealia-mcp.gamealia_login",
+    "evidence": {
+     "source_capability": "read_secret",
+     "sink_capability": "network_out",
+     "cross_server": false,
+     "pair_count": 1,
+     "example": {
+      "source": "gamealia-mcp.gamealia_login",
+      "sink": "gamealia-mcp.gamealia_install_agent_kit"
+     },
+     "sources": [
+      "gamealia-mcp.gamealia_login"
+     ],
+     "sinks": [
+      "gamealia-mcp.gamealia_install_agent_kit"
+     ],
+     "servers": [
+      "gamealia-mcp"
+     ]
+    },
+    "remediation": "Break the path, not the tools: scope the credential so the source tool cannot reach anything valuable, or require explicit user confirmation on the sink tool (destructiveHint / human-in-the-loop), or split the two capabilities across trust boundaries that cannot share a context window."
+   },
+   {
+    "detector": "toxic_flow",
+    "severity": "high",
+    "title": "Toxic flow within 'gamealia-mcp': reads credentials or secrets + sends email or messages",
+    "detail": "2 combination(s) exist where one tool reads credentials or secrets and another sends email or messages. Neither tool is malicious on its own; together they reads credentials and can send mail. This is the postmark-mcp shape: the mail tool was legitimate, the credentials were reachable, and the combination was the incident. Both sides live in the same server, which may well be by design; confirm it.",
+    "server": "gamealia-mcp",
+    "tool": "gamealia_login",
+    "location": "gamealia-mcp.gamealia_login",
+    "evidence": {
+     "source_capability": "read_secret",
+     "sink_capability": "send_email",
+     "cross_server": false,
+     "pair_count": 2,
+     "example": {
+      "source": "gamealia-mcp.gamealia_login",
+      "sink": "gamealia-mcp.gamealia_check_integration"
+     },
+     "sources": [
+      "gamealia-mcp.gamealia_login"
+     ],
+     "sinks": [
+      "gamealia-mcp.gamealia_check_integration",
+      "gamealia-mcp.gamealia_login",
+      "gamealia-mcp.gamealia_playtest_stop"
+     ],
+     "servers": [
+      "gamealia-mcp"
+     ]
+    },
+    "remediation": "Break the path, not the tools: scope the credential so the source tool cannot reach anything valuable, or require explicit user confirmation on the sink tool (destructiveHint / human-in-the-loop), or split the two capabilities across trust boundaries that cannot share a context window."
+   },
+   {
+    "detector": "toxic_flow",
+    "severity": "medium",
+    "title": "Toxic flow within 'gamealia-mcp': executes commands + writes or deletes files",
+    "detail": "5 combination(s) exist where one tool executes commands and another writes or deletes files. Neither tool is malicious on its own; together they executes commands and writes files, so the agent can persist a payload for a later session to pick up. Both sides live in the same server, which may well be by design; confirm it.",
+    "server": "gamealia-mcp",
+    "tool": "gamealia_build",
+    "location": "gamealia-mcp.gamealia_build",
+    "evidence": {
+     "source_capability": "exec",
+     "sink_capability": "write_fs",
+     "cross_server": false,
+     "pair_count": 5,
+     "example": {
+      "source": "gamealia-mcp.gamealia_build",
+      "sink": "gamealia-mcp.gamealia_create_project"
+     },
+     "sources": [
+      "gamealia-mcp.gamealia_build"
+     ],
+     "sinks": [
+      "gamealia-mcp.gamealia_create_project",
+      "gamealia-mcp.gamealia_generate_cover",
+      "gamealia-mcp.gamealia_install_agent_kit",
+      "gamealia-mcp.gamealia_integrate_sdk",
+      "gamealia-mcp.gamealia_logout"
+     ],
+     "servers": [
+      "gamealia-mcp"
+     ]
+    },
+    "remediation": "Break the path, not the tools: scope the credential so the source tool cannot reach anything valuable, or require explicit user confirmation on the sink tool (destructiveHint / human-in-the-loop), or split the two capabilities across trust boundaries that cannot share a context window."
+   },
+   {
+    "detector": "drift",
+    "severity": "info",
+    "title": "No baseline supplied - drift detection is disabled",
+    "detail": "Without an approved snapshot the scanner cannot tell a tool that has always been there from one that appeared yesterday. The single most effective MCP control is the diff, and it needs a baseline to diff against.",
+    "server": "*",
+    "tool": null,
+    "location": "*",
+    "evidence": {},
+    "remediation": "Run 'mcp-scrutiny baseline --config <file> --out mcp-baseline.json', commit the file, and pass it back with --baseline on every later scan."
+   }
+  ],
+  "servers": [
+   {
+    "name": "gamealia-mcp",
+    "transport": "stdio",
+    "command": "npx",
+    "args": [
+     "-y",
+     "gamealia-mcp"
+    ],
+    "url": null,
+    "pinned": false,
+    "floating_package": "gamealia-mcp",
+    "tools": 30
+   }
+  ]
+ },
+ {
+  "package": "vite-plugin-vue-mcp",
+  "status": "no-tools",
+  "seconds": 2.1,
+  "tools": 0,
+  "errors": [
+   "vite-plugin-vue-mcp: the server exited with status 1 before answering initialize; stderr: npm error could not determine executable to run | npm error A complete log of this run can be found in: /home/runner/.npm/_logs/2026-11-14T10_41_40_347Z-debug-0.log"
+  ],
+  "findings": [
+   {
+    "detector": "pinning",
+    "severity": "high",
+    "title": "Unpinned package executed on every start: vite-plugin-vue-mcp",
+    "detail": "'vite-plugin-vue-mcp' launches vite-plugin-vue-mcp through npx without a version. The client resolves the version at start time, so any future publish to that package name runs with your credentials. This is how postmark-mcp (Sept 2025) reached roughly 300 organisations.",
+    "server": "vite-plugin-vue-mcp",
+    "tool": null,
+    "location": "vite-plugin-vue-mcp",
+    "evidence": {
+     "package": "vite-plugin-vue-mcp",
+     "runner": "npx",
+     "auto_confirm": true
+    },
+    "remediation": "Pin an exact version and an integrity hash: \"args\": [\"vite-plugin-vue-mcp@<version>\"] and drop the -y flag. Re-pin deliberately, after reviewing the diff."
+   },
+   {
+    "detector": "drift",
+    "severity": "info",
+    "title": "No baseline supplied - drift detection is disabled",
+    "detail": "Without an approved snapshot the scanner cannot tell a tool that has always been there from one that appeared yesterday. The single most effective MCP control is the diff, and it needs a baseline to diff against.",
+    "server": "*",
+    "tool": null,
+    "location": "*",
+    "evidence": {},
+    "remediation": "Run 'mcp-scrutiny baseline --config <file> --out mcp-baseline.json', commit the file, and pass it back with --baseline on every later scan."
+   }
+  ],
+  "servers": [
+   {
+    "name": "vite-plugin-vue-mcp",
+    "transport": "stdio",
+    "command": "npx",
+    "args": [
+     "-y",
+     "vite-plugin-vue-mcp"
+    ],
+    "url": null,
+    "pinned": false,
+    "floating_package": "vite-plugin-vue-mcp",
+    "tools": 0
+   }
+  ]
+ },
+ {
+  "package": "@phenomenalorg/mcp",
+  "status": "no-report",
+  "seconds": 160.1
+ },
+ {
+  "package": "echelongraph-mcp",
+  "status": "ok",
+  "seconds": 9.0,
+  "tools": 21,
+  "errors": [],
+  "findings": [
+   {
+    "detector": "pinning",
+    "severity": "high",
+    "title": "Unpinned package executed on every start: echelongraph-mcp",
+    "detail": "'echelongraph-mcp' launches echelongraph-mcp through npx without a version. The client resolves the version at start time, so any future publish to that package name runs with your credentials. This is how postmark-mcp (Sept 2025) reached roughly 300 organisations.",
+    "server": "echelongraph-mcp",
+    "tool": null,
+    "location": "echelongraph-mcp",
+    "evidence": {
+     "package": "echelongraph-mcp",
+     "runner": "npx",
+     "auto_confirm": true
+    },
+    "remediation": "Pin an exact version and an integrity hash: \"args\": [\"echelongraph-mcp@<version>\"] and drop the -y flag. Re-pin deliberately, after reviewing the diff."
+   },
+   {
+    "detector": "toxic_flow",
+    "severity": "high",
+    "title": "Toxic flow within 'echelongraph-mcp': executes commands + sends data outbound",
+    "detail": "5 combination(s) exist where one tool executes commands and another sends data outbound. Neither tool is malicious on its own; together they executes commands and can reach the network, which is remote code execution with a delivery channel rather than a hint of one. Both sides live in the same server, which may well be by design; confirm it.",
+    "server": "echelongraph-mcp",
+    "tool": "check_affected",
+    "location": "echelongraph-mcp.check_affected",
+    "evidence": {
+     "source_capability": "exec",
+     "sink_capability": "network_out",
+     "cross_server": false,
+     "pair_count": 5,
+     "example": {
+      "source": "echelongraph-mcp.check_affected",
+      "sink": "echelongraph-mcp.cve_remediation"
+     },
+     "sources": [
+      "echelongraph-mcp.check_affected",
+      "echelongraph-mcp.cve_exposure"
+     ],
+     "sinks": [
+      "echelongraph-mcp.check_affected",
+      "echelongraph-mcp.cve_remediation",
+      "echelongraph-mcp.search_vendor_advisories"
+     ],
+     "servers": [
+      "echelongraph-mcp"
+     ]
+    },
+    "remediation": "Break the path, not the tools: scope the credential so the source tool cannot reach anything valuable, or require explicit user confirmation on the sink tool (destructiveHint / human-in-the-loop), or split the two capabilities across trust boundaries that cannot share a context window."
+   },
+   {
+    "detector": "toxic_flow",
+    "severity": "medium",
+    "title": "Toxic flow within 'echelongraph-mcp': reads files + sends data outbound",
+    "detail": "3 combination(s) exist where one tool reads files and another sends data outbound. Neither tool is malicious on its own; together they reads files and can transmit them, so any file the server can reach is reachable by the model, including ones outside the project. Both sides live in the same server, which may well be by design; confirm it.",
+    "server": "echelongraph-mcp",
+    "tool": "scan_manifest",
+    "location": "echelongraph-mcp.scan_manifest",
+    "evidence": {
+     "source_capability": "read_fs",
+     "sink_capability": "network_out",
+     "cross_server": false,
+     "pair_count": 3,
+     "example": {
+      "source": "echelongraph-mcp.scan_manifest",
+      "sink": "echelongraph-mcp.check_affected"
+     },
+     "sources": [
+      "echelongraph-mcp.scan_manifest"
+     ],
+     "sinks": [
+      "echelongraph-mcp.check_affected",
+      "echelongraph-mcp.cve_remediation",
+      "echelongraph-mcp.search_vendor_advisories"
+     ],
+     "servers": [
+      "echelongraph-mcp"
+     ]
+    },
+    "remediation": "Break the path, not the tools: scope the credential so the source tool cannot reach anything valuable, or require explicit user confirmation on the sink tool (destructiveHint / human-in-the-loop), or split the two capabilities across trust boundaries that cannot share a context window."
+   },
+   {
+    "detector": "drift",
+    "severity": "info",
+    "title": "No baseline supplied - drift detection is disabled",
+    "detail": "Without an approved snapshot the scanner cannot tell a tool that has always been there from one that appeared yesterday. The single most effective MCP control is the diff, and it needs a baseline to diff against.",
+    "server": "*",
+    "tool": null,
+    "location": "*",
+    "evidence": {},
+    "remediation": "Run 'mcp-scrutiny baseline --config <file> --out mcp-baseline.json', commit the file, and pass it back with --baseline on every later scan."
+   }
+  ],
+  "servers": [
+   {
+    "name": "echelongraph-mcp",
+    "transport": "stdio",
+    "command": "npx",
+    "args": [
+     "-y",
+     "echelongraph-mcp"
+    ],
+    "url": null,
+    "pinned": false,
+    "floating_package": "echelongraph-mcp",
+    "tools": 21
+   }
+  ]
+ },
+ {
+  "package": "llm-wiki-compiler",
+  "status": "no-tools",
+  "seconds": 14.8,
+  "tools": 0,
+  "errors": [
+   "llm-wiki-compiler: the server exited with status 1 before answering initialize; stderr:   ingest <source>             Ingest a URL or local file into sources/ |   compile [options]           Compile sources/ into an interlinked wiki |   review                      Inspect and act on pending compile review |                               candidates |   query [options] <question>  Ask a question against the wiki |   watch                       Watch sources/ and auto-recompile on changes |   lint                        Run rule-based quality checks against the wiki |   schema                      Inspect or initialize the project's wiki schema |                               config |   serve [options]             Start an MCP server exposing wiki tools and |                               resources over stdio |   help [command]              display help for command"
+  ],
+  "findings": [
+   {
+    "detector": "pinning",
+    "severity": "high",
+    "title": "Unpinned package executed on every start: llm-wiki-compiler",
+    "detail": "'llm-wiki-compiler' launches llm-wiki-compiler through npx without a version. The client resolves the version at start time, so any future publish to that package name runs with your credentials. This is how postmark-mcp (Sept 2025) reached roughly 300 organisations.",
+    "server": "llm-wiki-compiler",
+    "tool": null,
+    "location": "llm-wiki-compiler",
+    "evidence": {
+     "package": "llm-wiki-compiler",
+     "runner": "npx",
+     "auto_confirm": true
+    },
+    "remediation": "Pin an exact version and an integrity hash: \"args\": [\"llm-wiki-compiler@<version>\"] and drop the -y flag. Re-pin deliberately, after reviewing the diff."
+   },
+   {
+    "detector": "drift",
+    "severity": "info",
+    "title": "No baseline supplied - drift detection is disabled",
+    "detail": "Without an approved snapshot the scanner cannot tell a tool that has always been there from one that appeared yesterday. The single most effective MCP control is the diff, and it needs a baseline to diff against.",
+    "server": "*",
+    "tool": null,
+    "location": "*",
+    "evidence": {},
+    "remediation": "Run 'mcp-scrutiny baseline --config <file> --out mcp-baseline.json', commit the file, and pass it back with --baseline on every later scan."
+   }
+  ],
+  "servers": [
+   {
+    "name": "llm-wiki-compiler",
+    "transport": "stdio",
+    "command": "npx",
+    "args": [
+     "-y",
+     "llm-wiki-compiler"
+    ],
+    "url": null,
+    "pinned": false,
+    "floating_package": "llm-wiki-compiler",
+    "tools": 0
+   }
+  ]
+ },
+ {
+  "package": "@clipwright/mcp-server",
+  "status": "no-tools",
+  "seconds": 10.8,
+  "tools": 0,
+  "errors": [
+   "clipwright__mcp-server: the server exited with status 1 before answering initialize; stderr: CLIPWRIGHT_API_KEY env var is required"
+  ],
+  "findings": [
+   {
+    "detector": "pinning",
+    "severity": "high",
+    "title": "Unpinned package executed on every start: @clipwright/mcp-server",
+    "detail": "'clipwright__mcp-server' launches @clipwright/mcp-server through npx without a version. The client resolves the version at start time, so any future publish to that package name runs with your credentials. This is how postmark-mcp (Sept 2025) reached roughly 300 organisations.",
+    "server": "clipwright__mcp-server",
+    "tool": null,
+    "location": "clipwright__mcp-server",
+    "evidence": {
+     "package": "@clipwright/mcp-server",
+     "runner": "npx",
+     "auto_confirm": true
+    },
+    "remediation": "Pin an exact version and an integrity hash: \"args\": [\"@clipwright/mcp-server@<version>\"] and drop the -y flag. Re-pin deliberately, after reviewing the diff."
+   },
+   {
+    "detector": "drift",
+    "severity": "info",
+    "title": "No baseline supplied - drift detection is disabled",
+    "detail": "Without an approved snapshot the scanner cannot tell a tool that has always been there from one that appeared yesterday. The single most effective MCP control is the diff, and it needs a baseline to diff against.",
+    "server": "*",
+    "tool": null,
+    "location": "*",
+    "evidence": {},
+    "remediation": "Run 'mcp-scrutiny baseline --config <file> --out mcp-baseline.json', commit the file, and pass it back with --baseline on every later scan."
+   }
+  ],
+  "servers": [
+   {
+    "name": "clipwright__mcp-server",
+    "transport": "stdio",
+    "command": "npx",
+    "args": [
+     "-y",
+     "@clipwright/mcp-server"
+    ],
+    "url": null,
+    "pinned": false,
+    "floating_package": "@clipwright/mcp-server",
+    "tools": 0
+   }
+  ]
+ },
+ {
+  "package": "donsetch",
+  "status": "no-tools",
+  "seconds": 5.3,
+  "tools": 0,
+  "errors": [
+   "donsetch: the server exited with status 0 before answering initialize"
+  ],
+  "findings": [
+   {
+    "detector": "pinning",
+    "severity": "high",
+    "title": "Unpinned package executed on every start: donsetch",
+    "detail": "'donsetch' launches donsetch through npx without a version. The client resolves the version at start time, so any future publish to that package name runs with your credentials. This is how postmark-mcp (Sept 2025) reached roughly 300 organisations.",
+    "server": "donsetch",
+    "tool": null,
+    "location": "donsetch",
+    "evidence": {
+     "package": "donsetch",
+     "runner": "npx",
+     "auto_confirm": true
+    },
+    "remediation": "Pin an exact version and an integrity hash: \"args\": [\"donsetch@<version>\"] and drop the -y flag. Re-pin deliberately, after reviewing the diff."
+   },
+   {
+    "detector": "drift",
+    "severity": "info",
+    "title": "No baseline supplied - drift detection is disabled",
+    "detail": "Without an approved snapshot the scanner cannot tell a tool that has always been there from one that appeared yesterday. The single most effective MCP control is the diff, and it needs a baseline to diff against.",
+    "server": "*",
+    "tool": null,
+    "location": "*",
+    "evidence": {},
+    "remediation": "Run 'mcp-scrutiny baseline --config <file> --out mcp-baseline.json', commit the file, and pass it back with --baseline on every later scan."
+   }
+  ],
+  "servers": [
+   {
+    "name": "donsetch",
+    "transport": "stdio",
+    "command": "npx",
+    "args": [
+     "-y",
+     "donsetch"
+    ],
+    "url": null,
+    "pinned": false,
+    "floating_package": "donsetch",
+    "tools": 0
+   }
+  ]
+ },
+ {
+  "package": "mobilebuildmcp",
+  "status": "no-tools",
+  "seconds": 19.2,
+  "tools": 0,
+  "errors": [
+   "mobilebuildmcp: the server exited with status 1 before answering initialize; stderr:   utilities             Build Utilities |   xcode-ide             Xcode IDE Integration |   daemon <action>       Manage the mobilebuildmcp daemon | Options: |       --log-level               Set log verbosity level  [string] [choices: \"none\", \"error\", \"warn\", \"info\", \"debug\"] [default: \"none\"] |       --style                   Output style (normal is detailed; minimal is compact MCP-like output)  [string] [choices: \"normal\", \"minimal\"] [default: \"normal\"] |       --file-path-render-style  Render file artifacts as a compact tree or labeled list in text output  [string] [choices: \"tree\", \"list\"] |   -h, --help                    Show help  [boolean] |   -v, --version                 Show version number  [boolean] | Run 'mobilebuildmcp mcp' to start the MCP server. | Run 'mobilebuildmcp tools' to see all available tools. | Run 'mobilebuildmcp <workflow> <tool> --help' for tool-specific help."
+  ],
+  "findings": [
+   {
+    "detector": "pinning",
+    "severity": "high",
+    "title": "Unpinned package executed on every start: mobilebuildmcp",
+    "detail": "'mobilebuildmcp' launches mobilebuildmcp through npx without a version. The client resolves the version at start time, so any future publish to that package name runs with your credentials. This is how postmark-mcp (Sept 2025) reached roughly 300 organisations.",
+    "server": "mobilebuildmcp",
+    "tool": null,
+    "location": "mobilebuildmcp",
+    "evidence": {
+     "package": "mobilebuildmcp",
+     "runner": "npx",
+     "auto_confirm": true
+    },
+    "remediation": "Pin an exact version and an integrity hash: \"args\": [\"mobilebuildmcp@<version>\"] and drop the -y flag. Re-pin deliberately, after reviewing the diff."
+   },
+   {
+    "detector": "drift",
+    "severity": "info",
+    "title": "No baseline supplied - drift detection is disabled",
+    "detail": "Without an approved snapshot the scanner cannot tell a tool that has always been there from one that appeared yesterday. The single most effective MCP control is the diff, and it needs a baseline to diff against.",
+    "server": "*",
+    "tool": null,
+    "location": "*",
+    "evidence": {},
+    "remediation": "Run 'mcp-scrutiny baseline --config <file> --out mcp-baseline.json', commit the file, and pass it back with --baseline on every later scan."
+   }
+  ],
+  "servers": [
+   {
+    "name": "mobilebuildmcp",
+    "transport": "stdio",
+    "command": "npx",
+    "args": [
+     "-y",
+     "mobilebuildmcp"
+    ],
+    "url": null,
+    "pinned": false,
+    "floating_package": "mobilebuildmcp",
+    "tools": 0
+   }
+  ]
+ },
+ {
+  "package": "canvas-mcp-server",
+  "status": "no-tools",
+  "seconds": 8.2,
+  "tools": 0,
+  "errors": [
+   "canvas-mcp-server: the server exited with status 1 before answering initialize; stderr: Loaded environment from: .env | Missing required environment variables: | - CANVAS_API_TOKEN: Your Canvas API token | - CANVAS_DOMAIN: Your Canvas domain (e.g., school.instructure.com)"
+  ],
+  "findings": [
+   {
+    "detector": "pinning",
+    "severity": "high",
+    "title": "Unpinned package executed on every start: canvas-mcp-server",
+    "detail": "'canvas-mcp-server' launches canvas-mcp-server through npx without a version. The client resolves the version at start time, so any future publish to that package name runs with your credentials. This is how postmark-mcp (Sept 2025) reached roughly 300 organisations.",
+    "server": "canvas-mcp-server",
+    "tool": null,
+    "location": "canvas-mcp-server",
+    "evidence": {
+     "package": "canvas-mcp-server",
+     "runner": "npx",
+     "auto_confirm": true
+    },
+    "remediation": "Pin an exact version and an integrity hash: \"args\": [\"canvas-mcp-server@<version>\"] and drop the -y flag. Re-pin deliberately, after reviewing the diff."
+   },
+   {
+    "detector": "drift",
+    "severity": "info",
+    "title": "No baseline supplied - drift detection is disabled",
+    "detail": "Without an approved snapshot the scanner cannot tell a tool that has always been there from one that appeared yesterday. The single most effective MCP control is the diff, and it needs a baseline to diff against.",
+    "server": "*",
+    "tool": null,
+    "location": "*",
+    "evidence": {},
+    "remediation": "Run 'mcp-scrutiny baseline --config <file> --out mcp-baseline.json', commit the file, and pass it back with --baseline on every later scan."
+   }
+  ],
+  "servers": [
+   {
+    "name": "canvas-mcp-server",
+    "transport": "stdio",
+    "command": "npx",
+    "args": [
+     "-y",
+     "canvas-mcp-server"
+    ],
+    "url": null,
+    "pinned": false,
+    "floating_package": "canvas-mcp-server",
+    "tools": 0
+   }
+  ]
+ },
+ {
+  "package": "vet-skills",
+  "status": "no-tools",
+  "seconds": 2.5,
+  "tools": 0,
+  "errors": [
+   "vet-skills: the server exited with status 1 before answering initialize; stderr:   vet-skills hook install [claude-code|cursor|codex|windsurf|gemini|grok|copilot|kiro|qwen|all]   register the hooks for that agent (all = every one found) |   vet-skills hook eval                  (called by the agent) read hook JSON on stdin |   vet-skills runtime [allows|revoke <id>] what installed skills did in real sessions that the sandbox never saw; scoped allows |   vet-skills canary [install|remove]    decoy credential files on this machine; any sighting in a session is proof of exfiltration |   vet-skills guard install|uninstall|status [--project]   wrap (or unwrap) every stdio MCP server in the agents' configs; status shows sessions, hosts, held calls |   vet-skills guard exec --server <n> --client <a> -- <cmd…>   (called by the agent's config) run one server under the guard with the runtime policy |   vet-skills review [list|create|show|disposition|download]   access review packs for the org (approver); verify <pack.zip> needs no account |   vet-skills approvals [list|approve <id>|deny <id>]   pending install requests and held tool calls, decided from the terminal (approver) |   vet-skills threats [--json|--stix]    the confirmed-incident feed |   vet-skills diff <pkg> [<from>] <to>   what one version did in the sandbox that another did not (exit 3 when it reaches for more) |   vet-skills guard approve <pkg>        accept a held update on a personal machine (runtime.on_change: hold) | Docs: https://killerskills.ai/docs/cli"
+  ],
+  "findings": [
+   {
+    "detector": "pinning",
+    "severity": "high",
+    "title": "Unpinned package executed on every start: vet-skills",
+    "detail": "'vet-skills' launches vet-skills through npx without a version. The client resolves the version at start time, so any future publish to that package name runs with your credentials. This is how postmark-mcp (Sept 2025) reached roughly 300 organisations.",
+    "server": "vet-skills",
+    "tool": null,
+    "location": "vet-skills",
+    "evidence": {
+     "package": "vet-skills",
+     "runner": "npx",
+     "auto_confirm": true
+    },
+    "remediation": "Pin an exact version and an integrity hash: \"args\": [\"vet-skills@<version>\"] and drop the -y flag. Re-pin deliberately, after reviewing the diff."
+   },
+   {
+    "detector": "drift",
+    "severity": "info",
+    "title": "No baseline supplied - drift detection is disabled",
+    "detail": "Without an approved snapshot the scanner cannot tell a tool that has always been there from one that appeared yesterday. The single most effective MCP control is the diff, and it needs a baseline to diff against.",
+    "server": "*",
+    "tool": null,
+    "location": "*",
+    "evidence": {},
+    "remediation": "Run 'mcp-scrutiny baseline --config <file> --out mcp-baseline.json', commit the file, and pass it back with --baseline on every later scan."
+   }
+  ],
+  "servers": [
+   {
+    "name": "vet-skills",
+    "transport": "stdio",
+    "command": "npx",
+    "args": [
+     "-y",
+     "vet-skills"
+    ],
+    "url": null,
+    "pinned": false,
+    "floating_package": "vet-skills",
+    "tools": 0
+   }
+  ]
+ },
+ {
+  "package": "astro-mcp",
+  "status": "no-tools",
+  "seconds": 1.2,
+  "tools": 0,
+  "errors": [
+   "astro-mcp: the server exited with status 1 before answering initialize; stderr: npm error could not determine executable to run | npm error A complete log of this run can be found in: /home/runner/.npm/_logs/2026-11-14T10_41_59_891Z-debug-0.log"
+  ],
+  "findings": [
+   {
+    "detector": "pinning",
+    "severity": "high",
+    "title": "Unpinned package executed on every start: astro-mcp",
+    "detail": "'astro-mcp' launches astro-mcp through npx without a version. The client resolves the version at start time, so any future publish to that package name runs with your credentials. This is how postmark-mcp (Sept 2025) reached roughly 300 organisations.",
+    "server": "astro-mcp",
+    "tool": null,
+    "location": "astro-mcp",
+    "evidence": {
+     "package": "astro-mcp",
+     "runner": "npx",
+     "auto_confirm": true
+    },
+    "remediation": "Pin an exact version and an integrity hash: \"args\": [\"astro-mcp@<version>\"] and drop the -y flag. Re-pin deliberately, after reviewing the diff."
+   },
+   {
+    "detector": "drift",
+    "severity": "info",
+    "title": "No baseline supplied - drift detection is disabled",
+    "detail": "Without an approved snapshot the scanner cannot tell a tool that has always been there from one that appeared yesterday. The single most effective MCP control is the diff, and it needs a baseline to diff against.",
+    "server": "*",
+    "tool": null,
+    "location": "*",
+    "evidence": {},
+    "remediation": "Run 'mcp-scrutiny baseline --config <file> --out mcp-baseline.json', commit the file, and pass it back with --baseline on every later scan."
+   }
+  ],
+  "servers": [
+   {
+    "name": "astro-mcp",
+    "transport": "stdio",
+    "command": "npx",
+    "args": [
+     "-y",
+     "astro-mcp"
+    ],
+    "url": null,
+    "pinned": false,
+    "floating_package": "astro-mcp",
+    "tools": 0
+   }
+  ]
+ },
+ {
+  "package": "@kintone/mcp-server",
+  "status": "no-tools",
+  "seconds": 10.3,
+  "tools": 0,
+  "errors": [
+   "kintone__mcp-server: the server exited with status 1 before answering initialize; stderr: file:///home/runner/.npm/_npx/b2db60d2046cbad3/node_modules/@kintone/mcp-server/dist/config/parser.js:19 |     throw new Error(`Environment variables are missing or invalid:\\n${errorMessages.join(\"\\n\")}`); |           ^ | Error: Environment variables are missing or invalid: | KINTONE_BASE_URL: Required |     at parseKintoneMcpServerConfig (file:///home/runner/.npm/_npx/b2db60d2046cbad3/node_modules/@kintone/mcp-server/dist/config/parser.js:19:11) |     at file:///home/runner/.npm/_npx/b2db60d2046cbad3/node_modules/@kintone/mcp-server/dist/config/index.js:4:16 |     at ModuleJob.run (node:internal/modules/esm/module_job:343:25) |     at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:681:26) |     at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5) | Node.js v22.23.4"
+  ],
+  "findings": [
+   {
+    "detector": "pinning",
+    "severity": "high",
+    "title": "Unpinned package executed on every start: @kintone/mcp-server",
+    "detail": "'kintone__mcp-server' launches @kintone/mcp-server through npx without a version. The client resolves the version at start time, so any future publish to that package name runs with your credentials. This is how postmark-mcp (Sept 2025) reached roughly 300 organisations.",
+    "server": "kintone__mcp-server",
+    "tool": null,
+    "location": "kintone__mcp-server",
+    "evidence": {
+     "package": "@kintone/mcp-server",
+     "runner": "npx",
+     "auto_confirm": true
+    },
+    "remediation": "Pin an exact version and an integrity hash: \"args\": [\"@kintone/mcp-server@<version>\"] and drop the -y flag. Re-pin deliberately, after reviewing the diff."
+   },
+   {
+    "detector": "drift",
+    "severity": "info",
+    "title": "No baseline supplied - drift detection is disabled",
+    "detail": "Without an approved snapshot the scanner cannot tell a tool that has always been there from one that appeared yesterday. The single most effective MCP control is the diff, and it needs a baseline to diff against.",
+    "server": "*",
+    "tool": null,
+    "location": "*",
+    "evidence": {},
+    "remediation": "Run 'mcp-scrutiny baseline --config <file> --out mcp-baseline.json', commit the file, and pass it back with --baseline on every later scan."
+   }
+  ],
+  "servers": [
+   {
+    "name": "kintone__mcp-server",
+    "transport": "stdio",
+    "command": "npx",
+    "args": [
+     "-y",
+     "@kintone/mcp-server"
+    ],
+    "url": null,
+    "pinned": false,
+    "floating_package": "@kintone/mcp-server",
+    "tools": 0
+   }
+  ]
+ },
+ {
+  "package": "gemini-mcp-tool",
+  "status": "ok",
+  "seconds": 8.5,
+  "tools": 5,
+  "errors": [],
+  "findings": [
+   {
+    "detector": "pinning",
+    "severity": "high",
+    "title": "Unpinned package executed on every start: gemini-mcp-tool",
+    "detail": "'gemini-mcp-tool' launches gemini-mcp-tool through npx without a version. The client resolves the version at start time, so any future publish to that package name runs with your credentials. This is how postmark-mcp (Sept 2025) reached roughly 300 organisations.",
+    "server": "gemini-mcp-tool",
+    "tool": null,
+    "location": "gemini-mcp-tool",
+    "evidence": {
+     "package": "gemini-mcp-tool",
+     "runner": "npx",
+     "auto_confirm": true
+    },
+    "remediation": "Pin an exact version and an integrity hash: \"args\": [\"gemini-mcp-tool@<version>\"] and drop the -y flag. Re-pin deliberately, after reviewing the diff."
+   },
+   {
+    "detector": "drift",
+    "severity": "info",
+    "title": "No baseline supplied - drift detection is disabled",
+    "detail": "Without an approved snapshot the scanner cannot tell a tool that has always been there from one that appeared yesterday. The single most effective MCP control is the diff, and it needs a baseline to diff against.",
+    "server": "*",
+    "tool": null,
+    "location": "*",
+    "evidence": {},
+    "remediation": "Run 'mcp-scrutiny baseline --config <file> --out mcp-baseline.json', commit the file, and pass it back with --baseline on every later scan."
+   }
+  ],
+  "servers": [
+   {
+    "name": "gemini-mcp-tool",
+    "transport": "stdio",
+    "command": "npx",
+    "args": [
+     "-y",
+     "gemini-mcp-tool"
+    ],
+    "url": null,
+    "pinned": false,
+    "floating_package": "gemini-mcp-tool",
+    "tools": 5
+   }
+  ]
+ },
+ {
+  "package": "@mcp-z/mcp-gmail",
+  "status": "no-tools",
+  "seconds": 11.6,
+  "tools": 0,
+  "errors": [
+   "mcp-z__mcp-gmail: the server exited with status 255 before answering initialize; stderr: npm warn deprecated node-domexception@1.0.0: Use your platform's native DOMException instead | Error: Environment variable GOOGLE_CLIENT_ID is required for Google OAuth |     at requiredEnv (/home/runner/.npm/_npx/d0bd81c23a40f84c/node_modules/@mcp-z/oauth-google/dist/cjs/setup/config.js:105:19) |     at Object.parseConfig (/home/runner/.npm/_npx/d0bd81c23a40f84c/node_modules/@mcp-z/oauth-google/dist/cjs/setup/config.js:154:20) |     at parseConfig (file:///home/runner/.npm/_npx/d0bd81c23a40f84c/node_modules/@mcp-z/mcp-gmail/dist/esm/setup/config.js:50:37) |     at createConfig (file:///home/runner/.npm/_npx/d0bd81c23a40f84c/node_modules/@mcp-z/mcp-gmail/dist/esm/setup/config.js:116:12) |     at Module.main (file:///home/runner/.npm/_npx/d0bd81c23a40f84c/node_modules/@mcp-z/mcp-gmail/dist/esm/index.js:35:20)"
+  ],
+  "findings": [
+   {
+    "detector": "pinning",
+    "severity": "high",
+    "title": "Unpinned package executed on every start: @mcp-z/mcp-gmail",
+    "detail": "'mcp-z__mcp-gmail' launches @mcp-z/mcp-gmail through npx without a version. The client resolves the version at start time, so any future publish to that package name runs with your credentials. This is how postmark-mcp (Sept 2025) reached roughly 300 organisations.",
+    "server": "mcp-z__mcp-gmail",
+    "tool": null,
+    "location": "mcp-z__mcp-gmail",
+    "evidence": {
+     "package": "@mcp-z/mcp-gmail",
+     "runner": "npx",
+     "auto_confirm": true
+    },
+    "remediation": "Pin an exact version and an integrity hash: \"args\": [\"@mcp-z/mcp-gmail@<version>\"] and drop the -y flag. Re-pin deliberately, after reviewing the diff."
+   },
+   {
+    "detector": "drift",
+    "severity": "info",
+    "title": "No baseline supplied - drift detection is disabled",
+    "detail": "Without an approved snapshot the scanner cannot tell a tool that has always been there from one that appeared yesterday. The single most effective MCP control is the diff, and it needs a baseline to diff against.",
+    "server": "*",
+    "tool": null,
+    "location": "*",
+    "evidence": {},
+    "remediation": "Run 'mcp-scrutiny baseline --config <file> --out mcp-baseline.json', commit the file, and pass it back with --baseline on every later scan."
+   }
+  ],
+  "servers": [
+   {
+    "name": "mcp-z__mcp-gmail",
+    "transport": "stdio",
+    "command": "npx",
+    "args": [
+     "-y",
+     "@mcp-z/mcp-gmail"
+    ],
+    "url": null,
+    "pinned": false,
+    "floating_package": "@mcp-z/mcp-gmail",
+    "tools": 0
+   }
+  ]
+ },
+ {
+  "package": "@dokploy/mcp",
+  "status": "no-tools",
+  "seconds": 9.2,
+  "tools": 0,
+  "errors": [
+   "dokploy__mcp: the server exited with status 1 before answering initialize; stderr: file:///home/runner/.npm/_npx/f6402708929be68c/node_modules/@dokploy/mcp/build/utils/clientConfig.js:52 |             throw new Error(\"Environment variable DOKPLOY_URL is not defined\"); |                   ^ | Error: Environment variable DOKPLOY_URL is not defined |     at ConfigManager.loadConfig (file:///home/runner/.npm/_npx/f6402708929be68c/node_modules/@dokploy/mcp/build/utils/clientConfig.js:52:19) |     at ConfigManager.getConfig (file:///home/runner/.npm/_npx/f6402708929be68c/node_modules/@dokploy/mcp/build/utils/clientConfig.js:44:32) |     at getClientConfig (file:///home/runner/.npm/_npx/f6402708929be68c/node_modules/@dokploy/mcp/build/utils/clientConfig.js:75:40) |     at file:///home/runner/.npm/_npx/f6402708929be68c/node_modules/@dokploy/mcp/build/utils/apiClient.js:7:16 |     at ModuleJob.run (node:internal/modules/esm/module_job:343:25) |     at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:681:26) |     at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5) | Node.js v22.23.4"
+  ],
+  "findings": [
+   {
+    "detector": "pinning",
+    "severity": "high",
+    "title": "Unpinned package executed on every start: @dokploy/mcp",
+    "detail": "'dokploy__mcp' launches @dokploy/mcp through npx without a version. The client resolves the version at start time, so any future publish to that package name runs with your credentials. This is how postmark-mcp (Sept 2025) reached roughly 300 organisations.",
+    "server": "dokploy__mcp",
+    "tool": null,
+    "location": "dokploy__mcp",
+    "evidence": {
+     "package": "@dokploy/mcp",
+     "runner": "npx",
+     "auto_confirm": true
+    },
+    "remediation": "Pin an exact version and an integrity hash: \"args\": [\"@dokploy/mcp@<version>\"] and drop the -y flag. Re-pin deliberately, after reviewing the diff."
+   },
+   {
+    "detector": "drift",
+    "severity": "info",
+    "title": "No baseline supplied - drift detection is disabled",
+    "detail": "Without an approved snapshot the scanner cannot tell a tool that has always been there from one that appeared yesterday. The single most effective MCP control is the diff, and it needs a baseline to diff against.",
+    "server": "*",
+    "tool": null,
+    "location": "*",
+    "evidence": {},
+    "remediation": "Run 'mcp-scrutiny baseline --config <file> --out mcp-baseline.json', commit the file, and pass it back with --baseline on every later scan."
+   }
+  ],
+  "servers": [
+   {
+    "name": "dokploy__mcp",
+    "transport": "stdio",
+    "command": "npx",
+    "args": [
+     "-y",
+     "@dokploy/mcp"
+    ],
+    "url": null,
+    "pinned": false,
+    "floating_package": "@dokploy/mcp",
+    "tools": 0
+   }
+  ]
+ },
+ {
+  "package": "@12ui/design",
+  "status": "no-tools",
+  "seconds": 20.3,
+  "tools": 0,
+  "errors": [
+   "12ui__design: the server exited with status 1 before answering initialize; stderr: hosted interaction labels. `--labels workflow --workspace <directory>` prepares | exact DOM-bound local label operations and returns awaiting_labels; execute/register | them through workflow, then repeat prototype to consume their results without inference. | Add `--polish` explicitly to run the | retained deterministic polish rules before runtime verification; it is opt-in. | Hosted work accepts --origin <url> and --api-key <key> (defaulting to | TWELVE_UI_ORIGIN / TWELVE_UI_API_KEY, then `12ui auth login`). Local next, resume, | and export do not accept hosted authentication flags. --quiet suppresses progress. Omit | --client to target every supported CLI installation. `12ui <command> --help` | prints any command in full, including the forms this summary leaves out: | `convert package --template`, `skill print`, `skill remove`. | `12ui scene --help` lists the local Three.js scene tools and `12ui workflow --help` the workflow commands."
+  ],
+  "findings": [
+   {
+    "detector": "drift",
+    "severity": "info",
+    "title": "No baseline supplied - drift detection is disabled",
+    "detail": "Without an approved snapshot the scanner cannot tell a tool that has always been there from one that appeared yesterday. The single most effective MCP control is the diff, and it needs a baseline to diff against.",
+    "server": "*",
+    "tool": null,
+    "location": "*",
+    "evidence": {},
+    "remediation": "Run 'mcp-scrutiny baseline --config <file> --out mcp-baseline.json', commit the file, and pass it back with --baseline on every later scan."
+   }
+  ],
+  "servers": [
+   {
+    "name": "12ui__design",
+    "transport": "stdio",
+    "command": "npx",
+    "args": [
+     "-y",
+     "@12ui/design"
+    ],
+    "url": null,
+    "pinned": true,
+    "floating_package": null,
+    "tools": 0
+   }
+  ]
+ },
+ {
+  "package": "serper-search-scrape-mcp-server",
+  "status": "no-tools",
+  "seconds": 3.8,
+  "tools": 0,
+  "errors": [
+   "serper-search-scrape-mcp-server: the server exited with status 1 before answering initialize; stderr: file:///home/runner/.npm/_npx/109efb2ce6006f16/node_modules/serper-search-scrape-mcp-server/build/index.js:14 |     throw new Error(\"SERPER_API_KEY environment variable is required\"); |           ^ | Error: SERPER_API_KEY environment variable is required |     at file:///home/runner/.npm/_npx/109efb2ce6006f16/node_modules/serper-search-scrape-mcp-server/build/index.js:14:11 |     at ModuleJob.run (node:internal/modules/esm/module_job:343:25) |     at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:681:26) |     at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5) | Node.js v22.23.4"
+  ],
+  "findings": [
+   {
+    "detector": "pinning",
+    "severity": "high",
+    "title": "Unpinned package executed on every start: serper-search-scrape-mcp-server",
+    "detail": "'serper-search-scrape-mcp-server' launches serper-search-scrape-mcp-server through npx without a version. The client resolves the version at start time, so any future publish to that package name runs with your credentials. This is how postmark-mcp (Sept 2025) reached roughly 300 organisations.",
+    "server": "serper-search-scrape-mcp-server",
+    "tool": null,
+    "location": "serper-search-scrape-mcp-server",
+    "evidence": {
+     "package": "serper-search-scrape-mcp-server",
+     "runner": "npx",
+     "auto_confirm": true
+    },
+    "remediation": "Pin an exact version and an integrity hash: \"args\": [\"serper-search-scrape-mcp-server@<version>\"] and drop the -y flag. Re-pin deliberately, after reviewing the diff."
+   },
+   {
+    "detector": "drift",
+    "severity": "info",
+    "title": "No baseline supplied - drift detection is disabled",
+    "detail": "Without an approved snapshot the scanner cannot tell a tool that has always been there from one that appeared yesterday. The single most effective MCP control is the diff, and it needs a baseline to diff against.",
+    "server": "*",
+    "tool": null,
+    "location": "*",
+    "evidence": {},
+    "remediation": "Run 'mcp-scrutiny baseline --config <file> --out mcp-baseline.json', commit the file, and pass it back with --baseline on every later scan."
+   }
+  ],
+  "servers": [
+   {
+    "name": "serper-search-scrape-mcp-server",
+    "transport": "stdio",
+    "command": "npx",
+    "args": [
+     "-y",
+     "serper-search-scrape-mcp-server"
+    ],
+    "url": null,
+    "pinned": false,
+    "floating_package": "serper-search-scrape-mcp-server",
+    "tools": 0
+   }
+  ]
+ },
+ {
+  "package": "search-mcp-server",
+  "status": "no-report",
+  "seconds": 160.1
+ },
+ {
+  "package": "@wavespeed/mcp",
+  "status": "ok",
+  "seconds": 8.6,
+  "tools": 16,
+  "errors": [],
+  "findings": [
+   {
+    "detector": "pinning",
+    "severity": "high",
+    "title": "Unpinned package executed on every start: @wavespeed/mcp",
+    "detail": "'wavespeed__mcp' launches @wavespeed/mcp through npx without a version. The client resolves the version at start time, so any future publish to that package name runs with your credentials. This is how postmark-mcp (Sept 2025) reached roughly 300 organisations.",
+    "server": "wavespeed__mcp",
+    "tool": null,
+    "location": "wavespeed__mcp",
+    "evidence": {
+     "package": "@wavespeed/mcp",
+     "runner": "npx",
+     "auto_confirm": true
+    },
+    "remediation": "Pin an exact version and an integrity hash: \"args\": [\"@wavespeed/mcp@<version>\"] and drop the -y flag. Re-pin deliberately, after reviewing the diff."
+   },
+   {
+    "detector": "drift",
+    "severity": "info",
+    "title": "No baseline supplied - drift detection is disabled",
+    "detail": "Without an approved snapshot the scanner cannot tell a tool that has always been there from one that appeared yesterday. The single most effective MCP control is the diff, and it needs a baseline to diff against.",
+    "server": "*",
+    "tool": null,
+    "location": "*",
+    "evidence": {},
+    "remediation": "Run 'mcp-scrutiny baseline --config <file> --out mcp-baseline.json', commit the file, and pass it back with --baseline on every later scan."
+   }
+  ],
+  "servers": [
+   {
+    "name": "wavespeed__mcp",
+    "transport": "stdio",
+    "command": "npx",
+    "args": [
+     "-y",
+     "@wavespeed/mcp"
+    ],
+    "url": null,
+    "pinned": false,
+    "floating_package": "@wavespeed/mcp",
+    "tools": 16
+   }
+  ]
+ },
+ {
+  "package": "viafrei",
+  "status": "ok",
+  "seconds": 8.5,
+  "tools": 33,
+  "errors": [],
+  "findings": [
+   {
+    "detector": "pinning",
+    "severity": "high",
+    "title": "Unpinned package executed on every start: viafrei",
+    "detail": "'viafrei' launches viafrei through npx without a version. The client resolves the version at start time, so any future publish to that package name runs with your credentials. This is how postmark-mcp (Sept 2025) reached roughly 300 organisations.",
+    "server": "viafrei",
+    "tool": null,
+    "location": "viafrei",
+    "evidence": {
+     "package": "viafrei",
+     "runner": "npx",
+     "auto_confirm": true
+    },
+    "remediation": "Pin an exact version and an integrity hash: \"args\": [\"viafrei@<version>\"] and drop the -y flag. Re-pin deliberately, after reviewing the diff."
+   },
+   {
+    "detector": "drift",
+    "severity": "info",
+    "title": "No baseline supplied - drift detection is disabled",
+    "detail": "Without an approved snapshot the scanner cannot tell a tool that has always been there from one that appeared yesterday. The single most effective MCP control is the diff, and it needs a baseline to diff against.",
+    "server": "*",
+    "tool": null,
+    "location": "*",
+    "evidence": {},
+    "remediation": "Run 'mcp-scrutiny baseline --config <file> --out mcp-baseline.json', commit the file, and pass it back with --baseline on every later scan."
+   }
+  ],
+  "servers": [
+   {
+    "name": "viafrei",
+    "transport": "stdio",
+    "command": "npx",
+    "args": [
+     "-y",
+     "viafrei"
+    ],
+    "url": null,
+    "pinned": false,
+    "floating_package": "viafrei",
+    "tools": 33
+   }
+  ]
+ },
+ {
+  "package": "@yawlabs/postgres-mcp",
+  "status": "ok",
+  "seconds": 3.8,
+  "tools": 23,
+  "errors": [],
+  "findings": [
+   {
+    "detector": "pinning",
+    "severity": "high",
+    "title": "Unpinned package executed on every start: @yawlabs/postgres-mcp",
+    "detail": "'yawlabs__postgres-mcp' launches @yawlabs/postgres-mcp through npx without a version. The client resolves the version at start time, so any future publish to that package name runs with your credentials. This is how postmark-mcp (Sept 2025) reached roughly 300 organisations.",
+    "server": "yawlabs__postgres-mcp",
+    "tool": null,
+    "location": "yawlabs__postgres-mcp",
+    "evidence": {
+     "package": "@yawlabs/postgres-mcp",
+     "runner": "npx",
+     "auto_confirm": true
+    },
+    "remediation": "Pin an exact version and an integrity hash: \"args\": [\"@yawlabs/postgres-mcp@<version>\"] and drop the -y flag. Re-pin deliberately, after reviewing the diff."
+   },
+   {
+    "detector": "drift",
+    "severity": "info",
+    "title": "No baseline supplied - drift detection is disabled",
+    "detail": "Without an approved snapshot the scanner cannot tell a tool that has always been there from one that appeared yesterday. The single most effective MCP control is the diff, and it needs a baseline to diff against.",
+    "server": "*",
+    "tool": null,
+    "location": "*",
+    "evidence": {},
+    "remediation": "Run 'mcp-scrutiny baseline --config <file> --out mcp-baseline.json', commit the file, and pass it back with --baseline on every later scan."
+   }
+  ],
+  "servers": [
+   {
+    "name": "yawlabs__postgres-mcp",
+    "transport": "stdio",
+    "command": "npx",
+    "args": [
+     "-y",
+     "@yawlabs/postgres-mcp"
+    ],
+    "url": null,
+    "pinned": false,
+    "floating_package": "@yawlabs/postgres-mcp",
+    "tools": 23
+   }
+  ]
+ },
+ {
+  "package": "redash-mcp",
+  "status": "no-tools",
+  "seconds": 8.0,
+  "tools": 0,
+  "errors": [
+   "redash-mcp: the server exited with status 1 before answering initialize; stderr: REDASH_URL and REDASH_API_KEY environment variables are required"
+  ],
+  "findings": [
+   {
+    "detector": "pinning",
+    "severity": "high",
+    "title": "Unpinned package executed on every start: redash-mcp",
+    "detail": "'redash-mcp' launches redash-mcp through npx without a version. The client resolves the version at start time, so any future publish to that package name runs with your credentials. This is how postmark-mcp (Sept 2025) reached roughly 300 organisations.",
+    "server": "redash-mcp",
+    "tool": null,
+    "location": "redash-mcp",
+    "evidence": {
+     "package": "redash-mcp",
+     "runner": "npx",
+     "auto_confirm": true
+    },
+    "remediation": "Pin an exact version and an integrity hash: \"args\": [\"redash-mcp@<version>\"] and drop the -y flag. Re-pin deliberately, after reviewing the diff."
+   },
+   {
+    "detector": "drift",
+    "severity": "info",
+    "title": "No baseline supplied - drift detection is disabled",
+    "detail": "Without an approved snapshot the scanner cannot tell a tool that has always been there from one that appeared yesterday. The single most effective MCP control is the diff, and it needs a baseline to diff against.",
+    "server": "*",
+    "tool": null,
+    "location": "*",
+    "evidence": {},
+    "remediation": "Run 'mcp-scrutiny baseline --config <file> --out mcp-baseline.json', commit the file, and pass it back with --baseline on every later scan."
+   }
+  ],
+  "servers": [
+   {
+    "name": "redash-mcp",
+    "transport": "stdio",
+    "command": "npx",
+    "args": [
+     "-y",
+     "redash-mcp"
+    ],
+    "url": null,
+    "pinned": false,
+    "floating_package": "redash-mcp",
+    "tools": 0
+   }
+  ]
+ },
+ {
+  "package": "@leonio/kern-ux-mcp",
+  "status": "ok",
+  "seconds": 6.0,
+  "tools": 57,
+  "errors": [],
+  "findings": [
+   {
+    "detector": "pinning",
+    "severity": "high",
+    "title": "Unpinned package executed on every start: @leonio/kern-ux-mcp",
+    "detail": "'leonio__kern-ux-mcp' launches @leonio/kern-ux-mcp through npx without a version. The client resolves the version at start time, so any future publish to that package name runs with your credentials. This is how postmark-mcp (Sept 2025) reached roughly 300 organisations.",
+    "server": "leonio__kern-ux-mcp",
+    "tool": null,
+    "location": "leonio__kern-ux-mcp",
+    "evidence": {
+     "package": "@leonio/kern-ux-mcp",
+     "runner": "npx",
+     "auto_confirm": true
+    },
+    "remediation": "Pin an exact version and an integrity hash: \"args\": [\"@leonio/kern-ux-mcp@<version>\"] and drop the -y flag. Re-pin deliberately, after reviewing the diff."
+   },
+   {
+    "detector": "toxic_flow",
+    "severity": "high",
+    "title": "Toxic flow within 'leonio__kern-ux-mcp': reads credentials or secrets + sends email or messages",
+    "detail": "3 combination(s) exist where one tool reads credentials or secrets and another sends email or messages. Neither tool is malicious on its own; together they reads credentials and can send mail. This is the postmark-mcp shape: the mail tool was legitimate, the credentials were reachable, and the combination was the incident. Both sides live in the same server, which may well be by design; confirm it.",
+    "server": "leonio__kern-ux-mcp",
+    "tool": "get_inputpassword",
+    "location": "leonio__kern-ux-mcp.get_inputpassword",
+    "evidence": {
+     "source_capability": "read_secret",
+     "sink_capability": "send_email",
+     "cross_server": false,
+     "pair_count": 3,
+     "example": {
+      "source": "leonio__kern-ux-mcp.get_inputpassword",
+      "sink": "leonio__kern-ux-mcp.get_inputemail"
+     },
+     "sources": [
+      "leonio__kern-ux-mcp.get_inputpassword",
+      "leonio__kern-ux-mcp.render_composition"
+     ],
+     "sinks": [
+      "leonio__kern-ux-mcp.get_inputemail",
+      "leonio__kern-ux-mcp.render_composition"
+     ],
+     "servers": [
+      "leonio__kern-ux-mcp"
+     ]
+    },
+    "remediation": "Break the path, not the tools: scope the credential so the source tool cannot reach anything valuable, or require explicit user confirmation on the sink tool (destructiveHint / human-in-the-loop), or split the two capabilities across trust boundaries that cannot share a context window."
+   },
+   {
+    "detector": "drift",
+    "severity": "info",
+    "title": "No baseline supplied - drift detection is disabled",
+    "detail": "Without an approved snapshot the scanner cannot tell a tool that has always been there from one that appeared yesterday. The single most effective MCP control is the diff, and it needs a baseline to diff against.",
+    "server": "*",
+    "tool": null,
+    "location": "*",
+    "evidence": {},
+    "remediation": "Run 'mcp-scrutiny baseline --config <file> --out mcp-baseline.json', commit the file, and pass it back with --baseline on every later scan."
+   }
+  ],
+  "servers": [
+   {
+    "name": "leonio__kern-ux-mcp",
+    "transport": "stdio",
+    "command": "npx",
+    "args": [
+     "-y",
+     "@leonio/kern-ux-mcp"
+    ],
+    "url": null,
+    "pinned": false,
+    "floating_package": "@leonio/kern-ux-mcp",
+    "tools": 57
+   }
+  ]
+ },
+ {
+  "package": "@mcpmarket/mcp-auto-install",
+  "status": "ok",
+  "seconds": 6.9,
+  "tools": 5,
+  "errors": [],
+  "findings": [
+   {
+    "detector": "pinning",
+    "severity": "high",
+    "title": "Unpinned package executed on every start: @mcpmarket/mcp-auto-install",
+    "detail": "'mcpmarket__mcp-auto-install' launches @mcpmarket/mcp-auto-install through npx without a version. The client resolves the version at start time, so any future publish to that package name runs with your credentials. This is how postmark-mcp (Sept 2025) reached roughly 300 organisations.",
+    "server": "mcpmarket__mcp-auto-install",
+    "tool": null,
+    "location": "mcpmarket__mcp-auto-install",
+    "evidence": {
+     "package": "@mcpmarket/mcp-auto-install",
+     "runner": "npx",
+     "auto_confirm": true
+    },
+    "remediation": "Pin an exact version and an integrity hash: \"args\": [\"@mcpmarket/mcp-auto-install@<version>\"] and drop the -y flag. Re-pin deliberately, after reviewing the diff."
+   },
+   {
+    "detector": "drift",
+    "severity": "info",
+    "title": "No baseline supplied - drift detection is disabled",
+    "detail": "Without an approved snapshot the scanner cannot tell a tool that has always been there from one that appeared yesterday. The single most effective MCP control is the diff, and it needs a baseline to diff against.",
+    "server": "*",
+    "tool": null,
+    "location": "*",
+    "evidence": {},
+    "remediation": "Run 'mcp-scrutiny baseline --config <file> --out mcp-baseline.json', commit the file, and pass it back with --baseline on every later scan."
+   }
+  ],
+  "servers": [
+   {
+    "name": "mcpmarket__mcp-auto-install",
+    "transport": "stdio",
+    "command": "npx",
+    "args": [
+     "-y",
+     "@mcpmarket/mcp-auto-install"
+    ],
+    "url": null,
+    "pinned": false,
+    "floating_package": "@mcpmarket/mcp-auto-install",
+    "tools": 5
+   }
+  ]
+ },
+ {
+  "package": "@confluentinc/mcp-confluent",
+  "status": "ok",
+  "seconds": 42.8,
+  "tools": 6,
+  "errors": [],
+  "findings": [
+   {
+    "detector": "pinning",
+    "severity": "high",
+    "title": "Unpinned package executed on every start: @confluentinc/mcp-confluent",
+    "detail": "'confluentinc__mcp-confluent' launches @confluentinc/mcp-confluent through npx without a version. The client resolves the version at start time, so any future publish to that package name runs with your credentials. This is how postmark-mcp (Sept 2025) reached roughly 300 organisations.",
+    "server": "confluentinc__mcp-confluent",
+    "tool": null,
+    "location": "confluentinc__mcp-confluent",
+    "evidence": {
+     "package": "@confluentinc/mcp-confluent",
+     "runner": "npx",
+     "auto_confirm": true
+    },
+    "remediation": "Pin an exact version and an integrity hash: \"args\": [\"@confluentinc/mcp-confluent@<version>\"] and drop the -y flag. Re-pin deliberately, after reviewing the diff."
+   },
+   {
+    "detector": "drift",
+    "severity": "info",
+    "title": "No baseline supplied - drift detection is disabled",
+    "detail": "Without an approved snapshot the scanner cannot tell a tool that has always been there from one that appeared yesterday. The single most effective MCP control is the diff, and it needs a baseline to diff against.",
+    "server": "*",
+    "tool": null,
+    "location": "*",
+    "evidence": {},
+    "remediation": "Run 'mcp-scrutiny baseline --config <file> --out mcp-baseline.json', commit the file, and pass it back with --baseline on every later scan."
+   }
+  ],
+  "servers": [
+   {
+    "name": "confluentinc__mcp-confluent",
+    "transport": "stdio",
+    "command": "npx",
+    "args": [
+     "-y",
+     "@confluentinc/mcp-confluent"
+    ],
+    "url": null,
+    "pinned": false,
+    "floating_package": "@confluentinc/mcp-confluent",
+    "tools": 6
+   }
+  ]
+ },
+ {
+  "package": "jenkins-mcp",
+  "status": "ok",
+  "seconds": 7.0,
+  "tools": 22,
+  "errors": [],
+  "findings": [
+   {
+    "detector": "pinning",
+    "severity": "high",
+    "title": "Unpinned package executed on every start: jenkins-mcp",
+    "detail": "'jenkins-mcp' launches jenkins-mcp through npx without a version. The client resolves the version at start time, so any future publish to that package name runs with your credentials. This is how postmark-mcp (Sept 2025) reached roughly 300 organisations.",
+    "server": "jenkins-mcp",
+    "tool": null,
+    "location": "jenkins-mcp",
+    "evidence": {
+     "package": "jenkins-mcp",
+     "runner": "npx",
+     "auto_confirm": true
+    },
+    "remediation": "Pin an exact version and an integrity hash: \"args\": [\"jenkins-mcp@<version>\"] and drop the -y flag. Re-pin deliberately, after reviewing the diff."
+   },
+   {
+    "detector": "drift",
+    "severity": "info",
+    "title": "No baseline supplied - drift detection is disabled",
+    "detail": "Without an approved snapshot the scanner cannot tell a tool that has always been there from one that appeared yesterday. The single most effective MCP control is the diff, and it needs a baseline to diff against.",
+    "server": "*",
+    "tool": null,
+    "location": "*",
+    "evidence": {},
+    "remediation": "Run 'mcp-scrutiny baseline --config <file> --out mcp-baseline.json', commit the file, and pass it back with --baseline on every later scan."
+   }
+  ],
+  "servers": [
+   {
+    "name": "jenkins-mcp",
+    "transport": "stdio",
+    "command": "npx",
+    "args": [
+     "-y",
+     "jenkins-mcp"
+    ],
+    "url": null,
+    "pinned": false,
+    "floating_package": "jenkins-mcp",
+    "tools": 22
+   }
+  ]
+ },
+ {
+  "package": "@mseep/linear-mcp",
+  "status": "no-tools",
+  "seconds": 6.0,
+  "tools": 0,
+  "errors": [
+   "mseep__linear-mcp: the server exited with status 1 before answering initialize; stderr: Error: LINEAR_API_KEY environment variable is required | To use this tool, run it with your Linear API key: | LINEAR_API_KEY=your-api-key npx @ibraheem4/linear-mcp | Or set it in your environment: | export LINEAR_API_KEY=your-api-key | npx @ibraheem4/linear-mcp"
+  ],
+  "findings": [
+   {
+    "detector": "pinning",
+    "severity": "high",
+    "title": "Unpinned package executed on every start: @mseep/linear-mcp",
+    "detail": "'mseep__linear-mcp' launches @mseep/linear-mcp through npx without a version. The client resolves the version at start time, so any future publish to that package name runs with your credentials. This is how postmark-mcp (Sept 2025) reached roughly 300 organisations.",
+    "server": "mseep__linear-mcp",
+    "tool": null,
+    "location": "mseep__linear-mcp",
+    "evidence": {
+     "package": "@mseep/linear-mcp",
+     "runner": "npx",
+     "auto_confirm": true
+    },
+    "remediation": "Pin an exact version and an integrity hash: \"args\": [\"@mseep/linear-mcp@<version>\"] and drop the -y flag. Re-pin deliberately, after reviewing the diff."
+   },
+   {
+    "detector": "drift",
+    "severity": "info",
+    "title": "No baseline supplied - drift detection is disabled",
+    "detail": "Without an approved snapshot the scanner cannot tell a tool that has always been there from one that appeared yesterday. The single most effective MCP control is the diff, and it needs a baseline to diff against.",
+    "server": "*",
+    "tool": null,
+    "location": "*",
+    "evidence": {},
+    "remediation": "Run 'mcp-scrutiny baseline --config <file> --out mcp-baseline.json', commit the file, and pass it back with --baseline on every later scan."
+   }
+  ],
+  "servers": [
+   {
+    "name": "mseep__linear-mcp",
+    "transport": "stdio",
+    "command": "npx",
+    "args": [
+     "-y",
+     "@mseep/linear-mcp"
+    ],
+    "url": null,
+    "pinned": false,
+    "floating_package": "@mseep/linear-mcp",
+    "tools": 0
+   }
+  ]
+ },
+ {
+  "package": "@fruggr/zendesk-mcp-server",
+  "status": "no-tools",
+  "seconds": 3.1,
+  "tools": 0,
+  "errors": [
+   "fruggr__zendesk-mcp-server: the server exited with status 1 before answering initialize; stderr: subdomain: ZENDESK_SUBDOMAIN is required. See https://github.com/fruggr/zendesk-mcp-server/blob/main/docs/configuration.md#cli-reference"
+  ],
+  "findings": [
+   {
+    "detector": "pinning",
+    "severity": "high",
+    "title": "Unpinned package executed on every start: @fruggr/zendesk-mcp-server",
+    "detail": "'fruggr__zendesk-mcp-server' launches @fruggr/zendesk-mcp-server through npx without a version. The client resolves the version at start time, so any future publish to that package name runs with your credentials. This is how postmark-mcp (Sept 2025) reached roughly 300 organisations.",
+    "server": "fruggr__zendesk-mcp-server",
+    "tool": null,
+    "location": "fruggr__zendesk-mcp-server",
+    "evidence": {
+     "package": "@fruggr/zendesk-mcp-server",
+     "runner": "npx",
+     "auto_confirm": true
+    },
+    "remediation": "Pin an exact version and an integrity hash: \"args\": [\"@fruggr/zendesk-mcp-server@<version>\"] and drop the -y flag. Re-pin deliberately, after reviewing the diff."
+   },
+   {
+    "detector": "drift",
+    "severity": "info",
+    "title": "No baseline supplied - drift detection is disabled",
+    "detail": "Without an approved snapshot the scanner cannot tell a tool that has always been there from one that appeared yesterday. The single most effective MCP control is the diff, and it needs a baseline to diff against.",
+    "server": "*",
+    "tool": null,
+    "location": "*",
+    "evidence": {},
+    "remediation": "Run 'mcp-scrutiny baseline --config <file> --out mcp-baseline.json', commit the file, and pass it back with --baseline on every later scan."
+   }
+  ],
+  "servers": [
+   {
+    "name": "fruggr__zendesk-mcp-server",
+    "transport": "stdio",
+    "command": "npx",
+    "args": [
+     "-y",
+     "@fruggr/zendesk-mcp-server"
+    ],
+    "url": null,
+    "pinned": false,
+    "floating_package": "@fruggr/zendesk-mcp-server",
+    "tools": 0
+   }
+  ]
+ },
+ {
+  "package": "graphlens-mcp",
+  "status": "ok",
+  "seconds": 2.5,
+  "tools": 8,
+  "errors": [],
+  "findings": [
+   {
+    "detector": "pinning",
+    "severity": "high",
+    "title": "Unpinned package executed on every start: graphlens-mcp",
+    "detail": "'graphlens-mcp' launches graphlens-mcp through npx without a version. The client resolves the version at start time, so any future publish to that package name runs with your credentials. This is how postmark-mcp (Sept 2025) reached roughly 300 organisations.",
+    "server": "graphlens-mcp",
+    "tool": null,
+    "location": "graphlens-mcp",
+    "evidence": {
+     "package": "graphlens-mcp",
+     "runner": "npx",
+     "auto_confirm": true
+    },
+    "remediation": "Pin an exact version and an integrity hash: \"args\": [\"graphlens-mcp@<version>\"] and drop the -y flag. Re-pin deliberately, after reviewing the diff."
+   },
+   {
+    "detector": "drift",
+    "severity": "info",
+    "title": "No baseline supplied - drift detection is disabled",
+    "detail": "Without an approved snapshot the scanner cannot tell a tool that has always been there from one that appeared yesterday. The single most effective MCP control is the diff, and it needs a baseline to diff against.",
+    "server": "*",
+    "tool": null,
+    "location": "*",
+    "evidence": {},
+    "remediation": "Run 'mcp-scrutiny baseline --config <file> --out mcp-baseline.json', commit the file, and pass it back with --baseline on every later scan."
+   }
+  ],
+  "servers": [
+   {
+    "name": "graphlens-mcp",
+    "transport": "stdio",
+    "command": "npx",
+    "args": [
+     "-y",
+     "graphlens-mcp"
+    ],
+    "url": null,
+    "pinned": false,
+    "floating_package": "graphlens-mcp",
+    "tools": 8
+   }
+  ]
+ },
+ {
+  "package": "@getmarrow/mcp",
+  "status": "no-tools",
+  "seconds": 3.6,
+  "tools": 0,
+  "errors": [],
+  "findings": [
+   {
+    "detector": "pinning",
+    "severity": "high",
+    "title": "Unpinned package executed on every start: @getmarrow/mcp",
+    "detail": "'getmarrow__mcp' launches @getmarrow/mcp through npx without a version. The client resolves the version at start time, so any future publish to that package name runs with your credentials. This is how postmark-mcp (Sept 2025) reached roughly 300 organisations.",
+    "server": "getmarrow__mcp",
+    "tool": null,
+    "location": "getmarrow__mcp",
+    "evidence": {
+     "package": "@getmarrow/mcp",
+     "runner": "npx",
+     "auto_confirm": true
+    },
+    "remediation": "Pin an exact version and an integrity hash: \"args\": [\"@getmarrow/mcp@<version>\"] and drop the -y flag. Re-pin deliberately, after reviewing the diff."
+   },
+   {
+    "detector": "drift",
+    "severity": "info",
+    "title": "No baseline supplied - drift detection is disabled",
+    "detail": "Without an approved snapshot the scanner cannot tell a tool that has always been there from one that appeared yesterday. The single most effective MCP control is the diff, and it needs a baseline to diff against.",
+    "server": "*",
+    "tool": null,
+    "location": "*",
+    "evidence": {},
+    "remediation": "Run 'mcp-scrutiny baseline --config <file> --out mcp-baseline.json', commit the file, and pass it back with --baseline on every later scan."
+   }
+  ],
+  "servers": [
+   {
+    "name": "getmarrow__mcp",
+    "transport": "stdio",
+    "command": "npx",
+    "args": [
+     "-y",
+     "@getmarrow/mcp"
+    ],
+    "url": null,
+    "pinned": false,
+    "floating_package": "@getmarrow/mcp",
+    "tools": 0
+   }
+  ]
+ },
+ {
+  "package": "ainative-zerodb-mcp-server",
+  "status": "no-tools",
+  "seconds": 8.6,
+  "tools": 0,
+  "errors": [
+   "ainative-zerodb-mcp-server: the server exited with status 1 before answering initialize; stderr: npm warn deprecated glob@10.5.0: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me |   No credentials found — provisioning a free ZeroDB instance... |   ⚠️  Auto-provision failed: HTTP 429 |   Set ZERODB_API_KEY, or run: npx zerodb-cli init | Failed to start ZeroDB MCP Server: SECURITY ERROR: ZERODB_API_KEY (recommended), ZERODB_API_TOKEN, or ZERODB_USERNAME and ZERODB_PASSWORD environment variables are required. Do not hardcode credentials."
+  ],
+  "findings": [
+   {
+    "detector": "pinning",
+    "severity": "high",
+    "title": "Unpinned package executed on every start: ainative-zerodb-mcp-server",
+    "detail": "'ainative-zerodb-mcp-server' launches ainative-zerodb-mcp-server through npx without a version. The client resolves the version at start time, so any future publish to that package name runs with your credentials. This is how postmark-mcp (Sept 2025) reached roughly 300 organisations.",
+    "server": "ainative-zerodb-mcp-server",
+    "tool": null,
+    "location": "ainative-zerodb-mcp-server",
+    "evidence": {
+     "package": "ainative-zerodb-mcp-server",
+     "runner": "npx",
+     "auto_confirm": true
+    },
+    "remediation": "Pin an exact version and an integrity hash: \"args\": [\"ainative-zerodb-mcp-server@<version>\"] and drop the -y flag. Re-pin deliberately, after reviewing the diff."
+   },
+   {
+    "detector": "drift",
+    "severity": "info",
+    "title": "No baseline supplied - drift detection is disabled",
+    "detail": "Without an approved snapshot the scanner cannot tell a tool that has always been there from one that appeared yesterday. The single most effective MCP control is the diff, and it needs a baseline to diff against.",
+    "server": "*",
+    "tool": null,
+    "location": "*",
+    "evidence": {},
+    "remediation": "Run 'mcp-scrutiny baseline --config <file> --out mcp-baseline.json', commit the file, and pass it back with --baseline on every later scan."
+   }
+  ],
+  "servers": [
+   {
+    "name": "ainative-zerodb-mcp-server",
+    "transport": "stdio",
+    "command": "npx",
+    "args": [
+     "-y",
+     "ainative-zerodb-mcp-server"
+    ],
+    "url": null,
+    "pinned": false,
+    "floating_package": "ainative-zerodb-mcp-server",
+    "tools": 0
+   }
+  ]
+ },
+ {
+  "package": "vadivam-mcp",
+  "status": "ok",
+  "seconds": 3.8,
+  "tools": 5,
+  "errors": [],
+  "findings": [
+   {
+    "detector": "pinning",
+    "severity": "high",
+    "title": "Unpinned package executed on every start: vadivam-mcp",
+    "detail": "'vadivam-mcp' launches vadivam-mcp through npx without a version. The client resolves the version at start time, so any future publish to that package name runs with your credentials. This is how postmark-mcp (Sept 2025) reached roughly 300 organisations.",
+    "server": "vadivam-mcp",
+    "tool": null,
+    "location": "vadivam-mcp",
+    "evidence": {
+     "package": "vadivam-mcp",
+     "runner": "npx",
+     "auto_confirm": true
+    },
+    "remediation": "Pin an exact version and an integrity hash: \"args\": [\"vadivam-mcp@<version>\"] and drop the -y flag. Re-pin deliberately, after reviewing the diff."
+   },
+   {
+    "detector": "drift",
+    "severity": "info",
+    "title": "No baseline supplied - drift detection is disabled",
+    "detail": "Without an approved snapshot the scanner cannot tell a tool that has always been there from one that appeared yesterday. The single most effective MCP control is the diff, and it needs a baseline to diff against.",
+    "server": "*",
+    "tool": null,
+    "location": "*",
+    "evidence": {},
+    "remediation": "Run 'mcp-scrutiny baseline --config <file> --out mcp-baseline.json', commit the file, and pass it back with --baseline on every later scan."
+   }
+  ],
+  "servers": [
+   {
+    "name": "vadivam-mcp",
+    "transport": "stdio",
+    "command": "npx",
+    "args": [
+     "-y",
+     "vadivam-mcp"
+    ],
+    "url": null,
+    "pinned": false,
+    "floating_package": "vadivam-mcp",
+    "tools": 5
+   }
+  ]
+ },
+ {
+  "package": "@mozilla/firefox-devtools-mcp-moz",
+  "status": "ok",
+  "seconds": 9.5,
+  "tools": 35,
+  "errors": [],
+  "findings": [
+   {
+    "detector": "pinning",
+    "severity": "high",
+    "title": "Unpinned package executed on every start: @mozilla/firefox-devtools-mcp-moz",
+    "detail": "'mozilla__firefox-devtools-mcp-moz' launches @mozilla/firefox-devtools-mcp-moz through npx without a version. The client resolves the version at start time, so any future publish to that package name runs with your credentials. This is how postmark-mcp (Sept 2025) reached roughly 300 organisations.",
+    "server": "mozilla__firefox-devtools-mcp-moz",
+    "tool": null,
+    "location": "mozilla__firefox-devtools-mcp-moz",
+    "evidence": {
+     "package": "@mozilla/firefox-devtools-mcp-moz",
+     "runner": "npx",
+     "auto_confirm": true
+    },
+    "remediation": "Pin an exact version and an integrity hash: \"args\": [\"@mozilla/firefox-devtools-mcp-moz@<version>\"] and drop the -y flag. Re-pin deliberately, after reviewing the diff."
+   },
+   {
+    "detector": "toxic_flow",
+    "severity": "medium",
+    "title": "Toxic flow within 'mozilla__firefox-devtools-mcp-moz': executes commands + writes or deletes files",
+    "detail": "5 combination(s) exist where one tool executes commands and another writes or deletes files. Neither tool is malicious on its own; together they executes commands and writes files, so the agent can persist a payload for a later session to pick up. Both sides live in the same server, which may well be by design; confirm it.",
+    "server": "mozilla__firefox-devtools-mcp-moz",
+    "tool": "evaluate_script",
+    "location": "mozilla__firefox-devtools-mcp-moz.evaluate_script",
+    "evidence": {
+     "source_capability": "exec",
+     "sink_capability": "write_fs",
+     "cross_server": false,
+     "pair_count": 5,
+     "example": {
+      "source": "mozilla__firefox-devtools-mcp-moz.evaluate_script",
+      "sink": "mozilla__firefox-devtools-mcp-moz.get_page_text"
+     },
+     "sources": [
+      "mozilla__firefox-devtools-mcp-moz.evaluate_script"
+     ],
+     "sinks": [
+      "mozilla__firefox-devtools-mcp-moz.get_page_text",
+      "mozilla__firefox-devtools-mcp-moz.list_downloads",
+      "mozilla__firefox-devtools-mcp-moz.print_page",
+      "mozilla__firefox-devtools-mcp-moz.screencast_stop",
+      "mozilla__firefox-devtools-mcp-moz.set_download_behavior"
+     ],
+     "servers": [
+      "mozilla__firefox-devtools-mcp-moz"
+     ]
+    },
+    "remediation": "Break the path, not the tools: scope the credential so the source tool cannot reach anything valuable, or require explicit user confirmation on the sink tool (destructiveHint / human-in-the-loop), or split the two capabilities across trust boundaries that cannot share a context window."
+   },
+   {
+    "detector": "drift",
+    "severity": "info",
+    "title": "No baseline supplied - drift detection is disabled",
+    "detail": "Without an approved snapshot the scanner cannot tell a tool that has always been there from one that appeared yesterday. The single most effective MCP control is the diff, and it needs a baseline to diff against.",
+    "server": "*",
+    "tool": null,
+    "location": "*",
+    "evidence": {},
+    "remediation": "Run 'mcp-scrutiny baseline --config <file> --out mcp-baseline.json', commit the file, and pass it back with --baseline on every later scan."
+   }
+  ],
+  "servers": [
+   {
+    "name": "mozilla__firefox-devtools-mcp-moz",
+    "transport": "stdio",
+    "command": "npx",
+    "args": [
+     "-y",
+     "@mozilla/firefox-devtools-mcp-moz"
+    ],
+    "url": null,
+    "pinned": false,
+    "floating_package": "@mozilla/firefox-devtools-mcp-moz",
+    "tools": 35
+   }
+  ]
+ },
+ {
+  "package": "wso2-docs-mcp-server",
+  "status": "no-tools",
+  "seconds": 25.5,
+  "tools": 0,
+  "errors": [
+   "wso2-docs-mcp-server: the server exited with status 1 before answering initialize; stderr: npm warn deprecated whatwg-encoding@3.1.1: Use @exodus/bytes instead for a more spec-conformant and faster implementation | ◇ injected env (0) from .env | ❌  Invalid environment configuration: |    DATABASE_URL: Invalid input: expected string, received undefined"
+  ],
+  "findings": [
+   {
+    "detector": "pinning",
+    "severity": "high",
+    "title": "Unpinned package executed on every start: wso2-docs-mcp-server",
+    "detail": "'wso2-docs-mcp-server' launches wso2-docs-mcp-server through npx without a version. The client resolves the version at start time, so any future publish to that package name runs with your credentials. This is how postmark-mcp (Sept 2025) reached roughly 300 organisations.",
+    "server": "wso2-docs-mcp-server",
+    "tool": null,
+    "location": "wso2-docs-mcp-server",
+    "evidence": {
+     "package": "wso2-docs-mcp-server",
+     "runner": "npx",
+     "auto_confirm": true
+    },
+    "remediation": "Pin an exact version and an integrity hash: \"args\": [\"wso2-docs-mcp-server@<version>\"] and drop the -y flag. Re-pin deliberately, after reviewing the diff."
+   },
+   {
+    "detector": "drift",
+    "severity": "info",
+    "title": "No baseline supplied - drift detection is disabled",
+    "detail": "Without an approved snapshot the scanner cannot tell a tool that has always been there from one that appeared yesterday. The single most effective MCP control is the diff, and it needs a baseline to diff against.",
+    "server": "*",
+    "tool": null,
+    "location": "*",
+    "evidence": {},
+    "remediation": "Run 'mcp-scrutiny baseline --config <file> --out mcp-baseline.json', commit the file, and pass it back with --baseline on every later scan."
+   }
+  ],
+  "servers": [
+   {
+    "name": "wso2-docs-mcp-server",
+    "transport": "stdio",
+    "command": "npx",
+    "args": [
+     "-y",
+     "wso2-docs-mcp-server"
+    ],
+    "url": null,
+    "pinned": false,
+    "floating_package": "wso2-docs-mcp-server",
+    "tools": 0
+   }
+  ]
+ },
+ {
+  "package": "@swebsy/mcp",
+  "status": "ok",
+  "seconds": 3.2,
+  "tools": 46,
+  "errors": [],
+  "findings": [
+   {
+    "detector": "pinning",
+    "severity": "high",
+    "title": "Unpinned package executed on every start: @swebsy/mcp",
+    "detail": "'swebsy__mcp' launches @swebsy/mcp through npx without a version. The client resolves the version at start time, so any future publish to that package name runs with your credentials. This is how postmark-mcp (Sept 2025) reached roughly 300 organisations.",
+    "server": "swebsy__mcp",
+    "tool": null,
+    "location": "swebsy__mcp",
+    "evidence": {
+     "package": "@swebsy/mcp",
+     "runner": "npx",
+     "auto_confirm": true
+    },
+    "remediation": "Pin an exact version and an integrity hash: \"args\": [\"@swebsy/mcp@<version>\"] and drop the -y flag. Re-pin deliberately, after reviewing the diff."
+   },
+   {
+    "detector": "drift",
+    "severity": "info",
+    "title": "No baseline supplied - drift detection is disabled",
+    "detail": "Without an approved snapshot the scanner cannot tell a tool that has always been there from one that appeared yesterday. The single most effective MCP control is the diff, and it needs a baseline to diff against.",
+    "server": "*",
+    "tool": null,
+    "location": "*",
+    "evidence": {},
+    "remediation": "Run 'mcp-scrutiny baseline --config <file> --out mcp-baseline.json', commit the file, and pass it back with --baseline on every later scan."
+   }
+  ],
+  "servers": [
+   {
+    "name": "swebsy__mcp",
+    "transport": "stdio",
+    "command": "npx",
+    "args": [
+     "-y",
+     "@swebsy/mcp"
+    ],
+    "url": null,
+    "pinned": false,
+    "floating_package": "@swebsy/mcp",
+    "tools": 46
+   }
+  ]
+ },
+ {
+  "package": "@solarisdk/mcp",
+  "status": "no-tools",
+  "seconds": 15.0,
+  "tools": 0,
+  "errors": [
+   "solarisdk__mcp: the server exited with status 1 before answering initialize; stderr: solari-mcp: SOLARI_API_KEY is required"
+  ],
+  "findings": [
+   {
+    "detector": "pinning",
+    "severity": "high",
+    "title": "Unpinned package executed on every start: @solarisdk/mcp",
+    "detail": "'solarisdk__mcp' launches @solarisdk/mcp through npx without a version. The client resolves the version at start time, so any future publish to that package name runs with your credentials. This is how postmark-mcp (Sept 2025) reached roughly 300 organisations.",
+    "server": "solarisdk__mcp",
+    "tool": null,
+    "location": "solarisdk__mcp",
+    "evidence": {
+     "package": "@solarisdk/mcp",
+     "runner": "npx",
+     "auto_confirm": true
+    },
+    "remediation": "Pin an exact version and an integrity hash: \"args\": [\"@solarisdk/mcp@<version>\"] and drop the -y flag. Re-pin deliberately, after reviewing the diff."
+   },
+   {
+    "detector": "drift",
+    "severity": "info",
+    "title": "No baseline supplied - drift detection is disabled",
+    "detail": "Without an approved snapshot the scanner cannot tell a tool that has always been there from one that appeared yesterday. The single most effective MCP control is the diff, and it needs a baseline to diff against.",
+    "server": "*",
+    "tool": null,
+    "location": "*",
+    "evidence": {},
+    "remediation": "Run 'mcp-scrutiny baseline --config <file> --out mcp-baseline.json', commit the file, and pass it back with --baseline on every later scan."
+   }
+  ],
+  "servers": [
+   {
+    "name": "solarisdk__mcp",
+    "transport": "stdio",
+    "command": "npx",
+    "args": [
+     "-y",
+     "@solarisdk/mcp"
+    ],
+    "url": null,
+    "pinned": false,
+    "floating_package": "@solarisdk/mcp",
+    "tools": 0
+   }
+  ]
+ },
+ {
+  "package": "@skeletiq/mcp",
+  "status": "no-tools",
+  "seconds": 5.0,
+  "tools": 0,
+  "errors": [
+   "skeletiq__mcp: the server exited with status 1 before answering initialize; stderr: SKELETIQ_API_KEY is not set. Create a token in SkeletIQ under Settings → Agent access and put it in this server's env. It needs the \"read\" scope at minimum; add \"generate\" to let the agent create designs and \"report\" to let it check drift."
+  ],
+  "findings": [
+   {
+    "detector": "pinning",
+    "severity": "high",
+    "title": "Unpinned package executed on every start: @skeletiq/mcp",
+    "detail": "'skeletiq__mcp' launches @skeletiq/mcp through npx without a version. The client resolves the version at start time, so any future publish to that package name runs with your credentials. This is how postmark-mcp (Sept 2025) reached roughly 300 organisations.",
+    "server": "skeletiq__mcp",
+    "tool": null,
+    "location": "skeletiq__mcp",
+    "evidence": {
+     "package": "@skeletiq/mcp",
+     "runner": "npx",
+     "auto_confirm": true
+    },
+    "remediation": "Pin an exact version and an integrity hash: \"args\": [\"@skeletiq/mcp@<version>\"] and drop the -y flag. Re-pin deliberately, after reviewing the diff."
+   },
+   {
+    "detector": "drift",
+    "severity": "info",
+    "title": "No baseline supplied - drift detection is disabled",
+    "detail": "Without an approved snapshot the scanner cannot tell a tool that has always been there from one that appeared yesterday. The single most effective MCP control is the diff, and it needs a baseline to diff against.",
+    "server": "*",
+    "tool": null,
+    "location": "*",
+    "evidence": {},
+    "remediation": "Run 'mcp-scrutiny baseline --config <file> --out mcp-baseline.json', commit the file, and pass it back with --baseline on every later scan."
+   }
+  ],
+  "servers": [
+   {
+    "name": "skeletiq__mcp",
+    "transport": "stdio",
+    "command": "npx",
+    "args": [
+     "-y",
+     "@skeletiq/mcp"
+    ],
+    "url": null,
+    "pinned": false,
+    "floating_package": "@skeletiq/mcp",
+    "tools": 0
+   }
+  ]
+ },
+ {
+  "package": "balatro-mcp",
+  "status": "ok",
+  "seconds": 8.3,
+  "tools": 28,
+  "errors": [],
+  "findings": [
+   {
+    "detector": "pinning",
+    "severity": "high",
+    "title": "Unpinned package executed on every start: balatro-mcp",
+    "detail": "'balatro-mcp' launches balatro-mcp through npx without a version. The client resolves the version at start time, so any future publish to that package name runs with your credentials. This is how postmark-mcp (Sept 2025) reached roughly 300 organisations.",
+    "server": "balatro-mcp",
+    "tool": null,
+    "location": "balatro-mcp",
+    "evidence": {
+     "package": "balatro-mcp",
+     "runner": "npx",
+     "auto_confirm": true
+    },
+    "remediation": "Pin an exact version and an integrity hash: \"args\": [\"balatro-mcp@<version>\"] and drop the -y flag. Re-pin deliberately, after reviewing the diff."
+   },
+   {
+    "detector": "drift",
+    "severity": "info",
+    "title": "No baseline supplied - drift detection is disabled",
+    "detail": "Without an approved snapshot the scanner cannot tell a tool that has always been there from one that appeared yesterday. The single most effective MCP control is the diff, and it needs a baseline to diff against.",
+    "server": "*",
+    "tool": null,
+    "location": "*",
+    "evidence": {},
+    "remediation": "Run 'mcp-scrutiny baseline --config <file> --out mcp-baseline.json', commit the file, and pass it back with --baseline on every later scan."
+   }
+  ],
+  "servers": [
+   {
+    "name": "balatro-mcp",
+    "transport": "stdio",
+    "command": "npx",
+    "args": [
+     "-y",
+     "balatro-mcp"
+    ],
+    "url": null,
+    "pinned": false,
+    "floating_package": "balatro-mcp",
+    "tools": 28
+   }
+  ]
+ },
+ {
+  "package": "@kunal_dutt/token-lens",
+  "status": "ok",
+  "seconds": 4.9,
+  "tools": 14,
+  "errors": [],
+  "findings": [
+   {
+    "detector": "pinning",
+    "severity": "high",
+    "title": "Unpinned package executed on every start: @kunal_dutt/token-lens",
+    "detail": "'kunal_dutt__token-lens' launches @kunal_dutt/token-lens through npx without a version. The client resolves the version at start time, so any future publish to that package name runs with your credentials. This is how postmark-mcp (Sept 2025) reached roughly 300 organisations.",
+    "server": "kunal_dutt__token-lens",
+    "tool": null,
+    "location": "kunal_dutt__token-lens",
+    "evidence": {
+     "package": "@kunal_dutt/token-lens",
+     "runner": "npx",
+     "auto_confirm": true
+    },
+    "remediation": "Pin an exact version and an integrity hash: \"args\": [\"@kunal_dutt/token-lens@<version>\"] and drop the -y flag. Re-pin deliberately, after reviewing the diff."
+   },
+   {
+    "detector": "toxic_flow",
+    "severity": "high",
+    "title": "Toxic flow within 'kunal_dutt__token-lens': reads credentials or secrets + sends email or messages",
+    "detail": "2 combination(s) exist where one tool reads credentials or secrets and another sends email or messages. Neither tool is malicious on its own; together they reads credentials and can send mail. This is the postmark-mcp shape: the mail tool was legitimate, the credentials were reachable, and the combination was the incident. Both sides live in the same server, which may well be by design; confirm it.",
+    "server": "kunal_dutt__token-lens",
+    "tool": "count_tokens",
+    "location": "kunal_dutt__token-lens.count_tokens",
+    "evidence": {
+     "source_capability": "read_secret",
+     "sink_capability": "send_email",
+     "cross_server": false,
+     "pair_count": 2,
+     "example": {
+      "source": "kunal_dutt__token-lens.count_tokens",
+      "sink": "kunal_dutt__token-lens.check_conversation"
+     },
+     "sources": [
+      "kunal_dutt__token-lens.count_tokens"
+     ],
+     "sinks": [
+      "kunal_dutt__token-lens.check_conversation",
+      "kunal_dutt__token-lens.shorten"
+     ],
+     "servers": [
+      "kunal_dutt__token-lens"
+     ]
+    },
+    "remediation": "Break the path, not the tools: scope the credential so the source tool cannot reach anything valuable, or require explicit user confirmation on the sink tool (destructiveHint / human-in-the-loop), or split the two capabilities across trust boundaries that cannot share a context window."
+   },
+   {
+    "detector": "drift",
+    "severity": "info",
+    "title": "No baseline supplied - drift detection is disabled",
+    "detail": "Without an approved snapshot the scanner cannot tell a tool that has always been there from one that appeared yesterday. The single most effective MCP control is the diff, and it needs a baseline to diff against.",
+    "server": "*",
+    "tool": null,
+    "location": "*",
+    "evidence": {},
+    "remediation": "Run 'mcp-scrutiny baseline --config <file> --out mcp-baseline.json', commit the file, and pass it back with --baseline on every later scan."
+   }
+  ],
+  "servers": [
+   {
+    "name": "kunal_dutt__token-lens",
+    "transport": "stdio",
+    "command": "npx",
+    "args": [
+     "-y",
+     "@kunal_dutt/token-lens"
+    ],
+    "url": null,
+    "pinned": false,
+    "floating_package": "@kunal_dutt/token-lens",
+    "tools": 14
+   }
+  ]
+ },
+ {
+  "package": "integram-mcp",
+  "status": "no-tools",
+  "seconds": 8.2,
+  "tools": 0,
+  "errors": [
+   "integram-mcp: the server exited with status 1 before answering initialize; stderr: [integram-mcp] integram-mcp 0.7.176 | [integram-mcp] Connecting to http://localhost:8081, workspace \"(not set)\" | [integram-mcp] Fatal: INTEGRAM_EMAIL and INTEGRAM_PASSWORD are required"
+  ],
+  "findings": [
+   {
+    "detector": "pinning",
+    "severity": "high",
+    "title": "Unpinned package executed on every start: integram-mcp",
+    "detail": "'integram-mcp' launches integram-mcp through npx without a version. The client resolves the version at start time, so any future publish to that package name runs with your credentials. This is how postmark-mcp (Sept 2025) reached roughly 300 organisations.",
+    "server": "integram-mcp",
+    "tool": null,
+    "location": "integram-mcp",
+    "evidence": {
+     "package": "integram-mcp",
+     "runner": "npx",
+     "auto_confirm": true
+    },
+    "remediation": "Pin an exact version and an integrity hash: \"args\": [\"integram-mcp@<version>\"] and drop the -y flag. Re-pin deliberately, after reviewing the diff."
+   },
+   {
+    "detector": "drift",
+    "severity": "info",
+    "title": "No baseline supplied - drift detection is disabled",
+    "detail": "Without an approved snapshot the scanner cannot tell a tool that has always been there from one that appeared yesterday. The single most effective MCP control is the diff, and it needs a baseline to diff against.",
+    "server": "*",
+    "tool": null,
+    "location": "*",
+    "evidence": {},
+    "remediation": "Run 'mcp-scrutiny baseline --config <file> --out mcp-baseline.json', commit the file, and pass it back with --baseline on every later scan."
+   }
+  ],
+  "servers": [
+   {
+    "name": "integram-mcp",
+    "transport": "stdio",
+    "command": "npx",
+    "args": [
+     "-y",
+     "integram-mcp"
+    ],
+    "url": null,
+    "pinned": false,
+    "floating_package": "integram-mcp",
+    "tools": 0
+   }
+  ]
+ },
+ {
+  "package": "@roxyon/mcp",
+  "status": "no-tools",
+  "seconds": 1.3,
+  "tools": 0,
+  "errors": [
+   "roxyon__mcp: the server exited with status 1 before answering initialize; stderr: npm error could not determine executable to run | npm error A complete log of this run can be found in: /home/runner/.npm/_logs/2026-11-14T10_42_46_028Z-debug-0.log"
+  ],
+  "findings": [
+   {
+    "detector": "pinning",
+    "severity": "high",
+    "title": "Unpinned package executed on every start: @roxyon/mcp",
+    "detail": "'roxyon__mcp' launches @roxyon/mcp through npx without a version. The client resolves the version at start time, so any future publish to that package name runs with your credentials. This is how postmark-mcp (Sept 2025) reached roughly 300 organisations.",
+    "server": "roxyon__mcp",
+    "tool": null,
+    "location": "roxyon__mcp",
+    "evidence": {
+     "package": "@roxyon/mcp",
+     "runner": "npx",
+     "auto_confirm": true
+    },
+    "remediation": "Pin an exact version and an integrity hash: \"args\": [\"@roxyon/mcp@<version>\"] and drop the -y flag. Re-pin deliberately, after reviewing the diff."
+   },
+   {
+    "detector": "drift",
+    "severity": "info",
+    "title": "No baseline supplied - drift detection is disabled",
+    "detail": "Without an approved snapshot the scanner cannot tell a tool that has always been there from one that appeared yesterday. The single most effective MCP control is the diff, and it needs a baseline to diff against.",
+    "server": "*",
+    "tool": null,
+    "location": "*",
+    "evidence": {},
+    "remediation": "Run 'mcp-scrutiny baseline --config <file> --out mcp-baseline.json', commit the file, and pass it back with --baseline on every later scan."
+   }
+  ],
+  "servers": [
+   {
+    "name": "roxyon__mcp",
+    "transport": "stdio",
+    "command": "npx",
+    "args": [
+     "-y",
+     "@roxyon/mcp"
+    ],
+    "url": null,
+    "pinned": false,
+    "floating_package": "@roxyon/mcp",
+    "tools": 0
+   }
+  ]
+ },
+ {
+  "package": "finmap-mcp",
+  "status": "no-tools",
+  "seconds": 12.2,
+  "tools": 0,
+  "errors": [
+   "finmap-mcp: the server exited with status 1 before answering initialize; stderr: Error [ERR_MODULE_NOT_FOUND]: Cannot find module '/home/runner/.npm/_npx/38d9754927352a6b/node_modules/finmap-mcp/dist/api.js' imported from /home/runner/.npm/_npx/38d9754927352a6b/node_modules/finmap-mcp/dist/core.js |     at finalizeResolution (node:internal/modules/esm/resolve:275:11) |     at moduleResolve (node:internal/modules/esm/resolve:865:10) |     at defaultResolve (node:internal/modules/esm/resolve:989:11) |     at #cachedDefaultResolve (node:internal/modules/esm/loader:747:20) |     at ModuleLoader.resolve (node:internal/modules/esm/loader:724:38) |     at ModuleLoader.getModuleJobForImport (node:internal/modules/esm/loader:320:38) |     at ModuleJob._link (node:internal/modules/esm/module_job:182:49) { |   code: 'ERR_MODULE_NOT_FOUND', |   url: 'file:///home/runner/.npm/_npx/38d9754927352a6b/node_modules/finmap-mcp/dist/api.js' | } | Node.js v22.23.4"
+  ],
+  "findings": [
+   {
+    "detector": "pinning",
+    "severity": "high",
+    "title": "Unpinned package executed on every start: finmap-mcp",
+    "detail": "'finmap-mcp' launches finmap-mcp through npx without a version. The client resolves the version at start time, so any future publish to that package name runs with your credentials. This is how postmark-mcp (Sept 2025) reached roughly 300 organisations.",
+    "server": "finmap-mcp",
+    "tool": null,
+    "location": "finmap-mcp",
+    "evidence": {
+     "package": "finmap-mcp",
+     "runner": "npx",
+     "auto_confirm": true
+    },
+    "remediation": "Pin an exact version and an integrity hash: \"args\": [\"finmap-mcp@<version>\"] and drop the -y flag. Re-pin deliberately, after reviewing the diff."
+   },
+   {
+    "detector": "drift",
+    "severity": "info",
+    "title": "No baseline supplied - drift detection is disabled",
+    "detail": "Without an approved snapshot the scanner cannot tell a tool that has always been there from one that appeared yesterday. The single most effective MCP control is the diff, and it needs a baseline to diff against.",
+    "server": "*",
+    "tool": null,
+    "location": "*",
+    "evidence": {},
+    "remediation": "Run 'mcp-scrutiny baseline --config <file> --out mcp-baseline.json', commit the file, and pass it back with --baseline on every later scan."
+   }
+  ],
+  "servers": [
+   {
+    "name": "finmap-mcp",
+    "transport": "stdio",
+    "command": "npx",
+    "args": [
+     "-y",
+     "finmap-mcp"
+    ],
+    "url": null,
+    "pinned": false,
+    "floating_package": "finmap-mcp",
+    "tools": 0
+   }
+  ]
+ },
+ {
+  "package": "@probecast/mcp",
+  "status": "ok",
+  "seconds": 2.4,
+  "tools": 1,
+  "errors": [],
+  "findings": [
+   {
+    "detector": "pinning",
+    "severity": "high",
+    "title": "Unpinned package executed on every start: @probecast/mcp",
+    "detail": "'probecast__mcp' launches @probecast/mcp through npx without a version. The client resolves the version at start time, so any future publish to that package name runs with your credentials. This is how postmark-mcp (Sept 2025) reached roughly 300 organisations.",
+    "server": "probecast__mcp",
+    "tool": null,
+    "location": "probecast__mcp",
+    "evidence": {
+     "package": "@probecast/mcp",
+     "runner": "npx",
+     "auto_confirm": true
+    },
+    "remediation": "Pin an exact version and an integrity hash: \"args\": [\"@probecast/mcp@<version>\"] and drop the -y flag. Re-pin deliberately, after reviewing the diff."
+   },
+   {
+    "detector": "drift",
+    "severity": "info",
+    "title": "No baseline supplied - drift detection is disabled",
+    "detail": "Without an approved snapshot the scanner cannot tell a tool that has always been there from one that appeared yesterday. The single most effective MCP control is the diff, and it needs a baseline to diff against.",
+    "server": "*",
+    "tool": null,
+    "location": "*",
+    "evidence": {},
+    "remediation": "Run 'mcp-scrutiny baseline --config <file> --out mcp-baseline.json', commit the file, and pass it back with --baseline on every later scan."
+   }
+  ],
+  "servers": [
+   {
+    "name": "probecast__mcp",
+    "transport": "stdio",
+    "command": "npx",
+    "args": [
+     "-y",
+     "@probecast/mcp"
+    ],
+    "url": null,
+    "pinned": false,
+    "floating_package": "@probecast/mcp",
+    "tools": 1
+   }
+  ]
+ }
+]

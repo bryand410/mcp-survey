@@ -1,0 +1,263 @@
+{
+ "tested": 71,
+ "answered": 26,
+ "silent": 45,
+ "tools": 420,
+ "findings_excluding": [
+  "drift",
+  "pinning"
+ ],
+ "by_severity": {
+  "high": 7,
+  "medium": 3
+ },
+ "by_detector": {
+  "toxic_flow": 10
+ },
+ "flagged_servers": {
+  "@growthbook/mcp": [
+   {
+    "severity": "high",
+    "detector": "toxic_flow",
+    "title": "Toxic flow within 'growthbook__mcp': executes commands + sends data outbound"
+   }
+  ],
+  "gamealia-mcp": [
+   {
+    "severity": "high",
+    "detector": "toxic_flow",
+    "title": "Toxic flow within 'gamealia-mcp': executes commands + sends data outbound"
+   },
+   {
+    "severity": "high",
+    "detector": "toxic_flow",
+    "title": "Toxic flow within 'gamealia-mcp': reads credentials or secrets + sends data outbound"
+   },
+   {
+    "severity": "high",
+    "detector": "toxic_flow",
+    "title": "Toxic flow within 'gamealia-mcp': reads credentials or secrets + sends email or messages"
+   },
+   {
+    "severity": "medium",
+    "detector": "toxic_flow",
+    "title": "Toxic flow within 'gamealia-mcp': executes commands + writes or deletes files"
+   }
+  ],
+  "echelongraph-mcp": [
+   {
+    "severity": "high",
+    "detector": "toxic_flow",
+    "title": "Toxic flow within 'echelongraph-mcp': executes commands + sends data outbound"
+   },
+   {
+    "severity": "medium",
+    "detector": "toxic_flow",
+    "title": "Toxic flow within 'echelongraph-mcp': reads files + sends data outbound"
+   }
+  ],
+  "@leonio/kern-ux-mcp": [
+   {
+    "severity": "high",
+    "detector": "toxic_flow",
+    "title": "Toxic flow within 'leonio__kern-ux-mcp': reads credentials or secrets + sends email or messages"
+   }
+  ],
+  "@mozilla/firefox-devtools-mcp-moz": [
+   {
+    "severity": "medium",
+    "detector": "toxic_flow",
+    "title": "Toxic flow within 'mozilla__firefox-devtools-mcp-moz': executes commands + writes or deletes files"
+   }
+  ],
+  "@kunal_dutt/token-lens": [
+   {
+    "severity": "high",
+    "detector": "toxic_flow",
+    "title": "Toxic flow within 'kunal_dutt__token-lens': reads credentials or secrets + sends email or messages"
+   }
+  ]
+ },
+ "silent_servers": [
+  {
+   "package": "agent-device",
+   "reason": "agent-device: the server exited with status 1 before answering initialize"
+  },
+  {
+   "package": "rea-agents",
+   "reason": "rea-agents: no response to initialize within 40s"
+  },
+  {
+   "package": "@zereight/mcp-gitlab",
+   "reason": "zereight__mcp-gitlab: the server exited with status 1 before answering initialize; stderr: \u001b[31mERROR\u001b[39m [10:40:54.186] (2694): \u001b[36mGITLAB_PERSONAL_ACCESS_TO"
+  },
+  {
+   "package": "@launchdarkly/mcp-server",
+   "reason": "launchdarkly__mcp-server: the server exited with status 0 before answering initialize"
+  },
+  {
+   "package": "xcodebuildmcp",
+   "reason": "xcodebuildmcp: the server exited with status 1 before answering initialize; stderr:   utilities             Build Utilities |   xcode-ide             Xcode IDE "
+  },
+  {
+   "package": "@currents/mcp",
+   "reason": "currents__mcp: the server exited with status 1 before answering initialize; stderr: [10:40:50.844] \u001b[31mERROR\u001b[39m (2680): \u001b[36mCURRENTS_API_KEY is not set. Add"
+  },
+  {
+   "package": "kordoc",
+   "reason": "kordoc: the server exited with status 1 before answering initialize; stderr: error: missing required argument 'files'"
+  },
+  {
+   "package": "@serdnaley/metabase-mcp",
+   "reason": "serdnaley__metabase-mcp: the server exited with status 1 before answering initialize; stderr: Configuration error: Invalid input: expected string, received unde"
+  },
+  {
+   "package": "@shopify/dev-mcp",
+   "reason": "shopify__dev-mcp: no response to initialize within 40s; stderr: npm warn deprecated inflight@1.0.6: This module is not supported, and leaks memory. Do not use i"
+  },
+  {
+   "package": "@benborla29/mcp-server-mysql",
+   "reason": "benborla29__mcp-server-mysql: the server exited with status 1 before answering tools/list; stderr: npm warn deprecated node-domexception@1.0.0: Use your platfor"
+  },
+  {
+   "package": "12306-mcp",
+   "reason": "12306-mcp: the server exited with status 1 before answering initialize; stderr:     code: 'ETIMEDOUT', |     [errors]: [ [Error], [Error], [Error], [Error] ] | "
+  },
+  {
+   "package": "@flyle/ai-cx-mcp",
+   "reason": "flyle__ai-cx-mcp: the server exited with status 1 before answering initialize; stderr: この作業ディレクトリはまだログインしていません。このディレクトリで `npx @flyle/ai-cx-mcp@latest login --te"
+  },
+  {
+   "package": "@hypequery/mcp",
+   "reason": "hypequery__mcp: the server exited with status 1 before answering initialize; stderr: Error: --config flag is required | Usage: hypequery-mcp --config ./mcp-conf"
+  },
+  {
+   "package": "comfyui-mcp",
+   "reason": "comfyui-mcp: no response to initialize within 40s"
+  },
+  {
+   "package": "@shortcut/mcp",
+   "reason": "shortcut__mcp: the server exited with status 1 before answering initialize; stderr: A Shortcut api token is required."
+  },
+  {
+   "package": "vite-plugin-mcp",
+   "reason": "vite-plugin-mcp: the server exited with status 1 before answering initialize; stderr: npm error could not determine executable to run | npm error A complete log"
+  },
+  {
+   "package": "@microsoft/workiq",
+   "reason": "microsoft__workiq: the server exited with status 1 before answering initialize; stderr: Required command was not provided."
+  },
+  {
+   "package": "@flyle/ai-operator-mcp",
+   "reason": "flyle__ai-operator-mcp: the server exited with status 1 before answering initialize; stderr: この作業ディレクトリはまだログインしていません。このディレクトリで `npx @flyle/ai-operator-mcp@lates"
+  },
+  {
+   "package": "@postman/postman-mcp-server",
+   "reason": "postman__postman-mcp-server: the server exited with status 1 before answering initialize; stderr: npm warn deprecated har-validator@5.1.5: this library is no lo"
+  },
+  {
+   "package": "vite-plugin-vue-mcp",
+   "reason": "vite-plugin-vue-mcp: the server exited with status 1 before answering initialize; stderr: npm error could not determine executable to run | npm error A complete"
+  },
+  {
+   "package": "@phenomenalorg/mcp",
+   "reason": ""
+  },
+  {
+   "package": "llm-wiki-compiler",
+   "reason": "llm-wiki-compiler: the server exited with status 1 before answering initialize; stderr:   ingest <source>             Ingest a URL or local file into sources/ |"
+  },
+  {
+   "package": "@clipwright/mcp-server",
+   "reason": "clipwright__mcp-server: the server exited with status 1 before answering initialize; stderr: CLIPWRIGHT_API_KEY env var is required"
+  },
+  {
+   "package": "donsetch",
+   "reason": "donsetch: the server exited with status 0 before answering initialize"
+  },
+  {
+   "package": "mobilebuildmcp",
+   "reason": "mobilebuildmcp: the server exited with status 1 before answering initialize; stderr:   utilities             Build Utilities |   xcode-ide             Xcode IDE"
+  },
+  {
+   "package": "canvas-mcp-server",
+   "reason": "canvas-mcp-server: the server exited with status 1 before answering initialize; stderr: Loaded environment from: .env | Missing required environment variables: "
+  },
+  {
+   "package": "vet-skills",
+   "reason": "vet-skills: the server exited with status 1 before answering initialize; stderr:   vet-skills hook install [claude-code|cursor|codex|windsurf|gemini|grok|copilo"
+  },
+  {
+   "package": "astro-mcp",
+   "reason": "astro-mcp: the server exited with status 1 before answering initialize; stderr: npm error could not determine executable to run | npm error A complete log of th"
+  },
+  {
+   "package": "@kintone/mcp-server",
+   "reason": "kintone__mcp-server: the server exited with status 1 before answering initialize; stderr: file:///home/runner/.npm/_npx/b2db60d2046cbad3/node_modules/@kintone/m"
+  },
+  {
+   "package": "@mcp-z/mcp-gmail",
+   "reason": "mcp-z__mcp-gmail: the server exited with status 255 before answering initialize; stderr: npm warn deprecated node-domexception@1.0.0: Use your platform's native"
+  },
+  {
+   "package": "@dokploy/mcp",
+   "reason": "dokploy__mcp: the server exited with status 1 before answering initialize; stderr: file:///home/runner/.npm/_npx/f6402708929be68c/node_modules/@dokploy/mcp/buil"
+  },
+  {
+   "package": "@12ui/design",
+   "reason": "12ui__design: the server exited with status 1 before answering initialize; stderr: hosted interaction labels. `--labels workflow --workspace <directory>` prepar"
+  },
+  {
+   "package": "serper-search-scrape-mcp-server",
+   "reason": "serper-search-scrape-mcp-server: the server exited with status 1 before answering initialize; stderr: file:///home/runner/.npm/_npx/109efb2ce6006f16/node_module"
+  },
+  {
+   "package": "search-mcp-server",
+   "reason": ""
+  },
+  {
+   "package": "redash-mcp",
+   "reason": "redash-mcp: the server exited with status 1 before answering initialize; stderr: REDASH_URL and REDASH_API_KEY environment variables are required"
+  },
+  {
+   "package": "@mseep/linear-mcp",
+   "reason": "mseep__linear-mcp: the server exited with status 1 before answering initialize; stderr: Error: LINEAR_API_KEY environment variable is required | To use this too"
+  },
+  {
+   "package": "@fruggr/zendesk-mcp-server",
+   "reason": "fruggr__zendesk-mcp-server: the server exited with status 1 before answering initialize; stderr: subdomain: ZENDESK_SUBDOMAIN is required. See https://github.co"
+  },
+  {
+   "package": "@getmarrow/mcp",
+   "reason": ""
+  },
+  {
+   "package": "ainative-zerodb-mcp-server",
+   "reason": "ainative-zerodb-mcp-server: the server exited with status 1 before answering initialize; stderr: npm warn deprecated glob@10.5.0: Old versions of glob are not s"
+  },
+  {
+   "package": "wso2-docs-mcp-server",
+   "reason": "wso2-docs-mcp-server: the server exited with status 1 before answering initialize; stderr: npm warn deprecated whatwg-encoding@3.1.1: Use @exodus/bytes instead "
+  },
+  {
+   "package": "@solarisdk/mcp",
+   "reason": "solarisdk__mcp: the server exited with status 1 before answering initialize; stderr: solari-mcp: SOLARI_API_KEY is required"
+  },
+  {
+   "package": "@skeletiq/mcp",
+   "reason": "skeletiq__mcp: the server exited with status 1 before answering initialize; stderr: SKELETIQ_API_KEY is not set. Create a token in SkeletIQ under Settings → Age"
+  },
+  {
+   "package": "integram-mcp",
+   "reason": "integram-mcp: the server exited with status 1 before answering initialize; stderr: [integram-mcp] integram-mcp 0.7.176 | [integram-mcp] Connecting to http://loc"
+  },
+  {
+   "package": "@roxyon/mcp",
+   "reason": "roxyon__mcp: the server exited with status 1 before answering initialize; stderr: npm error could not determine executable to run | npm error A complete log of "
+  },
+  {
+   "package": "finmap-mcp",
+   "reason": "finmap-mcp: the server exited with status 1 before answering initialize; stderr: Error [ERR_MODULE_NOT_FOUND]: Cannot find module '/home/runner/.npm/_npx/38d975"
+  }
+ ]
+}

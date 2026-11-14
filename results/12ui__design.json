@@ -1,0 +1,50 @@
+{
+  "tool": {
+    "name": "mcp-scrutiny",
+    "version": "0.1.2"
+  },
+  "summary": {
+    "servers": 1,
+    "tools": 0,
+    "findings": 1,
+    "worst_severity": "info",
+    "by_severity": {
+      "info": 1,
+      "low": 0,
+      "medium": 0,
+      "high": 0,
+      "critical": 0
+    }
+  },
+  "servers": [
+    {
+      "name": "12ui__design",
+      "transport": "stdio",
+      "command": "npx",
+      "args": [
+        "-y",
+        "@12ui/design"
+      ],
+      "url": null,
+      "pinned": true,
+      "floating_package": null,
+      "tools": 0
+    }
+  ],
+  "findings": [
+    {
+      "detector": "drift",
+      "severity": "info",
+      "title": "No baseline supplied - drift detection is disabled",
+      "detail": "Without an approved snapshot the scanner cannot tell a tool that has always been there from one that appeared yesterday. The single most effective MCP control is the diff, and it needs a baseline to diff against.",
+      "server": "*",
+      "tool": null,
+      "location": "*",
+      "evidence": {},
+      "remediation": "Run 'mcp-scrutiny baseline --config <file> --out mcp-baseline.json', commit the file, and pass it back with --baseline on every later scan."
+    }
+  ],
+  "errors": [
+    "12ui__design: the server exited with status 1 before answering initialize; stderr: hosted interaction labels. `--labels workflow --workspace <directory>` prepares | exact DOM-bound local label operations and returns awaiting_labels; execute/register | them through workflow, then repeat prototype to consume their results without inference. | Add `--polish` explicitly to run the | retained deterministic polish rules before runtime verification; it is opt-in. | Hosted work accepts --origin <url> and --api-key <key> (defaulting to | TWELVE_UI_ORIGIN / TWELVE_UI_API_KEY, then `12ui auth login`). Local next, resume, | and export do not accept hosted authentication flags. --quiet suppresses progress. Omit | --client to target every supported CLI installation. `12ui <command> --help` | prints any command in full, including the forms this summary leaves out: | `convert package --template`, `skill print`, `skill remove`. | `12ui scene --help` lists the local Three.js scene tools and `12ui workflow --help` the workflow commands."
+  ]
+}

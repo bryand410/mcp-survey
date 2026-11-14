@@ -1,0 +1,65 @@
+{
+  "tool": {
+    "name": "mcp-scrutiny",
+    "version": "0.1.2"
+  },
+  "summary": {
+    "servers": 1,
+    "tools": 0,
+    "findings": 2,
+    "worst_severity": "high",
+    "by_severity": {
+      "info": 1,
+      "low": 0,
+      "medium": 0,
+      "high": 1,
+      "critical": 0
+    }
+  },
+  "servers": [
+    {
+      "name": "xcodebuildmcp",
+      "transport": "stdio",
+      "command": "npx",
+      "args": [
+        "-y",
+        "xcodebuildmcp"
+      ],
+      "url": null,
+      "pinned": false,
+      "floating_package": "xcodebuildmcp",
+      "tools": 0
+    }
+  ],
+  "findings": [
+    {
+      "detector": "pinning",
+      "severity": "high",
+      "title": "Unpinned package executed on every start: xcodebuildmcp",
+      "detail": "'xcodebuildmcp' launches xcodebuildmcp through npx without a version. The client resolves the version at start time, so any future publish to that package name runs with your credentials. This is how postmark-mcp (Sept 2025) reached roughly 300 organisations.",
+      "server": "xcodebuildmcp",
+      "tool": null,
+      "location": "xcodebuildmcp",
+      "evidence": {
+        "package": "xcodebuildmcp",
+        "runner": "npx",
+        "auto_confirm": true
+      },
+      "remediation": "Pin an exact version and an integrity hash: \"args\": [\"xcodebuildmcp@<version>\"] and drop the -y flag. Re-pin deliberately, after reviewing the diff."
+    },
+    {
+      "detector": "drift",
+      "severity": "info",
+      "title": "No baseline supplied - drift detection is disabled",
+      "detail": "Without an approved snapshot the scanner cannot tell a tool that has always been there from one that appeared yesterday. The single most effective MCP control is the diff, and it needs a baseline to diff against.",
+      "server": "*",
+      "tool": null,
+      "location": "*",
+      "evidence": {},
+      "remediation": "Run 'mcp-scrutiny baseline --config <file> --out mcp-baseline.json', commit the file, and pass it back with --baseline on every later scan."
+    }
+  ],
+  "errors": [
+    "xcodebuildmcp: the server exited with status 1 before answering initialize; stderr:   utilities             Build Utilities |   xcode-ide             Xcode IDE Integration |   daemon <action>       Manage the xcodebuildmcp daemon | Options: |       --log-level               Set log verbosity level  [string] [choices: \"none\", \"error\", \"warn\", \"info\", \"debug\"] [default: \"none\"] |       --style                   Output style (normal is detailed; minimal is compact MCP-like output)  [string] [choices: \"normal\", \"minimal\"] [default: \"normal\"] |       --file-path-render-style  Render file artifacts as a compact tree or labeled list in text output  [string] [choices: \"tree\", \"list\"] |   -h, --help                    Show help  [boolean] |   -v, --version                 Show version number  [boolean] | Run 'xcodebuildmcp mcp' to start the MCP server. | Run 'xcodebuildmcp tools' to see all available tools. | Run 'xcodebuildmcp <workflow> <tool> --help' for tool-specific help."
+  ]
+}
