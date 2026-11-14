@@ -48,7 +48,7 @@ def scan_one(pkg: dict) -> dict:
     try:
         subprocess.run(
             [
-                sys.executable, "-m", "mcp_scrutiny", "scan",
+                "mcp-scrutiny", "scan",
                 "--config", str(cfg),
                 "--probe", "--timeout", str(TIMEOUT),
                 "--format", "json", "--output", str(out),
