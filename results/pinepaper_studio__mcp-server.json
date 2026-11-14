@@ -1,0 +1,305 @@
+{
+  "tool": {
+    "name": "mcp-scrutiny",
+    "version": "0.1.2"
+  },
+  "summary": {
+    "servers": 1,
+    "tools": 81,
+    "findings": 8,
+    "worst_severity": "high",
+    "by_severity": {
+      "info": 1,
+      "low": 0,
+      "medium": 3,
+      "high": 4,
+      "critical": 0
+    }
+  },
+  "servers": [
+    {
+      "name": "pinepaper_studio__mcp-server",
+      "transport": "stdio",
+      "command": "npx",
+      "args": [
+        "-y",
+        "@pinepaper.studio/mcp-server"
+      ],
+      "url": null,
+      "pinned": false,
+      "floating_package": "@pinepaper.studio/mcp-server",
+      "tools": 81
+    }
+  ],
+  "findings": [
+    {
+      "detector": "pinning",
+      "severity": "high",
+      "title": "Unpinned package executed on every start: @pinepaper.studio/mcp-server",
+      "detail": "'pinepaper_studio__mcp-server' launches @pinepaper.studio/mcp-server through npx without a version. The client resolves the version at start time, so any future publish to that package name runs with your credentials. This is how postmark-mcp (Sept 2025) reached roughly 300 organisations.",
+      "server": "pinepaper_studio__mcp-server",
+      "tool": null,
+      "location": "pinepaper_studio__mcp-server",
+      "evidence": {
+        "package": "@pinepaper.studio/mcp-server",
+        "runner": "npx",
+        "auto_confirm": true
+      },
+      "remediation": "Pin an exact version and an integrity hash: \"args\": [\"@pinepaper.studio/mcp-server@<version>\"] and drop the -y flag. Re-pin deliberately, after reviewing the diff."
+    },
+    {
+      "detector": "semantic",
+      "severity": "high",
+      "title": "Description reads as instructions to the model (p=0.97): pinepaper_text_effect",
+      "detail": "The description of 'pinepaper_studio__mcp-server.pinepaper_text_effect' scores 0.97 on the instruction-detection model, and carries intent signals: hidden_unicode. Descriptions are documentation for a human, but they are delivered to the model as trusted context, so text that tells the model what to do is an attack surface rather than a description. The score is driven mainly by: entropy, hidden_unicode, log_len, imperative_density.",
+      "server": "pinepaper_studio__mcp-server",
+      "tool": "pinepaper_text_effect",
+      "location": "pinepaper_studio__mcp-server.pinepaper_text_effect",
+      "evidence": {
+        "probability": 0.9689,
+        "threshold": 0.5,
+        "intent_signals": [
+          "hidden_unicode"
+        ],
+        "driving_features": [
+          {
+            "feature": "entropy",
+            "contribution": 5.5111
+          },
+          {
+            "feature": "log_words",
+            "contribution": -4.619
+          },
+          {
+            "feature": "hidden_unicode",
+            "contribution": 3.0886
+          },
+          {
+            "feature": "log_len",
+            "contribution": 2.1647
+          },
+          {
+            "feature": "hardcoded_recipient",
+            "contribution": -1.2458
+          },
+          {
+            "feature": "imperative_density",
+            "contribution": 0.9206
+          }
+        ],
+        "active_features": {
+          "log_len": 7.597396320212795,
+          "log_words": 5.683579767338681,
+          "entropy": 4.876522019411754,
+          "non_ascii_ratio": 0.0035140562248995983,
+          "hidden_unicode": 1.0,
+          "schema_nested_desc": 11.0
+        },
+        "description": "Animate text CHARACTER BY CHARACTER — the terminaltexteffects vocabulary, reimplemented from source).\n\n⚠️ THIS REPLACES THE TEXT ITEM. Unlike pinepaper_text_style (which ADOPTS the text's registry id), this EXPLODES the text into one item per character and REMOVES the original. Any relation, keyframe, or handle pointing at the source id DIES with it. Pass keepSource: true to leave the original in place. The returned `ids` array is your entire new handle set.\n\nACTIONS:\n- list: {} — every effect a"
+      },
+      "remediation": "Read the description against what the tool actually does. If the text is legitimate, it usually means the tool should not have to instruct the model at all - move the guidance into the parameter descriptions or the server's own docs."
+    },
+    {
+      "detector": "toxic_flow",
+      "severity": "high",
+      "title": "Toxic flow within 'pinepaper_studio__mcp-server': executes commands + sends data outbound",
+      "detail": "14 combination(s) exist where one tool executes commands and another sends data outbound. Neither tool is malicious on its own; together they executes commands and can reach the network, which is remote code execution with a delivery channel rather than a hint of one. Both sides live in the same server, which may well be by design; confirm it.",
+      "server": "pinepaper_studio__mcp-server",
+      "tool": "pinepaper_agent_batch_execute",
+      "location": "pinepaper_studio__mcp-server.pinepaper_agent_batch_execute",
+      "evidence": {
+        "source_capability": "exec",
+        "sink_capability": "network_out",
+        "cross_server": false,
+        "pair_count": 14,
+        "example": {
+          "source": "pinepaper_studio__mcp-server.pinepaper_agent_batch_execute",
+          "sink": "pinepaper_studio__mcp-server.pinepaper_beat_cuts"
+        },
+        "sources": [
+          "pinepaper_studio__mcp-server.pinepaper_agent_batch_execute",
+          "pinepaper_studio__mcp-server.pinepaper_design_medium",
+          "pinepaper_studio__mcp-server.pinepaper_emitter",
+          "pinepaper_studio__mcp-server.pinepaper_execute_custom_code",
+          "pinepaper_studio__mcp-server.pinepaper_query_capabilities",
+          "pinepaper_studio__mcp-server.pinepaper_query_ontology",
+          "pinepaper_studio__mcp-server.pinepaper_render_hook"
+        ],
+        "sinks": [
+          "pinepaper_studio__mcp-server.pinepaper_beat_cuts",
+          "pinepaper_studio__mcp-server.pinepaper_media"
+        ],
+        "servers": [
+          "pinepaper_studio__mcp-server"
+        ]
+      },
+      "remediation": "Break the path, not the tools: scope the credential so the source tool cannot reach anything valuable, or require explicit user confirmation on the sink tool (destructiveHint / human-in-the-loop), or split the two capabilities across trust boundaries that cannot share a context window."
+    },
+    {
+      "detector": "toxic_flow",
+      "severity": "high",
+      "title": "Toxic flow within 'pinepaper_studio__mcp-server': reads credentials or secrets + sends data outbound",
+      "detail": "2 combination(s) exist where one tool reads credentials or secrets and another sends data outbound. Neither tool is malicious on its own; together they reads credentials and can send data to an address it controls. A single prompt is enough to turn 'summarise this config' into a credential leak. Both sides live in the same server, which may well be by design; confirm it.",
+      "server": "pinepaper_studio__mcp-server",
+      "tool": "pinepaper_create_letter_collage",
+      "location": "pinepaper_studio__mcp-server.pinepaper_create_letter_collage",
+      "evidence": {
+        "source_capability": "read_secret",
+        "sink_capability": "network_out",
+        "cross_server": false,
+        "pair_count": 2,
+        "example": {
+          "source": "pinepaper_studio__mcp-server.pinepaper_create_letter_collage",
+          "sink": "pinepaper_studio__mcp-server.pinepaper_beat_cuts"
+        },
+        "sources": [
+          "pinepaper_studio__mcp-server.pinepaper_create_letter_collage"
+        ],
+        "sinks": [
+          "pinepaper_studio__mcp-server.pinepaper_beat_cuts",
+          "pinepaper_studio__mcp-server.pinepaper_media"
+        ],
+        "servers": [
+          "pinepaper_studio__mcp-server"
+        ]
+      },
+      "remediation": "Break the path, not the tools: scope the credential so the source tool cannot reach anything valuable, or require explicit user confirmation on the sink tool (destructiveHint / human-in-the-loop), or split the two capabilities across trust boundaries that cannot share a context window."
+    },
+    {
+      "detector": "semantic",
+      "severity": "medium",
+      "title": "Description reads as instructions to the model (p=0.77): pinepaper_audio_beats",
+      "detail": "The description of 'pinepaper_studio__mcp-server.pinepaper_audio_beats' scores 0.77 on the instruction-detection model, and carries intent signals: injection_markers. Descriptions are documentation for a human, but they are delivered to the model as trusted context, so text that tells the model what to do is an attack surface rather than a description. The score is driven mainly by: injection_markers, entropy, log_len.",
+      "server": "pinepaper_studio__mcp-server",
+      "tool": "pinepaper_audio_beats",
+      "location": "pinepaper_studio__mcp-server.pinepaper_audio_beats",
+      "evidence": {
+        "probability": 0.775,
+        "threshold": 0.5,
+        "intent_signals": [
+          "injection_markers"
+        ],
+        "driving_features": [
+          {
+            "feature": "injection_markers",
+            "contribution": 6.2052
+          },
+          {
+            "feature": "redaction_language",
+            "contribution": -4.0522
+          },
+          {
+            "feature": "entropy",
+            "contribution": 3.9091
+          },
+          {
+            "feature": "log_words",
+            "contribution": -3.3294
+          },
+          {
+            "feature": "log_len",
+            "contribution": 1.5011
+          },
+          {
+            "feature": "hardcoded_recipient",
+            "contribution": -1.2458
+          }
+        ],
+        "active_features": {
+          "log_len": 6.731018100482083,
+          "log_words": 4.912654885736052,
+          "entropy": 4.672811298837705,
+          "non_ascii_ratio": 0.0023894862604540022,
+          "injection_markers": 1.0,
+          "redaction_language": 1.0,
+          "schema_nested_desc": 6.0
+        },
+        "description": "Detect beats in audio and bake an item's animation onto them.\n\nACTIONS:\n- analyze: Onsets, BPM, confidence and duration. Params: source (asset id, data URL or URL),\n  sensitivity, minGap. Read-only — run it first to see what the track gives you.\n- animate_to_beat: Write a keyframe track that pulses on the beat. Params: itemId, plus EITHER\n  source (analyze first) OR beats[] (times you already have). grid:true uses an even pulse from the\n  detected tempo instead of the raw onsets — the difference"
+      },
+      "remediation": "Read the description against what the tool actually does. If the text is legitimate, it usually means the tool should not have to instruct the model at all - move the guidance into the parameter descriptions or the server's own docs."
+    },
+    {
+      "detector": "toxic_flow",
+      "severity": "medium",
+      "title": "Toxic flow within 'pinepaper_studio__mcp-server': executes commands + writes or deletes files",
+      "detail": "35 combination(s) exist where one tool executes commands and another writes or deletes files. Neither tool is malicious on its own; together they executes commands and writes files, so the agent can persist a payload for a later session to pick up. Both sides live in the same server, which may well be by design; confirm it.",
+      "server": "pinepaper_studio__mcp-server",
+      "tool": "pinepaper_agent_batch_execute",
+      "location": "pinepaper_studio__mcp-server.pinepaper_agent_batch_execute",
+      "evidence": {
+        "source_capability": "exec",
+        "sink_capability": "write_fs",
+        "cross_server": false,
+        "pair_count": 35,
+        "example": {
+          "source": "pinepaper_studio__mcp-server.pinepaper_agent_batch_execute",
+          "sink": "pinepaper_studio__mcp-server.pinepaper_brand_kit"
+        },
+        "sources": [
+          "pinepaper_studio__mcp-server.pinepaper_agent_batch_execute",
+          "pinepaper_studio__mcp-server.pinepaper_design_medium",
+          "pinepaper_studio__mcp-server.pinepaper_emitter",
+          "pinepaper_studio__mcp-server.pinepaper_execute_custom_code",
+          "pinepaper_studio__mcp-server.pinepaper_query_capabilities",
+          "pinepaper_studio__mcp-server.pinepaper_query_ontology",
+          "pinepaper_studio__mcp-server.pinepaper_render_hook"
+        ],
+        "sinks": [
+          "pinepaper_studio__mcp-server.pinepaper_brand_kit",
+          "pinepaper_studio__mcp-server.pinepaper_export_scene",
+          "pinepaper_studio__mcp-server.pinepaper_export_store",
+          "pinepaper_studio__mcp-server.pinepaper_sound",
+          "pinepaper_studio__mcp-server.pinepaper_text_style"
+        ],
+        "servers": [
+          "pinepaper_studio__mcp-server"
+        ]
+      },
+      "remediation": "Break the path, not the tools: scope the credential so the source tool cannot reach anything valuable, or require explicit user confirmation on the sink tool (destructiveHint / human-in-the-loop), or split the two capabilities across trust boundaries that cannot share a context window."
+    },
+    {
+      "detector": "toxic_flow",
+      "severity": "medium",
+      "title": "Toxic flow within 'pinepaper_studio__mcp-server': reads files + sends data outbound",
+      "detail": "5 combination(s) exist where one tool reads files and another sends data outbound. Neither tool is malicious on its own; together they reads files and can transmit them, so any file the server can reach is reachable by the model, including ones outside the project. Both sides live in the same server, which may well be by design; confirm it.",
+      "server": "pinepaper_studio__mcp-server",
+      "tool": "pinepaper_import_image",
+      "location": "pinepaper_studio__mcp-server.pinepaper_import_image",
+      "evidence": {
+        "source_capability": "read_fs",
+        "sink_capability": "network_out",
+        "cross_server": false,
+        "pair_count": 5,
+        "example": {
+          "source": "pinepaper_studio__mcp-server.pinepaper_import_image",
+          "sink": "pinepaper_studio__mcp-server.pinepaper_beat_cuts"
+        },
+        "sources": [
+          "pinepaper_studio__mcp-server.pinepaper_import_image",
+          "pinepaper_studio__mcp-server.pinepaper_media",
+          "pinepaper_studio__mcp-server.pinepaper_sound"
+        ],
+        "sinks": [
+          "pinepaper_studio__mcp-server.pinepaper_beat_cuts",
+          "pinepaper_studio__mcp-server.pinepaper_media"
+        ],
+        "servers": [
+          "pinepaper_studio__mcp-server"
+        ]
+      },
+      "remediation": "Break the path, not the tools: scope the credential so the source tool cannot reach anything valuable, or require explicit user confirmation on the sink tool (destructiveHint / human-in-the-loop), or split the two capabilities across trust boundaries that cannot share a context window."
+    },
+    {
+      "detector": "drift",
+      "severity": "info",
+      "title": "No baseline supplied - drift detection is disabled",
+      "detail": "Without an approved snapshot the scanner cannot tell a tool that has always been there from one that appeared yesterday. The single most effective MCP control is the diff, and it needs a baseline to diff against.",
+      "server": "*",
+      "tool": null,
+      "location": "*",
+      "evidence": {},
+      "remediation": "Run 'mcp-scrutiny baseline --config <file> --out mcp-baseline.json', commit the file, and pass it back with --baseline on every later scan."
+    }
+  ],
+  "errors": []
+}

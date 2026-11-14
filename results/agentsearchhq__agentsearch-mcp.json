@@ -1,0 +1,123 @@
+{
+  "tool": {
+    "name": "mcp-scrutiny",
+    "version": "0.1.2"
+  },
+  "summary": {
+    "servers": 1,
+    "tools": 8,
+    "findings": 4,
+    "worst_severity": "high",
+    "by_severity": {
+      "info": 1,
+      "low": 0,
+      "medium": 0,
+      "high": 3,
+      "critical": 0
+    }
+  },
+  "servers": [
+    {
+      "name": "agentsearchhq__agentsearch-mcp",
+      "transport": "stdio",
+      "command": "npx",
+      "args": [
+        "-y",
+        "@agentsearchhq/agentsearch-mcp"
+      ],
+      "url": null,
+      "pinned": false,
+      "floating_package": "@agentsearchhq/agentsearch-mcp",
+      "tools": 8
+    }
+  ],
+  "findings": [
+    {
+      "detector": "pinning",
+      "severity": "high",
+      "title": "Unpinned package executed on every start: @agentsearchhq/agentsearch-mcp",
+      "detail": "'agentsearchhq__agentsearch-mcp' launches @agentsearchhq/agentsearch-mcp through npx without a version. The client resolves the version at start time, so any future publish to that package name runs with your credentials. This is how postmark-mcp (Sept 2025) reached roughly 300 organisations.",
+      "server": "agentsearchhq__agentsearch-mcp",
+      "tool": null,
+      "location": "agentsearchhq__agentsearch-mcp",
+      "evidence": {
+        "package": "@agentsearchhq/agentsearch-mcp",
+        "runner": "npx",
+        "auto_confirm": true
+      },
+      "remediation": "Pin an exact version and an integrity hash: \"args\": [\"@agentsearchhq/agentsearch-mcp@<version>\"] and drop the -y flag. Re-pin deliberately, after reviewing the diff."
+    },
+    {
+      "detector": "toxic_flow",
+      "severity": "high",
+      "title": "Toxic flow within 'agentsearchhq__agentsearch-mcp': reads credentials or secrets + sends data outbound",
+      "detail": "3 combination(s) exist where one tool reads credentials or secrets and another sends data outbound. Neither tool is malicious on its own; together they reads credentials and can send data to an address it controls. A single prompt is enough to turn 'summarise this config' into a credential leak. Both sides live in the same server, which may well be by design; confirm it.",
+      "server": "agentsearchhq__agentsearch-mcp",
+      "tool": "agentsearch_review_lookup",
+      "location": "agentsearchhq__agentsearch-mcp.agentsearch_review_lookup",
+      "evidence": {
+        "source_capability": "read_secret",
+        "sink_capability": "network_out",
+        "cross_server": false,
+        "pair_count": 3,
+        "example": {
+          "source": "agentsearchhq__agentsearch-mcp.agentsearch_review_lookup",
+          "sink": "agentsearchhq__agentsearch-mcp.agentsearch_extract"
+        },
+        "sources": [
+          "agentsearchhq__agentsearch-mcp.agentsearch_review_lookup"
+        ],
+        "sinks": [
+          "agentsearchhq__agentsearch-mcp.agentsearch_extract",
+          "agentsearchhq__agentsearch-mcp.agentsearch_render",
+          "agentsearchhq__agentsearch-mcp.agentsearch_web_search"
+        ],
+        "servers": [
+          "agentsearchhq__agentsearch-mcp"
+        ]
+      },
+      "remediation": "Break the path, not the tools: scope the credential so the source tool cannot reach anything valuable, or require explicit user confirmation on the sink tool (destructiveHint / human-in-the-loop), or split the two capabilities across trust boundaries that cannot share a context window."
+    },
+    {
+      "detector": "toxic_flow",
+      "severity": "high",
+      "title": "Toxic flow within 'agentsearchhq__agentsearch-mcp': reads credentials or secrets + sends email or messages",
+      "detail": "1 combination(s) exist where one tool reads credentials or secrets and another sends email or messages. Neither tool is malicious on its own; together they reads credentials and can send mail. This is the postmark-mcp shape: the mail tool was legitimate, the credentials were reachable, and the combination was the incident. Both sides live in the same server, which may well be by design; confirm it.",
+      "server": "agentsearchhq__agentsearch-mcp",
+      "tool": "agentsearch_review_lookup",
+      "location": "agentsearchhq__agentsearch-mcp.agentsearch_review_lookup",
+      "evidence": {
+        "source_capability": "read_secret",
+        "sink_capability": "send_email",
+        "cross_server": false,
+        "pair_count": 1,
+        "example": {
+          "source": "agentsearchhq__agentsearch-mcp.agentsearch_review_lookup",
+          "sink": "agentsearchhq__agentsearch-mcp.agentsearch_render"
+        },
+        "sources": [
+          "agentsearchhq__agentsearch-mcp.agentsearch_review_lookup"
+        ],
+        "sinks": [
+          "agentsearchhq__agentsearch-mcp.agentsearch_render"
+        ],
+        "servers": [
+          "agentsearchhq__agentsearch-mcp"
+        ]
+      },
+      "remediation": "Break the path, not the tools: scope the credential so the source tool cannot reach anything valuable, or require explicit user confirmation on the sink tool (destructiveHint / human-in-the-loop), or split the two capabilities across trust boundaries that cannot share a context window."
+    },
+    {
+      "detector": "drift",
+      "severity": "info",
+      "title": "No baseline supplied - drift detection is disabled",
+      "detail": "Without an approved snapshot the scanner cannot tell a tool that has always been there from one that appeared yesterday. The single most effective MCP control is the diff, and it needs a baseline to diff against.",
+      "server": "*",
+      "tool": null,
+      "location": "*",
+      "evidence": {},
+      "remediation": "Run 'mcp-scrutiny baseline --config <file> --out mcp-baseline.json', commit the file, and pass it back with --baseline on every later scan."
+    }
+  ],
+  "errors": []
+}

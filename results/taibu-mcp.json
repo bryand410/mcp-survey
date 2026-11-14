@@ -1,0 +1,145 @@
+{
+  "tool": {
+    "name": "mcp-scrutiny",
+    "version": "0.1.2"
+  },
+  "summary": {
+    "servers": 1,
+    "tools": 31,
+    "findings": 7,
+    "worst_severity": "high",
+    "by_severity": {
+      "info": 1,
+      "low": 0,
+      "medium": 0,
+      "high": 6,
+      "critical": 0
+    }
+  },
+  "servers": [
+    {
+      "name": "taibu-mcp",
+      "transport": "stdio",
+      "command": "npx",
+      "args": [
+        "-y",
+        "taibu-mcp"
+      ],
+      "url": null,
+      "pinned": false,
+      "floating_package": "taibu-mcp",
+      "tools": 31
+    }
+  ],
+  "findings": [
+    {
+      "detector": "pinning",
+      "severity": "high",
+      "title": "Unpinned package executed on every start: taibu-mcp",
+      "detail": "'taibu-mcp' launches taibu-mcp through npx without a version. The client resolves the version at start time, so any future publish to that package name runs with your credentials. This is how postmark-mcp (Sept 2025) reached roughly 300 organisations.",
+      "server": "taibu-mcp",
+      "tool": null,
+      "location": "taibu-mcp",
+      "evidence": {
+        "package": "taibu-mcp",
+        "runner": "npx",
+        "auto_confirm": true
+      },
+      "remediation": "Pin an exact version and an integrity hash: \"args\": [\"taibu-mcp@<version>\"] and drop the -y flag. Re-pin deliberately, after reviewing the diff."
+    },
+    {
+      "detector": "semantic",
+      "severity": "high",
+      "title": "Mixed-script text in tool description: bazi_dayun",
+      "detail": "'taibu-mcp.bazi_dayun' contains word(s) mixing Latin and non-Latin letters: ['根据出生信息计算起运时间与大运列表，可选输出起运前小运及各步大运的流年。full']. Homoglyphs let a description read correctly to a reviewer while presenting different codepoints to any matcher that looks for specific words.",
+      "server": "taibu-mcp",
+      "tool": "bazi_dayun",
+      "location": "taibu-mcp.bazi_dayun",
+      "evidence": {
+        "mixed_script_words": [
+          "根据出生信息计算起运时间与大运列表，可选输出起运前小运及各步大运的流年。full"
+        ],
+        "confusables": []
+      },
+      "remediation": "Normalise the text to ASCII; confirm the package source is what you think it is."
+    },
+    {
+      "detector": "semantic",
+      "severity": "high",
+      "title": "Mixed-script text in tool description: bazi_liunian_scan",
+      "detail": "'taibu-mcp.bazi_liunian_scan' contains word(s) mixing Latin and non-Latin letters: ['bazi_relations。只给事实，不下吉凶结论。']. Homoglyphs let a description read correctly to a reviewer while presenting different codepoints to any matcher that looks for specific words.",
+      "server": "taibu-mcp",
+      "tool": "bazi_liunian_scan",
+      "location": "taibu-mcp.bazi_liunian_scan",
+      "evidence": {
+        "mixed_script_words": [
+          "bazi_relations。只给事实，不下吉凶结论。"
+        ],
+        "confusables": []
+      },
+      "remediation": "Normalise the text to ASCII; confirm the package source is what you think it is."
+    },
+    {
+      "detector": "semantic",
+      "severity": "high",
+      "title": "Mixed-script text in tool description: bazi_relations",
+      "detail": "'taibu-mcp.bazi_relations' contains word(s) mixing Latin and non-Latin letters: ['dayun。只问某柱或某类关系时用', 'pillars（同时涉及所列各柱）或']. Homoglyphs let a description read correctly to a reviewer while presenting different codepoints to any matcher that looks for specific words.",
+      "server": "taibu-mcp",
+      "tool": "bazi_relations",
+      "location": "taibu-mcp.bazi_relations",
+      "evidence": {
+        "mixed_script_words": [
+          "dayun。只问某柱或某类关系时用",
+          "pillars（同时涉及所列各柱）或"
+        ],
+        "confusables": []
+      },
+      "remediation": "Normalise the text to ASCII; confirm the package source is what you think it is."
+    },
+    {
+      "detector": "semantic",
+      "severity": "high",
+      "title": "Mixed-script text in tool description: load_analysis_method",
+      "detail": "'taibu-mcp.load_analysis_method' contains word(s) mixing Latin and non-Latin letters: ['解读太卜结果前加载对应的方法：该体系、流派或技法的角色、断法、工具流程与输出要求，附解读通则与工具约定；每个体系首次解读前加载一次。id', 'ID，或填刚调用的太卜工具名（得到该体系的默认方法）；同一体系有多个方法时按用户点名的流派选，未点名用与体系同名的默认方法；技法（如出生时辰未知时的推理时柱）在遇到其所述情形时另行加载，与体系方法同用，不代替体系方法。方法：bazi（子平八字）、bazi-mangpai（盲派八字，流派，用户点名时用）、birth-hour（推理时柱，技法，遇到所述情形时与体系方法同用）、past-events（验证前事，技法，遇到所述情形时与体系方法同用）、ziwei（紫微斗数）、liuyao（六爻）、meihua（梅花易数）、qimen（奇门遁甲）、daliuren（大六壬）、xiaoliuren（小六壬）、taiyi（太乙神数）、tarot（塔罗）、astrology（西方占星）、almanac（黄历择日）、dream（周公解梦，无需排盘）。']. Homoglyphs let a description read correctly to a reviewer while presenting different codepoints to any matcher that looks for specific words.",
+      "server": "taibu-mcp",
+      "tool": "load_analysis_method",
+      "location": "taibu-mcp.load_analysis_method",
+      "evidence": {
+        "mixed_script_words": [
+          "解读太卜结果前加载对应的方法：该体系、流派或技法的角色、断法、工具流程与输出要求，附解读通则与工具约定；每个体系首次解读前加载一次。id",
+          "ID，或填刚调用的太卜工具名（得到该体系的默认方法）；同一体系有多个方法时按用户点名的流派选，未点名用与体系同名的默认方法；技法（如出生时辰未知时的推理时柱）在遇到其所述情形时另行加载，与体系方法同用，不代替体系方法。方法：bazi（子平八字）、bazi-mangpai（盲派八字，流派，用户点名时用）、birth-hour（推理时柱，技法，遇到所述情形时与体系方法同用）、past-events（验证前事，技法，遇到所述情形时与体系方法同用）、ziwei（紫微斗数）、liuyao（六爻）、meihua（梅花易数）、qimen（奇门遁甲）、daliuren（大六壬）、xiaoliuren（小六壬）、taiyi（太乙神数）、tarot（塔罗）、astrology（西方占星）、almanac（黄历择日）、dream（周公解梦，无需排盘）。"
+        ],
+        "confusables": []
+      },
+      "remediation": "Normalise the text to ASCII; confirm the package source is what you think it is."
+    },
+    {
+      "detector": "semantic",
+      "severity": "high",
+      "title": "Mixed-script text in tool description: ziwei_palace",
+      "detail": "'taibu-mcp.ziwei_palace' contains word(s) mixing Latin and non-Latin letters: ['ziwei_flying_star。只给事实，不下吉凶结论。']. Homoglyphs let a description read correctly to a reviewer while presenting different codepoints to any matcher that looks for specific words.",
+      "server": "taibu-mcp",
+      "tool": "ziwei_palace",
+      "location": "taibu-mcp.ziwei_palace",
+      "evidence": {
+        "mixed_script_words": [
+          "ziwei_flying_star。只给事实，不下吉凶结论。"
+        ],
+        "confusables": []
+      },
+      "remediation": "Normalise the text to ASCII; confirm the package source is what you think it is."
+    },
+    {
+      "detector": "drift",
+      "severity": "info",
+      "title": "No baseline supplied - drift detection is disabled",
+      "detail": "Without an approved snapshot the scanner cannot tell a tool that has always been there from one that appeared yesterday. The single most effective MCP control is the diff, and it needs a baseline to diff against.",
+      "server": "*",
+      "tool": null,
+      "location": "*",
+      "evidence": {},
+      "remediation": "Run 'mcp-scrutiny baseline --config <file> --out mcp-baseline.json', commit the file, and pass it back with --baseline on every later scan."
+    }
+  ],
+  "errors": []
+}

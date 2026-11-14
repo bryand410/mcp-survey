@@ -1,0 +1,65 @@
+{
+  "tool": {
+    "name": "mcp-scrutiny",
+    "version": "0.1.2"
+  },
+  "summary": {
+    "servers": 1,
+    "tools": 0,
+    "findings": 2,
+    "worst_severity": "high",
+    "by_severity": {
+      "info": 1,
+      "low": 0,
+      "medium": 0,
+      "high": 1,
+      "critical": 0
+    }
+  },
+  "servers": [
+    {
+      "name": "absmartly__mcp",
+      "transport": "stdio",
+      "command": "npx",
+      "args": [
+        "-y",
+        "@absmartly/mcp"
+      ],
+      "url": null,
+      "pinned": false,
+      "floating_package": "@absmartly/mcp",
+      "tools": 0
+    }
+  ],
+  "findings": [
+    {
+      "detector": "pinning",
+      "severity": "high",
+      "title": "Unpinned package executed on every start: @absmartly/mcp",
+      "detail": "'absmartly__mcp' launches @absmartly/mcp through npx without a version. The client resolves the version at start time, so any future publish to that package name runs with your credentials. This is how postmark-mcp (Sept 2025) reached roughly 300 organisations.",
+      "server": "absmartly__mcp",
+      "tool": null,
+      "location": "absmartly__mcp",
+      "evidence": {
+        "package": "@absmartly/mcp",
+        "runner": "npx",
+        "auto_confirm": true
+      },
+      "remediation": "Pin an exact version and an integrity hash: \"args\": [\"@absmartly/mcp@<version>\"] and drop the -y flag. Re-pin deliberately, after reviewing the diff."
+    },
+    {
+      "detector": "drift",
+      "severity": "info",
+      "title": "No baseline supplied - drift detection is disabled",
+      "detail": "Without an approved snapshot the scanner cannot tell a tool that has always been there from one that appeared yesterday. The single most effective MCP control is the diff, and it needs a baseline to diff against.",
+      "server": "*",
+      "tool": null,
+      "location": "*",
+      "evidence": {},
+      "remediation": "Run 'mcp-scrutiny baseline --config <file> --out mcp-baseline.json', commit the file, and pass it back with --baseline on every later scan."
+    }
+  ],
+  "errors": [
+    "absmartly__mcp: the server exited with status 1 before answering initialize; stderr: npm warn deprecated prebuild-install@7.1.3: No longer maintained. Please contact the author of the relevant native addon; alternatives are available. | npm warn deprecated axios-retry@4.5.0: axios-retry is no longer maintained. See https://github.com/softonic/axios-retry for alternatives. | @absmartly/mcp: @absmartly/cli 1.18.0 is loaded, but the path guard table was generated from 1.17.1. Path arguments are checked by type only (unsafe strings and numbers are refused); install @absmartly/cli 1.17.1 for exact checks. | Fatal error: Error: ABsmartly CLI config not found at /home/runner/.config/absmartly/config.yaml. Run 'absmartly login' first. |     at readProfileConfig (file:///home/runner/.npm/_npx/ebb9facf765f2fdc/node_modules/@absmartly/mcp/dist/local-server.js:51:15) |     at main (file:///home/runner/.npm/_npx/ebb9facf765f2fdc/node_modules/@absmartly/mcp/dist/local-server.js:104:20) |     at file:///home/runner/.npm/_npx/ebb9facf765f2fdc/node_modules/@absmartly/mcp/dist/local-server.js:127:1 |     at ModuleJob.run (node:internal/modules/esm/module_job:343:25) |     at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:681:26) |     at async file:///home/runner/.npm/_npx/ebb9facf765f2fdc/node_modules/@absmartly/mcp/bin/absmartly-mcp.mjs:18:1"
+  ]
+}

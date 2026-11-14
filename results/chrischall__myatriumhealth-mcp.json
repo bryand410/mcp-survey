@@ -1,0 +1,208 @@
+{
+  "tool": {
+    "name": "mcp-scrutiny",
+    "version": "0.1.2"
+  },
+  "summary": {
+    "servers": 1,
+    "tools": 24,
+    "findings": 6,
+    "worst_severity": "high",
+    "by_severity": {
+      "info": 1,
+      "low": 0,
+      "medium": 1,
+      "high": 4,
+      "critical": 0
+    }
+  },
+  "servers": [
+    {
+      "name": "chrischall__myatriumhealth-mcp",
+      "transport": "stdio",
+      "command": "npx",
+      "args": [
+        "-y",
+        "@chrischall/myatriumhealth-mcp"
+      ],
+      "url": null,
+      "pinned": false,
+      "floating_package": "@chrischall/myatriumhealth-mcp",
+      "tools": 24
+    }
+  ],
+  "findings": [
+    {
+      "detector": "pinning",
+      "severity": "high",
+      "title": "Unpinned package executed on every start: @chrischall/myatriumhealth-mcp",
+      "detail": "'chrischall__myatriumhealth-mcp' launches @chrischall/myatriumhealth-mcp through npx without a version. The client resolves the version at start time, so any future publish to that package name runs with your credentials. This is how postmark-mcp (Sept 2025) reached roughly 300 organisations.",
+      "server": "chrischall__myatriumhealth-mcp",
+      "tool": null,
+      "location": "chrischall__myatriumhealth-mcp",
+      "evidence": {
+        "package": "@chrischall/myatriumhealth-mcp",
+        "runner": "npx",
+        "auto_confirm": true
+      },
+      "remediation": "Pin an exact version and an integrity hash: \"args\": [\"@chrischall/myatriumhealth-mcp@<version>\"] and drop the -y flag. Re-pin deliberately, after reviewing the diff."
+    },
+    {
+      "detector": "semantic",
+      "severity": "high",
+      "title": "Description reads as instructions to the model (p=0.98): mah_upload_slots",
+      "detail": "The description of 'chrischall__myatriumhealth-mcp.mah_upload_slots' scores 0.98 on the instruction-detection model, and carries intent signals: exfiltration. Descriptions are documentation for a human, but they are delivered to the model as trusted context, so text that tells the model what to do is an attack surface rather than a description. The score is driven mainly by: exfiltration, entropy, log_len.",
+      "server": "chrischall__myatriumhealth-mcp",
+      "tool": "mah_upload_slots",
+      "location": "chrischall__myatriumhealth-mcp.mah_upload_slots",
+      "evidence": {
+        "probability": 0.9848,
+        "threshold": 0.5,
+        "intent_signals": [
+          "exfiltration"
+        ],
+        "driving_features": [
+          {
+            "feature": "exfiltration",
+            "contribution": 6.3381
+          },
+          {
+            "feature": "log_words",
+            "contribution": -3.0047
+          },
+          {
+            "feature": "entropy",
+            "contribution": 2.1473
+          },
+          {
+            "feature": "log_len",
+            "contribution": 1.3193
+          },
+          {
+            "feature": "hardcoded_recipient",
+            "contribution": -1.2458
+          },
+          {
+            "feature": "concealment",
+            "contribution": -0.8605
+          }
+        ],
+        "active_features": {
+          "log_len": 6.493753839851687,
+          "log_words": 4.718498871295094,
+          "entropy": 4.448789039054373,
+          "non_ascii_ratio": 0.0015151515151515152,
+          "exfiltration": 1.0,
+          "imperative_density": 0.009009009009009009,
+          "schema_nested_desc": 1.0
+        },
+        "description": "Hosted deployments: get signed upload URLs for files to attach to a mah_reply_message reply, one per file, so the bytes never ride inside a tool call. Sends nothing and touches nothing in the portal. PUT each file to its uploadUrl with the slot's Content-Type (each slot carries a ready curl command), then pass the returned blobKeys to mah_reply_message. Use this for anything but a tiny file. Accepts the portal's file types (PDF, image, Word, video); the portal's per-reply count and size limits a"
+      },
+      "remediation": "Read the description against what the tool actually does. If the text is legitimate, it usually means the tool should not have to instruct the model at all - move the guidance into the parameter descriptions or the server's own docs."
+    },
+    {
+      "detector": "toxic_flow",
+      "severity": "high",
+      "title": "Toxic flow within 'chrischall__myatriumhealth-mcp': reads credentials or secrets + sends data outbound",
+      "detail": "1 combination(s) exist where one tool reads credentials or secrets and another sends data outbound. Neither tool is malicious on its own; together they reads credentials and can send data to an address it controls. A single prompt is enough to turn 'summarise this config' into a credential leak. Both sides live in the same server, which may well be by design; confirm it.",
+      "server": "chrischall__myatriumhealth-mcp",
+      "tool": "mah_healthcheck",
+      "location": "chrischall__myatriumhealth-mcp.mah_healthcheck",
+      "evidence": {
+        "source_capability": "read_secret",
+        "sink_capability": "network_out",
+        "cross_server": false,
+        "pair_count": 1,
+        "example": {
+          "source": "chrischall__myatriumhealth-mcp.mah_healthcheck",
+          "sink": "chrischall__myatriumhealth-mcp.mah_upload_slots"
+        },
+        "sources": [
+          "chrischall__myatriumhealth-mcp.mah_healthcheck"
+        ],
+        "sinks": [
+          "chrischall__myatriumhealth-mcp.mah_upload_slots"
+        ],
+        "servers": [
+          "chrischall__myatriumhealth-mcp"
+        ]
+      },
+      "remediation": "Break the path, not the tools: scope the credential so the source tool cannot reach anything valuable, or require explicit user confirmation on the sink tool (destructiveHint / human-in-the-loop), or split the two capabilities across trust boundaries that cannot share a context window."
+    },
+    {
+      "detector": "toxic_flow",
+      "severity": "high",
+      "title": "Toxic flow within 'chrischall__myatriumhealth-mcp': reads credentials or secrets + sends email or messages",
+      "detail": "3 combination(s) exist where one tool reads credentials or secrets and another sends email or messages. Neither tool is malicious on its own; together they reads credentials and can send mail. This is the postmark-mcp shape: the mail tool was legitimate, the credentials were reachable, and the combination was the incident. Both sides live in the same server, which may well be by design; confirm it.",
+      "server": "chrischall__myatriumhealth-mcp",
+      "tool": "mah_healthcheck",
+      "location": "chrischall__myatriumhealth-mcp.mah_healthcheck",
+      "evidence": {
+        "source_capability": "read_secret",
+        "sink_capability": "send_email",
+        "cross_server": false,
+        "pair_count": 3,
+        "example": {
+          "source": "chrischall__myatriumhealth-mcp.mah_healthcheck",
+          "sink": "chrischall__myatriumhealth-mcp.mah_list_message_folders"
+        },
+        "sources": [
+          "chrischall__myatriumhealth-mcp.mah_healthcheck"
+        ],
+        "sinks": [
+          "chrischall__myatriumhealth-mcp.mah_list_message_folders",
+          "chrischall__myatriumhealth-mcp.mah_list_messages",
+          "chrischall__myatriumhealth-mcp.mah_reply_message"
+        ],
+        "servers": [
+          "chrischall__myatriumhealth-mcp"
+        ]
+      },
+      "remediation": "Break the path, not the tools: scope the credential so the source tool cannot reach anything valuable, or require explicit user confirmation on the sink tool (destructiveHint / human-in-the-loop), or split the two capabilities across trust boundaries that cannot share a context window."
+    },
+    {
+      "detector": "toxic_flow",
+      "severity": "medium",
+      "title": "Toxic flow within 'chrischall__myatriumhealth-mcp': reads files + sends data outbound",
+      "detail": "3 combination(s) exist where one tool reads files and another sends data outbound. Neither tool is malicious on its own; together they reads files and can transmit them, so any file the server can reach is reachable by the model, including ones outside the project. Both sides live in the same server, which may well be by design; confirm it.",
+      "server": "chrischall__myatriumhealth-mcp",
+      "tool": "mah_list_insurance",
+      "location": "chrischall__myatriumhealth-mcp.mah_list_insurance",
+      "evidence": {
+        "source_capability": "read_fs",
+        "sink_capability": "network_out",
+        "cross_server": false,
+        "pair_count": 3,
+        "example": {
+          "source": "chrischall__myatriumhealth-mcp.mah_list_insurance",
+          "sink": "chrischall__myatriumhealth-mcp.mah_upload_slots"
+        },
+        "sources": [
+          "chrischall__myatriumhealth-mcp.mah_list_insurance",
+          "chrischall__myatriumhealth-mcp.mah_list_message_folders",
+          "chrischall__myatriumhealth-mcp.mah_list_messages",
+          "chrischall__myatriumhealth-mcp.mah_upload_slots"
+        ],
+        "sinks": [
+          "chrischall__myatriumhealth-mcp.mah_upload_slots"
+        ],
+        "servers": [
+          "chrischall__myatriumhealth-mcp"
+        ]
+      },
+      "remediation": "Break the path, not the tools: scope the credential so the source tool cannot reach anything valuable, or require explicit user confirmation on the sink tool (destructiveHint / human-in-the-loop), or split the two capabilities across trust boundaries that cannot share a context window."
+    },
+    {
+      "detector": "drift",
+      "severity": "info",
+      "title": "No baseline supplied - drift detection is disabled",
+      "detail": "Without an approved snapshot the scanner cannot tell a tool that has always been there from one that appeared yesterday. The single most effective MCP control is the diff, and it needs a baseline to diff against.",
+      "server": "*",
+      "tool": null,
+      "location": "*",
+      "evidence": {},
+      "remediation": "Run 'mcp-scrutiny baseline --config <file> --out mcp-baseline.json', commit the file, and pass it back with --baseline on every later scan."
+    }
+  ],
+  "errors": []
+}

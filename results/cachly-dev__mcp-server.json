@@ -1,0 +1,144 @@
+{
+  "tool": {
+    "name": "mcp-scrutiny",
+    "version": "0.1.2"
+  },
+  "summary": {
+    "servers": 1,
+    "tools": 27,
+    "findings": 4,
+    "worst_severity": "high",
+    "by_severity": {
+      "info": 1,
+      "low": 0,
+      "medium": 0,
+      "high": 3,
+      "critical": 0
+    }
+  },
+  "servers": [
+    {
+      "name": "cachly-dev__mcp-server",
+      "transport": "stdio",
+      "command": "npx",
+      "args": [
+        "-y",
+        "@cachly-dev/mcp-server"
+      ],
+      "url": null,
+      "pinned": false,
+      "floating_package": "@cachly-dev/mcp-server",
+      "tools": 27
+    }
+  ],
+  "findings": [
+    {
+      "detector": "pinning",
+      "severity": "high",
+      "title": "Unpinned package executed on every start: @cachly-dev/mcp-server",
+      "detail": "'cachly-dev__mcp-server' launches @cachly-dev/mcp-server through npx without a version. The client resolves the version at start time, so any future publish to that package name runs with your credentials. This is how postmark-mcp (Sept 2025) reached roughly 300 organisations.",
+      "server": "cachly-dev__mcp-server",
+      "tool": null,
+      "location": "cachly-dev__mcp-server",
+      "evidence": {
+        "package": "@cachly-dev/mcp-server",
+        "runner": "npx",
+        "auto_confirm": true
+      },
+      "remediation": "Pin an exact version and an integrity hash: \"args\": [\"@cachly-dev/mcp-server@<version>\"] and drop the -y flag. Re-pin deliberately, after reviewing the diff."
+    },
+    {
+      "detector": "semantic",
+      "severity": "high",
+      "title": "Description reads as instructions to the model (p=0.81): recall_best_solution",
+      "detail": "The description of 'cachly-dev__mcp-server.recall_best_solution' scores 0.81 on the instruction-detection model, and carries intent signals: hidden_unicode. Descriptions are documentation for a human, but they are delivered to the model as trusted context, so text that tells the model what to do is an attack surface rather than a description. The score is driven mainly by: hidden_unicode, entropy, log_len, imperative_density.",
+      "server": "cachly-dev__mcp-server",
+      "tool": "recall_best_solution",
+      "location": "cachly-dev__mcp-server.recall_best_solution",
+      "evidence": {
+        "probability": 0.809,
+        "threshold": 0.5,
+        "intent_signals": [
+          "hidden_unicode"
+        ],
+        "driving_features": [
+          {
+            "feature": "hidden_unicode",
+            "contribution": 3.0886
+          },
+          {
+            "feature": "log_words",
+            "contribution": -2.8151
+          },
+          {
+            "feature": "entropy",
+            "contribution": 2.6017
+          },
+          {
+            "feature": "log_len",
+            "contribution": 1.285
+          },
+          {
+            "feature": "hardcoded_recipient",
+            "contribution": -1.2458
+          },
+          {
+            "feature": "imperative_density",
+            "contribution": 0.9206
+          }
+        ],
+        "active_features": {
+          "log_len": 6.448889394146858,
+          "log_words": 4.605170185988092,
+          "entropy": 4.506568310191771,
+          "non_ascii_ratio": 0.006339144215530904,
+          "hidden_unicode": 1.0,
+          "schema_nested_desc": 3.0
+        },
+        "description": "Recall the best known solution for a topic from past lessons. Call this BEFORE attempting any task that might have been done before. Returns the most recent successful lesson for the topic, with confidence indicator. ⚠️ badge = lesson is >5d old (verify before applying). 🔴 = >10d old (likely stale!). Recalling a lesson resets its confidence clock to 1.0 (marks as recently verified). A superseded lesson shows a banner naming its successor; if the successor was deleted, the banner says so and the "
+      },
+      "remediation": "Read the description against what the tool actually does. If the text is legitimate, it usually means the tool should not have to instruct the model at all - move the guidance into the parameter descriptions or the server's own docs."
+    },
+    {
+      "detector": "toxic_flow",
+      "severity": "high",
+      "title": "Toxic flow within 'cachly-dev__mcp-server': reads credentials or secrets + sends email or messages",
+      "detail": "1 combination(s) exist where one tool reads credentials or secrets and another sends email or messages. Neither tool is malicious on its own; together they reads credentials and can send mail. This is the postmark-mcp shape: the mail tool was legitimate, the credentials were reachable, and the combination was the incident. Both sides live in the same server, which may well be by design; confirm it.",
+      "server": "cachly-dev__mcp-server",
+      "tool": "semantic_search",
+      "location": "cachly-dev__mcp-server.semantic_search",
+      "evidence": {
+        "source_capability": "read_secret",
+        "sink_capability": "send_email",
+        "cross_server": false,
+        "pair_count": 1,
+        "example": {
+          "source": "cachly-dev__mcp-server.semantic_search",
+          "sink": "cachly-dev__mcp-server.causal_trace"
+        },
+        "sources": [
+          "cachly-dev__mcp-server.semantic_search"
+        ],
+        "sinks": [
+          "cachly-dev__mcp-server.causal_trace"
+        ],
+        "servers": [
+          "cachly-dev__mcp-server"
+        ]
+      },
+      "remediation": "Break the path, not the tools: scope the credential so the source tool cannot reach anything valuable, or require explicit user confirmation on the sink tool (destructiveHint / human-in-the-loop), or split the two capabilities across trust boundaries that cannot share a context window."
+    },
+    {
+      "detector": "drift",
+      "severity": "info",
+      "title": "No baseline supplied - drift detection is disabled",
+      "detail": "Without an approved snapshot the scanner cannot tell a tool that has always been there from one that appeared yesterday. The single most effective MCP control is the diff, and it needs a baseline to diff against.",
+      "server": "*",
+      "tool": null,
+      "location": "*",
+      "evidence": {},
+      "remediation": "Run 'mcp-scrutiny baseline --config <file> --out mcp-baseline.json', commit the file, and pass it back with --baseline on every later scan."
+    }
+  ],
+  "errors": []
+}

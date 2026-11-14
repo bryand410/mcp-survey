@@ -1,0 +1,2989 @@
+{
+  "tool": {
+    "name": "mcp-scrutiny",
+    "version": "0.1.2"
+  },
+  "summary": {
+    "servers": 1,
+    "tools": 127,
+    "findings": 124,
+    "worst_severity": "high",
+    "by_severity": {
+      "info": 1,
+      "low": 0,
+      "medium": 0,
+      "high": 123,
+      "critical": 0
+    }
+  },
+  "servers": [
+    {
+      "name": "gangtise-mcp",
+      "transport": "stdio",
+      "command": "npx",
+      "args": [
+        "-y",
+        "gangtise-mcp"
+      ],
+      "url": null,
+      "pinned": false,
+      "floating_package": "gangtise-mcp",
+      "tools": 127
+    }
+  ],
+  "findings": [
+    {
+      "detector": "pinning",
+      "severity": "high",
+      "title": "Unpinned package executed on every start: gangtise-mcp",
+      "detail": "'gangtise-mcp' launches gangtise-mcp through npx without a version. The client resolves the version at start time, so any future publish to that package name runs with your credentials. This is how postmark-mcp (Sept 2025) reached roughly 300 organisations.",
+      "server": "gangtise-mcp",
+      "tool": null,
+      "location": "gangtise-mcp",
+      "evidence": {
+        "package": "gangtise-mcp",
+        "runner": "npx",
+        "auto_confirm": true
+      },
+      "remediation": "Pin an exact version and an integrity hash: \"args\": [\"gangtise-mcp@<version>\"] and drop the -y flag. Re-pin deliberately, after reviewing the diff."
+    },
+    {
+      "detector": "semantic",
+      "severity": "high",
+      "title": "Mixed-script text in tool description: gangtise_announcement_list",
+      "detail": "'gangtise-mcp.gangtise_announcement_list' contains word(s) mixing Latin and non-Latin letters: ['查询公告列表（A股', 'market。【积分：0.1/条】']. Homoglyphs let a description read correctly to a reviewer while presenting different codepoints to any matcher that looks for specific words.",
+      "server": "gangtise-mcp",
+      "tool": "gangtise_announcement_list",
+      "location": "gangtise-mcp.gangtise_announcement_list",
+      "evidence": {
+        "mixed_script_words": [
+          "查询公告列表（A股",
+          "market。【积分：0.1/条】"
+        ],
+        "confusables": []
+      },
+      "remediation": "Normalise the text to ASCII; confirm the package source is what you think it is."
+    },
+    {
+      "detector": "semantic",
+      "severity": "high",
+      "title": "Mixed-script text in tool description: gangtise_balance_sheet",
+      "detail": "'gangtise-mcp.gangtise_balance_sheet' contains word(s) mixing Latin and non-Latin letters: ['查询资产负债表，按代码后缀自动选市场：A股、港股（中国会计准则）、美股；支持期间、财年、报告类型筛选。做', '时点对齐时，announcementDate', '是当前返回报表版本的公告日，earliestAnncDate', '是接口记录的首次公告日。consolidated', '就当成首次披露值；category']. Homoglyphs let a description read correctly to a reviewer while presenting different codepoints to any matcher that looks for specific words.",
+      "server": "gangtise-mcp",
+      "tool": "gangtise_balance_sheet",
+      "location": "gangtise-mcp.gangtise_balance_sheet",
+      "evidence": {
+        "mixed_script_words": [
+          "查询资产负债表，按代码后缀自动选市场：A股、港股（中国会计准则）、美股；支持期间、财年、报告类型筛选。做",
+          "时点对齐时，announcementDate",
+          "是当前返回报表版本的公告日，earliestAnncDate",
+          "是接口记录的首次公告日。consolidated",
+          "就当成首次披露值；category"
+        ],
+        "confusables": []
+      },
+      "remediation": "Normalise the text to ASCII; confirm the package source is what you think it is."
+    },
+    {
+      "detector": "semantic",
+      "severity": "high",
+      "title": "Mixed-script text in tool description: gangtise_bond_announcement_list",
+      "detail": "'gangtise-mcp.gangtise_bond_announcement_list' contains word(s) mixing Latin and non-Latin letters: ['起自动翻到空页（pageSize', 'pageSize=200。每页按次计费。securityList']. Homoglyphs let a description read correctly to a reviewer while presenting different codepoints to any matcher that looks for specific words.",
+      "server": "gangtise-mcp",
+      "tool": "gangtise_bond_announcement_list",
+      "location": "gangtise-mcp.gangtise_bond_announcement_list",
+      "evidence": {
+        "mixed_script_words": [
+          "起自动翻到空页（pageSize",
+          "pageSize=200。每页按次计费。securityList"
+        ],
+        "confusables": []
+      },
+      "remediation": "Normalise the text to ASCII; confirm the package source is what you think it is."
+    },
+    {
+      "detector": "semantic",
+      "severity": "high",
+      "title": "Mixed-script text in tool description: gangtise_bond_basic_info",
+      "detail": "'gangtise-mcp.gangtise_bond_basic_info' contains word(s) mixing Latin and non-Latin letters: ['查询债券基本资料（静态档案，无历史快照）：发行、期限、票息、评级、担保、特殊条款，ABS', 'latestParValue；剩余期限按', 'actualMaturityDate（含提前赎回']. Homoglyphs let a description read correctly to a reviewer while presenting different codepoints to any matcher that looks for specific words.",
+      "server": "gangtise-mcp",
+      "tool": "gangtise_bond_basic_info",
+      "location": "gangtise-mcp.gangtise_bond_basic_info",
+      "evidence": {
+        "mixed_script_words": [
+          "查询债券基本资料（静态档案，无历史快照）：发行、期限、票息、评级、担保、特殊条款，ABS",
+          "latestParValue；剩余期限按",
+          "actualMaturityDate（含提前赎回"
+        ],
+        "confusables": []
+      },
+      "remediation": "Normalise the text to ASCII; confirm the package source is what you think it is."
+    },
+    {
+      "detector": "semantic",
+      "severity": "high",
+      "title": "Mixed-script text in tool description: gangtise_bond_cash_flow",
+      "detail": "'gangtise-mcp.gangtise_bond_cash_flow' contains word(s) mixing Latin and non-Latin letters: ['查询债券付息与兑付计划。startDate']. Homoglyphs let a description read correctly to a reviewer while presenting different codepoints to any matcher that looks for specific words.",
+      "server": "gangtise-mcp",
+      "tool": "gangtise_bond_cash_flow",
+      "location": "gangtise-mcp.gangtise_bond_cash_flow",
+      "evidence": {
+        "mixed_script_words": [
+          "查询债券付息与兑付计划。startDate"
+        ],
+        "confusables": []
+      },
+      "remediation": "Normalise the text to ASCII; confirm the package source is what you think it is."
+    },
+    {
+      "detector": "semantic",
+      "severity": "high",
+      "title": "Mixed-script text in tool description: gangtise_bond_daily_quote",
+      "detail": "'gangtise-mcp.gangtise_bond_daily_quote' contains word(s) mixing Latin and non-Latin letters: ['银行间）：全价、净价、到期收益率、成交、久期、凸性。没有数据的代码不产生行。startDate', '_note。【积分：0.4/次】']. Homoglyphs let a description read correctly to a reviewer while presenting different codepoints to any matcher that looks for specific words.",
+      "server": "gangtise-mcp",
+      "tool": "gangtise_bond_daily_quote",
+      "location": "gangtise-mcp.gangtise_bond_daily_quote",
+      "evidence": {
+        "mixed_script_words": [
+          "银行间）：全价、净价、到期收益率、成交、久期、凸性。没有数据的代码不产生行。startDate",
+          "_note。【积分：0.4/次】"
+        ],
+        "confusables": []
+      },
+      "remediation": "Normalise the text to ASCII; confirm the package source is what you think it is."
+    },
+    {
+      "detector": "semantic",
+      "severity": "high",
+      "title": "Description reads as instructions to the model (p=1.00): gangtise_bond_default_list",
+      "detail": "The description of 'gangtise-mcp.gangtise_bond_default_list' scores 1.00 on the instruction-detection model, and carries intent signals: hidden_unicode. Descriptions are documentation for a human, but they are delivered to the model as trusted context, so text that tells the model what to do is an attack surface rather than a description. The score is driven mainly by: entropy, hidden_unicode, imperative_density.",
+      "server": "gangtise-mcp",
+      "tool": "gangtise_bond_default_list",
+      "location": "gangtise-mcp.gangtise_bond_default_list",
+      "evidence": {
+        "probability": 1.0,
+        "threshold": 0.5,
+        "intent_signals": [
+          "hidden_unicode"
+        ],
+        "driving_features": [
+          {
+            "feature": "entropy",
+            "contribution": 16.8925
+          },
+          {
+            "feature": "hidden_unicode",
+            "contribution": 3.0886
+          },
+          {
+            "feature": "non_ascii_ratio",
+            "contribution": -2.2815
+          },
+          {
+            "feature": "hardcoded_recipient",
+            "contribution": -1.2458
+          },
+          {
+            "feature": "imperative_density",
+            "contribution": 0.9206
+          },
+          {
+            "feature": "concealment",
+            "contribution": -0.8605
+          }
+        ],
+        "active_features": {
+          "log_len": 5.58724865840025,
+          "log_words": 2.639057329615259,
+          "entropy": 6.323791475054751,
+          "non_ascii_ratio": 0.6390977443609023,
+          "hidden_unicode": 1.0,
+          "schema_nested_desc": 3.0
+        },
+        "description": "查询违约债券：简称、违约日期、违约金额 defaultAmount（亿元）、发行人全称、违约原因。按违约日期区间（startDate 与 endDate 都给、不超过 1 年）、securityList 或 issuerNameList 三选一；同一只债券每次违约一行，按违约日期降序。没有违约记录的代码不产生行。⚠️ issuerNameList 一次一个、用全称：简称只返回最匹配的一家主体（「上海世茂」只返回上海世茂建设有限公司，同有违约的上海世茂股份有限公司不在其中），核对返回的 issuerName。【积分：0.4/次】"
+      },
+      "remediation": "Read the description against what the tool actually does. If the text is legitimate, it usually means the tool should not have to instruct the model at all - move the guidance into the parameter descriptions or the server's own docs."
+    },
+    {
+      "detector": "semantic",
+      "severity": "high",
+      "title": "Mixed-script text in tool description: gangtise_bond_default_list",
+      "detail": "'gangtise-mcp.gangtise_bond_default_list' contains word(s) mixing Latin and non-Latin letters: ['defaultAmount（亿元）、发行人全称、违约原因。按违约日期区间（startDate', '年）、securityList', 'issuerName。【积分：0.4/次】']. Homoglyphs let a description read correctly to a reviewer while presenting different codepoints to any matcher that looks for specific words.",
+      "server": "gangtise-mcp",
+      "tool": "gangtise_bond_default_list",
+      "location": "gangtise-mcp.gangtise_bond_default_list",
+      "evidence": {
+        "mixed_script_words": [
+          "defaultAmount（亿元）、发行人全称、违约原因。按违约日期区间（startDate",
+          "年）、securityList",
+          "issuerName。【积分：0.4/次】"
+        ],
+        "confusables": []
+      },
+      "remediation": "Normalise the text to ASCII; confirm the package source is what you think it is."
+    },
+    {
+      "detector": "semantic",
+      "severity": "high",
+      "title": "Mixed-script text in tool description: gangtise_bond_exercise_notice",
+      "detail": "'gangtise-mcp.gangtise_bond_exercise_notice' contains word(s) mixing Latin and non-Latin letters: ['赎回行权安排与结果。startDate']. Homoglyphs let a description read correctly to a reviewer while presenting different codepoints to any matcher that looks for specific words.",
+      "server": "gangtise-mcp",
+      "tool": "gangtise_bond_exercise_notice",
+      "location": "gangtise-mcp.gangtise_bond_exercise_notice",
+      "evidence": {
+        "mixed_script_words": [
+          "赎回行权安排与结果。startDate"
+        ],
+        "confusables": []
+      },
+      "remediation": "Normalise the text to ASCII; confirm the package source is what you think it is."
+    },
+    {
+      "detector": "semantic",
+      "severity": "high",
+      "title": "Mixed-script text in tool description: gangtise_bond_issuance_detail",
+      "detail": "'gangtise-mcp.gangtise_bond_issuance_detail' contains word(s) mixing Latin and non-Latin letters: ['查询债券发行与续发记录：招投标、定价、认购倍数。startDate']. Homoglyphs let a description read correctly to a reviewer while presenting different codepoints to any matcher that looks for specific words.",
+      "server": "gangtise-mcp",
+      "tool": "gangtise_bond_issuance_detail",
+      "location": "gangtise-mcp.gangtise_bond_issuance_detail",
+      "evidence": {
+        "mixed_script_words": [
+          "查询债券发行与续发记录：招投标、定价、认购倍数。startDate"
+        ],
+        "confusables": []
+      },
+      "remediation": "Normalise the text to ASCII; confirm the package source is what you think it is."
+    },
+    {
+      "detector": "semantic",
+      "severity": "high",
+      "title": "Description reads as instructions to the model (p=1.00): gangtise_bond_issuance_plan",
+      "detail": "The description of 'gangtise-mcp.gangtise_bond_issuance_plan' scores 1.00 on the instruction-detection model, and carries intent signals: hidden_unicode. Descriptions are documentation for a human, but they are delivered to the model as trusted context, so text that tells the model what to do is an attack surface rather than a description. The score is driven mainly by: entropy, hidden_unicode, imperative_density, log_words.",
+      "server": "gangtise-mcp",
+      "tool": "gangtise_bond_issuance_plan",
+      "location": "gangtise-mcp.gangtise_bond_issuance_plan",
+      "evidence": {
+        "probability": 1.0,
+        "threshold": 0.5,
+        "intent_signals": [
+          "hidden_unicode"
+        ],
+        "driving_features": [
+          {
+            "feature": "entropy",
+            "contribution": 15.9267
+          },
+          {
+            "feature": "hidden_unicode",
+            "contribution": 3.0886
+          },
+          {
+            "feature": "non_ascii_ratio",
+            "contribution": -1.6616
+          },
+          {
+            "feature": "hardcoded_recipient",
+            "contribution": -1.2458
+          },
+          {
+            "feature": "imperative_density",
+            "contribution": 0.9206
+          },
+          {
+            "feature": "log_words",
+            "contribution": 0.8771
+          }
+        ],
+        "active_features": {
+          "log_len": 5.537334267018537,
+          "log_words": 2.3978952727983707,
+          "entropy": 6.200977693695103,
+          "non_ascii_ratio": 0.466403162055336,
+          "hidden_unicode": 1.0,
+          "schema_nested_desc": 1.0
+        },
+        "description": "查询利率债发行计划：发行人、品种、期限、计划发行量、利率类型、付息频率。只按日期区间查，不收债券码。⚠️ 返回的 bondType 是利率债子类型（gangtise_constant_list category=interestBondSubtype），与 gangtise_bond_basic_info 的 bondType（category=bondType）不是同一套码。startDate 早于账号可回溯的下界时整批报 110003（不会只返回窗口内那段），把起点往后挪再查。【积分：0.4/次】"
+      },
+      "remediation": "Read the description against what the tool actually does. If the text is legitimate, it usually means the tool should not have to instruct the model at all - move the guidance into the parameter descriptions or the server's own docs."
+    },
+    {
+      "detector": "semantic",
+      "severity": "high",
+      "title": "Mixed-script text in tool description: gangtise_bond_issuance_plan",
+      "detail": "'gangtise-mcp.gangtise_bond_issuance_plan' contains word(s) mixing Latin and non-Latin letters: ['是利率债子类型（gangtise_constant_list', 'category=interestBondSubtype），与', 'bondType（category=bondType）不是同一套码。startDate']. Homoglyphs let a description read correctly to a reviewer while presenting different codepoints to any matcher that looks for specific words.",
+      "server": "gangtise-mcp",
+      "tool": "gangtise_bond_issuance_plan",
+      "location": "gangtise-mcp.gangtise_bond_issuance_plan",
+      "evidence": {
+        "mixed_script_words": [
+          "是利率债子类型（gangtise_constant_list",
+          "category=interestBondSubtype），与",
+          "bondType（category=bondType）不是同一套码。startDate"
+        ],
+        "confusables": []
+      },
+      "remediation": "Normalise the text to ASCII; confirm the package source is what you think it is."
+    },
+    {
+      "detector": "semantic",
+      "severity": "high",
+      "title": "Description reads as instructions to the model (p=1.00): gangtise_bond_issuer_info",
+      "detail": "The description of 'gangtise-mcp.gangtise_bond_issuer_info' scores 1.00 on the instruction-detection model, and carries intent signals: hidden_unicode. Descriptions are documentation for a human, but they are delivered to the model as trusted context, so text that tells the model what to do is an attack surface rather than a description. The score is driven mainly by: entropy, hidden_unicode, imperative_density.",
+      "server": "gangtise-mcp",
+      "tool": "gangtise_bond_issuer_info",
+      "location": "gangtise-mcp.gangtise_bond_issuer_info",
+      "evidence": {
+        "probability": 1.0,
+        "threshold": 0.5,
+        "intent_signals": [
+          "hidden_unicode"
+        ],
+        "driving_features": [
+          {
+            "feature": "entropy",
+            "contribution": 18.4188
+          },
+          {
+            "feature": "hidden_unicode",
+            "contribution": 3.0886
+          },
+          {
+            "feature": "non_ascii_ratio",
+            "contribution": -1.676
+          },
+          {
+            "feature": "hardcoded_recipient",
+            "contribution": -1.2458
+          },
+          {
+            "feature": "imperative_density",
+            "contribution": 0.9206
+          },
+          {
+            "feature": "concealment",
+            "contribution": -0.8605
+          }
+        ],
+        "active_features": {
+          "log_len": 5.87493073085203,
+          "log_words": 2.639057329615259,
+          "entropy": 6.517877175409879,
+          "non_ascii_ratio": 0.4704225352112676,
+          "hidden_unicode": 1.0,
+          "schema_nested_desc": 3.0
+        },
+        "description": "查询发债主体资料：企业性质、行业、注册信息、主体评级、存续债券。securityList（按债券找主体）与 issuerNameList 二选一；按 securityList 查时每个代码固定一行、没有的除代码外全为 null，按名称匹配不到则不产生行。行业有 swIndustry（申万）与 nationalIndustry（国民经济行业）两套。latestIssuerRating 形如「AAA(维持,2026-08-11)」但括号可能缺省；⚠️ 这一列混合境内外评级口径、不可直接比较，排序或筛选前一并取 ratingAgency。outstandingBondList 是存续债简称串，要代码用 gangtise_securities_search（category=bond）换。【积分：0.4/次】"
+      },
+      "remediation": "Read the description against what the tool actually does. If the text is legitimate, it usually means the tool should not have to instruct the model at all - move the guidance into the parameter descriptions or the server's own docs."
+    },
+    {
+      "detector": "semantic",
+      "severity": "high",
+      "title": "Mixed-script text in tool description: gangtise_bond_issuer_info",
+      "detail": "'gangtise-mcp.gangtise_bond_issuer_info' contains word(s) mixing Latin and non-Latin letters: ['查询发债主体资料：企业性质、行业、注册信息、主体评级、存续债券。securityList（按债券找主体）与', 'null，按名称匹配不到则不产生行。行业有', 'swIndustry（申万）与', 'nationalIndustry（国民经济行业）两套。latestIssuerRating', '形如「AAA(维持,2026-08-11)」但括号可能缺省；⚠️']. Homoglyphs let a description read correctly to a reviewer while presenting different codepoints to any matcher that looks for specific words.",
+      "server": "gangtise-mcp",
+      "tool": "gangtise_bond_issuer_info",
+      "location": "gangtise-mcp.gangtise_bond_issuer_info",
+      "evidence": {
+        "mixed_script_words": [
+          "查询发债主体资料：企业性质、行业、注册信息、主体评级、存续债券。securityList（按债券找主体）与",
+          "null，按名称匹配不到则不产生行。行业有",
+          "swIndustry（申万）与",
+          "nationalIndustry（国民经济行业）两套。latestIssuerRating",
+          "形如「AAA(维持,2026-08-11)」但括号可能缺省；⚠️",
+          "gangtise_securities_search（category=bond）换。【积分：0.4/次】"
+        ],
+        "confusables": []
+      },
+      "remediation": "Normalise the text to ASCII; confirm the package source is what you think it is."
+    },
+    {
+      "detector": "semantic",
+      "severity": "high",
+      "title": "Mixed-script text in tool description: gangtise_bond_issuer_rating_change",
+      "detail": "'gangtise-mcp.gangtise_bond_issuer_rating_change' contains word(s) mixing Latin and non-Latin letters: ['查询发债主体评级变动。securityList', '100006，缩小名单再查。startDate', 'pi（如', 'AAApi），按档位比较或统计前先识别。【积分：0.4/发行人】']. Homoglyphs let a description read correctly to a reviewer while presenting different codepoints to any matcher that looks for specific words.",
+      "server": "gangtise-mcp",
+      "tool": "gangtise_bond_issuer_rating_change",
+      "location": "gangtise-mcp.gangtise_bond_issuer_rating_change",
+      "evidence": {
+        "mixed_script_words": [
+          "查询发债主体评级变动。securityList",
+          "100006，缩小名单再查。startDate",
+          "pi（如",
+          "AAApi），按档位比较或统计前先识别。【积分：0.4/发行人】"
+        ],
+        "confusables": []
+      },
+      "remediation": "Normalise the text to ASCII; confirm the package source is what you think it is."
+    },
+    {
+      "detector": "semantic",
+      "severity": "high",
+      "title": "Mixed-script text in tool description: gangtise_bond_rating_change",
+      "detail": "'gangtise-mcp.gangtise_bond_rating_change' contains word(s) mixing Latin and non-Latin letters: ['只一批请求、按传入顺序合并）。startDate', 'null；没有数据的代码不产生行、不计费，国债没有评级。评级值可能紧跟小写后缀', 'pi（如', 'AAApi），按档位比较或统计前先识别。【积分：0.4/只】']. Homoglyphs let a description read correctly to a reviewer while presenting different codepoints to any matcher that looks for specific words.",
+      "server": "gangtise-mcp",
+      "tool": "gangtise_bond_rating_change",
+      "location": "gangtise-mcp.gangtise_bond_rating_change",
+      "evidence": {
+        "mixed_script_words": [
+          "只一批请求、按传入顺序合并）。startDate",
+          "null；没有数据的代码不产生行、不计费，国债没有评级。评级值可能紧跟小写后缀",
+          "pi（如",
+          "AAApi），按档位比较或统计前先识别。【积分：0.4/只】"
+        ],
+        "confusables": []
+      },
+      "remediation": "Normalise the text to ASCII; confirm the package source is what you think it is."
+    },
+    {
+      "detector": "semantic",
+      "severity": "high",
+      "title": "Mixed-script text in tool description: gangtise_bond_rating_overview",
+      "detail": "'gangtise-mcp.gangtise_bond_rating_overview' contains word(s) mixing Latin and non-Latin letters: ['只一批请求、按传入顺序合并，fieldList', 'securityCode）。每个代码固定一行，没有数据的除代码外全为', 'null、不计费；国债本身没有评级。评级值可能紧跟小写后缀', 'pi（如', 'AAApi），按档位比较或统计前先识别，否则']. Homoglyphs let a description read correctly to a reviewer while presenting different codepoints to any matcher that looks for specific words.",
+      "server": "gangtise-mcp",
+      "tool": "gangtise_bond_rating_overview",
+      "location": "gangtise-mcp.gangtise_bond_rating_overview",
+      "evidence": {
+        "mixed_script_words": [
+          "只一批请求、按传入顺序合并，fieldList",
+          "securityCode）。每个代码固定一行，没有数据的除代码外全为",
+          "null、不计费；国债本身没有评级。评级值可能紧跟小写后缀",
+          "pi（如",
+          "AAApi），按档位比较或统计前先识别，否则"
+        ],
+        "confusables": []
+      },
+      "remediation": "Normalise the text to ASCII; confirm the package source is what you think it is."
+    },
+    {
+      "detector": "semantic",
+      "severity": "high",
+      "title": "Mixed-script text in tool description: gangtise_bond_valuation",
+      "detail": "'gangtise-mcp.gangtise_bond_valuation' contains word(s) mixing Latin and non-Latin letters: ['查询上清所债券估值：估值价格、收益率、久期、凸性、基点价值（利率与利差各一套）。confidenceLevel', '省略时只返回「推荐」的估值，要「不推荐」的另传一次。没有数据的代码不产生行。startDate', '_note。【积分：0.4/次】']. Homoglyphs let a description read correctly to a reviewer while presenting different codepoints to any matcher that looks for specific words.",
+      "server": "gangtise-mcp",
+      "tool": "gangtise_bond_valuation",
+      "location": "gangtise-mcp.gangtise_bond_valuation",
+      "evidence": {
+        "mixed_script_words": [
+          "查询上清所债券估值：估值价格、收益率、久期、凸性、基点价值（利率与利差各一套）。confidenceLevel",
+          "省略时只返回「推荐」的估值，要「不推荐」的另传一次。没有数据的代码不产生行。startDate",
+          "_note。【积分：0.4/次】"
+        ],
+        "confusables": []
+      },
+      "remediation": "Normalise the text to ASCII; confirm the package source is what you think it is."
+    },
+    {
+      "detector": "semantic",
+      "severity": "high",
+      "title": "Mixed-script text in tool description: gangtise_cash_flow",
+      "detail": "'gangtise-mcp.gangtise_cash_flow' contains word(s) mixing Latin and non-Latin letters: ['查询现金流量表，按代码后缀自动选市场：A股（累计口径，quarterly=true', '时点对齐时，announcementDate', '是当前返回报表版本的公告日，earliestAnncDate', '是接口记录的首次公告日。consolidated', '就当成首次披露值；category']. Homoglyphs let a description read correctly to a reviewer while presenting different codepoints to any matcher that looks for specific words.",
+      "server": "gangtise-mcp",
+      "tool": "gangtise_cash_flow",
+      "location": "gangtise-mcp.gangtise_cash_flow",
+      "evidence": {
+        "mixed_script_words": [
+          "查询现金流量表，按代码后缀自动选市场：A股（累计口径，quarterly=true",
+          "时点对齐时，announcementDate",
+          "是当前返回报表版本的公告日，earliestAnncDate",
+          "是接口记录的首次公告日。consolidated",
+          "就当成首次披露值；category"
+        ],
+        "confusables": []
+      },
+      "remediation": "Normalise the text to ASCII; confirm the package source is what you think it is."
+    },
+    {
+      "detector": "semantic",
+      "severity": "high",
+      "title": "Mixed-script text in tool description: gangtise_chiefs_search",
+      "detail": "'gangtise-mcp.gangtise_chiefs_search' contains word(s) mixing Latin and non-Latin letters: ['ID，返回']. Homoglyphs let a description read correctly to a reviewer while presenting different codepoints to any matcher that looks for specific words.",
+      "server": "gangtise-mcp",
+      "tool": "gangtise_chiefs_search",
+      "location": "gangtise-mcp.gangtise_chiefs_search",
+      "evidence": {
+        "mixed_script_words": [
+          "ID，返回"
+        ],
+        "confusables": []
+      },
+      "remediation": "Normalise the text to ASCII; confirm the package source is what you think it is."
+    },
+    {
+      "detector": "semantic",
+      "severity": "high",
+      "title": "Mixed-script text in tool description: gangtise_concept_info",
+      "detail": "'gangtise-mcp.gangtise_concept_info' contains word(s) mixing Latin and non-Latin letters: ['full）。仅返回最新截面数据，不支持历史回溯。conceptId']. Homoglyphs let a description read correctly to a reviewer while presenting different codepoints to any matcher that looks for specific words.",
+      "server": "gangtise-mcp",
+      "tool": "gangtise_concept_info",
+      "location": "gangtise-mcp.gangtise_concept_info",
+      "evidence": {
+        "mixed_script_words": [
+          "full）。仅返回最新截面数据，不支持历史回溯。conceptId"
+        ],
+        "confusables": []
+      },
+      "remediation": "Normalise the text to ASCII; confirm the package source is what you think it is."
+    },
+    {
+      "detector": "semantic",
+      "severity": "high",
+      "title": "Mixed-script text in tool description: gangtise_concept_search",
+      "detail": "'gangtise-mcp.gangtise_concept_search' contains word(s) mixing Latin and non-Latin letters: ['按关键词搜索题材（概念/主题）ID，支持中文名、简称、拼音首字母（如', 'jqr）、分组名。返回', 'matchScore。该', 'ID）。【积分：单价以平台计费为准】']. Homoglyphs let a description read correctly to a reviewer while presenting different codepoints to any matcher that looks for specific words.",
+      "server": "gangtise-mcp",
+      "tool": "gangtise_concept_search",
+      "location": "gangtise-mcp.gangtise_concept_search",
+      "evidence": {
+        "mixed_script_words": [
+          "按关键词搜索题材（概念/主题）ID，支持中文名、简称、拼音首字母（如",
+          "jqr）、分组名。返回",
+          "matchScore。该",
+          "ID）。【积分：单价以平台计费为准】"
+        ],
+        "confusables": []
+      },
+      "remediation": "Normalise the text to ASCII; confirm the package source is what you think it is."
+    },
+    {
+      "detector": "semantic",
+      "severity": "high",
+      "title": "Mixed-script text in tool description: gangtise_concept_securities",
+      "detail": "'gangtise-mcp.gangtise_concept_securities' contains word(s) mixing Latin and non-Latin letters: ['F8）：按分组结构返回当前成分股（isKey', '是去重后的只数，逐组累加会多算。conceptId']. Homoglyphs let a description read correctly to a reviewer while presenting different codepoints to any matcher that looks for specific words.",
+      "server": "gangtise-mcp",
+      "tool": "gangtise_concept_securities",
+      "location": "gangtise-mcp.gangtise_concept_securities",
+      "evidence": {
+        "mixed_script_words": [
+          "F8）：按分组结构返回当前成分股（isKey",
+          "是去重后的只数，逐组累加会多算。conceptId"
+        ],
+        "confusables": []
+      },
+      "remediation": "Normalise the text to ASCII; confirm the package source is what you think it is."
+    },
+    {
+      "detector": "semantic",
+      "severity": "high",
+      "title": "Mixed-script text in tool description: gangtise_constant_category",
+      "detail": "'gangtise-mcp.gangtise_constant_category' contains word(s) mixing Latin and non-Latin letters: ['查询常量分类列表：返回全部分类代码与名称，及每个分类适用于哪些接口的哪些参数（usageScopes）。【积分：单价以平台计费为准】']. Homoglyphs let a description read correctly to a reviewer while presenting different codepoints to any matcher that looks for specific words.",
+      "server": "gangtise-mcp",
+      "tool": "gangtise_constant_category",
+      "location": "gangtise-mcp.gangtise_constant_category",
+      "evidence": {
+        "mixed_script_words": [
+          "查询常量分类列表：返回全部分类代码与名称，及每个分类适用于哪些接口的哪些参数（usageScopes）。【积分：单价以平台计费为准】"
+        ],
+        "confusables": []
+      },
+      "remediation": "Normalise the text to ASCII; confirm the package source is what you think it is."
+    },
+    {
+      "detector": "semantic",
+      "severity": "high",
+      "title": "Mixed-script text in tool description: gangtise_constant_list",
+      "detail": "'gangtise-mcp.gangtise_constant_list' contains word(s) mixing Latin and non-Latin letters: ['查询某个常量分类下的全部常量值（constantId', 'level），树形分类（公告分类）的父节点含']. Homoglyphs let a description read correctly to a reviewer while presenting different codepoints to any matcher that looks for specific words.",
+      "server": "gangtise-mcp",
+      "tool": "gangtise_constant_list",
+      "location": "gangtise-mcp.gangtise_constant_list",
+      "evidence": {
+        "mixed_script_words": [
+          "查询某个常量分类下的全部常量值（constantId",
+          "level），树形分类（公告分类）的父节点含"
+        ],
+        "confusables": []
+      },
+      "remediation": "Normalise the text to ASCII; confirm the package source is what you think it is."
+    },
+    {
+      "detector": "semantic",
+      "severity": "high",
+      "title": "Mixed-script text in tool description: gangtise_current_date",
+      "detail": "'gangtise-mcp.gangtise_current_date' contains word(s) mixing Latin and non-Latin letters: ['查询当前日期、当前年份和当前时间（Asia/Shanghai），用于换算今天/最近/今年/当前等相对日期。【本地工具，不消耗']. Homoglyphs let a description read correctly to a reviewer while presenting different codepoints to any matcher that looks for specific words.",
+      "server": "gangtise-mcp",
+      "tool": "gangtise_current_date",
+      "location": "gangtise-mcp.gangtise_current_date",
+      "evidence": {
+        "mixed_script_words": [
+          "查询当前日期、当前年份和当前时间（Asia/Shanghai），用于换算今天/最近/今年/当前等相对日期。【本地工具，不消耗"
+        ],
+        "confusables": []
+      },
+      "remediation": "Normalise the text to ASCII; confirm the package source is what you think it is."
+    },
+    {
+      "detector": "semantic",
+      "severity": "high",
+      "title": "Description reads as instructions to the model (p=1.00): gangtise_day_kline",
+      "detail": "The description of 'gangtise-mcp.gangtise_day_kline' scores 1.00 on the instruction-detection model, and carries intent signals: hidden_unicode. Descriptions are documentation for a human, but they are delivered to the model as trusted context, so text that tells the model what to do is an attack surface rather than a description. The score is driven mainly by: entropy, hidden_unicode, log_len.",
+      "server": "gangtise-mcp",
+      "tool": "gangtise_day_kline",
+      "location": "gangtise-mcp.gangtise_day_kline",
+      "evidence": {
+        "probability": 1.0,
+        "threshold": 0.5,
+        "intent_signals": [
+          "hidden_unicode"
+        ],
+        "driving_features": [
+          {
+            "feature": "entropy",
+            "contribution": 23.7983
+          },
+          {
+            "feature": "hidden_unicode",
+            "contribution": 12.8955
+          },
+          {
+            "feature": "log_words",
+            "contribution": -2.7813
+          },
+          {
+            "feature": "non_ascii_ratio",
+            "contribution": -1.8658
+          },
+          {
+            "feature": "log_len",
+            "contribution": 1.7645
+          },
+          {
+            "feature": "hardcoded_recipient",
+            "contribution": -1.2458
+          }
+        ],
+        "active_features": {
+          "log_len": 7.074963197966044,
+          "log_words": 4.584967478670572,
+          "entropy": 7.201934436715383,
+          "non_ascii_ratio": 0.5232853513971211,
+          "hidden_unicode": 4.0,
+          "schema_nested_desc": 3.0
+        },
+        "description": "查询历史日 K 线数据，单接口覆盖 A股/港股/美股个股 + 沪深 ETF + 交易所指数（沪深京）+ 概念指数（.GT）+ 申万行业指数（.SWI）+ 中信行业指数（.CI）+ 20 个全球指数，可在一次请求里混着传（仅历史；盘中实时请用 gangtise_realtime）。security 传市场关键字 'aShares' / 'hkStocks' / 'usStocks' 配合 startDate/endDate 可拉取该市场全部个股（自动分片）；关键字只覆盖个股——**aShares 不含 ETF**，ETF 与各类指数都要逐个传代码。⚠️ **港股部分标的有人民币柜台**：代码首位换成 8、名字带 -R 或 -WR（中国移动港币 00941.HK / 人民币 80941.HK；阿里 09988.HK / 89988.HK）。两者**后缀相同、exchange 字段也相同、返回里没有币种字段**，价差约等于汇率、看着完全正常——要港币报价就别用 8 开头的那只（不是每只港股都有柜台）。⚠️ **本接口查指数只返代码、不返 securityName**；指数名称用 gangti"
+      },
+      "remediation": "Read the description against what the tool actually does. If the text is legitimate, it usually means the tool should not have to instruct the model at all - move the guidance into the parameter descriptions or the server's own docs."
+    },
+    {
+      "detector": "semantic",
+      "severity": "high",
+      "title": "Mixed-script text in tool description: gangtise_day_kline",
+      "detail": "'gangtise-mcp.gangtise_day_kline' contains word(s) mixing Latin and non-Latin letters: ['A股/港股/美股个股', '概念指数（.GT）+', '申万行业指数（.SWI）+', '中信行业指数（.CI）+', '可拉取该市场全部个股（自动分片）；关键字只覆盖个股——**aShares']. Homoglyphs let a description read correctly to a reviewer while presenting different codepoints to any matcher that looks for specific words.",
+      "server": "gangtise-mcp",
+      "tool": "gangtise_day_kline",
+      "location": "gangtise-mcp.gangtise_day_kline",
+      "evidence": {
+        "mixed_script_words": [
+          "A股/港股/美股个股",
+          "概念指数（.GT）+",
+          "申万行业指数（.SWI）+",
+          "中信行业指数（.CI）+",
+          "可拉取该市场全部个股（自动分片）；关键字只覆盖个股——**aShares",
+          "-WR（中国移动港币",
+          "80941.HK；阿里",
+          "89988.HK）。两者**后缀相同、exchange",
+          "securityName**；指数名称用",
+          "gangtise_securities_search（category=['index']）查"
+        ],
+        "confusables": []
+      },
+      "remediation": "Normalise the text to ASCII; confirm the package source is what you think it is."
+    },
+    {
+      "detector": "semantic",
+      "severity": "high",
+      "title": "Mixed-script text in tool description: gangtise_download",
+      "detail": "'gangtise-mcp.gangtise_download' contains word(s) mixing Latin and non-Latin letters: ['会议转写：kind', '选资源，id', 'ID。文本类直接返回内容（大文件落盘返回路径），二进制返回文件路径。【积分：按下载类型】']. Homoglyphs let a description read correctly to a reviewer while presenting different codepoints to any matcher that looks for specific words.",
+      "server": "gangtise-mcp",
+      "tool": "gangtise_download",
+      "location": "gangtise-mcp.gangtise_download",
+      "evidence": {
+        "mixed_script_words": [
+          "会议转写：kind",
+          "选资源，id",
+          "ID。文本类直接返回内容（大文件落盘返回路径），二进制返回文件路径。【积分：按下载类型】"
+        ],
+        "confusables": []
+      },
+      "remediation": "Normalise the text to ASCII; confirm the package source is what you think it is."
+    },
+    {
+      "detector": "semantic",
+      "severity": "high",
+      "title": "Mixed-script text in tool description: gangtise_drive_folder_list",
+      "detail": "'gangtise-mcp.gangtise_drive_folder_list' contains word(s) mixing Latin and non-Latin letters: ['查看云盘某个文件夹的直接子文件夹（folderList）与直接文件（fileList），不递归；文件夹', '用本工具逐层看。parentId']. Homoglyphs let a description read correctly to a reviewer while presenting different codepoints to any matcher that looks for specific words.",
+      "server": "gangtise-mcp",
+      "tool": "gangtise_drive_folder_list",
+      "location": "gangtise-mcp.gangtise_drive_folder_list",
+      "evidence": {
+        "mixed_script_words": [
+          "查看云盘某个文件夹的直接子文件夹（folderList）与直接文件（fileList），不递归；文件夹",
+          "用本工具逐层看。parentId"
+        ],
+        "confusables": []
+      },
+      "remediation": "Normalise the text to ASCII; confirm the package source is what you think it is."
+    },
+    {
+      "detector": "semantic",
+      "severity": "high",
+      "title": "Description reads as instructions to the model (p=1.00): gangtise_drive_manage",
+      "detail": "The description of 'gangtise-mcp.gangtise_drive_manage' scores 1.00 on the instruction-detection model, and carries intent signals: hidden_unicode. Descriptions are documentation for a human, but they are delivered to the model as trusted context, so text that tells the model what to do is an attack surface rather than a description. The score is driven mainly by: entropy, hidden_unicode, log_len.",
+      "server": "gangtise-mcp",
+      "tool": "gangtise_drive_manage",
+      "location": "gangtise-mcp.gangtise_drive_manage",
+      "evidence": {
+        "probability": 1.0,
+        "threshold": 0.5,
+        "intent_signals": [
+          "hidden_unicode"
+        ],
+        "driving_features": [
+          {
+            "feature": "entropy",
+            "contribution": 15.9375
+          },
+          {
+            "feature": "hidden_unicode",
+            "contribution": 3.0886
+          },
+          {
+            "feature": "non_ascii_ratio",
+            "contribution": -1.71
+          },
+          {
+            "feature": "hardcoded_recipient",
+            "contribution": -1.2458
+          },
+          {
+            "feature": "log_words",
+            "contribution": -0.9606
+          },
+          {
+            "feature": "log_len",
+            "contribution": 0.9327
+          }
+        ],
+        "active_features": {
+          "log_len": 5.988961416889864,
+          "log_words": 3.4965075614664802,
+          "entropy": 6.2023512684966535,
+          "non_ascii_ratio": 0.4798994974874372,
+          "hidden_unicode": 1.0,
+          "schema_nested_desc": 11.0
+        },
+        "description": "管理云盘（写操作）：action 选动作，各参数注明了哪个动作用。⚠️ 云盘允许同名、只以 ID 区分：create_folder 与 copy / copy_folder 每执行一次就多一份，超时不会自动重发，别对同一内容重复执行。move_file / move_folder 只能在同一空间内；跨空间（我的云盘 ↔ 租户云盘）用 copy（文件）或 copy_folder（整个文件夹连同子文件夹与文件，返回 newFolderId），源保留。delete_file / delete_folder 不可恢复，须传 confirm: true，delete_folder 连同全部子内容一起删。move_file / copy / delete_file 对单条失败仍返回成功，明细在 failList 并标 _partial。租户云盘对整个租户可见，在里面新建、复制、删除前先向用户确认。"
+      },
+      "remediation": "Read the description against what the tool actually does. If the text is legitimate, it usually means the tool should not have to instruct the model at all - move the guidance into the parameter descriptions or the server's own docs."
+    },
+    {
+      "detector": "semantic",
+      "severity": "high",
+      "title": "Mixed-script text in tool description: gangtise_drive_manage",
+      "detail": "'gangtise-mcp.gangtise_drive_manage' contains word(s) mixing Latin and non-Latin letters: ['管理云盘（写操作）：action', '区分：create_folder', '每执行一次就多一份，超时不会自动重发，别对同一内容重复执行。move_file', 'copy（文件）或', 'copy_folder（整个文件夹连同子文件夹与文件，返回']. Homoglyphs let a description read correctly to a reviewer while presenting different codepoints to any matcher that looks for specific words.",
+      "server": "gangtise-mcp",
+      "tool": "gangtise_drive_manage",
+      "location": "gangtise-mcp.gangtise_drive_manage",
+      "evidence": {
+        "mixed_script_words": [
+          "管理云盘（写操作）：action",
+          "区分：create_folder",
+          "每执行一次就多一份，超时不会自动重发，别对同一内容重复执行。move_file",
+          "copy（文件）或",
+          "copy_folder（整个文件夹连同子文件夹与文件，返回",
+          "newFolderId），源保留。delete_file",
+          "连同全部子内容一起删。move_file",
+          "_partial。租户云盘对整个租户可见，在里面新建、复制、删除前先向用户确认。"
+        ],
+        "confusables": []
+      },
+      "remediation": "Normalise the text to ASCII; confirm the package source is what you think it is."
+    },
+    {
+      "detector": "semantic",
+      "severity": "high",
+      "title": "Description reads as instructions to the model (p=1.00): gangtise_drive_upload",
+      "detail": "The description of 'gangtise-mcp.gangtise_drive_upload' scores 1.00 on the instruction-detection model, and carries intent signals: hidden_unicode. Descriptions are documentation for a human, but they are delivered to the model as trusted context, so text that tells the model what to do is an attack surface rather than a description. The score is driven mainly by: entropy, hidden_unicode, log_words, imperative_density.",
+      "server": "gangtise-mcp",
+      "tool": "gangtise_drive_upload",
+      "location": "gangtise-mcp.gangtise_drive_upload",
+      "evidence": {
+        "probability": 1.0,
+        "threshold": 0.5,
+        "intent_signals": [
+          "hidden_unicode"
+        ],
+        "driving_features": [
+          {
+            "feature": "entropy",
+            "contribution": 18.0536
+          },
+          {
+            "feature": "hidden_unicode",
+            "contribution": 3.0886
+          },
+          {
+            "feature": "non_ascii_ratio",
+            "contribution": -2.3124
+          },
+          {
+            "feature": "log_words",
+            "contribution": 1.4098
+          },
+          {
+            "feature": "hardcoded_recipient",
+            "contribution": -1.2458
+          },
+          {
+            "feature": "imperative_density",
+            "contribution": 0.9206
+          }
+        ],
+        "active_features": {
+          "log_len": 5.176149732573829,
+          "log_words": 2.0794415416798357,
+          "entropy": 6.471434053584615,
+          "non_ascii_ratio": 0.6477272727272727,
+          "hidden_unicode": 1.0,
+          "schema_nested_desc": 4.0
+        },
+        "description": "把本机文件上传到云盘，单个文件最多 100MB；单日累计超出账号额度报 230008。filePath 是运行本服务的这台机器上的路径。⚠️ 云盘允许同名，每上传一次就多一份，超时不会自动重发——重传前先用 gangtise_drive_folder_list 看是否已经传上去了。上传到租户云盘（spaceType=2）对整个租户可见，先向用户确认。"
+      },
+      "remediation": "Read the description against what the tool actually does. If the text is legitimate, it usually means the tool should not have to instruct the model at all - move the guidance into the parameter descriptions or the server's own docs."
+    },
+    {
+      "detector": "semantic",
+      "severity": "high",
+      "title": "Mixed-script text in tool description: gangtise_drive_upload",
+      "detail": "'gangtise-mcp.gangtise_drive_upload' contains word(s) mixing Latin and non-Latin letters: ['100MB；单日累计超出账号额度报', '看是否已经传上去了。上传到租户云盘（spaceType=2）对整个租户可见，先向用户确认。']. Homoglyphs let a description read correctly to a reviewer while presenting different codepoints to any matcher that looks for specific words.",
+      "server": "gangtise-mcp",
+      "tool": "gangtise_drive_upload",
+      "location": "gangtise-mcp.gangtise_drive_upload",
+      "evidence": {
+        "mixed_script_words": [
+          "100MB；单日累计超出账号额度报",
+          "看是否已经传上去了。上传到租户云盘（spaceType=2）对整个租户可见，先向用户确认。"
+        ],
+        "confusables": []
+      },
+      "remediation": "Normalise the text to ASCII; confirm the package source is what you think it is."
+    },
+    {
+      "detector": "semantic",
+      "severity": "high",
+      "title": "Mixed-script text in tool description: gangtise_earning_forecast",
+      "detail": "'gangtise-mcp.gangtise_earning_forecast' contains word(s) mixing Latin and non-Latin letters: ['查询盈利预测一致预期（EPS、PE、净利润、ROE', '等）。roe', 'ROE，不会报错。日期省略时取截至', 'endDate（缺省今天）的近一年；每个日期约']. Homoglyphs let a description read correctly to a reviewer while presenting different codepoints to any matcher that looks for specific words.",
+      "server": "gangtise-mcp",
+      "tool": "gangtise_earning_forecast",
+      "location": "gangtise-mcp.gangtise_earning_forecast",
+      "evidence": {
+        "mixed_script_words": [
+          "查询盈利预测一致预期（EPS、PE、净利润、ROE",
+          "等）。roe",
+          "ROE，不会报错。日期省略时取截至",
+          "endDate（缺省今天）的近一年；每个日期约"
+        ],
+        "confusables": []
+      },
+      "remediation": "Normalise the text to ASCII; confirm the package source is what you think it is."
+    },
+    {
+      "detector": "semantic",
+      "severity": "high",
+      "title": "Mixed-script text in tool description: gangtise_earnings_review",
+      "detail": "'gangtise-mcp.gangtise_earnings_review' contains word(s) mixing Latin and non-Latin letters: ['55s），超时返回']. Homoglyphs let a description read correctly to a reviewer while presenting different codepoints to any matcher that looks for specific words.",
+      "server": "gangtise-mcp",
+      "tool": "gangtise_earnings_review",
+      "location": "gangtise-mcp.gangtise_earnings_review",
+      "evidence": {
+        "mixed_script_words": [
+          "55s），超时返回"
+        ],
+        "confusables": []
+      },
+      "remediation": "Normalise the text to ASCII; confirm the package source is what you think it is."
+    },
+    {
+      "detector": "semantic",
+      "severity": "high",
+      "title": "Mixed-script text in tool description: gangtise_earnings_review_check",
+      "detail": "'gangtise-mcp.gangtise_earnings_review_check' contains word(s) mixing Latin and non-Latin letters: ['查询业绩点评任务的生成状态。dataId', '的超时/错误响应；pending']. Homoglyphs let a description read correctly to a reviewer while presenting different codepoints to any matcher that looks for specific words.",
+      "server": "gangtise-mcp",
+      "tool": "gangtise_earnings_review_check",
+      "location": "gangtise-mcp.gangtise_earnings_review_check",
+      "evidence": {
+        "mixed_script_words": [
+          "查询业绩点评任务的生成状态。dataId",
+          "的超时/错误响应；pending"
+        ],
+        "confusables": []
+      },
+      "remediation": "Normalise the text to ASCII; confirm the package source is what you think it is."
+    },
+    {
+      "detector": "semantic",
+      "severity": "high",
+      "title": "Mixed-script text in tool description: gangtise_edb_data",
+      "detail": "'gangtise-mcp.gangtise_edb_data' contains word(s) mixing Latin and non-Latin letters: ['gangtise_edb_search。【积分：30/指标】']. Homoglyphs let a description read correctly to a reviewer while presenting different codepoints to any matcher that looks for specific words.",
+      "server": "gangtise-mcp",
+      "tool": "gangtise_edb_data",
+      "location": "gangtise-mcp.gangtise_edb_data",
+      "evidence": {
+        "mixed_script_words": [
+          "gangtise_edb_search。【积分：30/指标】"
+        ],
+        "confusables": []
+      },
+      "remediation": "Normalise the text to ASCII; confirm the package source is what you think it is."
+    },
+    {
+      "detector": "semantic",
+      "severity": "high",
+      "title": "Mixed-script text in tool description: gangtise_edb_search",
+      "detail": "'gangtise-mcp.gangtise_edb_search' contains word(s) mixing Latin and non-Latin letters: ['按关键词搜索行业经济数据库（EDB）指标列表，返回指标', '和名称，用于后续查询时序数据。覆盖宏观/行业量价数据（产量、价格、PMI']. Homoglyphs let a description read correctly to a reviewer while presenting different codepoints to any matcher that looks for specific words.",
+      "server": "gangtise-mcp",
+      "tool": "gangtise_edb_search",
+      "location": "gangtise-mcp.gangtise_edb_search",
+      "evidence": {
+        "mixed_script_words": [
+          "按关键词搜索行业经济数据库（EDB）指标列表，返回指标",
+          "和名称，用于后续查询时序数据。覆盖宏观/行业量价数据（产量、价格、PMI"
+        ],
+        "confusables": []
+      },
+      "remediation": "Normalise the text to ASCII; confirm the package source is what you think it is."
+    },
+    {
+      "detector": "semantic",
+      "severity": "high",
+      "title": "Mixed-script text in tool description: gangtise_expert_intel",
+      "detail": "'gangtise-mcp.gangtise_expert_intel' contains word(s) mixing Latin and non-Latin letters: ['专家情报：AI', 'tagList（纯文本）+', 'content，附关联证券', 'securityList（含主体公司在其他市场的上市主体）、研究方向', 'conceptList，按发布时间']. Homoglyphs let a description read correctly to a reviewer while presenting different codepoints to any matcher that looks for specific words.",
+      "server": "gangtise-mcp",
+      "tool": "gangtise_expert_intel",
+      "location": "gangtise-mcp.gangtise_expert_intel",
+      "evidence": {
+        "mixed_script_words": [
+          "专家情报：AI",
+          "tagList（纯文本）+",
+          "content，附关联证券",
+          "securityList（含主体公司在其他市场的上市主体）、研究方向",
+          "conceptList，按发布时间",
+          "publishTime（北京时间）倒序。不同筛选之间为「且」，同一筛选的多个取值为「或」；写错的研究方向"
+        ],
+        "confusables": []
+      },
+      "remediation": "Normalise the text to ASCII; confirm the package source is what you think it is."
+    },
+    {
+      "detector": "semantic",
+      "severity": "high",
+      "title": "Mixed-script text in tool description: gangtise_file_parse",
+      "detail": "'gangtise-mcp.gangtise_file_parse' contains word(s) mixing Latin and non-Latin letters: ['images/），返回落盘路径。提交时按实际页数一次性计费；单文件最多', '个解析任务。filePath', 'taskId：用', '格式（fileType=2），不必解析。【积分：0.8/页】']. Homoglyphs let a description read correctly to a reviewer while presenting different codepoints to any matcher that looks for specific words.",
+      "server": "gangtise-mcp",
+      "tool": "gangtise_file_parse",
+      "location": "gangtise-mcp.gangtise_file_parse",
+      "evidence": {
+        "mixed_script_words": [
+          "images/），返回落盘路径。提交时按实际页数一次性计费；单文件最多",
+          "个解析任务。filePath",
+          "taskId：用",
+          "格式（fileType=2），不必解析。【积分：0.8/页】"
+        ],
+        "confusables": []
+      },
+      "remediation": "Normalise the text to ASCII; confirm the package source is what you think it is."
+    },
+    {
+      "detector": "semantic",
+      "severity": "high",
+      "title": "Mixed-script text in tool description: gangtise_file_parse_check",
+      "detail": "'gangtise-mcp.gangtise_file_parse_check' contains word(s) mixing Latin and non-Latin letters: ['images/），返回落盘路径；还没完成时返回', 'pending，约']. Homoglyphs let a description read correctly to a reviewer while presenting different codepoints to any matcher that looks for specific words.",
+      "server": "gangtise-mcp",
+      "tool": "gangtise_file_parse_check",
+      "location": "gangtise-mcp.gangtise_file_parse_check",
+      "evidence": {
+        "mixed_script_words": [
+          "images/），返回落盘路径；还没完成时返回",
+          "pending，约"
+        ],
+        "confusables": []
+      },
+      "remediation": "Normalise the text to ASCII; confirm the package source is what you think it is."
+    },
+    {
+      "detector": "semantic",
+      "severity": "high",
+      "title": "Mixed-script text in tool description: gangtise_foreign_opinion_list",
+      "detail": "'gangtise-mcp.gangtise_foreign_opinion_list' contains word(s) mixing Latin and non-Latin letters: ['withContent。【积分：1/条】']. Homoglyphs let a description read correctly to a reviewer while presenting different codepoints to any matcher that looks for specific words.",
+      "server": "gangtise-mcp",
+      "tool": "gangtise_foreign_opinion_list",
+      "location": "gangtise-mcp.gangtise_foreign_opinion_list",
+      "evidence": {
+        "mixed_script_words": [
+          "withContent。【积分：1/条】"
+        ],
+        "confusables": []
+      },
+      "remediation": "Normalise the text to ASCII; confirm the package source is what you think it is."
+    },
+    {
+      "detector": "semantic",
+      "severity": "high",
+      "title": "Mixed-script text in tool description: gangtise_fund_asset_allocation",
+      "detail": "'gangtise-mcp.gangtise_fund_asset_allocation' contains word(s) mixing Latin and non-Latin letters: ['查询基金各报告期资产配置（报告期末基金资产组合）：按资产类型多行，assetType', 'assetTypeName、holdingValue（元）、pctToTotalAsset（占基金资产总值，不是占净值）。二级是一级的拆分，两级混在一起时别直接加总；没有持有的资产类型可能不出行，按']. Homoglyphs let a description read correctly to a reviewer while presenting different codepoints to any matcher that looks for specific words.",
+      "server": "gangtise-mcp",
+      "tool": "gangtise_fund_asset_allocation",
+      "location": "gangtise-mcp.gangtise_fund_asset_allocation",
+      "evidence": {
+        "mixed_script_words": [
+          "查询基金各报告期资产配置（报告期末基金资产组合）：按资产类型多行，assetType",
+          "assetTypeName、holdingValue（元）、pctToTotalAsset（占基金资产总值，不是占净值）。二级是一级的拆分，两级混在一起时别直接加总；没有持有的资产类型可能不出行，按"
+        ],
+        "confusables": []
+      },
+      "remediation": "Normalise the text to ASCII; confirm the package source is what you think it is."
+    },
+    {
+      "detector": "semantic",
+      "severity": "high",
+      "title": "Mixed-script text in tool description: gangtise_fund_asset_size",
+      "detail": "'gangtise-mcp.gangtise_fund_asset_size' contains word(s) mixing Latin and non-Latin letters: ['netAsset（万元）。【积分：0.4/次】']. Homoglyphs let a description read correctly to a reviewer while presenting different codepoints to any matcher that looks for specific words.",
+      "server": "gangtise-mcp",
+      "tool": "gangtise_fund_asset_size",
+      "location": "gangtise-mcp.gangtise_fund_asset_size",
+      "evidence": {
+        "mixed_script_words": [
+          "netAsset（万元）。【积分：0.4/次】"
+        ],
+        "confusables": []
+      },
+      "remediation": "Normalise the text to ASCII; confirm the package source is what you think it is."
+    },
+    {
+      "detector": "semantic",
+      "severity": "high",
+      "title": "Mixed-script text in tool description: gangtise_fund_basic_info",
+      "detail": "'gangtise-mcp.gangtise_fund_basic_info' contains word(s) mixing Latin and non-Latin letters: ['查询公募基金基本资料（当前资料，无历史快照）：一二级分类、管理人与托管人、成立与存续、运作方式、申赎规则、业绩基准、风险等级、投资范围、跟踪指数。A', '分组；investTypeCodeLevel1/2']. Homoglyphs let a description read correctly to a reviewer while presenting different codepoints to any matcher that looks for specific words.",
+      "server": "gangtise-mcp",
+      "tool": "gangtise_fund_basic_info",
+      "location": "gangtise-mcp.gangtise_fund_basic_info",
+      "evidence": {
+        "mixed_script_words": [
+          "查询公募基金基本资料（当前资料，无历史快照）：一二级分类、管理人与托管人、成立与存续、运作方式、申赎规则、业绩基准、风险等级、投资范围、跟踪指数。A",
+          "分组；investTypeCodeLevel1/2"
+        ],
+        "confusables": []
+      },
+      "remediation": "Normalise the text to ASCII; confirm the package source is what you think it is."
+    },
+    {
+      "detector": "semantic",
+      "severity": "high",
+      "title": "Mixed-script text in tool description: gangtise_fund_bond_portfolio",
+      "detail": "'gangtise-mcp.gangtise_fund_bond_portfolio' contains word(s) mixing Latin and non-Latin letters: ['bondName（没有代码）、持仓量（万张）、持仓市值（万元）、占净值比。【积分：0.4/次】']. Homoglyphs let a description read correctly to a reviewer while presenting different codepoints to any matcher that looks for specific words.",
+      "server": "gangtise-mcp",
+      "tool": "gangtise_fund_bond_portfolio",
+      "location": "gangtise-mcp.gangtise_fund_bond_portfolio",
+      "evidence": {
+        "mixed_script_words": [
+          "bondName（没有代码）、持仓量（万张）、持仓市值（万元）、占净值比。【积分：0.4/次】"
+        ],
+        "confusables": []
+      },
+      "remediation": "Normalise the text to ASCII; confirm the package source is what you think it is."
+    },
+    {
+      "detector": "semantic",
+      "severity": "high",
+      "title": "Description reads as instructions to the model (p=1.00): gangtise_fund_bond_type_allocation",
+      "detail": "The description of 'gangtise-mcp.gangtise_fund_bond_type_allocation' scores 1.00 on the instruction-detection model, and carries intent signals: hidden_unicode. Descriptions are documentation for a human, but they are delivered to the model as trusted context, so text that tells the model what to do is an attack surface rather than a description. The score is driven mainly by: entropy, hidden_unicode, log_words, imperative_density.",
+      "server": "gangtise-mcp",
+      "tool": "gangtise_fund_bond_type_allocation",
+      "location": "gangtise-mcp.gangtise_fund_bond_type_allocation",
+      "evidence": {
+        "probability": 1.0,
+        "threshold": 0.5,
+        "intent_signals": [
+          "hidden_unicode"
+        ],
+        "driving_features": [
+          {
+            "feature": "entropy",
+            "contribution": 14.0288
+          },
+          {
+            "feature": "hidden_unicode",
+            "contribution": 3.0886
+          },
+          {
+            "feature": "non_ascii_ratio",
+            "contribution": -1.9427
+          },
+          {
+            "feature": "log_words",
+            "contribution": 1.4098
+          },
+          {
+            "feature": "hardcoded_recipient",
+            "contribution": -1.2458
+          },
+          {
+            "feature": "imperative_density",
+            "contribution": 0.9206
+          }
+        ],
+        "active_features": {
+          "log_len": 4.820281565605037,
+          "log_words": 2.0794415416798357,
+          "entropy": 5.95963765176541,
+          "non_ascii_ratio": 0.5447154471544715,
+          "hidden_unicode": 1.0,
+          "schema_nested_desc": 1.0
+        },
+        "description": "查询基金债券持仓按券种的分布（占净值比），bondTypeCode 与 gangtise_constant_list 的 fundBondType 常量一致。⚠️ 金融债券包含政策性金融债券（两行都出），按券种加总会重复计算。【积分：0.4/次】"
+      },
+      "remediation": "Read the description against what the tool actually does. If the text is legitimate, it usually means the tool should not have to instruct the model at all - move the guidance into the parameter descriptions or the server's own docs."
+    },
+    {
+      "detector": "semantic",
+      "severity": "high",
+      "title": "Mixed-script text in tool description: gangtise_fund_bond_type_allocation",
+      "detail": "'gangtise-mcp.gangtise_fund_bond_type_allocation' contains word(s) mixing Latin and non-Latin letters: ['查询基金债券持仓按券种的分布（占净值比），bondTypeCode']. Homoglyphs let a description read correctly to a reviewer while presenting different codepoints to any matcher that looks for specific words.",
+      "server": "gangtise-mcp",
+      "tool": "gangtise_fund_bond_type_allocation",
+      "location": "gangtise-mcp.gangtise_fund_bond_type_allocation",
+      "evidence": {
+        "mixed_script_words": [
+          "查询基金债券持仓按券种的分布（占净值比），bondTypeCode"
+        ],
+        "confusables": []
+      },
+      "remediation": "Normalise the text to ASCII; confirm the package source is what you think it is."
+    },
+    {
+      "detector": "semantic",
+      "severity": "high",
+      "title": "Description reads as instructions to the model (p=1.00): gangtise_fund_etf_pcf_components",
+      "detail": "The description of 'gangtise-mcp.gangtise_fund_etf_pcf_components' scores 1.00 on the instruction-detection model, and carries intent signals: hidden_unicode. Descriptions are documentation for a human, but they are delivered to the model as trusted context, so text that tells the model what to do is an attack surface rather than a description. The score is driven mainly by: entropy, hidden_unicode, log_len.",
+      "server": "gangtise-mcp",
+      "tool": "gangtise_fund_etf_pcf_components",
+      "location": "gangtise-mcp.gangtise_fund_etf_pcf_components",
+      "evidence": {
+        "probability": 1.0,
+        "threshold": 0.5,
+        "intent_signals": [
+          "hidden_unicode"
+        ],
+        "driving_features": [
+          {
+            "feature": "entropy",
+            "contribution": 21.183
+          },
+          {
+            "feature": "hidden_unicode",
+            "contribution": 3.0886
+          },
+          {
+            "feature": "non_ascii_ratio",
+            "contribution": -2.3428
+          },
+          {
+            "feature": "hardcoded_recipient",
+            "contribution": -1.2458
+          },
+          {
+            "feature": "log_words",
+            "contribution": -1.1061
+          },
+          {
+            "feature": "log_len",
+            "contribution": 0.9609
+          }
+        ],
+        "active_features": {
+          "log_len": 6.025865973825314,
+          "log_words": 3.58351893845611,
+          "entropy": 6.869366825013944,
+          "non_ascii_ratio": 0.6561743341404358,
+          "hidden_unicode": 1.0,
+          "schema_nested_desc": 1.0
+        },
+        "description": "查询 ETF 最新一份申购赎回清单的成分（没有日期参数，查不了历史清单）：每个成分一行，含名称 componentName、收盘价、涨跌幅、权重（%）、申购数量（股）、现金替代标志（允许 / 必须）与溢价比例、替代金额（元）。⚠️ 接口只返回名称，componentCode（带后缀，如 600519.SH / 00941.HK / NVDA.O）由本工具按名称匹配、再用该行 close 核对行情价补上（同名 A / H 股价格都对得上时再比该行涨跌幅），A+H ETF 里同名的 A 股与 H 股行据此分开；现金行、商品与价格定不了的为 null（只在确知成分都在一个市场时才按名称取），_note 列出这些行。成分 close 是清单给的价格，可能早于 tradeDate 的前一交易日，A 股与港股的日期也可能不同，算市值或涨跌以行情为准。宽基 ETF 数百行，多只一起查注意 10000 行上限。【积分：0.4/次】"
+      },
+      "remediation": "Read the description against what the tool actually does. If the text is legitimate, it usually means the tool should not have to instruct the model at all - move the guidance into the parameter descriptions or the server's own docs."
+    },
+    {
+      "detector": "semantic",
+      "severity": "high",
+      "title": "Mixed-script text in tool description: gangtise_fund_etf_pcf_components",
+      "detail": "'gangtise-mcp.gangtise_fund_etf_pcf_components' contains word(s) mixing Latin and non-Latin letters: ['componentName、收盘价、涨跌幅、权重（%）、申购数量（股）、现金替代标志（允许', '接口只返回名称，componentCode（带后缀，如', 'NVDA.O）由本工具按名称匹配、再用该行', '股价格都对得上时再比该行涨跌幅），A+H', 'null（只在确知成分都在一个市场时才按名称取），_note']. Homoglyphs let a description read correctly to a reviewer while presenting different codepoints to any matcher that looks for specific words.",
+      "server": "gangtise-mcp",
+      "tool": "gangtise_fund_etf_pcf_components",
+      "location": "gangtise-mcp.gangtise_fund_etf_pcf_components",
+      "evidence": {
+        "mixed_script_words": [
+          "componentName、收盘价、涨跌幅、权重（%）、申购数量（股）、现金替代标志（允许",
+          "接口只返回名称，componentCode（带后缀，如",
+          "NVDA.O）由本工具按名称匹配、再用该行",
+          "股价格都对得上时再比该行涨跌幅），A+H",
+          "null（只在确知成分都在一个市场时才按名称取），_note",
+          "的前一交易日，A"
+        ],
+        "confusables": []
+      },
+      "remediation": "Normalise the text to ASCII; confirm the package source is what you think it is."
+    },
+    {
+      "detector": "semantic",
+      "severity": "high",
+      "title": "Mixed-script text in tool description: gangtise_fund_etf_pcf_header",
+      "detail": "'gangtise-mcp.gangtise_fund_etf_pcf_header' contains word(s) mixing Latin and non-Latin letters: ['null）、现金差额与预估现金（元，可为负）、现金替代比例上限（%）、成分数。【积分：0.4/次】']. Homoglyphs let a description read correctly to a reviewer while presenting different codepoints to any matcher that looks for specific words.",
+      "server": "gangtise-mcp",
+      "tool": "gangtise_fund_etf_pcf_header",
+      "location": "gangtise-mcp.gangtise_fund_etf_pcf_header",
+      "evidence": {
+        "mixed_script_words": [
+          "null）、现金差额与预估现金（元，可为负）、现金替代比例上限（%）、成分数。【积分：0.4/次】"
+        ],
+        "confusables": []
+      },
+      "remediation": "Normalise the text to ASCII; confirm the package source is what you think it is."
+    },
+    {
+      "detector": "semantic",
+      "severity": "high",
+      "title": "Mixed-script text in tool description: gangtise_fund_etf_share_change",
+      "detail": "'gangtise-mcp.gangtise_fund_etf_share_change' contains word(s) mixing Latin and non-Latin letters: ['逐交易日的份额（万份）与规模（万元）及较上期变动，sharesChangeRate']. Homoglyphs let a description read correctly to a reviewer while presenting different codepoints to any matcher that looks for specific words.",
+      "server": "gangtise-mcp",
+      "tool": "gangtise_fund_etf_share_change",
+      "location": "gangtise-mcp.gangtise_fund_etf_share_change",
+      "evidence": {
+        "mixed_script_words": [
+          "逐交易日的份额（万份）与规模（万元）及较上期变动，sharesChangeRate"
+        ],
+        "confusables": []
+      },
+      "remediation": "Normalise the text to ASCII; confirm the package source is what you think it is."
+    },
+    {
+      "detector": "semantic",
+      "severity": "high",
+      "title": "Description reads as instructions to the model (p=1.00): gangtise_fund_fee_rate",
+      "detail": "The description of 'gangtise-mcp.gangtise_fund_fee_rate' scores 1.00 on the instruction-detection model, and carries intent signals: hidden_unicode. Descriptions are documentation for a human, but they are delivered to the model as trusted context, so text that tells the model what to do is an attack surface rather than a description. The score is driven mainly by: entropy, hidden_unicode, log_words, imperative_density.",
+      "server": "gangtise-mcp",
+      "tool": "gangtise_fund_fee_rate",
+      "location": "gangtise-mcp.gangtise_fund_fee_rate",
+      "evidence": {
+        "probability": 1.0,
+        "threshold": 0.5,
+        "intent_signals": [
+          "hidden_unicode"
+        ],
+        "driving_features": [
+          {
+            "feature": "entropy",
+            "contribution": 14.6077
+          },
+          {
+            "feature": "hidden_unicode",
+            "contribution": 3.0886
+          },
+          {
+            "feature": "non_ascii_ratio",
+            "contribution": -2.3013
+          },
+          {
+            "feature": "log_words",
+            "contribution": 1.891
+          },
+          {
+            "feature": "hardcoded_recipient",
+            "contribution": -1.2458
+          },
+          {
+            "feature": "imperative_density",
+            "contribution": 0.9206
+          }
+        ],
+        "active_features": {
+          "log_len": 4.804021044733257,
+          "log_words": 1.791759469228055,
+          "entropy": 6.033255671191359,
+          "non_ascii_ratio": 0.6446280991735537,
+          "hidden_unicode": 1.0,
+          "schema_nested_desc": 2.0
+        },
+        "description": "查询基金当前费率。按金额或持有期分档时每档一行，feeCondition 是条件区间（无分档为 null）。⚠️ feeRate 是字符串（\"1.5%\"），大额固定收费时是金额描述（\"每笔1000元\"），不能直接当数字用。【积分：0.4/次】"
+      },
+      "remediation": "Read the description against what the tool actually does. If the text is legitimate, it usually means the tool should not have to instruct the model at all - move the guidance into the parameter descriptions or the server's own docs."
+    },
+    {
+      "detector": "semantic",
+      "severity": "high",
+      "title": "Mixed-script text in tool description: gangtise_fund_fee_rate",
+      "detail": "'gangtise-mcp.gangtise_fund_fee_rate' contains word(s) mixing Latin and non-Latin letters: ['查询基金当前费率。按金额或持有期分档时每档一行，feeCondition']. Homoglyphs let a description read correctly to a reviewer while presenting different codepoints to any matcher that looks for specific words.",
+      "server": "gangtise-mcp",
+      "tool": "gangtise_fund_fee_rate",
+      "location": "gangtise-mcp.gangtise_fund_fee_rate",
+      "evidence": {
+        "mixed_script_words": [
+          "查询基金当前费率。按金额或持有期分档时每档一行，feeCondition"
+        ],
+        "confusables": []
+      },
+      "remediation": "Normalise the text to ASCII; confirm the package source is what you think it is."
+    },
+    {
+      "detector": "semantic",
+      "severity": "high",
+      "title": "Mixed-script text in tool description: gangtise_fund_flow",
+      "detail": "'gangtise-mcp.gangtise_fund_flow' contains word(s) mixing Latin and non-Latin letters: [\"股个股日资金流向（沪深北），含小/中/大/特大单流入流出金额及占比、主力净流入等字段。security='aShares'\"]. Homoglyphs let a description read correctly to a reviewer while presenting different codepoints to any matcher that looks for specific words.",
+      "server": "gangtise-mcp",
+      "tool": "gangtise_fund_flow",
+      "location": "gangtise-mcp.gangtise_fund_flow",
+      "evidence": {
+        "mixed_script_words": [
+          "股个股日资金流向（沪深北），含小/中/大/特大单流入流出金额及占比、主力净流入等字段。security='aShares'"
+        ],
+        "confusables": []
+      },
+      "remediation": "Normalise the text to ASCII; confirm the package source is what you think it is."
+    },
+    {
+      "detector": "semantic",
+      "severity": "high",
+      "title": "Mixed-script text in tool description: gangtise_fund_fund_portfolio",
+      "detail": "'gangtise-mcp.gangtise_fund_fund_portfolio' contains word(s) mixing Latin and non-Latin letters: ['holdingFundName（没有代码）、持仓市值（万元）、占净值比。【积分：0.4/次】']. Homoglyphs let a description read correctly to a reviewer while presenting different codepoints to any matcher that looks for specific words.",
+      "server": "gangtise-mcp",
+      "tool": "gangtise_fund_fund_portfolio",
+      "location": "gangtise-mcp.gangtise_fund_fund_portfolio",
+      "evidence": {
+        "mixed_script_words": [
+          "holdingFundName（没有代码）、持仓市值（万元）、占净值比。【积分：0.4/次】"
+        ],
+        "confusables": []
+      },
+      "remediation": "Normalise the text to ASCII; confirm the package source is what you think it is."
+    },
+    {
+      "detector": "semantic",
+      "severity": "high",
+      "title": "Mixed-script text in tool description: gangtise_fund_fund_type_allocation",
+      "detail": "'gangtise-mcp.gangtise_fund_fund_type_allocation' contains word(s) mixing Latin and non-Latin letters: ['持仓按基金一级分类的分布（占净值比），investTypeCodeLevel1', '常量一致。没有持仓类型参数，口径随报告期：季报期只含重仓基金（positionType=top），中报、年报为全部持基（all）——同一只基金不同报告期的合计口径不同，做时序对比前先按']. Homoglyphs let a description read correctly to a reviewer while presenting different codepoints to any matcher that looks for specific words.",
+      "server": "gangtise-mcp",
+      "tool": "gangtise_fund_fund_type_allocation",
+      "location": "gangtise-mcp.gangtise_fund_fund_type_allocation",
+      "evidence": {
+        "mixed_script_words": [
+          "持仓按基金一级分类的分布（占净值比），investTypeCodeLevel1",
+          "常量一致。没有持仓类型参数，口径随报告期：季报期只含重仓基金（positionType=top），中报、年报为全部持基（all）——同一只基金不同报告期的合计口径不同，做时序对比前先按"
+        ],
+        "confusables": []
+      },
+      "remediation": "Normalise the text to ASCII; confirm the package source is what you think it is."
+    },
+    {
+      "detector": "semantic",
+      "severity": "high",
+      "title": "Mixed-script text in tool description: gangtise_fund_holder_structure",
+      "detail": "'gangtise-mcp.gangtise_fund_holder_structure' contains word(s) mixing Latin and non-Latin letters: ['null）。【积分：0.4/次】']. Homoglyphs let a description read correctly to a reviewer while presenting different codepoints to any matcher that looks for specific words.",
+      "server": "gangtise-mcp",
+      "tool": "gangtise_fund_holder_structure",
+      "location": "gangtise-mcp.gangtise_fund_holder_structure",
+      "evidence": {
+        "mixed_script_words": [
+          "null）。【积分：0.4/次】"
+        ],
+        "confusables": []
+      },
+      "remediation": "Normalise the text to ASCII; confirm the package source is what you think it is."
+    },
+    {
+      "detector": "semantic",
+      "severity": "high",
+      "title": "Mixed-script text in tool description: gangtise_fund_industry_allocation",
+      "detail": "'gangtise-mcp.gangtise_fund_industry_allocation' contains word(s) mixing Latin and non-Latin letters: ['查询基金股票持仓的一级行业分布（占净值比）。industryCode']. Homoglyphs let a description read correctly to a reviewer while presenting different codepoints to any matcher that looks for specific words.",
+      "server": "gangtise-mcp",
+      "tool": "gangtise_fund_industry_allocation",
+      "location": "gangtise-mcp.gangtise_fund_industry_allocation",
+      "evidence": {
+        "mixed_script_words": [
+          "查询基金股票持仓的一级行业分布（占净值比）。industryCode"
+        ],
+        "confusables": []
+      },
+      "remediation": "Normalise the text to ASCII; confirm the package source is what you think it is."
+    },
+    {
+      "detector": "semantic",
+      "severity": "high",
+      "title": "Mixed-script text in tool description: gangtise_fund_manager_history",
+      "detail": "'gangtise-mcp.gangtise_fund_manager_history' contains word(s) mixing Latin and non-Latin letters: ['查询基金的历任与现任基金经理：每位经理每段任职一行，同期共管各占一行；endDate', '的是现任。managedDays', '任职天数，managedReturn']. Homoglyphs let a description read correctly to a reviewer while presenting different codepoints to any matcher that looks for specific words.",
+      "server": "gangtise-mcp",
+      "tool": "gangtise_fund_manager_history",
+      "location": "gangtise-mcp.gangtise_fund_manager_history",
+      "evidence": {
+        "mixed_script_words": [
+          "查询基金的历任与现任基金经理：每位经理每段任职一行，同期共管各占一行；endDate",
+          "的是现任。managedDays",
+          "任职天数，managedReturn"
+        ],
+        "confusables": []
+      },
+      "remediation": "Normalise the text to ASCII; confirm the package source is what you think it is."
+    },
+    {
+      "detector": "semantic",
+      "severity": "high",
+      "title": "Mixed-script text in tool description: gangtise_fund_manager_info",
+      "detail": "'gangtise-mcp.gangtise_fund_manager_info' contains word(s) mixing Latin and non-Latin letters: ['careerStartDate、简介里的从业年数对不上，需要准确的从业年限时按']. Homoglyphs let a description read correctly to a reviewer while presenting different codepoints to any matcher that looks for specific words.",
+      "server": "gangtise-mcp",
+      "tool": "gangtise_fund_manager_info",
+      "location": "gangtise-mcp.gangtise_fund_manager_info",
+      "evidence": {
+        "mixed_script_words": [
+          "careerStartDate、简介里的从业年数对不上，需要准确的从业年限时按"
+        ],
+        "confusables": []
+      },
+      "remediation": "Normalise the text to ASCII; confirm the package source is what you think it is."
+    },
+    {
+      "detector": "semantic",
+      "severity": "high",
+      "title": "Mixed-script text in tool description: gangtise_fund_nav",
+      "detail": "'gangtise-mcp.gangtise_fund_nav' contains word(s) mixing Latin and non-Latin letters: ['navUnit、累计净值', 'navAccumulated、复权因子', 'navAdjusted（元）。算区间收益用', 'navAdjusted——单位净值在分红、拆分时跳变。货币基金另有', 'mmfUnitYield（每万份收益，元），其']. Homoglyphs let a description read correctly to a reviewer while presenting different codepoints to any matcher that looks for specific words.",
+      "server": "gangtise-mcp",
+      "tool": "gangtise_fund_nav",
+      "location": "gangtise-mcp.gangtise_fund_nav",
+      "evidence": {
+        "mixed_script_words": [
+          "navUnit、累计净值",
+          "navAccumulated、复权因子",
+          "navAdjusted（元）。算区间收益用",
+          "navAdjusted——单位净值在分红、拆分时跳变。货币基金另有",
+          "mmfUnitYield（每万份收益，元），其",
+          "null。多只",
+          "gangtise_indicator_cross_section（基金代码可直接传）。【积分：0.4/次】"
+        ],
+        "confusables": []
+      },
+      "remediation": "Normalise the text to ASCII; confirm the package source is what you think it is."
+    },
+    {
+      "detector": "semantic",
+      "severity": "high",
+      "title": "Description reads as instructions to the model (p=1.00): gangtise_fund_stock_portfolio",
+      "detail": "The description of 'gangtise-mcp.gangtise_fund_stock_portfolio' scores 1.00 on the instruction-detection model, and carries intent signals: hidden_unicode. Descriptions are documentation for a human, but they are delivered to the model as trusted context, so text that tells the model what to do is an attack surface rather than a description. The score is driven mainly by: entropy, hidden_unicode, imperative_density, log_words.",
+      "server": "gangtise-mcp",
+      "tool": "gangtise_fund_stock_portfolio",
+      "location": "gangtise-mcp.gangtise_fund_stock_portfolio",
+      "evidence": {
+        "probability": 1.0,
+        "threshold": 0.5,
+        "intent_signals": [
+          "hidden_unicode"
+        ],
+        "driving_features": [
+          {
+            "feature": "entropy",
+            "contribution": 15.4419
+          },
+          {
+            "feature": "hidden_unicode",
+            "contribution": 3.0886
+          },
+          {
+            "feature": "non_ascii_ratio",
+            "contribution": -2.0732
+          },
+          {
+            "feature": "hardcoded_recipient",
+            "contribution": -1.2458
+          },
+          {
+            "feature": "imperative_density",
+            "contribution": 0.9206
+          },
+          {
+            "feature": "log_words",
+            "contribution": 0.8771
+          }
+        ],
+        "active_features": {
+          "log_len": 5.003946305945459,
+          "log_words": 2.3978952727983707,
+          "entropy": 6.139333119379321,
+          "non_ascii_ratio": 0.581081081081081,
+          "hidden_unicode": 1.0,
+          "schema_nested_desc": 2.0
+        },
+        "description": "查询基金各报告期的股票持仓：持股数（万股）、占流通股比、持仓市值（万元）、占净值比与较上期变化 pctToNavChg。⚠️ 只返回股票简称 stockName、没有代码：要代码用 gangtise_securities_search 按简称换，注意 A / H 同名与改名。【积分：0.4/次】"
+      },
+      "remediation": "Read the description against what the tool actually does. If the text is legitimate, it usually means the tool should not have to instruct the model at all - move the guidance into the parameter descriptions or the server's own docs."
+    },
+    {
+      "detector": "semantic",
+      "severity": "high",
+      "title": "Mixed-script text in tool description: gangtise_fund_stock_portfolio",
+      "detail": "'gangtise-mcp.gangtise_fund_stock_portfolio' contains word(s) mixing Latin and non-Latin letters: ['stockName、没有代码：要代码用']. Homoglyphs let a description read correctly to a reviewer while presenting different codepoints to any matcher that looks for specific words.",
+      "server": "gangtise-mcp",
+      "tool": "gangtise_fund_stock_portfolio",
+      "location": "gangtise-mcp.gangtise_fund_stock_portfolio",
+      "evidence": {
+        "mixed_script_words": [
+          "stockName、没有代码：要代码用"
+        ],
+        "confusables": []
+      },
+      "remediation": "Normalise the text to ASCII; confirm the package source is what you think it is."
+    },
+    {
+      "detector": "semantic",
+      "severity": "high",
+      "title": "Mixed-script text in tool description: gangtise_fund_top10_holders",
+      "detail": "'gangtise-mcp.gangtise_fund_top10_holders' contains word(s) mixing Latin and non-Latin letters: ['查询上市基金（LOF', 'ETF）的前十大持有人（中报、年报披露）：serialNumber', '名次、持有人、持有份额（份）与占上市总份额比（%）。ETF', 'serialNumber=11，是它的联接基金，只要前十名按', 'REITs）外，基金中报不再披露前十大持有人，这一期查不到属正常（持有人结构仍有）；先不带日期查一次，看该基金有哪些报告期。【积分：0.4/次】']. Homoglyphs let a description read correctly to a reviewer while presenting different codepoints to any matcher that looks for specific words.",
+      "server": "gangtise-mcp",
+      "tool": "gangtise_fund_top10_holders",
+      "location": "gangtise-mcp.gangtise_fund_top10_holders",
+      "evidence": {
+        "mixed_script_words": [
+          "查询上市基金（LOF",
+          "ETF）的前十大持有人（中报、年报披露）：serialNumber",
+          "名次、持有人、持有份额（份）与占上市总份额比（%）。ETF",
+          "serialNumber=11，是它的联接基金，只要前十名按",
+          "REITs）外，基金中报不再披露前十大持有人，这一期查不到属正常（持有人结构仍有）；先不带日期查一次，看该基金有哪些报告期。【积分：0.4/次】"
+        ],
+        "confusables": []
+      },
+      "remediation": "Normalise the text to ASCII; confirm the package source is what you think it is."
+    },
+    {
+      "detector": "semantic",
+      "severity": "high",
+      "title": "Description reads as instructions to the model (p=1.00): gangtise_highlight_list",
+      "detail": "The description of 'gangtise-mcp.gangtise_highlight_list' scores 1.00 on the instruction-detection model, and carries intent signals: hidden_unicode. Descriptions are documentation for a human, but they are delivered to the model as trusted context, so text that tells the model what to do is an attack surface rather than a description. The score is driven mainly by: entropy, hidden_unicode, imperative_density.",
+      "server": "gangtise-mcp",
+      "tool": "gangtise_highlight_list",
+      "location": "gangtise-mcp.gangtise_highlight_list",
+      "evidence": {
+        "probability": 1.0,
+        "threshold": 0.5,
+        "intent_signals": [
+          "hidden_unicode"
+        ],
+        "driving_features": [
+          {
+            "feature": "entropy",
+            "contribution": 17.6566
+          },
+          {
+            "feature": "hidden_unicode",
+            "contribution": 3.0886
+          },
+          {
+            "feature": "non_ascii_ratio",
+            "contribution": -2.1375
+          },
+          {
+            "feature": "hardcoded_recipient",
+            "contribution": -1.2458
+          },
+          {
+            "feature": "imperative_density",
+            "contribution": 0.9206
+          },
+          {
+            "feature": "concealment",
+            "contribution": -0.8605
+          }
+        ],
+        "active_features": {
+          "log_len": 5.288267030694535,
+          "log_words": 2.833213344056216,
+          "entropy": 6.420952187971744,
+          "non_ascii_ratio": 0.5989847715736041,
+          "hidden_unicode": 1.0,
+          "schema_nested_desc": 4.0
+        },
+        "description": "查询会议线索：Gangtise 会议内容的核心要点信息流，固定按发布时间倒序，适合做每日会议跟踪。content 是 HTML 片段（<p> 包裹，小标题用 <strong>）。⚠️ 要点可能不关联任何证券（securityList 为 []，宏观 / 行业会议尤其常见），按 securityList 筛会漏掉这批。按偏移最多取到第 10000 条，更多请缩短时间区间分段取。【积分：5/条】"
+      },
+      "remediation": "Read the description against what the tool actually does. If the text is legitimate, it usually means the tool should not have to instruct the model at all - move the guidance into the parameter descriptions or the server's own docs."
+    },
+    {
+      "detector": "semantic",
+      "severity": "high",
+      "title": "Mixed-script text in tool description: gangtise_highlight_list",
+      "detail": "'gangtise-mcp.gangtise_highlight_list' contains word(s) mixing Latin and non-Latin letters: ['查询会议线索：Gangtise', '会议内容的核心要点信息流，固定按发布时间倒序，适合做每日会议跟踪。content', '片段（<p>', '要点可能不关联任何证券（securityList']. Homoglyphs let a description read correctly to a reviewer while presenting different codepoints to any matcher that looks for specific words.",
+      "server": "gangtise-mcp",
+      "tool": "gangtise_highlight_list",
+      "location": "gangtise-mcp.gangtise_highlight_list",
+      "evidence": {
+        "mixed_script_words": [
+          "查询会议线索：Gangtise",
+          "会议内容的核心要点信息流，固定按发布时间倒序，适合做每日会议跟踪。content",
+          "片段（<p>",
+          "要点可能不关联任何证券（securityList"
+        ],
+        "confusables": []
+      },
+      "remediation": "Normalise the text to ASCII; confirm the package source is what you think it is."
+    },
+    {
+      "detector": "semantic",
+      "severity": "high",
+      "title": "Mixed-script text in tool description: gangtise_income_statement",
+      "detail": "'gangtise-mcp.gangtise_income_statement' contains word(s) mixing Latin and non-Latin letters: ['查询利润表，按代码后缀自动选市场：A股（累计口径，quarterly=true', '时点对齐时，announcementDate', '是当前返回报表版本的公告日，earliestAnncDate', '是接口记录的首次公告日。consolidated', '就当成首次披露值；category']. Homoglyphs let a description read correctly to a reviewer while presenting different codepoints to any matcher that looks for specific words.",
+      "server": "gangtise-mcp",
+      "tool": "gangtise_income_statement",
+      "location": "gangtise-mcp.gangtise_income_statement",
+      "evidence": {
+        "mixed_script_words": [
+          "查询利润表，按代码后缀自动选市场：A股（累计口径，quarterly=true",
+          "时点对齐时，announcementDate",
+          "是当前返回报表版本的公告日，earliestAnncDate",
+          "是接口记录的首次公告日。consolidated",
+          "就当成首次披露值；category"
+        ],
+        "confusables": []
+      },
+      "remediation": "Normalise the text to ASCII; confirm the package source is what you think it is."
+    },
+    {
+      "detector": "semantic",
+      "severity": "high",
+      "title": "Description reads as instructions to the model (p=1.00): gangtise_index_day_kline",
+      "detail": "The description of 'gangtise-mcp.gangtise_index_day_kline' scores 1.00 on the instruction-detection model, and carries intent signals: hidden_unicode. Descriptions are documentation for a human, but they are delivered to the model as trusted context, so text that tells the model what to do is an attack surface rather than a description. The score is driven mainly by: entropy, hidden_unicode, imperative_density, log_len.",
+      "server": "gangtise-mcp",
+      "tool": "gangtise_index_day_kline",
+      "location": "gangtise-mcp.gangtise_index_day_kline",
+      "evidence": {
+        "probability": 1.0,
+        "threshold": 0.5,
+        "intent_signals": [
+          "hidden_unicode"
+        ],
+        "driving_features": [
+          {
+            "feature": "entropy",
+            "contribution": 19.2015
+          },
+          {
+            "feature": "hidden_unicode",
+            "contribution": 3.0886
+          },
+          {
+            "feature": "non_ascii_ratio",
+            "contribution": -1.9305
+          },
+          {
+            "feature": "hardcoded_recipient",
+            "contribution": -1.2458
+          },
+          {
+            "feature": "imperative_density",
+            "contribution": 0.9206
+          },
+          {
+            "feature": "log_len",
+            "contribution": 0.8872
+          }
+        ],
+        "active_features": {
+          "log_len": 5.929589143389895,
+          "log_words": 3.091042453358316,
+          "entropy": 6.617402454667626,
+          "non_ascii_ratio": 0.5413333333333333,
+          "hidden_unicode": 1.0,
+          "schema_nested_desc": 3.0
+        },
+        "description": "查询指数日 K 线数据（沪深京交易所指数如 000001.SH 上证指数、399001.SZ 深成指，也支持概念指数 .GT 与行业指数 .CI/.SWI）。gangtise_day_kline 收同样的指数代码、还能与个股混查。返回不含指数名称，名称用 gangtise_securities_search（category=['index']）查 gtsName。本工具没有全市场关键字，多个指数逐个列出代码。⚠️ 本工具只收指数代码：传个股代码（哪怕是有效的，如 600519.SH）返回空列表而不报错，别把它读成「这只票没数据」；无效代码同样返空。核对代码请用 gangtise_securities_search 按公司名/简称查，并同时核对返回的 gtsName 与 gtsCode 后缀（A+H 两地上市名字逐字相同，只有后缀能区分）。"
+      },
+      "remediation": "Read the description against what the tool actually does. If the text is legitimate, it usually means the tool should not have to instruct the model at all - move the guidance into the parameter descriptions or the server's own docs."
+    },
+    {
+      "detector": "semantic",
+      "severity": "high",
+      "title": "Mixed-script text in tool description: gangtise_index_day_kline",
+      "detail": "'gangtise-mcp.gangtise_index_day_kline' contains word(s) mixing Latin and non-Latin letters: ['上证指数、399001.SZ', \"gangtise_securities_search（category=['index']）查\", 'gtsName。本工具没有全市场关键字，多个指数逐个列出代码。⚠️', '600519.SH）返回空列表而不报错，别把它读成「这只票没数据」；无效代码同样返空。核对代码请用', '后缀（A+H']. Homoglyphs let a description read correctly to a reviewer while presenting different codepoints to any matcher that looks for specific words.",
+      "server": "gangtise-mcp",
+      "tool": "gangtise_index_day_kline",
+      "location": "gangtise-mcp.gangtise_index_day_kline",
+      "evidence": {
+        "mixed_script_words": [
+          "上证指数、399001.SZ",
+          "gangtise_securities_search（category=['index']）查",
+          "gtsName。本工具没有全市场关键字，多个指数逐个列出代码。⚠️",
+          "600519.SH）返回空列表而不报错，别把它读成「这只票没数据」；无效代码同样返空。核对代码请用",
+          "后缀（A+H"
+        ],
+        "confusables": []
+      },
+      "remediation": "Normalise the text to ASCII; confirm the package source is what you think it is."
+    },
+    {
+      "detector": "semantic",
+      "severity": "high",
+      "title": "Mixed-script text in tool description: gangtise_index_weight",
+      "detail": "'gangtise-mcp.gangtise_index_weight' contains word(s) mixing Latin and non-Latin letters: ['查询指数成分股及权重：indexCode', 'weight（单位']. Homoglyphs let a description read correctly to a reviewer while presenting different codepoints to any matcher that looks for specific words.",
+      "server": "gangtise-mcp",
+      "tool": "gangtise_index_weight",
+      "location": "gangtise-mcp.gangtise_index_weight",
+      "evidence": {
+        "mixed_script_words": [
+          "查询指数成分股及权重：indexCode",
+          "weight（单位"
+        ],
+        "confusables": []
+      },
+      "remediation": "Normalise the text to ASCII; confirm the package source is what you think it is."
+    },
+    {
+      "detector": "semantic",
+      "severity": "high",
+      "title": "Mixed-script text in tool description: gangtise_indicator_cross_section",
+      "detail": "'gangtise-mcp.gangtise_indicator_cross_section' contains word(s) mixing Latin and non-Latin letters: ['gangtise_indicator_search。多证券取同一批已实现财务/估值指标的首选（一次拉取，免去逐只调用专用工具）。财务科目分公司类型，公司类型不匹配时返', 'null（≠指标坏）。指标代码、证券代码、参数名写错都会被接口拒绝并指名出错的那一个，照', '`null`，不会填数值', '_partial。所以', 'scopeList），从结果本身分不出来；结论要紧时请用专用报表工具单查该证券核对。结果若标了']. Homoglyphs let a description read correctly to a reviewer while presenting different codepoints to any matcher that looks for specific words.",
+      "server": "gangtise-mcp",
+      "tool": "gangtise_indicator_cross_section",
+      "location": "gangtise-mcp.gangtise_indicator_cross_section",
+      "evidence": {
+        "mixed_script_words": [
+          "gangtise_indicator_search。多证券取同一批已实现财务/估值指标的首选（一次拉取，免去逐只调用专用工具）。财务科目分公司类型，公司类型不匹配时返",
+          "null（≠指标坏）。指标代码、证券代码、参数名写错都会被接口拒绝并指名出错的那一个，照",
+          "`null`，不会填数值",
+          "_partial。所以",
+          "scopeList），从结果本身分不出来；结论要紧时请用专用报表工具单查该证券核对。结果若标了",
+          "omittedIndicators/omittedSecurities，说明那几个",
+          ".O/.N/.A，不是",
+          ".US）。按单元格计价，指标数×证券数×日期数即放大倍数，单次上限"
+        ],
+        "confusables": []
+      },
+      "remediation": "Normalise the text to ASCII; confirm the package source is what you think it is."
+    },
+    {
+      "detector": "semantic",
+      "severity": "high",
+      "title": "Mixed-script text in tool description: gangtise_indicator_screener",
+      "detail": "'gangtise-mcp.gangtise_indicator_screener' contains word(s) mixing Latin and non-Latin letters: ['条件选股：把变量绑到指标（F1=某指标、F2=另一指标），再用', 'gangtise_indicator_search。这是唯一能按指标数值筛股的工具（专用工具都不支持），典型用法：给', 'sectorId（服务端展开为全部成分股）再按市值/PE', 'contains/notcontains（仅', 'scopeList（如预测类']. Homoglyphs let a description read correctly to a reviewer while presenting different codepoints to any matcher that looks for specific words.",
+      "server": "gangtise-mcp",
+      "tool": "gangtise_indicator_screener",
+      "location": "gangtise-mcp.gangtise_indicator_screener",
+      "evidence": {
+        "mixed_script_words": [
+          "条件选股：把变量绑到指标（F1=某指标、F2=另一指标），再用",
+          "gangtise_indicator_search。这是唯一能按指标数值筛股的工具（专用工具都不支持），典型用法：给",
+          "sectorId（服务端展开为全部成分股）再按市值/PE",
+          "contains/notcontains（仅",
+          "scopeList（如预测类",
+          "`null`，不会填数值",
+          "不满足任何数值比较**，条件因此恒假。判别方法二选一：把表达式**反向再跑一次**（`F1"
+        ],
+        "confusables": []
+      },
+      "remediation": "Normalise the text to ASCII; confirm the package source is what you think it is."
+    },
+    {
+      "detector": "semantic",
+      "severity": "high",
+      "title": "Description reads as instructions to the model (p=1.00): gangtise_indicator_search",
+      "detail": "The description of 'gangtise-mcp.gangtise_indicator_search' scores 1.00 on the instruction-detection model, and carries intent signals: hidden_unicode. Descriptions are documentation for a human, but they are delivered to the model as trusted context, so text that tells the model what to do is an attack surface rather than a description. The score is driven mainly by: entropy, hidden_unicode, log_len.",
+      "server": "gangtise-mcp",
+      "tool": "gangtise_indicator_search",
+      "location": "gangtise-mcp.gangtise_indicator_search",
+      "evidence": {
+        "probability": 1.0,
+        "threshold": 0.5,
+        "intent_signals": [
+          "hidden_unicode"
+        ],
+        "driving_features": [
+          {
+            "feature": "entropy",
+            "contribution": 22.2895
+          },
+          {
+            "feature": "hidden_unicode",
+            "contribution": 3.0886
+          },
+          {
+            "feature": "log_words",
+            "contribution": -2.4208
+          },
+          {
+            "feature": "log_len",
+            "contribution": 1.7856
+          },
+          {
+            "feature": "non_ascii_ratio",
+            "contribution": -1.6373
+          },
+          {
+            "feature": "hardcoded_recipient",
+            "contribution": -1.2458
+          }
+        ],
+        "active_features": {
+          "log_len": 7.102499355774649,
+          "log_words": 4.3694478524670215,
+          "entropy": 7.010072185366281,
+          "non_ascii_ratio": 0.4596375617792422,
+          "hidden_unicode": 1.0,
+          "imperative_density": 0.01282051282051282,
+          "schema_nested_desc": 2.0
+        },
+        "description": "按名称搜索证券级数据指标（EDE），返回 indicatorCode、scopeList（覆盖市场，附 usageRestriction）及 parameterList（含 required 必填标记与枚举）。取数前必先用本工具拿 code，并核对 indicatorName/description 语义、scopeList 是否覆盖目标市场、parameterList 取值——任一不符即回退专用工具。scopeList 是声明不是保证，usageRestriction（如「不支持指标时间序列接口」）也不是硬约束、按「口径可能不对」理解，均以实际抽查为准。基础行情（开高低收/成交量额/换手/涨跌幅）虽可搜到仍优先 realtime/day_kline，但**总市值 qte_mkt_cptl 这两个专用工具都没有、单票也走 EDE**（A/港/美股均已有数，默认「元」，用 scale 缩放）；同样只有 EDE 才有的还包括融资融券 mgn_*（两融余额/融资/融券及其区间变体，仅 A 股；区间变体的 changePeriod 是可选的）与所属行业 scr_indu_citic / scr"
+      },
+      "remediation": "Read the description against what the tool actually does. If the text is legitimate, it usually means the tool should not have to instruct the model at all - move the guidance into the parameter descriptions or the server's own docs."
+    },
+    {
+      "detector": "semantic",
+      "severity": "high",
+      "title": "Mixed-script text in tool description: gangtise_indicator_search",
+      "detail": "'gangtise-mcp.gangtise_indicator_search' contains word(s) mixing Latin and non-Latin letters: ['按名称搜索证券级数据指标（EDE），返回', 'indicatorCode、scopeList（覆盖市场，附', 'usageRestriction）及', 'parameterList（含', 'code，并核对']. Homoglyphs let a description read correctly to a reviewer while presenting different codepoints to any matcher that looks for specific words.",
+      "server": "gangtise-mcp",
+      "tool": "gangtise_indicator_search",
+      "location": "gangtise-mcp.gangtise_indicator_search",
+      "evidence": {
+        "mixed_script_words": [
+          "按名称搜索证券级数据指标（EDE），返回",
+          "indicatorCode、scopeList（覆盖市场，附",
+          "usageRestriction）及",
+          "parameterList（含",
+          "code，并核对",
+          "语义、scopeList",
+          "是否覆盖目标市场、parameterList",
+          "取值——任一不符即回退专用工具。scopeList",
+          "是声明不是保证，usageRestriction（如「不支持指标时间序列接口」）也不是硬约束、按「口径可能不对」理解，均以实际抽查为准。基础行情（开高低收/成交量额/换手/涨跌幅）虽可搜到仍优先",
+          "realtime/day_kline，但**总市值"
+        ],
+        "confusables": []
+      },
+      "remediation": "Normalise the text to ASCII; confirm the package source is what you think it is."
+    },
+    {
+      "detector": "semantic",
+      "severity": "high",
+      "title": "Mixed-script text in tool description: gangtise_indicator_time_series",
+      "detail": "'gangtise-mcp.gangtise_indicator_time_series' contains word(s) mixing Latin and non-Latin letters: ['gangtise_indicator_search。单指标', 'sectorId（板块）算多证券（服务端展开成', 'calendarType：不传时交易日类给交易日、报告期类（营收/净利等）给区间内的报告期末、两类混查给两者的并集。🔴', '`null`，不会填数值', 'null，但**行数不变**——手工「整列求和']. Homoglyphs let a description read correctly to a reviewer while presenting different codepoints to any matcher that looks for specific words.",
+      "server": "gangtise-mcp",
+      "tool": "gangtise_indicator_time_series",
+      "location": "gangtise-mcp.gangtise_indicator_time_series",
+      "evidence": {
+        "mixed_script_words": [
+          "gangtise_indicator_search。单指标",
+          "sectorId（板块）算多证券（服务端展开成",
+          "calendarType：不传时交易日类给交易日、报告期类（营收/净利等）给区间内的报告期末、两类混查给两者的并集。🔴",
+          "`null`，不会填数值",
+          "null，但**行数不变**——手工「整列求和",
+          "RD。整列都是",
+          "scopeList——该指标可能不覆盖这个市场或证券类型，那与「这段区间没有数据」从结果里分不出来。指标代码或证券代码写错会被接口拒绝并指名，照",
+          "_partial，说明有"
+        ],
+        "confusables": []
+      },
+      "remediation": "Normalise the text to ASCII; confirm the package source is what you think it is."
+    },
+    {
+      "detector": "semantic",
+      "severity": "high",
+      "title": "Mixed-script text in tool description: gangtise_institution_search",
+      "detail": "'gangtise-mcp.gangtise_institution_search' contains word(s) mixing Latin and non-Latin letters: ['ID，返回', 'usageScopes（标明该', '等参数使用。提示：内资券商（domesticBroker）与外资机构（foreignInstitution）类需用较完整的机构名（如「华泰证券」「Goldman」「Morgan」），简称可能搜不到；牵头', '观点类（leadInstitution', 'foreignOpinionInstitution）可用简称（如「中金」「高盛」）。']. Homoglyphs let a description read correctly to a reviewer while presenting different codepoints to any matcher that looks for specific words.",
+      "server": "gangtise-mcp",
+      "tool": "gangtise_institution_search",
+      "location": "gangtise-mcp.gangtise_institution_search",
+      "evidence": {
+        "mixed_script_words": [
+          "ID，返回",
+          "usageScopes（标明该",
+          "等参数使用。提示：内资券商（domesticBroker）与外资机构（foreignInstitution）类需用较完整的机构名（如「华泰证券」「Goldman」「Morgan」），简称可能搜不到；牵头",
+          "观点类（leadInstitution",
+          "foreignOpinionInstitution）可用简称（如「中金」「高盛」）。"
+        ],
+        "confusables": []
+      },
+      "remediation": "Normalise the text to ASCII; confirm the package source is what you think it is."
+    },
+    {
+      "detector": "semantic",
+      "severity": "high",
+      "title": "Mixed-script text in tool description: gangtise_knowledge_batch",
+      "detail": "'gangtise-mcp.gangtise_knowledge_batch' contains word(s) mixing Latin and non-Latin letters: ['个查询词。适合开放式语义检索；按券商/评级/公告分类/时间范围等结构化条件精确筛选时，改用对应列表工具（gangtise_research_list']. Homoglyphs let a description read correctly to a reviewer while presenting different codepoints to any matcher that looks for specific words.",
+      "server": "gangtise-mcp",
+      "tool": "gangtise_knowledge_batch",
+      "location": "gangtise-mcp.gangtise_knowledge_batch",
+      "evidence": {
+        "mixed_script_words": [
+          "个查询词。适合开放式语义检索；按券商/评级/公告分类/时间范围等结构化条件精确筛选时，改用对应列表工具（gangtise_research_list"
+        ],
+        "confusables": []
+      },
+      "remediation": "Normalise the text to ASCII; confirm the package source is what you think it is."
+    },
+    {
+      "detector": "semantic",
+      "severity": "high",
+      "title": "Mixed-script text in tool description: gangtise_lookup",
+      "detail": "'gangtise-mcp.gangtise_lookup' contains word(s) mixing Latin and non-Latin letters: ['ID）：券商机构、会议机构。无需调用', 'API，直接返回本地数据。行业/研究方向/地区/公告类别', 'gangtise_constant_list，主题', 'gangtise_concept_search，申万行业代码（801xxx.SWI）用', 'sectorId=2000000014。【本地工具，不消耗']. Homoglyphs let a description read correctly to a reviewer while presenting different codepoints to any matcher that looks for specific words.",
+      "server": "gangtise-mcp",
+      "tool": "gangtise_lookup",
+      "location": "gangtise-mcp.gangtise_lookup",
+      "evidence": {
+        "mixed_script_words": [
+          "ID）：券商机构、会议机构。无需调用",
+          "API，直接返回本地数据。行业/研究方向/地区/公告类别",
+          "gangtise_constant_list，主题",
+          "gangtise_concept_search，申万行业代码（801xxx.SWI）用",
+          "sectorId=2000000014。【本地工具，不消耗"
+        ],
+        "confusables": []
+      },
+      "remediation": "Normalise the text to ASCII; confirm the package source is what you think it is."
+    },
+    {
+      "detector": "semantic",
+      "severity": "high",
+      "title": "Mixed-script text in tool description: gangtise_management_sentiment_conclusion",
+      "detail": "'gangtise-mcp.gangtise_management_sentiment_conclusion' contains word(s) mixing Latin and non-Latin letters: ['查询管理层情绪结论：sentimentSummary（overallSentiment', 'sentimentSignal（不含分数，分数用', 'gangtise_management_sentiment_indicator），以及与上一场同一事项的问答对照', 'previousSource。没有可比的上一场时', 'null。一条']. Homoglyphs let a description read correctly to a reviewer while presenting different codepoints to any matcher that looks for specific words.",
+      "server": "gangtise-mcp",
+      "tool": "gangtise_management_sentiment_conclusion",
+      "location": "gangtise-mcp.gangtise_management_sentiment_conclusion",
+      "evidence": {
+        "mixed_script_words": [
+          "查询管理层情绪结论：sentimentSummary（overallSentiment",
+          "sentimentSignal（不含分数，分数用",
+          "gangtise_management_sentiment_indicator），以及与上一场同一事项的问答对照",
+          "previousSource。没有可比的上一场时",
+          "null。一条",
+          "一场业绩会，按发布时间倒序；source.sourceId"
+        ],
+        "confusables": []
+      },
+      "remediation": "Normalise the text to ASCII; confirm the package source is what you think it is."
+    },
+    {
+      "detector": "semantic",
+      "severity": "high",
+      "title": "Mixed-script text in tool description: gangtise_management_sentiment_detail",
+      "detail": "'gangtise-mcp.gangtise_management_sentiment_detail' contains word(s) mixing Latin and non-Latin letters: ['qaConviction（只取', '0.0）与依据（*Quote', '回答原文节选、*Reason', '判断理由），一次返回全部。sourceId', 'source.sourceId；返回行不带来源字段，批量取多场时自己记下对应的']. Homoglyphs let a description read correctly to a reviewer while presenting different codepoints to any matcher that looks for specific words.",
+      "server": "gangtise-mcp",
+      "tool": "gangtise_management_sentiment_detail",
+      "location": "gangtise-mcp.gangtise_management_sentiment_detail",
+      "evidence": {
+        "mixed_script_words": [
+          "qaConviction（只取",
+          "0.0）与依据（*Quote",
+          "回答原文节选、*Reason",
+          "判断理由），一次返回全部。sourceId",
+          "source.sourceId；返回行不带来源字段，批量取多场时自己记下对应的",
+          "questionBrief。【积分：10/次】"
+        ],
+        "confusables": []
+      },
+      "remediation": "Normalise the text to ASCII; confirm the package source is what you think it is."
+    },
+    {
+      "detector": "semantic",
+      "severity": "high",
+      "title": "Mixed-script text in tool description: gangtise_management_sentiment_indicator",
+      "detail": "'gangtise-mcp.gangtise_management_sentiment_indicator' contains word(s) mixing Latin and non-Latin letters: ['sentimentResponsiveness、回复乐观度', 'sentimentPolarity、回复确定度', 'sentimentConviction（0–5），有效问答数', 'qaCount，回避', 'qaUncertaintyRatio（百分数，18.42']. Homoglyphs let a description read correctly to a reviewer while presenting different codepoints to any matcher that looks for specific words.",
+      "server": "gangtise-mcp",
+      "tool": "gangtise_management_sentiment_indicator",
+      "location": "gangtise-mcp.gangtise_management_sentiment_indicator",
+      "evidence": {
+        "mixed_script_words": [
+          "sentimentResponsiveness、回复乐观度",
+          "sentimentPolarity、回复确定度",
+          "sentimentConviction（0–5），有效问答数",
+          "qaCount，回避",
+          "qaUncertaintyRatio（百分数，18.42",
+          "qaCount），以及按问题类型的拆分",
+          "questionCategoryList（类型同",
+          "questionCategory；只有一两条问答的类型评分波动大，isImportant",
+          "一场业绩会，按发布时间倒序；source.sourceId"
+        ],
+        "confusables": []
+      },
+      "remediation": "Normalise the text to ASCII; confirm the package source is what you think it is."
+    },
+    {
+      "detector": "semantic",
+      "severity": "high",
+      "title": "Description reads as instructions to the model (p=1.00): gangtise_minute_kline",
+      "detail": "The description of 'gangtise-mcp.gangtise_minute_kline' scores 1.00 on the instruction-detection model, and carries intent signals: hidden_unicode. Descriptions are documentation for a human, but they are delivered to the model as trusted context, so text that tells the model what to do is an attack surface rather than a description. The score is driven mainly by: entropy, hidden_unicode, imperative_density.",
+      "server": "gangtise-mcp",
+      "tool": "gangtise_minute_kline",
+      "location": "gangtise-mcp.gangtise_minute_kline",
+      "evidence": {
+        "probability": 1.0,
+        "threshold": 0.5,
+        "intent_signals": [
+          "hidden_unicode"
+        ],
+        "driving_features": [
+          {
+            "feature": "entropy",
+            "contribution": 15.9066
+          },
+          {
+            "feature": "hidden_unicode",
+            "contribution": 3.0886
+          },
+          {
+            "feature": "non_ascii_ratio",
+            "contribution": -1.7504
+          },
+          {
+            "feature": "hardcoded_recipient",
+            "contribution": -1.2458
+          },
+          {
+            "feature": "imperative_density",
+            "contribution": 0.9206
+          },
+          {
+            "feature": "concealment",
+            "contribution": -0.8605
+          }
+        ],
+        "active_features": {
+          "log_len": 5.424950017481403,
+          "log_words": 3.2188758248682006,
+          "entropy": 6.198423750634063,
+          "non_ascii_ratio": 0.4911504424778761,
+          "hidden_unicode": 1.0,
+          "schema_nested_desc": 3.0
+        },
+        "description": "查询分钟级 K 线数据：A 股个股、沪深 ETF、各类指数（含 20 个全球指数，其 volume / amount 为 null、tradeTime 是交易所当地时间）。security 可传多只（逐只请求后按传入顺序合并，每只各自受 limit 约束，撞上限的证券标 _partial + _truncated_securities）。⚠️ **volume 的单位是「股」**（ETF 为「份」），不是「手」——按手换算会差 100 倍且不报错。"
+      },
+      "remediation": "Read the description against what the tool actually does. If the text is legitimate, it usually means the tool should not have to instruct the model at all - move the guidance into the parameter descriptions or the server's own docs."
+    },
+    {
+      "detector": "semantic",
+      "severity": "high",
+      "title": "Mixed-script text in tool description: gangtise_minute_kline",
+      "detail": "'gangtise-mcp.gangtise_minute_kline' contains word(s) mixing Latin and non-Latin letters: ['线数据：A', 'ETF、各类指数（含', '是交易所当地时间）。security', '的单位是「股」**（ETF']. Homoglyphs let a description read correctly to a reviewer while presenting different codepoints to any matcher that looks for specific words.",
+      "server": "gangtise-mcp",
+      "tool": "gangtise_minute_kline",
+      "location": "gangtise-mcp.gangtise_minute_kline",
+      "evidence": {
+        "mixed_script_words": [
+          "线数据：A",
+          "ETF、各类指数（含",
+          "是交易所当地时间）。security",
+          "的单位是「股」**（ETF"
+        ],
+        "confusables": []
+      },
+      "remediation": "Normalise the text to ASCII; confirm the package source is what you think it is."
+    },
+    {
+      "detector": "semantic",
+      "severity": "high",
+      "title": "Mixed-script text in tool description: gangtise_official_account_search",
+      "detail": "'gangtise-mcp.gangtise_official_account_search' contains word(s) mixing Latin and non-Latin letters: ['ID，返回', 'accountId（供', 'matchScore。注意：部分公众号不属任何分类（category', 'null），传']. Homoglyphs let a description read correctly to a reviewer while presenting different codepoints to any matcher that looks for specific words.",
+      "server": "gangtise-mcp",
+      "tool": "gangtise_official_account_search",
+      "location": "gangtise-mcp.gangtise_official_account_search",
+      "evidence": {
+        "mixed_script_words": [
+          "ID，返回",
+          "accountId（供",
+          "matchScore。注意：部分公众号不属任何分类（category",
+          "null），传"
+        ],
+        "confusables": []
+      },
+      "remediation": "Normalise the text to ASCII; confirm the package source is what you think it is."
+    },
+    {
+      "detector": "semantic",
+      "severity": "high",
+      "title": "Description reads as instructions to the model (p=1.00): gangtise_opinion_detail",
+      "detail": "The description of 'gangtise-mcp.gangtise_opinion_detail' scores 1.00 on the instruction-detection model, and carries intent signals: hidden_unicode. Descriptions are documentation for a human, but they are delivered to the model as trusted context, so text that tells the model what to do is an attack surface rather than a description. The score is driven mainly by: entropy, hidden_unicode, imperative_density.",
+      "server": "gangtise-mcp",
+      "tool": "gangtise_opinion_detail",
+      "location": "gangtise-mcp.gangtise_opinion_detail",
+      "evidence": {
+        "probability": 1.0,
+        "threshold": 0.5,
+        "intent_signals": [
+          "hidden_unicode"
+        ],
+        "driving_features": [
+          {
+            "feature": "entropy",
+            "contribution": 15.548
+          },
+          {
+            "feature": "hidden_unicode",
+            "contribution": 3.0886
+          },
+          {
+            "feature": "non_ascii_ratio",
+            "contribution": -2.3165
+          },
+          {
+            "feature": "hardcoded_recipient",
+            "contribution": -1.2458
+          },
+          {
+            "feature": "imperative_density",
+            "contribution": 0.9206
+          },
+          {
+            "feature": "concealment",
+            "contribution": -0.8605
+          }
+        ],
+        "active_features": {
+          "log_len": 4.882801922586371,
+          "log_words": 2.4849066497880004,
+          "entropy": 6.152825700497059,
+          "non_ascii_ratio": 0.648854961832061,
+          "hidden_unicode": 1.0,
+          "schema_nested_desc": 2.0
+        },
+        "description": "按 ID 取观点全文。⚠️ 没有正文的 ID 被跳过而不报错（ID 错、超出取数窗口、刚发布都可能），结果标 _partial 并列在 missingIds；某批失败时已取到的正文照常返回，未取的列在 unfetchedIds，只重跑这几个。【积分：按观点类型】"
+      },
+      "remediation": "Read the description against what the tool actually does. If the text is legitimate, it usually means the tool should not have to instruct the model at all - move the guidance into the parameter descriptions or the server's own docs."
+    },
+    {
+      "detector": "semantic",
+      "severity": "high",
+      "title": "Mixed-script text in tool description: gangtise_opinion_detail",
+      "detail": "'gangtise-mcp.gangtise_opinion_detail' contains word(s) mixing Latin and non-Latin letters: ['被跳过而不报错（ID', 'missingIds；某批失败时已取到的正文照常返回，未取的列在', 'unfetchedIds，只重跑这几个。【积分：按观点类型】']. Homoglyphs let a description read correctly to a reviewer while presenting different codepoints to any matcher that looks for specific words.",
+      "server": "gangtise-mcp",
+      "tool": "gangtise_opinion_detail",
+      "location": "gangtise-mcp.gangtise_opinion_detail",
+      "evidence": {
+        "mixed_script_words": [
+          "被跳过而不报错（ID",
+          "missingIds；某批失败时已取到的正文照常返回，未取的列在",
+          "unfetchedIds，只重跑这几个。【积分：按观点类型】"
+        ],
+        "confusables": []
+      },
+      "remediation": "Normalise the text to ASCII; confirm the package source is what you think it is."
+    },
+    {
+      "detector": "semantic",
+      "severity": "high",
+      "title": "Mixed-script text in tool description: gangtise_opinion_list",
+      "detail": "'gangtise-mcp.gangtise_opinion_list' contains word(s) mixing Latin and non-Latin letters: ['brokerTagList（无标签为', 'withContent。【积分：1/条】']. Homoglyphs let a description read correctly to a reviewer while presenting different codepoints to any matcher that looks for specific words.",
+      "server": "gangtise-mcp",
+      "tool": "gangtise_opinion_list",
+      "location": "gangtise-mcp.gangtise_opinion_list",
+      "evidence": {
+        "mixed_script_words": [
+          "brokerTagList（无标签为",
+          "withContent。【积分：1/条】"
+        ],
+        "confusables": []
+      },
+      "remediation": "Normalise the text to ASCII; confirm the package source is what you think it is."
+    },
+    {
+      "detector": "semantic",
+      "severity": "high",
+      "title": "Mixed-script text in tool description: gangtise_overseas_account_search",
+      "detail": "'gangtise-mcp.gangtise_overseas_account_search' contains word(s) mixing Latin and non-Latin letters: ['ID，返回', 'accountId（供', '使用）、accountName、中文简介', 'matchScore，按', '降序。在英文账号名任意位置做子串匹配、不区分大小写（elo']. Homoglyphs let a description read correctly to a reviewer while presenting different codepoints to any matcher that looks for specific words.",
+      "server": "gangtise-mcp",
+      "tool": "gangtise_overseas_account_search",
+      "location": "gangtise-mcp.gangtise_overseas_account_search",
+      "evidence": {
+        "mixed_script_words": [
+          "ID，返回",
+          "accountId（供",
+          "使用）、accountName、中文简介",
+          "matchScore，按",
+          "降序。在英文账号名任意位置做子串匹配、不区分大小写（elo",
+          "Financelot），中文名查不到。"
+        ],
+        "confusables": []
+      },
+      "remediation": "Normalise the text to ASCII; confirm the package source is what you think it is."
+    },
+    {
+      "detector": "semantic",
+      "severity": "high",
+      "title": "Mixed-script text in tool description: gangtise_overseas_opinion_list",
+      "detail": "'gangtise-mcp.gangtise_overseas_opinion_list' contains word(s) mixing Latin and non-Latin letters: ['briefTranslate，全文用', 'kind=overseas。一条可同属多个类别（categoryList），按类别分批拉再合并要按', '去重，categoryList', 'forwardPost（个别为']. Homoglyphs let a description read correctly to a reviewer while presenting different codepoints to any matcher that looks for specific words.",
+      "server": "gangtise-mcp",
+      "tool": "gangtise_overseas_opinion_list",
+      "location": "gangtise-mcp.gangtise_overseas_opinion_list",
+      "evidence": {
+        "mixed_script_words": [
+          "briefTranslate，全文用",
+          "kind=overseas。一条可同属多个类别（categoryList），按类别分批拉再合并要按",
+          "去重，categoryList",
+          "forwardPost（个别为"
+        ],
+        "confusables": []
+      },
+      "remediation": "Normalise the text to ASCII; confirm the package source is what you think it is."
+    },
+    {
+      "detector": "semantic",
+      "severity": "high",
+      "title": "Description reads as instructions to the model (p=1.00): gangtise_pamirs_summary_list",
+      "detail": "The description of 'gangtise-mcp.gangtise_pamirs_summary_list' scores 1.00 on the instruction-detection model, and carries intent signals: hidden_unicode. Descriptions are documentation for a human, but they are delivered to the model as trusted context, so text that tells the model what to do is an attack surface rather than a description. The score is driven mainly by: entropy, hidden_unicode, log_len, imperative_density.",
+      "server": "gangtise-mcp",
+      "tool": "gangtise_pamirs_summary_list",
+      "location": "gangtise-mcp.gangtise_pamirs_summary_list",
+      "evidence": {
+        "probability": 1.0,
+        "threshold": 0.5,
+        "intent_signals": [
+          "hidden_unicode"
+        ],
+        "driving_features": [
+          {
+            "feature": "entropy",
+            "contribution": 18.2693
+          },
+          {
+            "feature": "hidden_unicode",
+            "contribution": 3.0886
+          },
+          {
+            "feature": "non_ascii_ratio",
+            "contribution": -1.7508
+          },
+          {
+            "feature": "hardcoded_recipient",
+            "contribution": -1.2458
+          },
+          {
+            "feature": "log_len",
+            "contribution": 1.04
+          },
+          {
+            "feature": "imperative_density",
+            "contribution": 0.9206
+          }
+        ],
+        "active_features": {
+          "log_len": 6.129050210060545,
+          "log_words": 3.4339872044851463,
+          "entropy": 6.498854992771428,
+          "non_ascii_ratio": 0.4912663755458515,
+          "hidden_unicode": 1.0,
+          "schema_nested_desc": 5.0
+        },
+        "description": "查询帕米尔专家纪要列表（独立的专家纪要库，需单独购买该数据库）。与 gangtise_summary_list 是两个库、不是它的子集：只有明确点名「帕米尔 / Pamirs」时才用本工具，泛指的会议纪要/专家访谈仍用 gangtise_summary_list。筛选项比 summary 少：没有 sourceList / institutionList / participantRoleList。⚠️ 返回行的 categoryList / marketList 只在按 categoryList 或 marketList 筛选时完整：其余查法下 categoryList 为空、marketList 不含 aShares / usChinaConcept。所以不要拉全量再按这两个字段本地分组（A 股、中概股的归属会整批缺失）——要分组就按每个类别、每个市场各查一遍；也不要因为某条记录标签为空就断定它没有该属性。本接口没有概念筛选参数，conceptList 只能按返回值使用。【积分：单价以平台计费为准】"
+      },
+      "remediation": "Read the description against what the tool actually does. If the text is legitimate, it usually means the tool should not have to instruct the model at all - move the guidance into the parameter descriptions or the server's own docs."
+    },
+    {
+      "detector": "semantic",
+      "severity": "high",
+      "title": "Mixed-script text in tool description: gangtise_pamirs_summary_list",
+      "detail": "'gangtise-mcp.gangtise_pamirs_summary_list' contains word(s) mixing Latin and non-Latin letters: ['Pamirs」时才用本工具，泛指的会议纪要/专家访谈仍用', 'gangtise_summary_list。筛选项比', '为空、marketList', 'usChinaConcept。所以不要拉全量再按这两个字段本地分组（A', '股、中概股的归属会整批缺失）——要分组就按每个类别、每个市场各查一遍；也不要因为某条记录标签为空就断定它没有该属性。本接口没有概念筛选参数，conceptList']. Homoglyphs let a description read correctly to a reviewer while presenting different codepoints to any matcher that looks for specific words.",
+      "server": "gangtise-mcp",
+      "tool": "gangtise_pamirs_summary_list",
+      "location": "gangtise-mcp.gangtise_pamirs_summary_list",
+      "evidence": {
+        "mixed_script_words": [
+          "Pamirs」时才用本工具，泛指的会议纪要/专家访谈仍用",
+          "gangtise_summary_list。筛选项比",
+          "为空、marketList",
+          "usChinaConcept。所以不要拉全量再按这两个字段本地分组（A",
+          "股、中概股的归属会整批缺失）——要分组就按每个类别、每个市场各查一遍；也不要因为某条记录标签为空就断定它没有该属性。本接口没有概念筛选参数，conceptList"
+        ],
+        "confusables": []
+      },
+      "remediation": "Normalise the text to ASCII; confirm the package source is what you think it is."
+    },
+    {
+      "detector": "semantic",
+      "severity": "high",
+      "title": "Mixed-script text in tool description: gangtise_performance_calendar_list",
+      "detail": "'gangtise-mcp.gangtise_performance_calendar_list' contains word(s) mixing Latin and non-Latin letters: ['performanceReportId（下载用）、securityCodeList（A+H', '同时上市会有多个码）、securityName、category、publishDate、title、hasAttachment。查「某公司何时披露财报」用', 'securityList，查「某段时间谁要出业绩」用', 'startDate+endDate。本工具只给排期与标题，公告全文请用', '查、gangtise_download']. Homoglyphs let a description read correctly to a reviewer while presenting different codepoints to any matcher that looks for specific words.",
+      "server": "gangtise-mcp",
+      "tool": "gangtise_performance_calendar_list",
+      "location": "gangtise-mcp.gangtise_performance_calendar_list",
+      "evidence": {
+        "mixed_script_words": [
+          "performanceReportId（下载用）、securityCodeList（A+H",
+          "同时上市会有多个码）、securityName、category、publishDate、title、hasAttachment。查「某公司何时披露财报」用",
+          "securityList，查「某段时间谁要出业绩」用",
+          "startDate+endDate。本工具只给排期与标题，公告全文请用",
+          "查、gangtise_download"
+        ],
+        "confusables": []
+      },
+      "remediation": "Normalise the text to ASCII; confirm the package source is what you think it is."
+    },
+    {
+      "detector": "semantic",
+      "severity": "high",
+      "title": "Mixed-script text in tool description: gangtise_qa_list",
+      "detail": "'gangtise-mcp.gangtise_qa_list' contains word(s) mixing Latin and non-Latin letters: ['QA（互动平台/电话会议/调研纪要中的提问与回答，含回答方身份']. Homoglyphs let a description read correctly to a reviewer while presenting different codepoints to any matcher that looks for specific words.",
+      "server": "gangtise-mcp",
+      "tool": "gangtise_qa_list",
+      "location": "gangtise-mcp.gangtise_qa_list",
+      "evidence": {
+        "mixed_script_words": [
+          "QA（互动平台/电话会议/调研纪要中的提问与回答，含回答方身份"
+        ],
+        "confusables": []
+      },
+      "remediation": "Normalise the text to ASCII; confirm the package source is what you think it is."
+    },
+    {
+      "detector": "semantic",
+      "severity": "high",
+      "title": "Description reads as instructions to the model (p=1.00): gangtise_realtime",
+      "detail": "The description of 'gangtise-mcp.gangtise_realtime' scores 1.00 on the instruction-detection model, and carries intent signals: hidden_unicode, encoded_blob. Descriptions are documentation for a human, but they are delivered to the model as trusted context, so text that tells the model what to do is an attack surface rather than a description. The score is driven mainly by: entropy, encoded_blob, hidden_unicode, log_len.",
+      "server": "gangtise-mcp",
+      "tool": "gangtise_realtime",
+      "location": "gangtise-mcp.gangtise_realtime",
+      "evidence": {
+        "probability": 1.0,
+        "threshold": 0.5,
+        "intent_signals": [
+          "hidden_unicode",
+          "encoded_blob"
+        ],
+        "driving_features": [
+          {
+            "feature": "entropy",
+            "contribution": 22.2817
+          },
+          {
+            "feature": "encoded_blob",
+            "contribution": 16.2327
+          },
+          {
+            "feature": "hidden_unicode",
+            "contribution": 6.3576
+          },
+          {
+            "feature": "log_words",
+            "contribution": -2.8645
+          },
+          {
+            "feature": "log_len",
+            "contribution": 1.8201
+          },
+          {
+            "feature": "non_ascii_ratio",
+            "contribution": -1.6126
+          }
+        ],
+        "active_features": {
+          "log_len": 7.147559271189454,
+          "log_words": 4.634728988229636,
+          "entropy": 7.009083715941849,
+          "non_ascii_ratio": 0.452755905511811,
+          "hidden_unicode": 2.0,
+          "encoded_blob": 2.0,
+          "schema_nested_desc": 2.0
+        },
+        "description": "查询实时行情快照，单接口覆盖 A 股 / 港股 / 美股个股 + 沪深 ETF + 各类指数（含 20 个全球指数），可代码混合传入。非交易时间返回最近一个交易日的收盘快照；停牌证券返回停牌前最后一个有效快照。日 K 线接口（day-kline*）不含盘中数据，问\"现在/此刻\"请走本工具。⚠️ **volume 的单位是「股」**（ETF 为「份」），不是「手」——按手换算会差 100 倍且不报错。**全部字段仅这 15 个：securityCode/exchange/tradeDate/tradeTime/tradeStatus/open/high/low/latestPrice(最新价)/preClose(昨收)/change/pctChange/volume/amount/amplitude——没有 close、没有市值，也没有 turnoverRate / volumeRatio**（传了会连字段名一起被静默丢掉；换手率走 gangtise_indicator_cross_section 的 qte_turn，A 股）；总市值请用 gangtise_indicator_cros"
+      },
+      "remediation": "Read the description against what the tool actually does. If the text is legitimate, it usually means the tool should not have to instruct the model at all - move the guidance into the parameter descriptions or the server's own docs."
+    },
+    {
+      "detector": "semantic",
+      "severity": "high",
+      "title": "Mixed-script text in tool description: gangtise_realtime",
+      "detail": "'gangtise-mcp.gangtise_realtime' contains word(s) mixing Latin and non-Latin letters: ['线接口（day-kline*）不含盘中数据，问\"现在/此刻\"请走本工具。⚠️', '的单位是「股」**（ETF', '个：securityCode/exchange/tradeDate/tradeTime/tradeStatus/open/high/low/latestPrice(最新价)/preClose(昨收)/change/pctChange/volume/amount/amplitude——没有', 'close、没有市值，也没有', 'volumeRatio**（传了会连字段名一起被静默丢掉；换手率走']. Homoglyphs let a description read correctly to a reviewer while presenting different codepoints to any matcher that looks for specific words.",
+      "server": "gangtise-mcp",
+      "tool": "gangtise_realtime",
+      "location": "gangtise-mcp.gangtise_realtime",
+      "evidence": {
+        "mixed_script_words": [
+          "线接口（day-kline*）不含盘中数据，问\"现在/此刻\"请走本工具。⚠️",
+          "的单位是「股」**（ETF",
+          "个：securityCode/exchange/tradeDate/tradeTime/tradeStatus/open/high/low/latestPrice(最新价)/preClose(昨收)/change/pctChange/volume/amount/amplitude——没有",
+          "close、没有市值，也没有",
+          "volumeRatio**（传了会连字段名一起被静默丢掉；换手率走",
+          "qte_mkt_cptl（A/港/美股均有数，默认返「元」，用",
+          "缩放）。tradeStatus（未开市/连续竞价/收盘/停牌…）仅",
+          "null。为",
+          "amount（要美股成交额用",
+          "qte_amt）；全球指数"
+        ],
+        "confusables": []
+      },
+      "remediation": "Normalise the text to ASCII; confirm the package source is what you think it is."
+    },
+    {
+      "detector": "semantic",
+      "severity": "high",
+      "title": "Description reads as instructions to the model (p=1.00): gangtise_report_image_list",
+      "detail": "The description of 'gangtise-mcp.gangtise_report_image_list' scores 1.00 on the instruction-detection model, and carries intent signals: hidden_unicode. Descriptions are documentation for a human, but they are delivered to the model as trusted context, so text that tells the model what to do is an attack surface rather than a description. The score is driven mainly by: entropy, hidden_unicode, imperative_density.",
+      "server": "gangtise-mcp",
+      "tool": "gangtise_report_image_list",
+      "location": "gangtise-mcp.gangtise_report_image_list",
+      "evidence": {
+        "probability": 1.0,
+        "threshold": 0.5,
+        "intent_signals": [
+          "hidden_unicode"
+        ],
+        "driving_features": [
+          {
+            "feature": "entropy",
+            "contribution": 14.4568
+          },
+          {
+            "feature": "hidden_unicode",
+            "contribution": 3.0886
+          },
+          {
+            "feature": "non_ascii_ratio",
+            "contribution": -1.5149
+          },
+          {
+            "feature": "hardcoded_recipient",
+            "contribution": -1.2458
+          },
+          {
+            "feature": "imperative_density",
+            "contribution": 0.9206
+          },
+          {
+            "feature": "concealment",
+            "contribution": -0.8605
+          }
+        ],
+        "active_features": {
+          "log_len": 5.241747015059643,
+          "log_words": 2.772588722239781,
+          "entropy": 6.014056937310885,
+          "non_ascii_ratio": 0.425531914893617,
+          "hidden_unicode": 1.0,
+          "schema_nested_desc": 3.0
+        },
+        "description": "按关键词搜索研报图表，返回 chunkId 及元数据（标题/券商/页码/图注/该页 OCR 文本，发布时间 publishTime）；原图用 gangtise_download（kind=report_image）按 chunkId 下载。⚠️ startTime / endTime 目前不生效，带不带返回同样的结果，要限定时间就按返回的 publishTime 自行过滤。"
+      },
+      "remediation": "Read the description against what the tool actually does. If the text is legitimate, it usually means the tool should not have to instruct the model at all - move the guidance into the parameter descriptions or the server's own docs."
+    },
+    {
+      "detector": "semantic",
+      "severity": "high",
+      "title": "Mixed-script text in tool description: gangtise_report_image_list",
+      "detail": "'gangtise-mcp.gangtise_report_image_list' contains word(s) mixing Latin and non-Latin letters: ['publishTime）；原图用', 'gangtise_download（kind=report_image）按']. Homoglyphs let a description read correctly to a reviewer while presenting different codepoints to any matcher that looks for specific words.",
+      "server": "gangtise-mcp",
+      "tool": "gangtise_report_image_list",
+      "location": "gangtise-mcp.gangtise_report_image_list",
+      "evidence": {
+        "mixed_script_words": [
+          "publishTime）；原图用",
+          "gangtise_download（kind=report_image）按"
+        ],
+        "confusables": []
+      },
+      "remediation": "Normalise the text to ASCII; confirm the package source is what you think it is."
+    },
+    {
+      "detector": "semantic",
+      "severity": "high",
+      "title": "Mixed-script text in tool description: gangtise_roadshow_list",
+      "detail": "'gangtise-mcp.gangtise_roadshow_list' contains word(s) mixing Latin and non-Latin letters: [\"categoryList=['fundRoadshow']。单次约\"]. Homoglyphs let a description read correctly to a reviewer while presenting different codepoints to any matcher that looks for specific words.",
+      "server": "gangtise-mcp",
+      "tool": "gangtise_roadshow_list",
+      "location": "gangtise-mcp.gangtise_roadshow_list",
+      "evidence": {
+        "mixed_script_words": [
+          "categoryList=['fundRoadshow']。单次约"
+        ],
+        "confusables": []
+      },
+      "remediation": "Normalise the text to ASCII; confirm the package source is what you think it is."
+    },
+    {
+      "detector": "semantic",
+      "severity": "high",
+      "title": "Mixed-script text in tool description: gangtise_sector_constituents",
+      "detail": "'gangtise-mcp.gangtise_sector_constituents' contains word(s) mixing Latin and non-Latin letters: ['查询板块的全量成分股名单（gtsCode', 'gangtise_sector_search；返回', 'conceptId。题材成分股（含分组/重点标记）用', 'gangtise_concept_securities。申万行业代码全量列表（801xxx.SWI，共', '个）：sectorId=2000000014（申万一级行业指数，取「指数数据板块」层级的节点；「指数成份类」层级的同名节点返回']. Homoglyphs let a description read correctly to a reviewer while presenting different codepoints to any matcher that looks for specific words.",
+      "server": "gangtise-mcp",
+      "tool": "gangtise_sector_constituents",
+      "location": "gangtise-mcp.gangtise_sector_constituents",
+      "evidence": {
+        "mixed_script_words": [
+          "查询板块的全量成分股名单（gtsCode",
+          "gangtise_sector_search；返回",
+          "conceptId。题材成分股（含分组/重点标记）用",
+          "gangtise_concept_securities。申万行业代码全量列表（801xxx.SWI，共",
+          "个）：sectorId=2000000014（申万一级行业指数，取「指数数据板块」层级的节点；「指数成份类」层级的同名节点返回"
+        ],
+        "confusables": []
+      },
+      "remediation": "Normalise the text to ASCII; confirm the package source is what you think it is."
+    },
+    {
+      "detector": "semantic",
+      "severity": "high",
+      "title": "Mixed-script text in tool description: gangtise_sector_fund_flow",
+      "detail": "'gangtise-mcp.gangtise_sector_fund_flow' contains word(s) mixing Latin and non-Latin letters: ['为最新交易日、startDate']. Homoglyphs let a description read correctly to a reviewer while presenting different codepoints to any matcher that looks for specific words.",
+      "server": "gangtise-mcp",
+      "tool": "gangtise_sector_fund_flow",
+      "location": "gangtise-mcp.gangtise_sector_fund_flow",
+      "evidence": {
+        "mixed_script_words": [
+          "为最新交易日、startDate"
+        ],
+        "confusables": []
+      },
+      "remediation": "Normalise the text to ASCII; confirm the package source is what you think it is."
+    },
+    {
+      "detector": "semantic",
+      "severity": "high",
+      "title": "Mixed-script text in tool description: gangtise_sector_search",
+      "detail": "'gangtise-mcp.gangtise_sector_search' contains word(s) mixing Latin and non-Latin letters: ['ID（行业/概念/指数成份等分类树节点），返回', 'hierarchy（层级路径）/', 'matchScore。同名板块可能出现在多个层级，用', '区分。sectorId', 'ID，不通用。【积分：单价以平台计费为准】']. Homoglyphs let a description read correctly to a reviewer while presenting different codepoints to any matcher that looks for specific words.",
+      "server": "gangtise-mcp",
+      "tool": "gangtise_sector_search",
+      "location": "gangtise-mcp.gangtise_sector_search",
+      "evidence": {
+        "mixed_script_words": [
+          "ID（行业/概念/指数成份等分类树节点），返回",
+          "hierarchy（层级路径）/",
+          "matchScore。同名板块可能出现在多个层级，用",
+          "区分。sectorId",
+          "ID，不通用。【积分：单价以平台计费为准】"
+        ],
+        "confusables": []
+      },
+      "remediation": "Normalise the text to ASCII; confirm the package source is what you think it is."
+    },
+    {
+      "detector": "semantic",
+      "severity": "high",
+      "title": "Mixed-script text in tool description: gangtise_securities_search",
+      "detail": "'gangtise-mcp.gangtise_securities_search' contains word(s) mixing Latin and non-Latin letters: [\"category=['stock']。基金同时返回场内（.SH\", '.SZ）与场外（.OF）代码，同一基金的不同份额一起返回，按']. Homoglyphs let a description read correctly to a reviewer while presenting different codepoints to any matcher that looks for specific words.",
+      "server": "gangtise-mcp",
+      "tool": "gangtise_securities_search",
+      "location": "gangtise-mcp.gangtise_securities_search",
+      "evidence": {
+        "mixed_script_words": [
+          "category=['stock']。基金同时返回场内（.SH",
+          ".SZ）与场外（.OF）代码，同一基金的不同份额一起返回，按"
+        ],
+        "confusables": []
+      },
+      "remediation": "Normalise the text to ASCII; confirm the package source is what you think it is."
+    },
+    {
+      "detector": "semantic",
+      "severity": "high",
+      "title": "Mixed-script text in tool description: gangtise_site_visit_list",
+      "detail": "'gangtise-mcp.gangtise_site_visit_list' contains word(s) mixing Latin and non-Latin letters: ['gangtise_summary_list（按', 'keyword/机构']. Homoglyphs let a description read correctly to a reviewer while presenting different codepoints to any matcher that looks for specific words.",
+      "server": "gangtise-mcp",
+      "tool": "gangtise_site_visit_list",
+      "location": "gangtise-mcp.gangtise_site_visit_list",
+      "evidence": {
+        "mixed_script_words": [
+          "gangtise_summary_list（按",
+          "keyword/机构"
+        ],
+        "confusables": []
+      },
+      "remediation": "Normalise the text to ASCII; confirm the package source is what you think it is."
+    },
+    {
+      "detector": "semantic",
+      "severity": "high",
+      "title": "Description reads as instructions to the model (p=1.00): gangtise_stock_note_add",
+      "detail": "The description of 'gangtise-mcp.gangtise_stock_note_add' scores 1.00 on the instruction-detection model, and carries intent signals: hidden_unicode. Descriptions are documentation for a human, but they are delivered to the model as trusted context, so text that tells the model what to do is an attack surface rather than a description. The score is driven mainly by: entropy, hidden_unicode, log_words, imperative_density.",
+      "server": "gangtise-mcp",
+      "tool": "gangtise_stock_note_add",
+      "location": "gangtise-mcp.gangtise_stock_note_add",
+      "evidence": {
+        "probability": 1.0,
+        "threshold": 0.5,
+        "intent_signals": [
+          "hidden_unicode"
+        ],
+        "driving_features": [
+          {
+            "feature": "entropy",
+            "contribution": 18.0718
+          },
+          {
+            "feature": "hidden_unicode",
+            "contribution": 3.0886
+          },
+          {
+            "feature": "non_ascii_ratio",
+            "contribution": -2.3804
+          },
+          {
+            "feature": "log_words",
+            "contribution": 1.6331
+          },
+          {
+            "feature": "hardcoded_recipient",
+            "contribution": -1.2458
+          },
+          {
+            "feature": "imperative_density",
+            "contribution": 0.9206
+          }
+        ],
+        "active_features": {
+          "log_len": 5.181783550292085,
+          "log_words": 1.9459101490553132,
+          "entropy": 6.473744516194665,
+          "non_ascii_ratio": 0.6666666666666666,
+          "hidden_unicode": 1.0,
+          "schema_nested_desc": 2.0
+        },
+        "description": "新增一条个股笔记（写操作，只写本人笔记，与自选股池相互独立）。返回 {stockNoteId, securityList}。关联的证券建好后不能改：要换就新增一条、核对后再删旧的。⚠️ **不重放**：服务端没有防重，同样的请求再提交一次就是第二条笔记，所以超时不会自动重发——重跑前先用 gangtise_stock_note_list 查是否已写入。"
+      },
+      "remediation": "Read the description against what the tool actually does. If the text is legitimate, it usually means the tool should not have to instruct the model at all - move the guidance into the parameter descriptions or the server's own docs."
+    },
+    {
+      "detector": "semantic",
+      "severity": "high",
+      "title": "Mixed-script text in tool description: gangtise_stock_note_add",
+      "detail": "'gangtise-mcp.gangtise_stock_note_add' contains word(s) mixing Latin and non-Latin letters: ['securityList}。关联的证券建好后不能改：要换就新增一条、核对后再删旧的。⚠️']. Homoglyphs let a description read correctly to a reviewer while presenting different codepoints to any matcher that looks for specific words.",
+      "server": "gangtise-mcp",
+      "tool": "gangtise_stock_note_add",
+      "location": "gangtise-mcp.gangtise_stock_note_add",
+      "evidence": {
+        "mixed_script_words": [
+          "securityList}。关联的证券建好后不能改：要换就新增一条、核对后再删旧的。⚠️"
+        ],
+        "confusables": []
+      },
+      "remediation": "Normalise the text to ASCII; confirm the package source is what you think it is."
+    },
+    {
+      "detector": "semantic",
+      "severity": "high",
+      "title": "Mixed-script text in tool description: gangtise_stock_note_delete",
+      "detail": "'gangtise-mcp.gangtise_stock_note_delete' contains word(s) mixing Latin and non-Latin letters: ['true。已删的、不存在的、不属于本人的', 'failList}；单条失败不会让整次调用报错，只标', 'failedItems，只需对']. Homoglyphs let a description read correctly to a reviewer while presenting different codepoints to any matcher that looks for specific words.",
+      "server": "gangtise-mcp",
+      "tool": "gangtise_stock_note_delete",
+      "location": "gangtise-mcp.gangtise_stock_note_delete",
+      "evidence": {
+        "mixed_script_words": [
+          "true。已删的、不存在的、不属于本人的",
+          "failList}；单条失败不会让整次调用报错，只标",
+          "failedItems，只需对"
+        ],
+        "confusables": []
+      },
+      "remediation": "Normalise the text to ASCII; confirm the package source is what you think it is."
+    },
+    {
+      "detector": "semantic",
+      "severity": "high",
+      "title": "Mixed-script text in tool description: gangtise_stock_note_list",
+      "detail": "'gangtise-mcp.gangtise_stock_note_list' contains word(s) mixing Latin and non-Latin letters: ['查询本人的个股投资笔记（只含自己写的）：不传筛选即全部笔记；securityList', '按证券筛（笔记关联的证券含其中任一只即命中），stockNoteIdList', 'stockNoteId、该笔记完整的关联证券', 'securityList、纯文本正文', 'updateTime（北京时间），按创建时间倒序。不存在或不属于本人的笔记']. Homoglyphs let a description read correctly to a reviewer while presenting different codepoints to any matcher that looks for specific words.",
+      "server": "gangtise-mcp",
+      "tool": "gangtise_stock_note_list",
+      "location": "gangtise-mcp.gangtise_stock_note_list",
+      "evidence": {
+        "mixed_script_words": [
+          "查询本人的个股投资笔记（只含自己写的）：不传筛选即全部笔记；securityList",
+          "按证券筛（笔记关联的证券含其中任一只即命中），stockNoteIdList",
+          "stockNoteId、该笔记完整的关联证券",
+          "securityList、纯文本正文",
+          "updateTime（北京时间），按创建时间倒序。不存在或不属于本人的笔记"
+        ],
+        "confusables": []
+      },
+      "remediation": "Normalise the text to ASCII; confirm the package source is what you think it is."
+    },
+    {
+      "detector": "semantic",
+      "severity": "high",
+      "title": "Mixed-script text in tool description: gangtise_stock_pool_add_stock",
+      "detail": "'gangtise-mcp.gangtise_stock_pool_add_stock' contains word(s) mixing Latin and non-Latin letters: ['failedItems——拿到结果先看有没有这个标记，否则会以为传进去的都加成功了。']. Homoglyphs let a description read correctly to a reviewer while presenting different codepoints to any matcher that looks for specific words.",
+      "server": "gangtise-mcp",
+      "tool": "gangtise_stock_pool_add_stock",
+      "location": "gangtise-mcp.gangtise_stock_pool_add_stock",
+      "evidence": {
+        "mixed_script_words": [
+          "failedItems——拿到结果先看有没有这个标记，否则会以为传进去的都加成功了。"
+        ],
+        "confusables": []
+      },
+      "remediation": "Normalise the text to ASCII; confirm the package source is what you think it is."
+    },
+    {
+      "detector": "semantic",
+      "severity": "high",
+      "title": "Description reads as instructions to the model (p=1.00): gangtise_stock_pool_create",
+      "detail": "The description of 'gangtise-mcp.gangtise_stock_pool_create' scores 1.00 on the instruction-detection model, and carries intent signals: hidden_unicode. Descriptions are documentation for a human, but they are delivered to the model as trusted context, so text that tells the model what to do is an attack surface rather than a description. The score is driven mainly by: entropy, hidden_unicode, log_words, imperative_density.",
+      "server": "gangtise-mcp",
+      "tool": "gangtise_stock_pool_create",
+      "location": "gangtise-mcp.gangtise_stock_pool_create",
+      "evidence": {
+        "probability": 1.0,
+        "threshold": 0.5,
+        "intent_signals": [
+          "hidden_unicode"
+        ],
+        "driving_features": [
+          {
+            "feature": "entropy",
+            "contribution": 16.1888
+          },
+          {
+            "feature": "hidden_unicode",
+            "contribution": 3.0886
+          },
+          {
+            "feature": "non_ascii_ratio",
+            "contribution": -2.3017
+          },
+          {
+            "feature": "hardcoded_recipient",
+            "contribution": -1.2458
+          },
+          {
+            "feature": "log_words",
+            "contribution": 1.2128
+          },
+          {
+            "feature": "imperative_density",
+            "contribution": 0.9206
+          }
+        ],
+        "active_features": {
+          "log_len": 5.030437921392435,
+          "log_words": 2.1972245773362196,
+          "entropy": 6.234301691869146,
+          "non_ascii_ratio": 0.6447368421052632,
+          "hidden_unicode": 1.0,
+          "schema_nested_desc": 1.0
+        },
+        "description": "新建自选股池（写操作，只动当前账号本人的自选股）。返回 {poolId, poolName}。每账号最多 30 个池。⚠️ **不重放**：池名不许重复，超时后自动重发会撞重名、把一次已经成功的创建报成失败。所以超时请先用 gangtise_stock_pool_list 查一眼建成没有，不要直接重试。"
+      },
+      "remediation": "Read the description against what the tool actually does. If the text is legitimate, it usually means the tool should not have to instruct the model at all - move the guidance into the parameter descriptions or the server's own docs."
+    },
+    {
+      "detector": "semantic",
+      "severity": "high",
+      "title": "Mixed-script text in tool description: gangtise_stock_pool_create",
+      "detail": "'gangtise-mcp.gangtise_stock_pool_create' contains word(s) mixing Latin and non-Latin letters: ['poolName}。每账号最多']. Homoglyphs let a description read correctly to a reviewer while presenting different codepoints to any matcher that looks for specific words.",
+      "server": "gangtise-mcp",
+      "tool": "gangtise_stock_pool_create",
+      "location": "gangtise-mcp.gangtise_stock_pool_create",
+      "evidence": {
+        "mixed_script_words": [
+          "poolName}。每账号最多"
+        ],
+        "confusables": []
+      },
+      "remediation": "Normalise the text to ASCII; confirm the package source is what you think it is."
+    },
+    {
+      "detector": "semantic",
+      "severity": "high",
+      "title": "Mixed-script text in tool description: gangtise_stock_pool_delete",
+      "detail": "'gangtise-mcp.gangtise_stock_pool_delete' contains word(s) mixing Latin and non-Latin letters: ['true。删一个不存在的池算幂等成功。返回与单条失败标记同']. Homoglyphs let a description read correctly to a reviewer while presenting different codepoints to any matcher that looks for specific words.",
+      "server": "gangtise-mcp",
+      "tool": "gangtise_stock_pool_delete",
+      "location": "gangtise-mcp.gangtise_stock_pool_delete",
+      "evidence": {
+        "mixed_script_words": [
+          "true。删一个不存在的池算幂等成功。返回与单条失败标记同"
+        ],
+        "confusables": []
+      },
+      "remediation": "Normalise the text to ASCII; confirm the package source is what you think it is."
+    },
+    {
+      "detector": "semantic",
+      "severity": "high",
+      "title": "Mixed-script text in tool description: gangtise_stock_pool_list",
+      "detail": "'gangtise-mcp.gangtise_stock_pool_list' contains word(s) mixing Latin and non-Latin letters: ['spaceType。可查个人自选股池或所属租户的股票池，一次一种；无租户池查询权限时报']. Homoglyphs let a description read correctly to a reviewer while presenting different codepoints to any matcher that looks for specific words.",
+      "server": "gangtise-mcp",
+      "tool": "gangtise_stock_pool_list",
+      "location": "gangtise-mcp.gangtise_stock_pool_list",
+      "evidence": {
+        "mixed_script_words": [
+          "spaceType。可查个人自选股池或所属租户的股票池，一次一种；无租户池查询权限时报"
+        ],
+        "confusables": []
+      },
+      "remediation": "Normalise the text to ASCII; confirm the package source is what you think it is."
+    },
+    {
+      "detector": "semantic",
+      "severity": "high",
+      "title": "Mixed-script text in tool description: gangtise_stock_pool_rename",
+      "detail": "'gangtise-mcp.gangtise_stock_pool_rename' contains word(s) mixing Latin and non-Latin letters: ['poolName}。改回自己当前的名字算成功；用了别的池的名字报']. Homoglyphs let a description read correctly to a reviewer while presenting different codepoints to any matcher that looks for specific words.",
+      "server": "gangtise-mcp",
+      "tool": "gangtise_stock_pool_rename",
+      "location": "gangtise-mcp.gangtise_stock_pool_rename",
+      "evidence": {
+        "mixed_script_words": [
+          "poolName}。改回自己当前的名字算成功；用了别的池的名字报"
+        ],
+        "confusables": []
+      },
+      "remediation": "Normalise the text to ASCII; confirm the package source is what you think it is."
+    },
+    {
+      "detector": "semantic",
+      "severity": "high",
+      "title": "Mixed-script text in tool description: gangtise_strategy_list",
+      "detail": "'gangtise-mcp.gangtise_strategy_list' contains word(s) mixing Latin and non-Latin letters: [\"categoryList=['strategyMeeting']。单次约\"]. Homoglyphs let a description read correctly to a reviewer while presenting different codepoints to any matcher that looks for specific words.",
+      "server": "gangtise-mcp",
+      "tool": "gangtise_strategy_list",
+      "location": "gangtise-mcp.gangtise_strategy_list",
+      "evidence": {
+        "mixed_script_words": [
+          "categoryList=['strategyMeeting']。单次约"
+        ],
+        "confusables": []
+      },
+      "remediation": "Normalise the text to ASCII; confirm the package source is what you think it is."
+    },
+    {
+      "detector": "semantic",
+      "severity": "high",
+      "title": "Mixed-script text in tool description: gangtise_viewpoint_debate",
+      "detail": "'gangtise-mcp.gangtise_viewpoint_debate' contains word(s) mixing Latin and non-Latin letters: ['55s），超时返回']. Homoglyphs let a description read correctly to a reviewer while presenting different codepoints to any matcher that looks for specific words.",
+      "server": "gangtise-mcp",
+      "tool": "gangtise_viewpoint_debate",
+      "location": "gangtise-mcp.gangtise_viewpoint_debate",
+      "evidence": {
+        "mixed_script_words": [
+          "55s），超时返回"
+        ],
+        "confusables": []
+      },
+      "remediation": "Normalise the text to ASCII; confirm the package source is what you think it is."
+    },
+    {
+      "detector": "semantic",
+      "severity": "high",
+      "title": "Mixed-script text in tool description: gangtise_viewpoint_debate_check",
+      "detail": "'gangtise-mcp.gangtise_viewpoint_debate_check' contains word(s) mixing Latin and non-Latin letters: ['查询多空辩论任务的生成状态。dataId', '的超时/错误响应；pending']. Homoglyphs let a description read correctly to a reviewer while presenting different codepoints to any matcher that looks for specific words.",
+      "server": "gangtise-mcp",
+      "tool": "gangtise_viewpoint_debate_check",
+      "location": "gangtise-mcp.gangtise_viewpoint_debate_check",
+      "evidence": {
+        "mixed_script_words": [
+          "查询多空辩论任务的生成状态。dataId",
+          "的超时/错误响应；pending"
+        ],
+        "confusables": []
+      },
+      "remediation": "Normalise the text to ASCII; confirm the package source is what you think it is."
+    },
+    {
+      "detector": "semantic",
+      "severity": "high",
+      "title": "Description reads as instructions to the model (p=1.00): gangtise_web_search",
+      "detail": "The description of 'gangtise-mcp.gangtise_web_search' scores 1.00 on the instruction-detection model, and carries intent signals: hidden_unicode. Descriptions are documentation for a human, but they are delivered to the model as trusted context, so text that tells the model what to do is an attack surface rather than a description. The score is driven mainly by: entropy, hidden_unicode, imperative_density.",
+      "server": "gangtise-mcp",
+      "tool": "gangtise_web_search",
+      "location": "gangtise-mcp.gangtise_web_search",
+      "evidence": {
+        "probability": 1.0,
+        "threshold": 0.5,
+        "intent_signals": [
+          "hidden_unicode"
+        ],
+        "driving_features": [
+          {
+            "feature": "entropy",
+            "contribution": 17.9019
+          },
+          {
+            "feature": "hidden_unicode",
+            "contribution": 3.0886
+          },
+          {
+            "feature": "non_ascii_ratio",
+            "contribution": -1.8654
+          },
+          {
+            "feature": "hardcoded_recipient",
+            "contribution": -1.2458
+          },
+          {
+            "feature": "imperative_density",
+            "contribution": 0.9206
+          },
+          {
+            "feature": "log_words",
+            "contribution": -0.9091
+          }
+        ],
+        "active_features": {
+          "log_len": 5.713732805509369,
+          "log_words": 3.4657359027997265,
+          "entropy": 6.452140037338124,
+          "non_ascii_ratio": 0.5231788079470199,
+          "hidden_unicode": 1.0,
+          "schema_nested_desc": 7.0
+        },
+        "description": "投研定向检索公开网页：服务端已做转载去重、信源分级（tier T0–T3）与内容打标，零结果时 hints 给放宽建议。检索词原样发送、不做意图改写。⚠️ 排序是 tier 升序 → publishTime 降序 → 相关性，首条不等于最相关。publishTime 是规则判定的发布日期，判不出为 null（不代表网页没有日期）；indexTime 是索引记录的时间、不保证是发布时间，做时点判断用 publishTime。flags 标 rumor 传闻 / forward 转载 / disclaimer 免责声明 / toutSuspect 疑似荐股 / paywall 付费墙。【积分：1/次】"
+      },
+      "remediation": "Read the description against what the tool actually does. If the text is legitimate, it usually means the tool should not have to instruct the model at all - move the guidance into the parameter descriptions or the server's own docs."
+    },
+    {
+      "detector": "semantic",
+      "severity": "high",
+      "title": "Mixed-script text in tool description: gangtise_web_search",
+      "detail": "'gangtise-mcp.gangtise_web_search' contains word(s) mixing Latin and non-Latin letters: ['投研定向检索公开网页：服务端已做转载去重、信源分级（tier', 'T0–T3）与内容打标，零结果时', '相关性，首条不等于最相关。publishTime', 'null（不代表网页没有日期）；indexTime']. Homoglyphs let a description read correctly to a reviewer while presenting different codepoints to any matcher that looks for specific words.",
+      "server": "gangtise-mcp",
+      "tool": "gangtise_web_search",
+      "location": "gangtise-mcp.gangtise_web_search",
+      "evidence": {
+        "mixed_script_words": [
+          "投研定向检索公开网页：服务端已做转载去重、信源分级（tier",
+          "T0–T3）与内容打标，零结果时",
+          "相关性，首条不等于最相关。publishTime",
+          "null（不代表网页没有日期）；indexTime"
+        ],
+        "confusables": []
+      },
+      "remediation": "Normalise the text to ASCII; confirm the package source is what you think it is."
+    },
+    {
+      "detector": "semantic",
+      "severity": "high",
+      "title": "Mixed-script text in tool description: gangtise_wechat_chatroom_list",
+      "detail": "'gangtise-mcp.gangtise_wechat_chatroom_list' contains word(s) mixing Latin and non-Latin letters: ['list}，按']. Homoglyphs let a description read correctly to a reviewer while presenting different codepoints to any matcher that looks for specific words.",
+      "server": "gangtise-mcp",
+      "tool": "gangtise_wechat_chatroom_list",
+      "location": "gangtise-mcp.gangtise_wechat_chatroom_list",
+      "evidence": {
+        "mixed_script_words": [
+          "list}，按"
+        ],
+        "confusables": []
+      },
+      "remediation": "Normalise the text to ASCII; confirm the package source is what you think it is."
+    },
+    {
+      "detector": "semantic",
+      "severity": "high",
+      "title": "Mixed-script text in tool description: gangtise_wechat_message_list",
+      "detail": "'gangtise-mcp.gangtise_wechat_message_list' contains word(s) mixing Latin and non-Latin letters: ['ID、行业、类别、标签、时间范围筛选。document']. Homoglyphs let a description read correctly to a reviewer while presenting different codepoints to any matcher that looks for specific words.",
+      "server": "gangtise-mcp",
+      "tool": "gangtise_wechat_message_list",
+      "location": "gangtise-mcp.gangtise_wechat_message_list",
+      "evidence": {
+        "mixed_script_words": [
+          "ID、行业、类别、标签、时间范围筛选。document"
+        ],
+        "confusables": []
+      },
+      "remediation": "Normalise the text to ASCII; confirm the package source is what you think it is."
+    },
+    {
+      "detector": "drift",
+      "severity": "info",
+      "title": "No baseline supplied - drift detection is disabled",
+      "detail": "Without an approved snapshot the scanner cannot tell a tool that has always been there from one that appeared yesterday. The single most effective MCP control is the diff, and it needs a baseline to diff against.",
+      "server": "*",
+      "tool": null,
+      "location": "*",
+      "evidence": {},
+      "remediation": "Run 'mcp-scrutiny baseline --config <file> --out mcp-baseline.json', commit the file, and pass it back with --baseline on every later scan."
+    }
+  ],
+  "errors": []
+}

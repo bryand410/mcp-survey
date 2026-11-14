@@ -1,0 +1,408 @@
+{
+  "tool": {
+    "name": "mcp-scrutiny",
+    "version": "0.1.2"
+  },
+  "summary": {
+    "servers": 1,
+    "tools": 188,
+    "findings": 9,
+    "worst_severity": "high",
+    "by_severity": {
+      "info": 1,
+      "low": 0,
+      "medium": 1,
+      "high": 7,
+      "critical": 0
+    }
+  },
+  "servers": [
+    {
+      "name": "limostudio-mcp",
+      "transport": "stdio",
+      "command": "npx",
+      "args": [
+        "-y",
+        "limostudio-mcp"
+      ],
+      "url": null,
+      "pinned": false,
+      "floating_package": "limostudio-mcp",
+      "tools": 188
+    }
+  ],
+  "findings": [
+    {
+      "detector": "pinning",
+      "severity": "high",
+      "title": "Unpinned package executed on every start: limostudio-mcp",
+      "detail": "'limostudio-mcp' launches limostudio-mcp through npx without a version. The client resolves the version at start time, so any future publish to that package name runs with your credentials. This is how postmark-mcp (Sept 2025) reached roughly 300 organisations.",
+      "server": "limostudio-mcp",
+      "tool": null,
+      "location": "limostudio-mcp",
+      "evidence": {
+        "package": "limostudio-mcp",
+        "runner": "npx",
+        "auto_confirm": true
+      },
+      "remediation": "Pin an exact version and an integrity hash: \"args\": [\"limostudio-mcp@<version>\"] and drop the -y flag. Re-pin deliberately, after reviewing the diff."
+    },
+    {
+      "detector": "semantic",
+      "severity": "high",
+      "title": "Description reads as instructions to the model (p=1.00): create_clip_media",
+      "detail": "The description of 'limostudio-mcp.create_clip_media' scores 1.00 on the instruction-detection model, and carries intent signals: concealment. Descriptions are documentation for a human, but they are delivered to the model as trusted context, so text that tells the model what to do is an attack surface rather than a description. The score is driven mainly by: concealment, entropy, log_len, imperative_density.",
+      "server": "limostudio-mcp",
+      "tool": "create_clip_media",
+      "location": "limostudio-mcp.create_clip_media",
+      "evidence": {
+        "probability": 0.9998,
+        "threshold": 0.5,
+        "intent_signals": [
+          "concealment"
+        ],
+        "driving_features": [
+          {
+            "feature": "concealment",
+            "contribution": 9.537
+          },
+          {
+            "feature": "log_words",
+            "contribution": -3.092
+          },
+          {
+            "feature": "entropy",
+            "contribution": 2.8485
+          },
+          {
+            "feature": "log_len",
+            "contribution": 1.3331
+          },
+          {
+            "feature": "hardcoded_recipient",
+            "contribution": -1.2458
+          },
+          {
+            "feature": "imperative_density",
+            "contribution": 0.9206
+          }
+        ],
+        "active_features": {
+          "log_len": 6.511745329644728,
+          "log_words": 4.770684624465665,
+          "entropy": 4.537953170258992,
+          "non_ascii_ratio": 0.004464285714285714,
+          "concealment": 1.0,
+          "schema_nested_desc": 4.0
+        },
+        "description": "Make the pictures (kind 'image', the person's AI Img model) or the videos (kind 'video', the AI Vid model; each from its clip's picture) of MANY clips at once — every clip on the active track that takes AI words (at All of a project with scenes: every scene's), or the clipIds given — from their words. Asks the person ONCE with the count and about the total (bills credits per clip); dryRun gives the price without asking. Returns at once: they are made in the background, so end your turn. Caption,"
+      },
+      "remediation": "Read the description against what the tool actually does. If the text is legitimate, it usually means the tool should not have to instruct the model at all - move the guidance into the parameter descriptions or the server's own docs."
+    },
+    {
+      "detector": "semantic",
+      "severity": "high",
+      "title": "Description reads as instructions to the model (p=1.00): design_synth",
+      "detail": "The description of 'limostudio-mcp.design_synth' scores 1.00 on the instruction-detection model, and carries intent signals: encoded_blob. Descriptions are documentation for a human, but they are delivered to the model as trusted context, so text that tells the model what to do is an attack surface rather than a description. The score is driven mainly by: encoded_blob, entropy, log_len, imperative_density.",
+      "server": "limostudio-mcp",
+      "tool": "design_synth",
+      "location": "limostudio-mcp.design_synth",
+      "evidence": {
+        "probability": 0.9998,
+        "threshold": 0.5,
+        "intent_signals": [
+          "encoded_blob"
+        ],
+        "driving_features": [
+          {
+            "feature": "encoded_blob",
+            "contribution": 7.9739
+          },
+          {
+            "feature": "entropy",
+            "contribution": 5.2562
+          },
+          {
+            "feature": "log_words",
+            "contribution": -3.9322
+          },
+          {
+            "feature": "log_len",
+            "contribution": 1.8219
+          },
+          {
+            "feature": "hardcoded_recipient",
+            "contribution": -1.2458
+          },
+          {
+            "feature": "imperative_density",
+            "contribution": 0.9206
+          }
+        ],
+        "active_features": {
+          "log_len": 7.149916836132109,
+          "log_words": 5.272999558563747,
+          "entropy": 4.8441120003419496,
+          "non_ascii_ratio": 0.003142183817753339,
+          "encoded_blob": 1.0,
+          "schema_nested_desc": 17.0
+        },
+        "description": "Design a synthesizer SOUND and apply it to a synth clip (the patch — oscillators, FM, unison, filters, envelope, LFOs, a mod matrix, macros, sub, arp). Targets `clipId` if given, else the synth clip open in the editor, else the first synth clip; create one first with add_track type:'synth' or add_clip type:'synth'. Think in musical terms. Key tools: UNISON (`unison`/`detune`/`spread` per op) for fat supersaw/Reese leads & wide pads — THE EDM sound; an additive `harmonics` array for custom spectr"
+      },
+      "remediation": "Read the description against what the tool actually does. If the text is legitimate, it usually means the tool should not have to instruct the model at all - move the guidance into the parameter descriptions or the server's own docs."
+    },
+    {
+      "detector": "semantic",
+      "severity": "high",
+      "title": "Description reads as instructions to the model (p=0.98): duplicate_clip",
+      "detail": "The description of 'limostudio-mcp.duplicate_clip' scores 0.98 on the instruction-detection model, and carries intent signals: hidden_recipient. Descriptions are documentation for a human, but they are delivered to the model as trusted context, so text that tells the model what to do is an attack surface rather than a description. The score is driven mainly by: hidden_recipient, imperative_density, log_len.",
+      "server": "limostudio-mcp",
+      "tool": "duplicate_clip",
+      "location": "limostudio-mcp.duplicate_clip",
+      "evidence": {
+        "probability": 0.9779,
+        "threshold": 0.5,
+        "intent_signals": [
+          "hidden_recipient"
+        ],
+        "driving_features": [
+          {
+            "feature": "hidden_recipient",
+            "contribution": 6.3853
+          },
+          {
+            "feature": "log_words",
+            "contribution": -2.0422
+          },
+          {
+            "feature": "hardcoded_recipient",
+            "contribution": -1.2458
+          },
+          {
+            "feature": "imperative_density",
+            "contribution": 0.9206
+          },
+          {
+            "feature": "concealment",
+            "contribution": -0.8605
+          },
+          {
+            "feature": "log_len",
+            "contribution": 0.7613
+          }
+        ],
+        "active_features": {
+          "log_len": 5.765191102784844,
+          "log_words": 4.143134726391533,
+          "entropy": 4.2314997871749025,
+          "urgency": 1.0,
+          "hidden_recipient": 1.0
+        },
+        "description": "Duplicate a clip; new clip is placed immediately after the original, on the same track (a copy of the engine's own: its effects, style, masks and a compound's inner clips are its own; it is no shot of the shot list). Returns the new clip id; `overlaps` names a clip it now lies over (a track plays one clip at a time)."
+      },
+      "remediation": "Read the description against what the tool actually does. If the text is legitimate, it usually means the tool should not have to instruct the model at all - move the guidance into the parameter descriptions or the server's own docs."
+    },
+    {
+      "detector": "semantic",
+      "severity": "high",
+      "title": "Description reads as instructions to the model (p=1.00): duplicate_project",
+      "detail": "The description of 'limostudio-mcp.duplicate_project' scores 1.00 on the instruction-detection model, and carries intent signals: hidden_recipient. Descriptions are documentation for a human, but they are delivered to the model as trusted context, so text that tells the model what to do is an attack surface rather than a description. The score is driven mainly by: hidden_recipient, entropy, log_len, imperative_density.",
+      "server": "limostudio-mcp",
+      "tool": "duplicate_project",
+      "location": "limostudio-mcp.duplicate_project",
+      "evidence": {
+        "probability": 1.0,
+        "threshold": 0.5,
+        "intent_signals": [
+          "hidden_recipient"
+        ],
+        "driving_features": [
+          {
+            "feature": "hidden_recipient",
+            "contribution": 13.5074
+          },
+          {
+            "feature": "log_words",
+            "contribution": -3.0634
+          },
+          {
+            "feature": "entropy",
+            "contribution": 2.7276
+          },
+          {
+            "feature": "log_len",
+            "contribution": 1.3522
+          },
+          {
+            "feature": "hardcoded_recipient",
+            "contribution": -1.2458
+          },
+          {
+            "feature": "imperative_density",
+            "contribution": 0.9206
+          }
+        ],
+        "active_features": {
+          "log_len": 6.536691597591305,
+          "log_words": 4.7535901911063645,
+          "entropy": 4.522580472003655,
+          "non_ascii_ratio": 0.0043541364296081275,
+          "hidden_recipient": 2.0,
+          "schema_nested_desc": 2.0
+        },
+        "description": "A COPY of the open project — its timeline, shot list, Kit, versions and its own copy of every cloud file — under `name`, opened in the window (open:false leaves the original open). The original is saved first. For a second language of a film (keep every picture, video, score and sound effect; make only its narrator, spoken lines and texts again) or to try another picture model on the same plan. Answers the copy's projectId, how many files were copied and `failed` (by name — their clips then read"
+      },
+      "remediation": "Read the description against what the tool actually does. If the text is legitimate, it usually means the tool should not have to instruct the model at all - move the guidance into the parameter descriptions or the server's own docs."
+    },
+    {
+      "detector": "semantic",
+      "severity": "high",
+      "title": "Description reads as instructions to the model (p=0.98): generate_image",
+      "detail": "The description of 'limostudio-mcp.generate_image' scores 0.98 on the instruction-detection model, and carries intent signals: injection_markers. Descriptions are documentation for a human, but they are delivered to the model as trusted context, so text that tells the model what to do is an attack surface rather than a description. The score is driven mainly by: injection_markers, entropy, log_len.",
+      "server": "limostudio-mcp",
+      "tool": "generate_image",
+      "location": "limostudio-mcp.generate_image",
+      "evidence": {
+        "probability": 0.9799,
+        "threshold": 0.5,
+        "intent_signals": [
+          "injection_markers"
+        ],
+        "driving_features": [
+          {
+            "feature": "injection_markers",
+            "contribution": 6.2052
+          },
+          {
+            "feature": "log_words",
+            "contribution": -3.241
+          },
+          {
+            "feature": "entropy",
+            "contribution": 2.3197
+          },
+          {
+            "feature": "log_len",
+            "contribution": 1.4058
+          },
+          {
+            "feature": "hardcoded_recipient",
+            "contribution": -1.2458
+          },
+          {
+            "feature": "concealment",
+            "contribution": -0.8605
+          }
+        ],
+        "active_features": {
+          "log_len": 6.606650186198215,
+          "log_words": 4.859812404361672,
+          "entropy": 4.470703410303576,
+          "non_ascii_ratio": 0.0040595399188092015,
+          "injection_markers": 1.0,
+          "imperative_density": 0.0078125,
+          "schema_nested_desc": 7.0
+        },
+        "description": "Generate a NEW image (to change an existing picture use edit_image). The person's AI Img model unless `model` names one. `references`: pictures that steer it (a person's face, a product, a style) — project filenames or @Names from the snapshot's kit / a <mentions> line; they go instead of the Kit's ticked pictures, and the prompt should say what each is for (\"the woman from @Anna\", \"in the style of @poster\"). `clipId` + place 'replace' puts it on that clip (what it showed stays in its takes); pl"
+      },
+      "remediation": "Read the description against what the tool actually does. If the text is legitimate, it usually means the tool should not have to instruct the model at all - move the guidance into the parameter descriptions or the server's own docs."
+    },
+    {
+      "detector": "semantic",
+      "severity": "high",
+      "title": "Description reads as instructions to the model (p=0.99): reverse_clip",
+      "detail": "The description of 'limostudio-mcp.reverse_clip' scores 0.99 on the instruction-detection model, and carries intent signals: hidden_recipient. Descriptions are documentation for a human, but they are delivered to the model as trusted context, so text that tells the model what to do is an attack surface rather than a description. The score is driven mainly by: hidden_recipient, entropy, imperative_density.",
+      "server": "limostudio-mcp",
+      "tool": "reverse_clip",
+      "location": "limostudio-mcp.reverse_clip",
+      "evidence": {
+        "probability": 0.9877,
+        "threshold": 0.5,
+        "intent_signals": [
+          "hidden_recipient"
+        ],
+        "driving_features": [
+          {
+            "feature": "hidden_recipient",
+            "contribution": 6.3853
+          },
+          {
+            "feature": "log_words",
+            "contribution": -2.1944
+          },
+          {
+            "feature": "entropy",
+            "contribution": 1.5396
+          },
+          {
+            "feature": "hardcoded_recipient",
+            "contribution": -1.2458
+          },
+          {
+            "feature": "imperative_density",
+            "contribution": 0.9206
+          },
+          {
+            "feature": "concealment",
+            "contribution": -0.8605
+          }
+        ],
+        "active_features": {
+          "log_len": 5.820082930352362,
+          "log_words": 4.23410650459726,
+          "entropy": 4.371515560833632,
+          "non_ascii_ratio": 0.002976190476190476,
+          "hidden_recipient": 1.0,
+          "schema_nested_desc": 1.0
+        },
+        "description": "Play a video or sound clip BACKWARDS: a reversed copy of the part it plays is made and saved to the project (a video with its sound, when it has one), and the clip plays it — the original is kept; forwards:true goes back to it. Free (made in the window, about as long as the clip). A split or speed change later is of the reversed copy."
+      },
+      "remediation": "Read the description against what the tool actually does. If the text is legitimate, it usually means the tool should not have to instruct the model at all - move the guidance into the parameter descriptions or the server's own docs."
+    },
+    {
+      "detector": "toxic_flow",
+      "severity": "medium",
+      "title": "Toxic flow within 'limostudio-mcp': executes commands + writes or deletes files",
+      "detail": "8 combination(s) exist where one tool executes commands and another writes or deletes files. Neither tool is malicious on its own; together they executes commands and writes files, so the agent can persist a payload for a later session to pick up. Both sides live in the same server, which may well be by design; confirm it.",
+      "server": "limostudio-mcp",
+      "tool": "create_plugin",
+      "location": "limostudio-mcp.create_plugin",
+      "evidence": {
+        "source_capability": "exec",
+        "sink_capability": "write_fs",
+        "cross_server": false,
+        "pair_count": 8,
+        "example": {
+          "source": "limostudio-mcp.create_plugin",
+          "sink": "limostudio-mcp.delete_assets"
+        },
+        "sources": [
+          "limostudio-mcp.create_plugin",
+          "limostudio-mcp.ui_press"
+        ],
+        "sinks": [
+          "limostudio-mcp.delete_assets",
+          "limostudio-mcp.generate_image",
+          "limostudio-mcp.import_file",
+          "limostudio-mcp.record_stop"
+        ],
+        "servers": [
+          "limostudio-mcp"
+        ]
+      },
+      "remediation": "Break the path, not the tools: scope the credential so the source tool cannot reach anything valuable, or require explicit user confirmation on the sink tool (destructiveHint / human-in-the-loop), or split the two capabilities across trust boundaries that cannot share a context window."
+    },
+    {
+      "detector": "drift",
+      "severity": "info",
+      "title": "No baseline supplied - drift detection is disabled",
+      "detail": "Without an approved snapshot the scanner cannot tell a tool that has always been there from one that appeared yesterday. The single most effective MCP control is the diff, and it needs a baseline to diff against.",
+      "server": "*",
+      "tool": null,
+      "location": "*",
+      "evidence": {},
+      "remediation": "Run 'mcp-scrutiny baseline --config <file> --out mcp-baseline.json', commit the file, and pass it back with --baseline on every later scan."
+    }
+  ],
+  "errors": []
+}

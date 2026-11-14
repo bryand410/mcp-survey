@@ -1,0 +1,65 @@
+{
+  "tool": {
+    "name": "mcp-scrutiny",
+    "version": "0.1.2"
+  },
+  "summary": {
+    "servers": 1,
+    "tools": 0,
+    "findings": 2,
+    "worst_severity": "high",
+    "by_severity": {
+      "info": 1,
+      "low": 0,
+      "medium": 0,
+      "high": 1,
+      "critical": 0
+    }
+  },
+  "servers": [
+    {
+      "name": "commercetools__commerce-mcp",
+      "transport": "stdio",
+      "command": "npx",
+      "args": [
+        "-y",
+        "@commercetools/commerce-mcp"
+      ],
+      "url": null,
+      "pinned": false,
+      "floating_package": "@commercetools/commerce-mcp",
+      "tools": 0
+    }
+  ],
+  "findings": [
+    {
+      "detector": "pinning",
+      "severity": "high",
+      "title": "Unpinned package executed on every start: @commercetools/commerce-mcp",
+      "detail": "'commercetools__commerce-mcp' launches @commercetools/commerce-mcp through npx without a version. The client resolves the version at start time, so any future publish to that package name runs with your credentials. This is how postmark-mcp (Sept 2025) reached roughly 300 organisations.",
+      "server": "commercetools__commerce-mcp",
+      "tool": null,
+      "location": "commercetools__commerce-mcp",
+      "evidence": {
+        "package": "@commercetools/commerce-mcp",
+        "runner": "npx",
+        "auto_confirm": true
+      },
+      "remediation": "Pin an exact version and an integrity hash: \"args\": [\"@commercetools/commerce-mcp@<version>\"] and drop the -y flag. Re-pin deliberately, after reviewing the diff."
+    },
+    {
+      "detector": "drift",
+      "severity": "info",
+      "title": "No baseline supplied - drift detection is disabled",
+      "detail": "Without an approved snapshot the scanner cannot tell a tool that has always been there from one that appeared yesterday. The single most effective MCP control is the diff, and it needs a baseline to diff against.",
+      "server": "*",
+      "tool": null,
+      "location": "*",
+      "evidence": {},
+      "remediation": "Run 'mcp-scrutiny baseline --config <file> --out mcp-baseline.json', commit the file, and pass it back with --baseline on every later scan."
+    }
+  ],
+  "errors": [
+    "commercetools__commerce-mcp: no response to initialize within 40s; stderr: npm warn deprecated boolean@3.2.0: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info. | npm warn deprecated @anush008/tokenizers@0.0.0: This package has been archived. Please use the official and updated \"huggingface/tokenizers\" package. | npm warn deprecated @opentelemetry/sdk-trace-node@1.30.1: Use @opentelemetry/sdk-trace package | npm warn deprecated @opentelemetry/propagation-utils@0.30.16: The use of process spans has been removed from Messaging Semantic Conventions. It is now recommended to connect pub/sub spans via Span Links. See https://opentelemetry.io/docs/specs/semconv/messaging/messaging-spans/ for details. | npm warn deprecated node-domexception@1.0.0: Use your platform's native DOMException instead | npm warn deprecated @opentelemetry/propagator-jaeger@1.30.1: Package no longer supported. See https://github.com/open-telemetry/opentelemetry-js/pull/7077 | npm warn deprecated uuid@9.0.1: uuid@10 and below is no longer supported.  For ESM codebases, update to uuid@latest.  For CommonJS codebases, use uuid@11 (but be aware this version will likely be deprecated in 2028). | npm warn deprecated uuid@10.0.0: uuid@10 and below is no longer supported.  For ESM codebases, update to uuid@latest.  For CommonJS codebases, use uuid@11 (but be aware this version will likely be deprecated in 2028). | npm warn deprecated @opentelemetry/sdk-trace-base@1.30.1: Use @opentelemetry/sdk-trace package"
+  ]
+}
