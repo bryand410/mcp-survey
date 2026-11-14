@@ -6,7 +6,12 @@ on:
       limit:
         description: "Nombre de serveurs à scanner"
         required: false
-        default: "120"
+        default: "250"
+      rebuild:
+        description: "Reconstruire le catalogue depuis le registre npm"
+        type: boolean
+        required: false
+        default: false
   push:
     paths:
       - "survey/**"
@@ -36,12 +41,18 @@ jobs:
       - name: Scanner version
         run: mcp-scrutiny --version
 
+      - name: Build catalogue
+        if: github.event.inputs.rebuild == 'true'
+        run: python survey/catalog.py
+
       - name: Scan
         env:
-          LIMIT: ${{ github.event.inputs.limit || '120' }}
+          LIMIT: ${{ github.event.inputs.limit || '250' }}
           WORKERS: "8"
           PROBE_TIMEOUT: "40"
-        run: python survey/scan.py
+        run: |
+          rm -rf results work
+          python survey/scan.py
 
       - name: Aggregate
         run: python survey/aggregate.py
@@ -53,6 +64,7 @@ jobs:
           path: |
             data/run.json
             data/summary.json
+            data/catalog.json
             results/
 
       - name: Commit results
@@ -60,6 +72,6 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add data/run.json data/summary.json results/ || true
+          git add data/run.json data/summary.json data/catalog.json results/ || true
           git commit -m "data: scan results" || echo "nothing to commit"
           git push || echo "push skipped"
