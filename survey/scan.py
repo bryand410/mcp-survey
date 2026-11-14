@@ -37,6 +37,7 @@ def scan_one(pkg: dict) -> dict:
     name = pkg["name"]
     ident = slug(name)
     cfg = WORK / f"{ident}.json"
+    dump = WORK / f"{ident}.tools.json"
     out = RESULTS / f"{ident}.json"
 
     cfg.write_text(
@@ -45,18 +46,46 @@ def scan_one(pkg: dict) -> dict:
     )
 
     started = time.time()
+
+    # Capture first: one launch of the server, and the tool definitions land on
+    # disk. The scan then reads that file instead of launching again, which
+    # halves the probing cost and — the reason this was rewritten — makes the
+    # measurement re-scorable. The previous harness kept only the findings, so
+    # every detector fix required a new scan of 250 servers to find out whether
+    # it had helped.
+    try:
+        subprocess.run(
+            [
+                "mcp-scrutiny", "capture",
+                "--config", str(cfg),
+                "--out", str(dump),
+                "--timeout", str(TIMEOUT),
+            ],
+            capture_output=True,
+            text=True,
+            timeout=TIMEOUT + 120,
+        )
+    except subprocess.TimeoutExpired:
+        pass
+
+    if not dump.exists():
+        return {
+            "package": name,
+            "status": "no-report",
+            "seconds": round(time.time() - started, 1),
+        }
+
     try:
         subprocess.run(
             [
                 "mcp-scrutiny", "scan",
-                "--config", str(cfg),
-                "--probe", "--timeout", str(TIMEOUT),
+                "--tools-json", str(dump),
                 "--format", "json", "--output", str(out),
                 "--no-color", "--fail-on", "none",
             ],
             capture_output=True,
             text=True,
-            timeout=TIMEOUT + 120,
+            timeout=600,
         )
     except subprocess.TimeoutExpired:
         pass
@@ -105,6 +134,20 @@ def main() -> int:
 
     with ThreadPoolExecutor(max_workers=WORKERS) as pool:
         results = list(pool.map(run, targets))
+
+    # One combined dump of every tool definition that answered, so a detector
+    # fix can be re-scored offline instead of re-probing the ecosystem.
+    merged: list[dict] = []
+    for dump in sorted(WORK.glob("*.tools.json")):
+        try:
+            payload = json.loads(dump.read_text(encoding="utf-8"))
+        except json.JSONDecodeError:
+            continue
+        merged.extend(payload.get("servers", []))
+    (DATA / "tools.json").write_text(
+        json.dumps({"servers": merged}, ensure_ascii=False), encoding="utf-8"
+    )
+    print(f"\ndump combiné : {len(merged)} serveur(s) -> data/tools.json", flush=True)
 
     (DATA / "run.json").write_text(
         json.dumps(results, indent=1, ensure_ascii=False), encoding="utf-8"

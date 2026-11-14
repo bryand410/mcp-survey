@@ -6,7 +6,7 @@ on:
       limit:
         description: "Nombre de serveurs à scanner"
         required: false
-        default: "250"
+        default: "520"
       rebuild:
         description: "Reconstruire le catalogue depuis le registre npm"
         type: boolean
@@ -20,7 +20,7 @@ on:
 jobs:
   scan:
     runs-on: ubuntu-latest
-    timeout-minutes: 90
+    timeout-minutes: 200
     permissions:
       contents: write
 
@@ -47,7 +47,7 @@ jobs:
 
       - name: Scan
         env:
-          LIMIT: ${{ github.event.inputs.limit || '250' }}
+          LIMIT: ${{ github.event.inputs.limit || '520' }}
           WORKERS: "8"
           PROBE_TIMEOUT: "40"
         run: |
@@ -65,6 +65,7 @@ jobs:
             data/run.json
             data/summary.json
             data/catalog.json
+            data/tools.json
             results/
 
       - name: Commit results
@@ -72,7 +73,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add data/run.json data/summary.json data/catalog.json results/ || true
+          git add data/run.json data/summary.json data/catalog.json data/tools.json results/ || true
           git commit -m "data: scan results" || echo "nothing to commit"
           # Un run concurrent peut avoir poussé pendant le scan. Sans ce rebase,
           # le push est rejeté et les données restent dans l'artefact seulement.
