@@ -1,18 +1,18 @@
 {
   "tool": {
     "name": "mcp-scrutiny",
-    "version": "0.1.3"
+    "version": "0.1.4"
   },
   "summary": {
     "servers": 1,
     "tools": 33,
-    "findings": 6,
+    "findings": 5,
     "worst_severity": "high",
     "by_severity": {
       "info": 1,
       "low": 0,
       "medium": 0,
-      "high": 5,
+      "high": 4,
       "critical": 0
     }
   },
@@ -150,58 +150,6 @@
           "schema_nested_desc": 1.0
         },
         "description": "Fetch assignments and quizzes for a specific course or all enrolled courses. Shows dropbox submissions and quizzes with due dates, status, and rubric info. Use this when the user asks about assignments, homework, what to submit, quizzes, or assignment details and rubrics. Read submissionStatus/attemptStatus, not just submission/attemptsUsed, to decide whether something was turned in: some tenants deny students access to submission or attempt data, in which case the status is \"unknown\" even thoug"
-      },
-      "remediation": "Read the description against what the tool actually does. If the text is legitimate, it usually means the tool should not have to instruct the model at all - move the guidance into the parameter descriptions or the server's own docs."
-    },
-    {
-      "detector": "semantic",
-      "severity": "high",
-      "title": "Description reads as instructions to the model (p=1.00): get_course_content",
-      "detail": "The description of 'brightspace-mcp-server.get_course_content' scores 1.00 on the instruction-detection model, and carries intent signals: encoded_blob. Descriptions are documentation for a human, but they are delivered to the model as trusted context, so text that tells the model what to do is an attack surface rather than a description. The score is driven mainly by: encoded_blob, entropy, log_len, imperative_density.",
-      "server": "brightspace-mcp-server",
-      "tool": "get_course_content",
-      "location": "brightspace-mcp-server.get_course_content",
-      "evidence": {
-        "probability": 0.9982,
-        "threshold": 0.5,
-        "intent_signals": [
-          "encoded_blob"
-        ],
-        "driving_features": [
-          {
-            "feature": "encoded_blob",
-            "contribution": 7.9739
-          },
-          {
-            "feature": "log_words",
-            "contribution": -2.5821
-          },
-          {
-            "feature": "entropy",
-            "contribution": 2.2637
-          },
-          {
-            "feature": "log_len",
-            "contribution": 1.2566
-          },
-          {
-            "feature": "hardcoded_recipient",
-            "contribution": -1.2458
-          },
-          {
-            "feature": "imperative_density",
-            "contribution": 0.9206
-          }
-        ],
-        "active_features": {
-          "log_len": 6.411818267709897,
-          "log_words": 4.465908118654584,
-          "entropy": 4.463584897790924,
-          "encoded_blob": 1.0,
-          "schema_defaults": 1.0,
-          "schema_nested_desc": 5.0
-        },
-        "description": "Fetch the content tree for a course showing modules, topics, files, and links. Use this when the user asks about course materials, lecture slides, uploaded files, content structure, or what's in a course module. Use moduleTitle to filter to a specific module (e.g. 'Labs', 'Staff', 'Homeworks') instead of fetching the entire tree. Use maxDepth to limit recursion depth for a table-of-contents view. A module or topic that isn't currently available carries isAvailable/availabilityStatus/availability"
       },
       "remediation": "Read the description against what the tool actually does. If the text is legitimate, it usually means the tool should not have to instruct the model at all - move the guidance into the parameter descriptions or the server's own docs."
     },

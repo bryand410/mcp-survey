@@ -1,18 +1,18 @@
 {
   "tool": {
     "name": "mcp-scrutiny",
-    "version": "0.1.3"
+    "version": "0.1.4"
   },
   "summary": {
     "servers": 1,
     "tools": 14,
-    "findings": 3,
+    "findings": 2,
     "worst_severity": "high",
     "by_severity": {
       "info": 1,
       "low": 0,
       "medium": 0,
-      "high": 2,
+      "high": 1,
       "critical": 0
     }
   },
@@ -46,57 +46,6 @@
         "auto_confirm": true
       },
       "remediation": "Pin an exact version and an integrity hash: \"args\": [\"technical-seo-mcp@<version>\"] and drop the -y flag. Re-pin deliberately, after reviewing the diff."
-    },
-    {
-      "detector": "semantic",
-      "severity": "high",
-      "title": "Description reads as instructions to the model (p=1.00): check_structured_data",
-      "detail": "The description of 'technical-seo-mcp.check_structured_data' scores 1.00 on the instruction-detection model, and carries intent signals: encoded_blob. Descriptions are documentation for a human, but they are delivered to the model as trusted context, so text that tells the model what to do is an attack surface rather than a description. The score is driven mainly by: encoded_blob, entropy, imperative_density.",
-      "server": "technical-seo-mcp",
-      "tool": "check_structured_data",
-      "location": "technical-seo-mcp.check_structured_data",
-      "evidence": {
-        "probability": 0.9999,
-        "threshold": 0.5,
-        "intent_signals": [
-          "encoded_blob"
-        ],
-        "driving_features": [
-          {
-            "feature": "encoded_blob",
-            "contribution": 7.9739
-          },
-          {
-            "feature": "entropy",
-            "contribution": 4.7925
-          },
-          {
-            "feature": "hardcoded_recipient",
-            "contribution": -1.2458
-          },
-          {
-            "feature": "log_words",
-            "contribution": -1.1966
-          },
-          {
-            "feature": "imperative_density",
-            "contribution": 0.9206
-          },
-          {
-            "feature": "concealment",
-            "contribution": -0.8605
-          }
-        ],
-        "active_features": {
-          "log_len": 5.872117789475416,
-          "log_words": 3.6375861597263857,
-          "entropy": 4.7851516417927105,
-          "encoded_blob": 1.0,
-          "schema_nested_desc": 1.0
-        },
-        "description": "Extract and validate schema.org JSON-LD on a page (tolerates arrays and @graph). Checks Organization (incl. sameAs links), SoftwareApplication (name/description/applicationCategory/offers), FAQPage (Question/acceptedAnswer structure), and BreadcrumbList. Flags malformed JSON-LD blocks and provides a ready-to-paste Organization example when none exists."
-      },
-      "remediation": "Read the description against what the tool actually does. If the text is legitimate, it usually means the tool should not have to instruct the model at all - move the guidance into the parameter descriptions or the server's own docs."
     },
     {
       "detector": "drift",

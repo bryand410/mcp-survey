@@ -1,18 +1,18 @@
 {
   "tool": {
     "name": "mcp-scrutiny",
-    "version": "0.1.3"
+    "version": "0.1.4"
   },
   "summary": {
     "servers": 1,
     "tools": 98,
-    "findings": 8,
+    "findings": 5,
     "worst_severity": "high",
     "by_severity": {
       "info": 1,
       "low": 0,
       "medium": 1,
-      "high": 6,
+      "high": 3,
       "critical": 0
     }
   },
@@ -107,25 +107,20 @@
       "detector": "semantic",
       "severity": "high",
       "title": "Description reads as instructions to the model (p=1.00): handoff_doc_verify",
-      "detail": "The description of 'handoff-mcp-server.handoff_doc_verify' scores 1.00 on the instruction-detection model, and carries intent signals: encoded_blob, injection_markers. Descriptions are documentation for a human, but they are delivered to the model as trusted context, so text that tells the model what to do is an attack surface rather than a description. The score is driven mainly by: injection_markers, encoded_blob, entropy, log_len.",
+      "detail": "The description of 'handoff-mcp-server.handoff_doc_verify' scores 1.00 on the instruction-detection model, and carries intent signals: injection_markers. Descriptions are documentation for a human, but they are delivered to the model as trusted context, so text that tells the model what to do is an attack surface rather than a description. The score is driven mainly by: injection_markers, entropy, log_len.",
       "server": "handoff-mcp-server",
       "tool": "handoff_doc_verify",
       "location": "handoff-mcp-server.handoff_doc_verify",
       "evidence": {
-        "probability": 1.0,
+        "probability": 0.9977,
         "threshold": 0.5,
         "intent_signals": [
-          "encoded_blob",
           "injection_markers"
         ],
         "driving_features": [
           {
             "feature": "injection_markers",
             "contribution": 12.87
-          },
-          {
-            "feature": "encoded_blob",
-            "contribution": 7.9739
           },
           {
             "feature": "log_words",
@@ -142,6 +137,10 @@
           {
             "feature": "log_len",
             "contribution": 2.7863
+          },
+          {
+            "feature": "hardcoded_recipient",
+            "contribution": -1.2458
           }
         ],
         "active_features": {
@@ -149,7 +148,6 @@
           "log_words": 6.327936783729195,
           "entropy": 4.653074144153533,
           "non_ascii_ratio": 0.00490414623272403,
-          "encoded_blob": 1.0,
           "injection_markers": 2.0,
           "imperative_density": 0.012522361359570662,
           "redaction_language": 1.0,
@@ -158,171 +156,6 @@
           "schema_marker_in_props": 2.0
         },
         "description": "Operate on a document's verification matrix: generate (create a matrix from the document's current sections, error if one already exists), check (mark fragment_seq — or its sub_item_id/sub_item_index — verified, recording verified_at/reviewer/notes/content_hash_at_verify — fragment_seq may be a single section seq or an array of seqs to verify in one call), check_all (verify every section and sub_item in the matrix in one call, error if no matrix exists yet), skip (mark fragment_seq — or its sub_"
-      },
-      "remediation": "Read the description against what the tool actually does. If the text is legitimate, it usually means the tool should not have to instruct the model at all - move the guidance into the parameter descriptions or the server's own docs."
-    },
-    {
-      "detector": "semantic",
-      "severity": "high",
-      "title": "Description reads as instructions to the model (p=1.00): handoff_doc_verify_status",
-      "detail": "The description of 'handoff-mcp-server.handoff_doc_verify_status' scores 1.00 on the instruction-detection model, and carries intent signals: encoded_blob. Descriptions are documentation for a human, but they are delivered to the model as trusted context, so text that tells the model what to do is an attack surface rather than a description. The score is driven mainly by: encoded_blob, entropy, log_len, imperative_density.",
-      "server": "handoff-mcp-server",
-      "tool": "handoff_doc_verify_status",
-      "location": "handoff-mcp-server.handoff_doc_verify_status",
-      "evidence": {
-        "probability": 0.9998,
-        "threshold": 0.5,
-        "intent_signals": [
-          "encoded_blob"
-        ],
-        "driving_features": [
-          {
-            "feature": "encoded_blob",
-            "contribution": 7.9739
-          },
-          {
-            "feature": "entropy",
-            "contribution": 4.3759
-          },
-          {
-            "feature": "log_words",
-            "contribution": -2.3114
-          },
-          {
-            "feature": "log_len",
-            "contribution": 1.3029
-          },
-          {
-            "feature": "hardcoded_recipient",
-            "contribution": -1.2458
-          },
-          {
-            "feature": "imperative_density",
-            "contribution": 0.9206
-          }
-        ],
-        "active_features": {
-          "log_len": 6.472346294500901,
-          "log_words": 4.304065093204169,
-          "entropy": 4.732175169848495,
-          "non_ascii_ratio": 0.010835913312693499,
-          "encoded_blob": 1.0,
-          "schema_defaults": 2.0,
-          "schema_nested_desc": 4.0
-        },
-        "description": "Get a document's verification matrix status: overall verification_status, progress counts (checked/skipped/pending/total/stale/percentage — v2: counts leaf items, i.e. sub_items and freeform items, spec §7.4), and (when include_items=true) every item with a computed stale flag (its content_hash_at_verify no longer matches the section's current content_hash — spec §3.5). Errors if the document has no verification matrix yet (use handoff_doc_verify(action='generate') first). Returns a JSON string "
-      },
-      "remediation": "Read the description against what the tool actually does. If the text is legitimate, it usually means the tool should not have to instruct the model at all - move the guidance into the parameter descriptions or the server's own docs."
-    },
-    {
-      "detector": "semantic",
-      "severity": "high",
-      "title": "Description reads as instructions to the model (p=1.00): handoff_report",
-      "detail": "The description of 'handoff-mcp-server.handoff_report' scores 1.00 on the instruction-detection model, and carries intent signals: encoded_blob, injection_markers. Descriptions are documentation for a human, but they are delivered to the model as trusted context, so text that tells the model what to do is an attack surface rather than a description. The score is driven mainly by: encoded_blob, injection_markers, entropy, log_len.",
-      "server": "handoff-mcp-server",
-      "tool": "handoff_report",
-      "location": "handoff-mcp-server.handoff_report",
-      "evidence": {
-        "probability": 0.9988,
-        "threshold": 0.5,
-        "intent_signals": [
-          "encoded_blob",
-          "injection_markers"
-        ],
-        "driving_features": [
-          {
-            "feature": "encoded_blob",
-            "contribution": 16.2327
-          },
-          {
-            "feature": "redaction_language",
-            "contribution": -13.3051
-          },
-          {
-            "feature": "log_words",
-            "contribution": -7.2139
-          },
-          {
-            "feature": "injection_markers",
-            "contribution": 6.2052
-          },
-          {
-            "feature": "entropy",
-            "contribution": 4.3107
-          },
-          {
-            "feature": "log_len",
-            "contribution": 3.4649
-          }
-        ],
-        "active_features": {
-          "log_len": 9.294865327045871,
-          "log_words": 7.234898420314831,
-          "entropy": 4.723877804877759,
-          "encoded_blob": 2.0,
-          "injection_markers": 1.0,
-          "imperative_density": 0.005772005772005772,
-          "redaction_language": 3.0,
-          "schema_defaults": 3.0,
-          "schema_wide_enum": 1.0,
-          "schema_nested_desc": 20.0,
-          "schema_marker_in_props": 1.0
-        },
-        "description": "Report engine (FR-513/SPEC-513): generate Markdown reports from Handlebars templates and run them through an approval workflow. Built-in templates are embedded in the binary; a `<report_type>.md.hbs` file in .handoff/templates/ overrides the built-in of the same name (other *.md.hbs files there are registered too, usable as partials). Templates see `{report: <metadata>, data: <data argument>}`; output is not HTML-escaped. Reports are stored as .handoff/reports/<report_id>.md (body) + <report_id>"
-      },
-      "remediation": "Read the description against what the tool actually does. If the text is legitimate, it usually means the tool should not have to instruct the model at all - move the guidance into the parameter descriptions or the server's own docs."
-    },
-    {
-      "detector": "semantic",
-      "severity": "high",
-      "title": "Description reads as instructions to the model (p=1.00): handoff_trace_slice",
-      "detail": "The description of 'handoff-mcp-server.handoff_trace_slice' scores 1.00 on the instruction-detection model, and carries intent signals: encoded_blob. Descriptions are documentation for a human, but they are delivered to the model as trusted context, so text that tells the model what to do is an attack surface rather than a description. The score is driven mainly by: encoded_blob, entropy, log_len.",
-      "server": "handoff-mcp-server",
-      "tool": "handoff_trace_slice",
-      "location": "handoff-mcp-server.handoff_trace_slice",
-      "evidence": {
-        "probability": 0.9963,
-        "threshold": 0.5,
-        "intent_signals": [
-          "encoded_blob"
-        ],
-        "driving_features": [
-          {
-            "feature": "encoded_blob",
-            "contribution": 7.9739
-          },
-          {
-            "feature": "log_words",
-            "contribution": -4.9106
-          },
-          {
-            "feature": "entropy",
-            "contribution": 3.4411
-          },
-          {
-            "feature": "log_len",
-            "contribution": 2.3701
-          },
-          {
-            "feature": "hardcoded_recipient",
-            "contribution": -1.2458
-          },
-          {
-            "feature": "concealment",
-            "contribution": -0.8605
-          }
-        ],
-        "active_features": {
-          "log_len": 7.8655717576847906,
-          "log_words": 5.857933154483459,
-          "entropy": 4.6133030251669735,
-          "non_ascii_ratio": 0.0019193857965451055,
-          "encoded_blob": 1.0,
-          "imperative_density": 0.014326647564469915,
-          "schema_defaults": 2.0,
-          "schema_nested_desc": 7.0
-        },
-        "description": "Progressive-disclosure neighborhood view of the V-model trace graph around one task or item (FR-701 — saves AI context vs. a full handoff_trace_report). Exactly one of task_id/item is required; task_id's starting set is every stable_id that task has a requirement link to (any role). An unknown task_id or item is an error (not an empty {items:[],truncated:false} result — every real item always includes at least itself, so an empty result would otherwise be misread as \"this item has no links\"); an"
       },
       "remediation": "Read the description against what the tool actually does. If the text is legitimate, it usually means the tool should not have to instruct the model at all - move the guidance into the parameter descriptions or the server's own docs."
     },

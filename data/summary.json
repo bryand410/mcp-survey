@@ -1,20 +1,20 @@
 {
  "tested": 514,
- "answered": 268,
- "silent": 246,
- "tools": 12756,
+ "answered": 265,
+ "silent": 249,
+ "tools": 12709,
  "findings_excluding": [
   "drift",
   "pinning"
  ],
  "by_severity": {
-  "high": 205,
+  "high": 182,
   "medium": 72,
   "low": 8
  },
  "by_detector": {
   "toxic_flow": 165,
-  "semantic": 120
+  "semantic": 97
  },
  "flagged_servers": {
   "comfyui-mcp": [
@@ -60,11 +60,6 @@
    }
   ],
   "premiere-pro-mcp": [
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Description reads as instructions to the model (p=1.00): predict_timeline_edit"
-   },
    {
     "severity": "high",
     "detector": "toxic_flow",
@@ -132,11 +127,6 @@
     "severity": "high",
     "detector": "semantic",
     "title": "Description reads as instructions to the model (p=1.00): get_assignments"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Description reads as instructions to the model (p=1.00): get_course_content"
    },
    {
     "severity": "high",
@@ -227,22 +217,7 @@
    {
     "severity": "high",
     "detector": "semantic",
-    "title": "Description reads as instructions to the model (p=1.00): get_gcp_recommendation"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
     "title": "Description reads as instructions to the model (p=1.00): get_widget"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Description reads as instructions to the model (p=1.00): list_billing_transfer_reseller_accounts"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Description reads as instructions to the model (p=1.00): list_billing_transfer_reseller_accounts_with_tenants"
    },
    {
     "severity": "high",
@@ -295,16 +270,6 @@
    }
   ],
   "@astudioplus/codegraph-mcp": [
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Description reads as instructions to the model (p=1.00): codegraph_get_detailed_symbol"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Description reads as instructions to the model (p=1.00): codegraph_symbol_search"
-   },
    {
     "severity": "medium",
     "detector": "toxic_flow",
@@ -487,11 +452,6 @@
   "@yoonion/mimi-seed-mcp": [
    {
     "severity": "high",
-    "detector": "semantic",
-    "title": "Description reads as instructions to the model (p=1.00): gsc_search_analytics"
-   },
-   {
-    "severity": "high",
     "detector": "toxic_flow",
     "title": "Toxic flow within 'yoonion__mimi-seed-mcp': reads credentials or secrets + sends email or messages"
    }
@@ -520,11 +480,6 @@
     "severity": "high",
     "detector": "semantic",
     "title": "Description reads as instructions to the model (p=1.00): create_clip_media"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Description reads as instructions to the model (p=1.00): design_synth"
    },
    {
     "severity": "high",
@@ -706,21 +661,6 @@
     "title": "Description reads as instructions to the model (p=1.00): handoff_doc_verify"
    },
    {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Description reads as instructions to the model (p=1.00): handoff_doc_verify_status"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Description reads as instructions to the model (p=1.00): handoff_report"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Description reads as instructions to the model (p=1.00): handoff_trace_slice"
-   },
-   {
     "severity": "medium",
     "detector": "toxic_flow",
     "title": "Toxic flow within 'handoff-mcp-server': executes commands + writes or deletes files"
@@ -806,13 +746,6 @@
     "severity": "medium",
     "detector": "toxic_flow",
     "title": "Toxic flow within 'chrischall__myatriumhealth-mcp': reads files + sends data outbound"
-   }
-  ],
-  "gangtise-mcp": [
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Description reads as instructions to the model (p=1.00): gangtise_realtime"
    }
   ],
   "@gemmein/mcp": [
@@ -902,18 +835,6 @@
     "title": "Toxic flow within 'crewpay-mcp': reads credentials or secrets + sends data outbound"
    }
   ],
-  "pdfnative-mcp": [
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Description reads as instructions to the model (p=1.00): prepare_signature_placeholder"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Description reads as instructions to the model (p=1.00): sign_pdf"
-   }
-  ],
   "eu-nordic-open-data-mcp": [
    {
     "severity": "high",
@@ -922,11 +843,6 @@
    }
   ],
   "crawlora-mcp": [
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Description reads as instructions to the model (p=1.00): cvs_category"
-   },
    {
     "severity": "high",
     "detector": "semantic",
@@ -940,22 +856,12 @@
    {
     "severity": "high",
     "detector": "semantic",
-    "title": "Description reads as instructions to the model (p=1.00): datasets_trustmrr_search"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
     "title": "Description reads as instructions to the model (p=0.98): googleplay_developer"
    },
    {
     "severity": "high",
     "detector": "semantic",
     "title": "Description reads as instructions to the model (p=1.00): googleplay_list"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Description reads as instructions to the model (p=1.00): imdb_search_title"
    },
    {
     "severity": "high",
@@ -1001,11 +907,6 @@
     "severity": "high",
     "detector": "semantic",
     "title": "Description reads as instructions to the model (p=1.00): tiktok_mobile_place_info"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Description reads as instructions to the model (p=1.00): yahoo_sports_draft"
    },
    {
     "severity": "high",
@@ -1086,11 +987,6 @@
    {
     "severity": "high",
     "detector": "semantic",
-    "title": "Description reads as instructions to the model (p=1.00): q402_escrow_status"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
     "title": "Description reads as instructions to the model (p=1.00): q402_pay"
    },
    {
@@ -1157,11 +1053,6 @@
    }
   ],
   "@onesi/genesis-mcp": [
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Description reads as instructions to the model (p=1.00): foundry_aggregateRoutingEvalDispatch"
-   },
    {
     "severity": "high",
     "detector": "toxic_flow",
@@ -1455,13 +1346,6 @@
     "title": "Toxic flow within 'namesniper-mcp': reads credentials or secrets + sends email or messages"
    }
   ],
-  "technical-seo-mcp": [
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Description reads as instructions to the model (p=1.00): check_structured_data"
-   }
-  ],
   "wolt-mcp": [
    {
     "severity": "high",
@@ -1494,11 +1378,6 @@
     "severity": "high",
     "detector": "semantic",
     "title": "Description reads as instructions to the model (p=0.98): resolve_skills"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Description reads as instructions to the model (p=1.00): update_workflow"
    },
    {
     "severity": "high",
@@ -1610,987 +1489,1248 @@
  "silent_servers": [
   {
    "package": "agent-device",
-   "reason": "agent-device: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "agent-device: FAILED - agent-device: the server exited with status 1 before answering initialize"
   },
   {
    "package": "rea-agents",
-   "reason": "rea-agents: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "rea-agents: FAILED - rea-agents: the server exited with status 0 before answering initialize; stderr: npm warn deprecated prebuild-install@7.1.3: No longer maintained. Please contact the author of the relevant native addon; alternatives are available."
   },
   {
    "package": "@zereight/mcp-gitlab",
-   "reason": "zereight__mcp-gitlab: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "zereight__mcp-gitlab: FAILED - zereight__mcp-gitlab: the server exited with status 1 before answering initialize; stderr: \u001b[31mERROR\u001b[39m [09:49:53.135] (2505): \u001b[36mGITLAB_PERSONAL_ACCESS_TOKEN environment variable is not set\u001b[39m | \u001b[32mINFO\u001b[39m [09:49:53.146] (2505): \u001b[36mEither set GITLAB_PERSO"
   },
   {
    "package": "@currents/mcp",
-   "reason": "currents__mcp: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "currents__mcp: FAILED - currents__mcp: the server exited with status 1 before answering initialize; stderr: [09:49:51.122] \u001b[31mERROR\u001b[39m (2467): \u001b[36mCURRENTS_API_KEY is not set. Add your Currents API key to the environment (for example: export CURRENTS_API_KEY=<your-key>).\u001b[39m"
   },
   {
    "package": "kordoc",
-   "reason": "kordoc: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "kordoc: FAILED - kordoc: the server exited with status 1 before answering initialize; stderr: error: missing required argument 'files'"
   },
   {
    "package": "@serdnaley/metabase-mcp",
-   "reason": "serdnaley__metabase-mcp: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "serdnaley__metabase-mcp: FAILED - serdnaley__metabase-mcp: the server exited with status 1 before answering initialize; stderr: Configuration error: Invalid input: expected string, received undefined"
   },
   {
    "package": "@benborla29/mcp-server-mysql",
-   "reason": "benborla29__mcp-server-mysql: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "benborla29__mcp-server-mysql: FAILED - benborla29__mcp-server-mysql: the server exited with status 1 before answering tools/list; stderr: npm warn deprecated node-domexception@1.0.0: Use your platform's native DOMException instead"
   },
   {
    "package": "@hypequery/mcp",
-   "reason": "hypequery__mcp: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "hypequery__mcp: FAILED - hypequery__mcp: the server exited with status 1 before answering initialize; stderr: Error: --config flag is required | Usage: hypequery-mcp --config ./mcp-config.mjs | The config file should export { datasets, analytics }: |   export const datasets = { ... }; |   export con"
   },
   {
    "package": "@ironbee-ai/devtools",
-   "reason": "ironbee-ai__devtools: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "ironbee-ai__devtools: FAILED - ironbee-ai__devtools: no response to initialize within 40s; stderr: npm warn deprecated prebuild-install@7.1.3: No longer maintained. Please contact the author of the relevant native addon; alternatives are available."
   },
   {
    "package": "shinjuku-shield",
-   "reason": "shinjuku-shield: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "shinjuku-shield: FAILED - shinjuku-shield: the server exited with status 0 before answering initialize"
   },
   {
    "package": "dsh-computer-use-win",
-   "reason": "dsh-computer-use-win: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "dsh-computer-use-win: FAILED - dsh-computer-use-win: the server exited with status 1 before answering initialize; stderr: npm error code EBADPLATFORM | npm error notsup Unsupported platform for dsh-computer-use-win@0.5.7: wanted {\"os\":\"win32\"} (current: {\"os\":\"linux\"}) | npm error notsup Valid os:  "
   },
   {
    "package": "ffmpeg-skill",
-   "reason": "ffmpeg-skill: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "ffmpeg-skill: FAILED - ffmpeg-skill: the server exited with status 0 before answering initialize; stderr:   warning: ffmpeg was not found on PATH. The skill needs FFmpeg to run: |     macOS:   brew install ffmpeg-full; export PATH=\"$(brew --prefix ffmpeg-full)/bin:$PATH\" |              # keg-only, s"
   },
   {
    "package": "@microsoft/workiq",
-   "reason": "microsoft__workiq: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "microsoft__workiq: FAILED - microsoft__workiq: the server exited with status 1 before answering initialize; stderr: Required command was not provided."
   },
   {
    "package": "@claude-flow/mcp",
-   "reason": "claude-flow__mcp: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "claude-flow__mcp: FAILED - claude-flow__mcp: the server exited with status 1 before answering initialize; stderr: npm error could not determine executable to run | npm error A complete log of this run can be found in: /home/runner/.npm/_logs/2026-11-15T09_50_01_442Z-debug-0.log"
   },
   {
    "package": "@hui-xu-ai/dsh-wensu",
-   "reason": "hui-xu-ai__dsh-wensu: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "hui-xu-ai__dsh-wensu: FAILED - hui-xu-ai__dsh-wensu: the server exited with status 1 before answering initialize; stderr: npm error could not determine executable to run | npm error A complete log of this run can be found in: /home/runner/.npm/_logs/2026-11-15T09_50_02_835Z-debug-0.log"
   },
   {
    "package": "@agimon-ai/po-style-system-tooling",
-   "reason": "agimon-ai__po-style-system-tooling: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "agimon-ai__po-style-system-tooling: FAILED - agimon-ai__po-style-system-tooling: the server exited with status 1 before answering initialize; stderr:                                     configuration. Returns screenshot path and |                                     story file content. |   list-app-"
   },
   {
    "package": "apple-notes-mcp",
-   "reason": "apple-notes-mcp: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "apple-notes-mcp: FAILED - apple-notes-mcp: the server exited with status 1 before answering initialize; stderr: npm error code EBADPLATFORM | npm error notsup Unsupported platform for apple-notes-mcp@2.16.8: wanted {\"os\":\"darwin\"} (current: {\"os\":\"linux\"}) | npm error notsup Valid os:  darwin | npm "
   },
   {
    "package": "@flyle/ai-operator-mcp",
-   "reason": "flyle__ai-operator-mcp: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "flyle__ai-operator-mcp: FAILED - flyle__ai-operator-mcp: the server exited with status 1 before answering initialize; stderr: この作業ディレクトリはまだログインしていません。このディレクトリで `npx @flyle/ai-operator-mcp@latest login --tenant <テナント名>` を実行してから、MCP サーバーを起動し直してください。"
   },
   {
    "package": "alterlab-mcp-server",
-   "reason": "alterlab-mcp-server: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "alterlab-mcp-server: FAILED - alterlab-mcp-server: the server exited with status 1 before answering initialize; stderr:   Error: No API key found for AlterLab MCP Server. |   Add your API key to your MCP client config: |     \"env\": { \"ALTERLAB_API_KEY\": \"sk_live_...\" } |   Or run the server interact"
   },
   {
    "package": "@postman/postman-mcp-server",
-   "reason": "postman__postman-mcp-server: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "postman__postman-mcp-server: FAILED - postman__postman-mcp-server: the server exited with status 1 before answering initialize; stderr: npm warn deprecated har-validator@5.1.5: this library is no longer supported | npm warn deprecated uuid@3.4.0: uuid@10 and below is no longer supported.  For ESM co"
   },
   {
    "package": "@procedures/mcp-server",
-   "reason": "procedures__mcp-server: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "procedures__mcp-server: FAILED - procedures__mcp-server: the server exited with status 1 before answering initialize; stderr: npm error could not determine executable to run | npm error A complete log of this run can be found in: /home/runner/.npm/_logs/2026-11-15T09_50_22_526Z-debug-0.log"
+  },
+  {
+   "package": "mcp-local-rag",
+   "status": "no-tools",
+   "reason": "mcp-local-rag: FAILED - mcp-local-rag: no response to initialize within 40s; stderr: npm warn deprecated node-domexception@1.0.0: Use your platform's native DOMException instead"
   },
   {
    "package": "@lark-apaas/nestjs-mcp",
-   "reason": "lark-apaas__nestjs-mcp: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "lark-apaas__nestjs-mcp: FAILED - lark-apaas__nestjs-mcp: the server exited with status 1 before answering initialize; stderr: npm error could not determine executable to run | npm error A complete log of this run can be found in: /home/runner/.npm/_logs/2026-11-15T09_50_31_797Z-debug-0.log"
   },
   {
    "package": "gdharness",
-   "reason": "gdharness: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "no diagnostic produced"
   },
   {
    "package": "seo",
-   "reason": "seo: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "seo: FAILED - seo: the server exited with status 0 before answering initialize"
+  },
+  {
+   "package": "trace-mcp",
+   "status": "no-tools",
+   "reason": "trace-mcp: FAILED - trace-mcp: no response to initialize within 40s; stderr: {\"level\":30,\"time\":1794736278872,\"pid\":4536,\"hostname\":\"runnervmccnms\",\"name\":\"trace-mcp\",\"root\":\"/home/runner/work/mcp-survey/mcp-survey\",\"msg\":\"Auto-registered project\"} | {\"level\":30,\"time\":1794736278913,\"pid\":4536,\"host"
   },
   {
    "package": "@abyssinia-labs/sokie",
-   "reason": "abyssinia-labs__sokie: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "abyssinia-labs__sokie: FAILED - abyssinia-labs__sokie: the server exited with status 2 before answering initialize"
   },
   {
    "package": "nowaikit",
-   "reason": "nowaikit: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "nowaikit: FAILED - nowaikit: the server exited with status 1 before answering initialize; stderr: [ERROR] No ServiceNow instance configured. Set SERVICENOW_INSTANCE_URL or SN_INSTANCES_CONFIG."
   },
   {
    "package": "@kud/mcp-jenkins",
-   "reason": "kud__mcp-jenkins: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "kud__mcp-jenkins: FAILED - kud__mcp-jenkins: the server exited with status 1 before answering initialize; stderr: {\"level\":\"error\",\"msg\":\"Failed to initialize Jenkins clients\",\"time\":\"2026-11-15T09:50:48.200Z\",\"fields\":{\"error\":\"Missing MCP_JENKINS_URL. Provide via:\\n  1. CLI: --url <url>\\n  2. Envi"
   },
   {
    "package": "@roychri/mcp-server-asana",
-   "reason": "roychri__mcp-server-asana: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "roychri__mcp-server-asana: FAILED - roychri__mcp-server-asana: the server exited with status 1 before answering initialize; stderr: npm warn deprecated inflight@1.0.6: This module is not supported, and leaks memory. Do not use it. Check out lru-cache if you want a good and tested way to coalesce asy"
   },
   {
    "package": "@mcp-z/server",
-   "reason": "mcp-z__server: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "mcp-z__server: FAILED - mcp-z__server: the server exited with status 1 before answering initialize; stderr: npm error could not determine executable to run | npm error A complete log of this run can be found in: /home/runner/.npm/_logs/2026-11-15T09_50_57_193Z-debug-0.log"
   },
   {
    "package": "@onelogin/onelogin-mcp",
-   "reason": "onelogin__onelogin-mcp: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "onelogin__onelogin-mcp: FAILED - onelogin__onelogin-mcp: the server exited with status 127 before answering initialize; stderr: env: 'bun': No such file or directory | env: use -[v]S to pass options in shebang lines"
   },
   {
    "package": "@structured-world/gitlab-mcp",
-   "reason": "structured-world__gitlab-mcp: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "no diagnostic produced"
   },
   {
    "package": "donsetch",
-   "reason": "donsetch: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "donsetch: FAILED - donsetch: the server exited with status 0 before answering initialize"
   },
   {
    "package": "@haven_ai/mcp",
-   "reason": "haven_ai__mcp: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "haven_ai__mcp: FAILED - haven_ai__mcp: no response to initialize within 40s"
   },
   {
    "package": "react-native-ai-devtools",
-   "reason": ""
+   "status": "no-report",
+   "reason": "capture did not finish within 160s"
   },
   {
    "package": "@raytio/mcp-server",
-   "reason": "raytio__mcp-server: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "raytio__mcp-server: FAILED - raytio__mcp-server: the server exited with status 1 before answering initialize; stderr: file:///home/runner/.npm/_npx/97a3d02f9f1b4b59/node_modules/@raytio/mcp-server/dist/config.js:82 |             throw new Error(`Missing required configuration: ${missing}`); |       "
   },
   {
    "package": "@maroonedsoftware/mcp",
-   "reason": "maroonedsoftware__mcp: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "maroonedsoftware__mcp: FAILED - maroonedsoftware__mcp: the server exited with status 1 before answering initialize; stderr: npm error could not determine executable to run | npm error A complete log of this run can be found in: /home/runner/.npm/_logs/2026-11-15T09_51_14_875Z-debug-0.log"
   },
   {
    "package": "agentic-payments",
-   "reason": "agentic-payments: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "agentic-payments: FAILED - agentic-payments: the server exited with status 1 before answering initialize; stderr:   $ agentic-payments active-mandate verify --file signed.json |   # Verify a signature with multi-agent consensus |   $ agentic-payments verify --signature <hex> --message <text> --publi"
   },
   {
    "package": "yazio-mcp",
-   "reason": "yazio-mcp: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "yazio-mcp: FAILED - yazio-mcp: the server exited with status 1 before answering initialize; stderr: ❌ YAZIO_USERNAME and YAZIO_PASSWORD environment variables are required | 💡 Please set these environment variables with your Yazio account credentials"
   },
   {
    "package": "@mcp-z/mcp-gmail",
-   "reason": "mcp-z__mcp-gmail: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "mcp-z__mcp-gmail: FAILED - mcp-z__mcp-gmail: the server exited with status 255 before answering initialize; stderr: npm warn deprecated node-domexception@1.0.0: Use your platform's native DOMException instead | Error: Environment variable GOOGLE_CLIENT_ID is required for Google OAuth |     at requir"
   },
   {
    "package": "@opencx/mcp",
-   "reason": "opencx__mcp: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "opencx__mcp: FAILED - opencx__mcp: the server exited with status 1 before answering initialize; stderr: Get your API key from the OpenCX dashboard: |   Settings → API Keys → Create API Key | Then set it in your MCP client configuration: |   { |     \"mcpServers\": { |       \"opencx\": { |         \"comm"
   },
   {
    "package": "backlens",
-   "reason": ""
+   "status": "no-report",
+   "reason": "capture did not finish within 160s"
   },
   {
    "package": "@respira/wordpress-mcp-server",
-   "reason": "respira__wordpress-mcp-server: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "respira__wordpress-mcp-server: FAILED - respira__wordpress-mcp-server: the server exited with status 1 before answering initialize; stderr: No configuration file found. Creating default configuration... | Please edit /home/runner/.respira/config.json to add your WordPress sites. | Configuration save"
   },
   {
    "package": "summer-engine",
-   "reason": "summer-engine: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "summer-engine: FAILED - summer-engine: the server exited with status 0 before answering initialize"
   },
   {
    "package": "@jrmc/adonis-mcp",
-   "reason": "jrmc__adonis-mcp: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "jrmc__adonis-mcp: FAILED - jrmc__adonis-mcp: the server exited with status 1 before answering initialize; stderr: npm error could not determine executable to run | npm error A complete log of this run can be found in: /home/runner/.npm/_logs/2026-11-15T09_51_45_614Z-debug-0.log"
   },
   {
    "package": "agentic-text",
-   "reason": "agentic-text: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "agentic-text: FAILED - agentic-text: the server exited with status 0 before answering initialize"
   },
   {
    "package": "@cmssy/mcp-server",
-   "reason": "cmssy__mcp-server: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "cmssy__mcp-server: FAILED - cmssy__mcp-server: the server exited with status 1 before answering initialize; stderr: Error: API token required. Use --token <cs_xxx> or set CMSSY_API_TOKEN env var."
   },
   {
    "package": "@arvoretech/posthog-mcp",
-   "reason": "arvoretech__posthog-mcp: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "arvoretech__posthog-mcp: FAILED - arvoretech__posthog-mcp: the server exited with status 1 before answering initialize; stderr: POSTHOG_BASE_URL and POSTHOG_API_KEY environment variables are required"
   },
   {
    "package": "@infisical/mcp",
-   "reason": "infisical__mcp: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "infisical__mcp: FAILED - infisical__mcp: the server exited with status 1 before answering initialize; stderr:   } | ] |     at getEnvironmentVariables (/home/runner/.npm/_npx/30b7f3377962bd4f/node_modules/@infisical/mcp/dist/index.js:206:6) |     at Object.<anonymous> (/home/runner/.npm/_npx/30b7f33"
   },
   {
    "package": "mcp-solarwinds",
-   "reason": "mcp-solarwinds: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "mcp-solarwinds: FAILED - mcp-solarwinds: the server exited with status 1 before answering initialize; stderr: Starting SolarWinds Observability MCP server... | Error starting SolarWinds Observability MCP server: Error: SOLARWINDS_API_TOKEN environment variable is required. Please provide it in your "
   },
   {
    "package": "react-native-ai-debugger",
-   "reason": ""
+   "status": "no-report",
+   "reason": "capture did not finish within 160s"
   },
   {
    "package": "@microsoft/dataverse",
-   "reason": "microsoft__dataverse: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "microsoft__dataverse: FAILED - microsoft__dataverse: the server exited with status 1 before answering initialize; stderr:   --context <value>    Operation context appended to User-Agent (or set DATAVERSE_OPERATION_CONTEXT env var) | Available commands: |   auth                           Authenticati"
   },
   {
    "package": "@norbix.ai/mcp",
-   "reason": "norbix_ai__mcp: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "norbix_ai__mcp: FAILED - norbix_ai__mcp: the server exited with status 1 before answering initialize; stderr: norbix-mcp: fatal — Missing required environment variable(s): NORBIX_API_KEY, NORBIX_HUB_URL. Create a service-user API key in the Norbix dashboard (Membership → Service users) and set NORBI"
   },
   {
    "package": "@scm-js/cli",
-   "reason": "scm-js__cli: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "scm-js__cli: FAILED - scm-js__cli: the server exited with status 0 before answering initialize"
   },
   {
    "package": "@fangjunjie/ssh-mcp-server",
-   "reason": "fangjunjie__ssh-mcp-server: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "fangjunjie__ssh-mcp-server: FAILED - fangjunjie__ssh-mcp-server: the server exited with status 1 before answering initialize; stderr: [2026-11-15T09:52:25.566Z] [ERROR] 【SSH MCP Server Error】: Missing required parameters, need to provide host, port, username and password, private key or agent"
   },
   {
    "package": "@ngrislain/ergo-mcp",
-   "reason": "ngrislain__ergo-mcp: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "ngrislain__ergo-mcp: FAILED - ngrislain__ergo-mcp: the server exited with status 1 before answering initialize; stderr: /usr/bin/xdg-open: 1032: www-browser: not found | /usr/bin/xdg-open: 1032: links2: not found | /usr/bin/xdg-open: 1032: elinks: not found | /usr/bin/xdg-open: 1032: links: not foun"
   },
   {
    "package": "datadog-mcp-server",
-   "reason": "datadog-mcp-server: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "datadog-mcp-server: FAILED - datadog-mcp-server: the server exited with status 1 before answering initialize; stderr: Error: DD_API_KEY is required. | Please provide it via command line argument or .env file. |  Command line: --apiKey=your_api_key"
   },
   {
    "package": "@nxuss/lemma",
-   "reason": "nxuss__lemma: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "nxuss__lemma: FAILED - nxuss__lemma: the server exited with status 0 before answering initialize; stderr: npm warn deprecated prebuild-install@7.1.3: No longer maintained. Please contact the author of the relevant native addon; alternatives are available. | npm warn deprecated boolean@3.2.0: Package"
   },
   {
    "package": "mcp-mongo-server",
-   "reason": "mcp-mongo-server: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "mcp-mongo-server: FAILED - mcp-mongo-server: the server exited with status 1 before answering initialize; stderr: Failed to start MongoDB MCP server: Error: A default MongoDB connection is required |     at new Connections (file:///home/runner/.npm/_npx/fa13bc4275c777e5/node_modules/mcp-mongo-server"
   },
   {
    "package": "kicad-mcp-pro",
-   "reason": "kicad-mcp-pro: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "kicad-mcp-pro: FAILED - kicad-mcp-pro: the server exited with status 127 before answering initialize; stderr: uvx was not found on PATH. | Install uv from https://docs.astral.sh/uv/getting-started/installation/ and retry. | This npm wrapper does not install the Python package during npm install."
   },
   {
    "package": "@stratusagent/plugin-mcp",
-   "reason": "stratusagent__plugin-mcp: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "stratusagent__plugin-mcp: FAILED - stratusagent__plugin-mcp: the server exited with status 1 before answering initialize; stderr: npm error could not determine executable to run | npm error A complete log of this run can be found in: /home/runner/.npm/_logs/2026-11-15T09_52_33_375Z-debug-0.log"
   },
   {
    "package": "@davidfuchs/mcp-uptime-kuma",
-   "reason": "davidfuchs__mcp-uptime-kuma: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "davidfuchs__mcp-uptime-kuma: FAILED - davidfuchs__mcp-uptime-kuma: the server exited with status 1 before answering initialize; stderr: Error: UPTIME_KUMA_URL environment variable is required"
   },
   {
    "package": "european-parliament-mcp-server",
-   "reason": ""
+   "status": "no-report",
+   "reason": "capture did not finish within 160s"
   },
   {
    "package": "@iwe-org/iwe",
-   "reason": "iwe-org__iwe: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "iwe-org__iwe: FAILED - iwe-org__iwe: the server exited with status 2 before answering initialize; stderr:   extract      Extract a section to a new document with an inclusion link |   inline       Replace an inclusion link with the referenced document content |   update       Update document content"
   },
   {
    "package": "fritzkit",
-   "reason": "fritzkit: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "fritzkit: FAILED - fritzkit: the server exited with status 1 before answering initialize"
   },
   {
    "package": "electron-mcp-server",
-   "reason": "electron-mcp-server: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "electron-mcp-server: FAILED - electron-mcp-server: the server exited with status 2 before answering initialize; stderr: npm warn deprecated boolean@3.2.0: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info. | /home/runner/.npm/_npx/18ac973a3aecbfeb/node_modul"
   },
   {
    "package": "@salesforce/pwa-kit-mcp",
-   "reason": "salesforce__pwa-kit-mcp: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "salesforce__pwa-kit-mcp: FAILED - salesforce__pwa-kit-mcp: the server exited with status 1 before answering initialize; stderr: Error: Tool pwakit_create_storefront expected a Zod schema or ToolAnnotations, but received an unrecognized object |     at McpServer.tool (/home/runner/.npm/_npx/6dfdf9a6a"
   },
   {
    "package": "@icoretech/warden-mcp",
-   "reason": ""
+   "status": "no-report",
+   "reason": "capture did not finish within 160s"
   },
   {
    "package": "@mengzf/skillflow-mcp",
-   "reason": ""
+   "status": "no-report",
+   "reason": "capture did not finish within 160s"
   },
   {
    "package": "weflow-cli",
-   "reason": "weflow-cli: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "weflow-cli: FAILED - weflow-cli: no response to initialize within 40s; stderr: npm warn deprecated inflight@1.0.6: This module is not supported, and leaks memory. Do not use it. Check out lru-cache if you want a good and tested way to coalesce async requests by a key value, which is much more compre"
   },
   {
    "package": "groovehq-mcp",
-   "reason": "groovehq-mcp: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "groovehq-mcp: FAILED - groovehq-mcp: the server exited with status 1 before answering initialize; stderr: Error: GROOVE_API_TOKEN environment variable is required"
   },
   {
    "package": "zw3d-mcp",
-   "reason": "zw3d-mcp: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "zw3d-mcp: FAILED - zw3d-mcp: the server exited with status 1 before answering initialize; stderr: npm error code EBADPLATFORM | npm error notsup Unsupported platform for zw3d-mcp@1.0.2: wanted {\"os\":\"win32\"} (current: {\"os\":\"linux\"}) | npm error notsup Valid os:  win32 | npm error notsup Actual os: "
   },
   {
    "package": "music-metadata-mcp",
-   "reason": "music-metadata-mcp: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "music-metadata-mcp: FAILED - music-metadata-mcp: the server exited with status 1 before answering initialize; stderr: [music-metadata-mcp] Error: no API key set. | Pass --api-key=fb_live_... or set MUSIC_API_KEY env var. | Get a free key at https://freqblog.com/#pricing"
   },
   {
    "package": "@securecode-ai/mcp",
-   "reason": "securecode-ai__mcp: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "securecode-ai__mcp: FAILED - securecode-ai__mcp: the server exited with status 0 before answering initialize"
   },
   {
    "package": "@noesis-brain/mcp-server",
-   "reason": "noesis-brain__mcp-server: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "noesis-brain__mcp-server: FAILED - noesis-brain__mcp-server: the server exited with status 1 before answering initialize; stderr: ╟──────────────────────────────────────────────────────────────╢ | ║  NOESIS_API_TOKEN and NOESIS_API_URL are required.           ║ | ║                                   "
   },
   {
    "package": "@terreno/mcp",
-   "reason": "terreno__mcp: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "terreno__mcp: FAILED - terreno__mcp: the server exited with status 1 before answering initialize; stderr: npm error could not determine executable to run | npm error A complete log of this run can be found in: /home/runner/.npm/_logs/2026-11-15T09_54_11_663Z-debug-0.log"
   },
   {
    "package": "@maiaos/cli",
-   "reason": "maiaos__cli: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "maiaos__cli: FAILED - maiaos__cli: the server exited with status 1 before answering initialize; stderr: npm error code ETARGET | npm error notarget No matching version found for @maiaos/cli@*. | npm error notarget In most cases you or one of your dependencies are requesting | npm error notarget a pa"
   },
   {
    "package": "agentdocs-mcp",
-   "reason": "agentdocs-mcp: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "agentdocs-mcp: FAILED - agentdocs-mcp: the server exited with status 1 before answering initialize; stderr: agentdocs-mcp: no API token found. | Provide one via either: |   - the AGENTDOCS_TOKEN environment variable (recommended for MCP client configs), or |   - a token file at /home/runner/.config/"
   },
   {
    "package": "dsh-artcraft-plugin-deckcraft",
-   "reason": "dsh-artcraft-plugin-deckcraft: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "dsh-artcraft-plugin-deckcraft: FAILED - dsh-artcraft-plugin-deckcraft: the server exited with status 1 before answering initialize; stderr: npm error could not determine executable to run | npm error A complete log of this run can be found in: /home/runner/.npm/_logs/2026-11-15T09_54_16_554Z-debug-0"
   },
   {
    "package": "@bevel-software/hexis-mcp",
-   "reason": "bevel-software__hexis-mcp: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "bevel-software__hexis-mcp: FAILED - bevel-software__hexis-mcp: the server exited with status 1 before answering initialize; stderr: Missing the workspace URL. Pass --url https://your-workspace.example or set HEXIS_URL."
   },
   {
    "package": "dsh-artcraft-plugin-designcraft",
-   "reason": "dsh-artcraft-plugin-designcraft: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "dsh-artcraft-plugin-designcraft: FAILED - dsh-artcraft-plugin-designcraft: the server exited with status 1 before answering initialize; stderr: npm error could not determine executable to run | npm error A complete log of this run can be found in: /home/runner/.npm/_logs/2026-11-15T09_54_24_490Z-deb"
   },
   {
    "package": "@kevinwatt/yt-dlp-mcp",
-   "reason": "kevinwatt__yt-dlp-mcp: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "kevinwatt__yt-dlp-mcp: FAILED - kevinwatt__yt-dlp-mcp: the server exited with status 1 before answering initialize; stderr: Initialization failed: Error: Downloads directory does not exist: /home/runner/Downloads |     at validateConfig (file:///home/runner/.npm/_npx/1e90a35398775086/node_modules/@k"
   },
   {
    "package": "@absmartly/mcp",
-   "reason": "absmartly__mcp: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "absmartly__mcp: FAILED - absmartly__mcp: the server exited with status 1 before answering initialize; stderr: npm warn deprecated prebuild-install@7.1.3: No longer maintained. Please contact the author of the relevant native addon; alternatives are available. | npm warn deprecated axios-retry@4.5.0:"
   },
   {
    "package": "@homie-rocks/studio",
-   "reason": "homie-rocks__studio: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "homie-rocks__studio: FAILED - homie-rocks__studio: the server exited with status 0 before answering initialize; stderr: npm warn deprecated axios-retry@4.5.0: axios-retry is no longer maintained. See https://github.com/softonic/axios-retry for alternatives."
   },
   {
    "package": "opsgenie-mcp-server",
-   "reason": "opsgenie-mcp-server: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "opsgenie-mcp-server: FAILED - opsgenie-mcp-server: the server exited with status 1 before answering initialize; stderr: Error: Opsgenie API key is required for stdio transport. | Provide it via: |   --api-key <key>              CLI argument |   OPSGENIE_API_KEY=<key>      Environment variable"
   },
   {
    "package": "@annseraf/mcp-mail",
-   "reason": "annseraf__mcp-mail: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "annseraf__mcp-mail: FAILED - annseraf__mcp-mail: the server exited with status 1 before answering initialize; stderr: Fatal startup error: Error: Missing required environment variable: AUTH_TOKEN. See .env.example. |     at required (file:///home/runner/.npm/_npx/1dca2a50aee1ff49/node_modules/@annse"
   },
   {
    "package": "@applyra/mcp-server",
-   "reason": "applyra__mcp-server: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "applyra__mcp-server: FAILED - applyra__mcp-server: the server exited with status 1 before answering initialize; stderr: Error: APPLYRA_API_KEY environment variable is required. | Get your API key at https://www.applyra.io/dashboard/api"
   },
   {
    "package": "microsoft365-mcp-server",
-   "reason": "microsoft365-mcp-server: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "microsoft365-mcp-server: FAILED - microsoft365-mcp-server: the server exited with status 1 before answering initialize; stderr: npm warn deprecated inflight@1.0.6: This module is not supported, and leaks memory. Do not use it. Check out lru-cache if you want a good and tested way to coalesce async r"
   },
   {
    "package": "@xuandev/atlassian-mcp",
-   "reason": "xuandev__atlassian-mcp: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "xuandev__atlassian-mcp: FAILED - xuandev__atlassian-mcp: the server exited with status 1 before answering initialize; stderr:               ^ | Error: Missing required configuration: domain, email, apiToken | Configuration can be provided via: |   1. Command-line arguments: --domain, --email, --toke"
   },
   {
    "package": "@skeletiq/mcp",
-   "reason": "skeletiq__mcp: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "skeletiq__mcp: FAILED - skeletiq__mcp: the server exited with status 1 before answering initialize; stderr: SKELETIQ_API_KEY is not set. Create a token in SkeletIQ under Settings → Agent access and put it in this server's env. It needs the \"read\" scope at minimum; add \"generate\" to let the agent cre"
   },
   {
    "package": "@commercetools/commerce-mcp",
-   "reason": "commercetools__commerce-mcp: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "commercetools__commerce-mcp: FAILED - commercetools__commerce-mcp: no response to initialize within 40s; stderr: npm warn deprecated boolean@3.2.0: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info. | npm warn deprecated @anush008/tokenizers@0.0.0: This pack"
   },
   {
    "package": "@seatable/mcp-seatable",
-   "reason": "seatable__mcp-seatable: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "seatable__mcp-seatable: FAILED - seatable__mcp-seatable: the server exited with status 1 before answering initialize; stderr: npm warn deprecated axios-retry@4.5.0: axios-retry is no longer maintained. See https://github.com/softonic/axios-retry for alternatives. | npm warn deprecated prom-client@15"
   },
   {
    "package": "taiga-api-mcp-server",
-   "reason": "taiga-api-mcp-server: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "taiga-api-mcp-server: FAILED - taiga-api-mcp-server: the server exited with status 1 before answering initialize; stderr:   TAIGA_TZ                  UTC offset for taiga_activity windows, default +03:00 |   TAIGA_MCP_READ_ONLY=1     register read tools only |   TAIGA_MCP_ALLOW_DELETE=1  also regist"
   },
   {
    "package": "@diviops/mcp-server",
-   "reason": "diviops__mcp-server: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "diviops__mcp-server: FAILED - diviops__mcp-server: the server exited with status 1 before answering initialize; stderr: npm error could not determine executable to run | npm error A complete log of this run can be found in: /home/runner/.npm/_logs/2026-11-15T09_55_14_445Z-debug-0.log"
   },
   {
    "package": "boxery-vm",
-   "reason": "boxery-vm: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "boxery-vm: FAILED - boxery-vm: the server exited with status 1 before answering initialize; stderr: file:///home/runner/.npm/_npx/98cb2bec7d8588ad/node_modules/boxery-vm/core/boxery-core.mjs:99 | \tif (name == null) throw new Error(\"no boxery host configured; run: boxery setup user@host|local\"); | \t "
   },
   {
    "package": "wso2-docs-mcp-server",
-   "reason": "wso2-docs-mcp-server: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "wso2-docs-mcp-server: FAILED - wso2-docs-mcp-server: the server exited with status 1 before answering initialize; stderr: npm warn deprecated whatwg-encoding@3.1.1: Use @exodus/bytes instead for a more spec-conformant and faster implementation | ◇ injected env (0) from .env | ❌  Invalid environment "
   },
   {
    "package": "@gethmy/mcp",
-   "reason": "gethmy__mcp: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "gethmy__mcp: FAILED - gethmy__mcp: the server exited with status 1 before answering initialize; stderr: Commands: |   serve                           Start the MCP server (stdio transport) |   status                          Show configuration status |   folders                         Manage the fo"
   },
   {
    "package": "@getmcpads/meta-ads-mcp-server",
-   "reason": "getmcpads__meta-ads-mcp-server: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "no diagnostic produced"
   },
   {
    "package": "@nacre.work/mcp",
-   "reason": "nacre_work__mcp: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "nacre_work__mcp: FAILED - nacre_work__mcp: the server exited with status 2 before answering initialize; stderr: configuration is not usable: |   - NACRE_CANONICAL_URL is not set |   - NACRE_PG_URL is not set |   - NACRE_QDRANT_URL is not set |   - NACRE_REDIS_URL is not set |   - NACRE_PARSER_ENDPOI"
   },
   {
    "package": "@hhxg/dsh-hhxg-market",
-   "reason": "hhxg__dsh-hhxg-market: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "hhxg__dsh-hhxg-market: FAILED - hhxg__dsh-hhxg-market: the server exited with status 1 before answering initialize; stderr: npm error could not determine executable to run | npm error A complete log of this run can be found in: /home/runner/.npm/_logs/2026-11-15T09_55_29_956Z-debug-0.log"
   },
   {
    "package": "@node2flow/telegram-bot-mcp",
-   "reason": "node2flow__telegram-bot-mcp: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "node2flow__telegram-bot-mcp: FAILED - node2flow__telegram-bot-mcp: the server exited with status 1 before answering initialize; stderr: Fatal error: Error: inputSchema must be a Zod schema or raw shape, received an unrecognized object |     at getZodSchemaObject (file:///home/runner/.npm/_npx/f4933a"
   },
   {
    "package": "flagrix",
-   "reason": "flagrix: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "flagrix: FAILED - flagrix: the server exited with status 1 before answering initialize"
   },
   {
    "package": "@usejunior/email-mcp",
-   "reason": "usejunior__email-mcp: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "usejunior__email-mcp: FAILED - usejunior__email-mcp: the server exited with status 1 before answering initialize; stderr: npm error could not determine executable to run | npm error A complete log of this run can be found in: /home/runner/.npm/_logs/2026-11-15T09_55_45_385Z-debug-0.log"
   },
   {
    "package": "@ahdev/dokploy-mcp",
-   "reason": "ahdev__dokploy-mcp: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "ahdev__dokploy-mcp: FAILED - ahdev__dokploy-mcp: the server exited with status 1 before answering initialize; stderr: file:///home/runner/.npm/_npx/e9dd71df703b6246/node_modules/@ahdev/dokploy-mcp/build/utils/clientConfig.js:21 |             throw new Error(\"Environment variable DOKPLOY_URL is not d"
   },
   {
    "package": "@enescinar/twitter-mcp",
-   "reason": "enescinar__twitter-mcp: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "enescinar__twitter-mcp: FAILED - enescinar__twitter-mcp: the server exited with status 1 before answering initialize; stderr:     \"path\": [ |       \"accessTokenSecret\" |     ], |     \"message\": \"Required\" |   } | ] |     at new TwitterServer (file:///home/runner/.npm/_npx/a4e292c2e570abfe/node_modul"
   },
   {
    "package": "zubeid-youtube-mcp-server",
-   "reason": "zubeid-youtube-mcp-server: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "zubeid-youtube-mcp-server: FAILED - zubeid-youtube-mcp-server: the server exited with status 1 before answering initialize; stderr: npm warn deprecated node-domexception@1.0.0: Use your platform's native DOMException instead | npm warn deprecated glob@10.5.0: Old versions of glob are not supported, "
   },
   {
    "package": "plex-mcp-server",
-   "reason": "plex-mcp-server: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "plex-mcp-server: FAILED - plex-mcp-server: the server exited with status 1 before answering initialize; stderr: Server error: Error: PLEX_TOKEN environment variable is required |     at UnifiedMCPServer.createServer (file:///home/runner/.npm/_npx/085485623448b801/node_modules/plex-mcp-server/build/p"
   },
   {
    "package": "codex-claude-council",
-   "reason": "codex-claude-council: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "codex-claude-council: FAILED - codex-claude-council: the server exited with status 1 before answering initialize"
   },
   {
    "package": "financial-modeling-prep-mcp-server",
-   "reason": ""
+   "status": "no-report",
+   "reason": "capture did not finish within 160s"
   },
   {
    "package": "hivenet",
-   "reason": "hivenet: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "hivenet: FAILED - hivenet: the server exited with status 1 before answering initialize; stderr: A feedback message is required. Pass --message or -m (40–5,000 characters after trimming). |     Usage: npx hivenet --to <slug|domain> --message \"<specific, actionable feedback>\""
   },
   {
    "package": "@spuentesp/lain-mcp",
-   "reason": "spuentesp__lain-mcp: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "spuentesp__lain-mcp: FAILED - spuentesp__lain-mcp: the server exited with status 0 before answering initialize"
   },
   {
    "package": "@t4dhg/mcp-factorial",
-   "reason": ""
+   "status": "no-report",
+   "reason": "capture did not finish within 160s"
   },
   {
    "package": "@morluto/rea",
-   "reason": "morluto__rea: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "morluto__rea: FAILED - morluto__rea: the server exited with status 0 before answering initialize"
+  },
+  {
+   "package": "@munhq/sealkeep",
+   "status": "no-tools",
+   "reason": "munhq__sealkeep: FAILED - munhq__sealkeep: the server exited with status 0 before answering tools/list"
   },
   {
    "package": "@czp3009/factorio-mcp",
-   "reason": "czp3009__factorio-mcp: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "czp3009__factorio-mcp: FAILED - czp3009__factorio-mcp: the server exited with status 127 before answering initialize; stderr: /home/runner/.npm/_npx/cf0454074894f8a2/node_modules/@czp3009/factorio-mcp-linux_x64/bin/factorio-mcp.kexe: error while loading shared libraries: libturbojpeg.so.0: cannot op"
   },
   {
    "package": "reis-mobile",
-   "reason": "reis-mobile: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "reis-mobile: FAILED - reis-mobile: the server exited with status 1 before answering initialize"
   },
   {
    "package": "@vygruppen/spor-mcp-server",
-   "reason": "vygruppen__spor-mcp-server: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "vygruppen__spor-mcp-server: FAILED - vygruppen__spor-mcp-server: no response to initialize within 40s"
   },
   {
    "package": "kolide-mcp-server",
-   "reason": "kolide-mcp-server: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "kolide-mcp-server: FAILED - kolide-mcp-server: the server exited with status 1 before answering initialize; stderr: npm warn deprecated node-abort-controller@3.1.1: This package is no longer needed on supported Node.js versions. Node.js 16+ includes AbortController and AbortSignal as built-in global"
   },
   {
    "package": "mcp-confluence-dc",
-   "reason": "mcp-confluence-dc: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "mcp-confluence-dc: FAILED - mcp-confluence-dc: the server exited with status 1 before answering initialize; stderr: file:///home/runner/.npm/_npx/4454b8893c686a76/node_modules/mcp-confluence-dc/dist/index.js:894 |   throw new Error(`Missing required environment variables: ${missingEnvVars.join(\", \")"
   },
   {
    "package": "@bashcat/ai-image-chat-mcp",
-   "reason": "bashcat__ai-image-chat-mcp: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "bashcat__ai-image-chat-mcp: FAILED - bashcat__ai-image-chat-mcp: the server exited with status 1 before answering initialize; stderr: file:///home/runner/.npm/_npx/6037059a58654d7f/node_modules/@bashcat/ai-image-chat-mcp/dist/index.js:22 |     throw new Error(\"AI_API_KEY 環境變數未設定\"); |           ^ | E"
   },
   {
    "package": "@suncreation/mcp-google-docs",
-   "reason": "suncreation__mcp-google-docs: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "suncreation__mcp-google-docs: FAILED - suncreation__mcp-google-docs: the server exited with status 1 before answering initialize; stderr:     at async Module.readFile (node:internal/fs/promises:1252:14) |     at async loadClientSecrets (file:///home/runner/.npm/_npx/41f36c7dc57cdf70/node_modules/@su"
   },
   {
    "package": "@indiebob/mcp",
-   "reason": "indiebob__mcp: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "indiebob__mcp: FAILED - indiebob__mcp: the server exited with status 1 before answering initialize; stderr: indiebob-mcp: INDIEBOB_API_KEY is not set. | Make an agent key in IndieBob: Settings › Developers › Agent keys | (https://www.indiebob.com/dashboard/agent-keys) | and put it in your MCP client"
   },
   {
    "package": "@us-all/datadog-mcp",
-   "reason": "us-all__datadog-mcp: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "us-all__datadog-mcp: FAILED - us-all__datadog-mcp: the server exited with status 1 before answering initialize; stderr: file:///home/runner/.npm/_npx/a8a7365216c435fc/node_modules/@us-all/datadog-mcp/dist/config.js:18 |         throw new Error(\"DD_API_KEY environment variable is required\"); |       "
   },
   {
    "package": "@asksakina/islamic-knowledge-mcp",
-   "reason": ""
+   "status": "no-report",
+   "reason": "capture did not finish within 160s"
   },
   {
    "package": "khala-cli",
-   "reason": "khala-cli: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "khala-cli: FAILED - khala-cli: the server exited with status 1 before answering initialize; stderr: usage: khala mcp | khala watch [--harness <id>] [--session <id>] | khala hook <name> | khala local <command> | khala install codex | khala install cursor | khala wake on|off|status [--driver <d>] [--h"
   },
   {
    "package": "screenrec-agent",
-   "reason": "screenrec-agent: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "screenrec-agent: FAILED - screenrec-agent: the server exited with status 1 before answering initialize; stderr: npm error code EBADPLATFORM | npm error notsup Unsupported platform for screenrec-agent@0.2.0: wanted {\"os\":\"win32\"} (current: {\"os\":\"linux\"}) | npm error notsup Valid os:  win32 | npm err"
   },
   {
    "package": "@canera/mcp-server",
-   "reason": "canera__mcp-server: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "canera__mcp-server: FAILED - canera__mcp-server: the server exited with status 1 before answering initialize; stderr: file:///home/runner/.npm/_npx/99dd7fed4165bb90/node_modules/@canera/mcp-server/dist/config.js:9 |         throw new Error(`Missing required environment variable: ${name}. ` + |      "
   },
   {
    "package": "mcp-dataverse",
-   "reason": "mcp-dataverse: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "mcp-dataverse: FAILED - mcp-dataverse: the server exited with status 1 before answering initialize; stderr: npm warn deprecated uuid@8.3.2: uuid@10 and below is no longer supported.  For ESM codebases, update to uuid@latest.  For CommonJS codebases, use uuid@11 (but be aware this version will likely"
   },
   {
    "package": "@tedorigawa001/servicenow-mcp",
-   "reason": "tedorigawa001__servicenow-mcp: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "tedorigawa001__servicenow-mcp: FAILED - tedorigawa001__servicenow-mcp: the server exited with status 1 before answering initialize; stderr: Options: |   -V, --version    output the version number |   -h, --help       display help for command | Commands: |   setup [options]  Interactive setup wizard "
   },
   {
    "package": "hackmd-mcp",
-   "reason": "hackmd-mcp: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "hackmd-mcp: FAILED - hackmd-mcp: the server exited with status 1 before answering initialize; stderr: Error: HACKMD_API_TOKEN is required"
   },
   {
    "package": "companies-house-mcp",
-   "reason": "companies-house-mcp: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "companies-house-mcp: FAILED - companies-house-mcp: the server exited with status 1 before answering initialize; stderr: Fatal error: Error: No Companies House API key found. Set COMPANIES_HOUSE_API_KEY or run `ch config set-key <key>`. Get a free key at https://developer.company-information.service."
   },
   {
    "package": "@everme/memory-mcp",
-   "reason": "everme__memory-mcp: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "everme__memory-mcp: FAILED - everme__memory-mcp: the server exited with status 1 before answering initialize; stderr: [everme-mcp] boot failed: EverMe plugin: missing EVERME_AGENT_ID, EVERME_AGENT_TOKEN. Run `evercli plugin install <agent>` to provision the MCP entry."
   },
   {
    "package": "mcpspan-lint",
-   "reason": "mcpspan-lint: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "mcpspan-lint: FAILED - mcpspan-lint: the server exited with status 2 before answering initialize; stderr:   mcpspan-lint [options] -- <command> [args...]   start a server over stdio and check it |   mcpspan-lint [options] <url>                    check a running server over HTTP |   mcpspan-lint [op"
   },
   {
    "package": "@voyagier/cli",
-   "reason": "voyagier__cli: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "voyagier__cli: FAILED - voyagier__cli: the server exited with status 0 before answering initialize"
   },
   {
    "package": "bizrouter",
-   "reason": "bizrouter: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "bizrouter: FAILED - bizrouter: the server exited with status 0 before answering initialize"
   },
   {
    "package": "@hrtips/cvx",
-   "reason": "hrtips__cvx: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "hrtips__cvx: FAILED - hrtips__cvx: the server exited with status 0 before answering initialize"
   },
   {
    "package": "endfield-mcp",
-   "reason": "endfield-mcp: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "endfield-mcp: FAILED - endfield-mcp: the server exited with status 127 before answering initialize; stderr: env: 'bun': No such file or directory | env: use -[v]S to pass options in shebang lines"
   },
   {
    "package": "duckduckgo-mcp",
-   "reason": "duckduckgo-mcp: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "duckduckgo-mcp: FAILED - duckduckgo-mcp: the server exited with status 127 before answering initialize; stderr: env: 'bun': No such file or directory | env: use -[v]S to pass options in shebang lines"
   },
   {
    "package": "agent-mc-world",
-   "reason": "agent-mc-world: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "agent-mc-world: FAILED - agent-mc-world: the server exited with status 1 before answering initialize; stderr: npm error could not determine executable to run | npm error A complete log of this run can be found in: /home/runner/.npm/_logs/2026-11-15T09_57_40_818Z-debug-0.log"
   },
   {
    "package": "zapsmtp-mcp",
-   "reason": "zapsmtp-mcp: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "zapsmtp-mcp: FAILED - zapsmtp-mcp: the server exited with status 2 before answering initialize; stderr: zapsmtp-mcp: no API key: set ZAP_API_KEY or pass --key (or serve --http, where clients send their own)"
   },
   {
    "package": "@falkordb/mcpserver",
-   "reason": "falkordb__mcpserver: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "falkordb__mcpserver: FAILED - falkordb__mcpserver: no response to initialize within 40s"
   },
   {
    "package": "rxlocal-mcp",
-   "reason": "rxlocal-mcp: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "rxlocal-mcp: FAILED - rxlocal-mcp: the server exited with status 2 before answering initialize; stderr: /home/runner/.npm/_npx/30305b4cfa842f9e/node_modules/.bin/rxlocal-mcp: 1: Syntax error: \"(\" unexpected"
   },
   {
    "package": "zipline-mcp",
-   "reason": "zipline-mcp: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "zipline-mcp: FAILED - zipline-mcp: the server exited with status 1 before answering initialize; stderr: file:///home/runner/.npm/_npx/5cff6543e9051ab1/node_modules/zipline-mcp/dist/index.js:26 |     throw new Error('Environment variable ZIPLINE_TOKEN is required.'); |           ^ | Error: Environmen"
   },
   {
    "package": "@msg2ai/ai-ambassador-toolkit",
-   "reason": "msg2ai__ai-ambassador-toolkit: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "msg2ai__ai-ambassador-toolkit: FAILED - msg2ai__ai-ambassador-toolkit: the server exited with status 1 before answering initialize; stderr: npm error could not determine executable to run | npm error A complete log of this run can be found in: /home/runner/.npm/_logs/2026-11-15T09_57_48_869Z-debug-0"
   },
   {
    "package": "@zerotal/arch",
-   "reason": "zerotal__arch: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "zerotal__arch: FAILED - zerotal__arch: the server exited with status 127 before answering initialize; stderr: env: 'bun': No such file or directory | env: use -[v]S to pass options in shebang lines"
   },
   {
    "package": "@design-twin/dtwin",
-   "reason": "design-twin__dtwin: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "design-twin__dtwin: FAILED - design-twin__dtwin: the server exited with status 127 before answering initialize; stderr: env: 'bun': No such file or directory"
   },
   {
    "package": "grafana-mcp",
-   "reason": "grafana-mcp: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "grafana-mcp: FAILED - grafana-mcp: the server exited with status 127 before answering initialize; stderr: env: 'bun': No such file or directory | env: use -[v]S to pass options in shebang lines"
   },
   {
    "package": "hostkey-mcp-server-ru",
-   "reason": "hostkey-mcp-server-ru: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "hostkey-mcp-server-ru: FAILED - hostkey-mcp-server-ru: the server exited with status 1 before answering initialize; stderr: InvApiError: HOSTKEY_API_KEY is missing. Create a key in InvAPI and set it in the environment. |     at new InvApiClient (file:///home/runner/.npm/_npx/31fc49908068cd68/node_mo"
   },
   {
    "package": "@para-space-dev/cli",
-   "reason": "para-space-dev__cli: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "para-space-dev__cli: FAILED - para-space-dev__cli: the server exited with status 1 before answering initialize; stderr:   isolate [options] <worktree>    Replace shared dependency symlinks with an |                                   independent copy (branch, dir name or path) |   remove|rm [options]"
   },
   {
    "package": "@belvador/mcp",
-   "reason": "belvador__mcp: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "belvador__mcp: FAILED - belvador__mcp: the server exited with status 1 before answering initialize; stderr: belvador-mcp: no token: set BELVADOR_TOKEN (see --help)"
   },
   {
    "package": "the-real-bitwarden-mcp",
-   "reason": "the-real-bitwarden-mcp: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "the-real-bitwarden-mcp: FAILED - the-real-bitwarden-mcp: the server exited with status 1 before answering initialize; stderr: fatal: No Bitwarden instance configured. Set at least one instance (BITWARDEN_SELFHOST_* or BITWARDEN_CLOUD_*)."
   },
   {
    "package": "@hanoak/pixabay-mcp-server",
-   "reason": "hanoak__pixabay-mcp-server: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "hanoak__pixabay-mcp-server: FAILED - hanoak__pixabay-mcp-server: the server exited with status 1 before answering initialize; stderr: PIXABAY_API_KEY is not set. Get a free key at https://pixabay.com/api/docs/ and set it as an environment variable before starting this server."
   },
   {
    "package": "gd-tiku-mcp-server",
-   "reason": "gd-tiku-mcp-server: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "gd-tiku-mcp-server: FAILED - gd-tiku-mcp-server: the server exited with status 1 before answering initialize; stderr: BOOK_API_BASE is required"
   },
   {
    "package": "pyth-mcp",
-   "reason": "pyth-mcp: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "pyth-mcp: FAILED - pyth-mcp: the server exited with status 0 before answering initialize"
   },
   {
    "package": "hostkey-mcp-server",
-   "reason": "hostkey-mcp-server: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "hostkey-mcp-server: FAILED - hostkey-mcp-server: the server exited with status 1 before answering initialize; stderr: InvApiError: HOSTKEY_API_KEY is missing. Create a key in InvAPI and set it in the environment. |     at new InvApiClient (file:///home/runner/.npm/_npx/ab0a47c4124b8953/node_modules/"
   },
   {
    "package": "@alfe.ai/myob-mcp",
-   "reason": "alfe_ai__myob-mcp: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "alfe_ai__myob-mcp: FAILED - alfe_ai__myob-mcp: the server exited with status 1 before answering initialize; stderr: [myob-mcp-server] Fatal: Config not found. Run `alfe login` to set up your API key."
   },
   {
    "package": "@verygoodplugins/mcp-evernote",
-   "reason": "verygoodplugins__mcp-evernote: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "verygoodplugins__mcp-evernote: FAILED - verygoodplugins__mcp-evernote: the server exited with status 1 before answering initialize; stderr: npm warn deprecated whatwg-encoding@3.1.1: Use @exodus/bytes instead for a more spec-conformant and faster implementation | npm warn deprecated node-domexceptio"
   },
   {
    "package": "okr-ai",
-   "reason": "okr-ai: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "okr-ai: FAILED - okr-ai: the server exited with status 1 before answering initialize; stderr: okr-ai: Something else is using port 3000. Pick another: npx okr-ai --port 3001"
   },
   {
    "package": "@leiutils/mcp-transcribe",
-   "reason": "leiutils__mcp-transcribe: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "leiutils__mcp-transcribe: FAILED - leiutils__mcp-transcribe: the server exited with status 1 before answering initialize; stderr: Fatal: LEIUTILS_INTEGRATION_TOKEN is required"
   },
   {
    "package": "@alfe.ai/news-mcp",
-   "reason": "alfe_ai__news-mcp: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "alfe_ai__news-mcp: FAILED - alfe_ai__news-mcp: the server exited with status 1 before answering initialize; stderr: [news-mcp] Fatal: Config not found. Run `alfe login` to set up your API key."
   },
   {
    "package": "heresay",
-   "reason": "heresay: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "heresay: FAILED - heresay: the server exited with status 0 before answering initialize"
   },
   {
    "package": "layoza",
-   "reason": "layoza: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "layoza: FAILED - layoza: the server exited with status 0 before answering initialize"
   },
   {
    "package": "obsidian-mcp-brain",
-   "reason": "obsidian-mcp-brain: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "obsidian-mcp-brain: FAILED - obsidian-mcp-brain: the server exited with status 1 before answering initialize; stderr: 2026-11-15T09:58:31.783Z Could not read config file at /home/runner/.config/obsidian-mcp.json: ENOENT: no such file or directory, open '/home/runner/.config/obsidian-mcp.json'"
   },
   {
    "package": "@backwork/mcp",
-   "reason": "backwork__mcp: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "backwork__mcp: FAILED - backwork__mcp: the server exited with status 1 before answering initialize; stderr: Error: BACKWORK_API_KEY environment variable is required for stdio transport | Set it with: export BACKWORK_API_KEY=bwk_live_YOUR_KEY_HERE"
   },
   {
    "package": "@informatik_tirol/redmine-mcp-server",
-   "reason": "informatik_tirol__redmine-mcp-server: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "informatik_tirol__redmine-mcp-server: FAILED - informatik_tirol__redmine-mcp-server: the server exited with status 1 before answering initialize; stderr: file:///home/runner/.npm/_npx/d02db908f0a57961/node_modules/@informatik_tirol/redmine-mcp-server/dist/server.mjs:100 | \tif (!redmineUrl) throw new"
   },
   {
    "package": "@aidalinfo/unifi-mcp",
-   "reason": "aidalinfo__unifi-mcp: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "aidalinfo__unifi-mcp: FAILED - aidalinfo__unifi-mcp: the server exited with status 1 before answering initialize; stderr: Configure UNIFI_API_KEY (cloud) and/or UNIFI_LOCAL_URL + UNIFI_LOCAL_API_KEY (local console)."
   },
   {
    "package": "ridvay-mcp",
-   "reason": "ridvay-mcp: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "ridvay-mcp: FAILED - ridvay-mcp: the server exited with status 1 before answering initialize; stderr: ridvay-mcp: RIDVAY_API_KEY environment variable is required. Set it in your MCP client's server config."
   },
   {
    "package": "dominus-cli",
-   "reason": "dominus-cli: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "dominus-cli: FAILED - dominus-cli: the server exited with status 0 before answering initialize"
   },
   {
    "package": "spawner-cli",
-   "reason": "spawner-cli: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "spawner-cli: FAILED - spawner-cli: the server exited with status 0 before answering initialize; stderr:   start [options] [env]                        start a stopped environment |   sleep [options] [env]                        put an environment to sleep now: its data stays, the next visit wakes it"
   },
   {
    "package": "@textwatermarking/mcp-server",
-   "reason": "textwatermarking__mcp-server: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "textwatermarking__mcp-server: FAILED - textwatermarking__mcp-server: the server exited with status 1 before answering initialize; stderr: No API token. Provide --token <token> or TEXTWATERMARKING_API_TOKEN. Get one at https://textwatermarking.com/dashboard.html"
   },
   {
    "package": "@jesec/retellai-mcp-server",
-   "reason": "jesec__retellai-mcp-server: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "jesec__retellai-mcp-server: FAILED - jesec__retellai-mcp-server: the server exited with status 1 before answering initialize; stderr: npm warn deprecated node-domexception@1.0.0: Use your platform's native DOMException instead | Error starting MCP server: Error: RETELL_API_KEY environment variable i"
   },
   {
    "package": "@theyahia/tkassa-mcp",
-   "reason": "theyahia__tkassa-mcp: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "theyahia__tkassa-mcp: FAILED - theyahia__tkassa-mcp: the server exited with status 1 before answering initialize; stderr: file:///home/runner/.npm/_npx/d173e12ac3de0154/node_modules/@theyahia/tkassa-mcp/dist/client.js:12 |             throw new Error(\"Переменные окружения TKASSA_TERMINAL_KEY и TKASS"
   },
   {
    "package": "ibabs-mcp",
-   "reason": "ibabs-mcp: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "ibabs-mcp: FAILED - ibabs-mcp: the server exited with status 1 before answering initialize; stderr: npm warn deprecated inflight@1.0.6: This module is not supported, and leaks memory. Do not use it. Check out lru-cache if you want a good and tested way to coalesce async requests by a key value, whic"
   },
   {
    "package": "symplax",
-   "reason": "symplax: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "symplax: FAILED - symplax: the server exited with status 2 before answering initialize; stderr:   $ symplax apps |   $ symplax deploy my-api |   $ symplax deploy                # pick from a list |   $ symplax logs my-api --tail 100 |   $ symplax db create main --engine postgres@17 |   $ symplax app"
   },
   {
    "package": "@asyntai/mcp",
-   "reason": ""
+   "status": "no-report",
+   "reason": "capture did not finish within 160s"
   },
   {
    "package": "@caikiji/mcp-search",
-   "reason": "caikiji__mcp-search: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "caikiji__mcp-search: FAILED - caikiji__mcp-search: the server exited with status 1 before answering initialize; stderr: [mcp-search] SEARCH_URL is not set."
   },
   {
    "package": "serpex-mcp",
-   "reason": "serpex-mcp: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "serpex-mcp: FAILED - serpex-mcp: the server exited with status 1 before answering initialize; stderr: file:///home/runner/.npm/_npx/0fedae0aa21a1eed/node_modules/serpex-mcp/build/index.js:11 |     throw new Error('SERPEX_API_KEY environment variable is required'); |           ^ | Error: SERPEX_API_K"
   },
   {
    "package": "mcpemails",
-   "reason": "mcpemails: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "mcpemails: FAILED - mcpemails: the server exited with status 2 before answering initialize; stderr: Options |   --key <mcpe_...>   API key. Prefer the environment variable below. |   --url <url>        Server endpoint (default: https://mcpemails.com/api/mcp). |                      Point this at you"
   },
   {
    "package": "@airbook1/mcp",
-   "reason": "airbook1__mcp: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "airbook1__mcp: FAILED - airbook1__mcp: the server exited with status 1 before answering initialize; stderr: file:///home/runner/.npm/_npx/b196d76f38de0082/node_modules/@airbook1/mcp/dist/src/config.js:9 |     throw new Error('A personal API token is required. Provide it via the PERSONAL_API_TOKEN en"
   },
   {
    "package": "@srigi/mcp-google-images-search",
-   "reason": "srigi__mcp-google-images-search: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "srigi__mcp-google-images-search: FAILED - srigi__mcp-google-images-search: the server exited with status 1 before answering initialize; stderr:     { |       code: 'invalid_type', |       expected: 'string', |       received: 'undefined', |       path: [ 'SEARCH_ENGINE_ID' ], |       message: 'Requi"
   },
   {
    "package": "ditto-workflows-mcp",
-   "reason": "ditto-workflows-mcp: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "ditto-workflows-mcp: FAILED - ditto-workflows-mcp: the server exited with status 1 before answering initialize; stderr: Error [ERR_MODULE_NOT_FOUND]: Cannot find module '/home/runner/.npm/_npx/e19a2c844f9262d5/node_modules/ditto-workflows-mcp/dev-ids.js' imported from /home/runner/.npm/_npx/e19a2c84"
   },
   {
    "package": "@webdesiz/cli",
-   "reason": "webdesiz__cli: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "webdesiz__cli: FAILED - webdesiz__cli: the server exited with status 0 before answering initialize"
   },
   {
    "package": "@qampi/mcp-server",
-   "reason": "qampi__mcp-server: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "qampi__mcp-server: FAILED - qampi__mcp-server: the server exited with status 1 before answering initialize; stderr: [qampi-mcp] No API key. Set QAMPI_API_KEY, or save the key to /home/runner/.config/qampi/api-key. Create one in Qampi → Settings → API keys."
   },
   {
    "package": "@sealgate/agent-cli-mcp",
-   "reason": "sealgate__agent-cli-mcp: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "sealgate__agent-cli-mcp: FAILED - sealgate__agent-cli-mcp: the server exited with status 2 before answering initialize; stderr: Usage: agent-cli-mcp <codex|opencode>"
   },
   {
    "package": "ossian-mcp",
-   "reason": "ossian-mcp: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "ossian-mcp: FAILED - ossian-mcp: the server exited with status 1 before answering initialize; stderr: OSSIAN_API_KEY is not set. Issue one from the Ossian console (Console → API keys) or: |   curl -X POST $OSSIAN_URL/api/admin/api-keys -H 'Authorization: Bearer <token>' \\ |     -H 'Content-Type: app"
   },
   {
    "package": "x-mcp-automation",
-   "reason": "x-mcp-automation: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "x-mcp-automation: FAILED - x-mcp-automation: the server exited with status 1 before answering initialize; stderr:   dms                               Direct messages |   bookmarks                         Bookmarks |   lists                             Lists |   analytics                         Enga"
   },
   {
    "package": "sponson",
-   "reason": "sponson: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "sponson: FAILED - sponson: the server exited with status 2 before answering initialize; stderr: Commands: |   plan|status              read live state and print the diff and drift; changes |                            nothing; exits 1 when a line is blocked (drift, a |                            mis"
   },
   {
    "package": "@aputime/mcp",
-   "reason": ""
+   "status": "no-report",
+   "reason": "capture did not finish within 160s"
   },
   {
    "package": "@synergic-apis/mcp",
-   "reason": "synergic-apis__mcp: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "synergic-apis__mcp: FAILED - synergic-apis__mcp: the server exited with status 1 before answering initialize; stderr: [synergic-apis-mcp] SYNERGIC_API_KEY is not set. Get a free API key at https://synergicapis.com/signup.html and set it in the env of your MCP client config."
   },
   {
    "package": "jamp-mcp",
-   "reason": "jamp-mcp: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "jamp-mcp: FAILED - jamp-mcp: the server exited with status 1 before answering initialize; stderr: JAMP_API_TOKEN is not set. Create one at JAMP > Settings > API & MCP access."
   },
   {
    "package": "screenshot-studio-mcp",
-   "reason": "screenshot-studio-mcp: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "screenshot-studio-mcp: FAILED - screenshot-studio-mcp: the server exited with status 1 before answering initialize; stderr: npm error code EBADPLATFORM | npm error notsup Unsupported platform for screenshot-studio-mcp@0.5.0: wanted {\"os\":\"darwin\"} (current: {\"os\":\"linux\"}) | npm error notsup Valid o"
   },
   {
    "package": "@23telecom/mcp",
-   "reason": "23telecom__mcp: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "23telecom__mcp: FAILED - 23telecom__mcp: the server exited with status 1 before answering initialize; stderr: 23telecom MCP configuration error: TELECOM23_API_KEY is required (create one in the portal: Settings → API Keys)"
   },
   {
    "package": "pulsecloud-mcp",
-   "reason": "pulsecloud-mcp: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "pulsecloud-mcp: FAILED - pulsecloud-mcp: the server exited with status 1 before answering initialize; stderr:     at node:net:2207:7 |     at process.processTicksAndRejections (node:internal/process/task_queues:89:21) | Emitted 'error' event on Server instance at: |     at emitErrorNT (node:net:1977"
   },
   {
    "package": "selfhosted-sentry-mcp",
-   "reason": "selfhosted-sentry-mcp: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "selfhosted-sentry-mcp: FAILED - selfhosted-sentry-mcp: the server exited with status 1 before answering initialize; stderr: file:///home/runner/.npm/_npx/894f1c3d711ce186/node_modules/selfhosted-sentry-mcp/build/config.js:20 |         throw new Error('SENTRY_URL environment variable is required'); |"
   },
   {
    "package": "jfk-mcp",
-   "reason": "jfk-mcp: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "jfk-mcp: FAILED - jfk-mcp: the server exited with status 1 before answering initialize; stderr: npm warn deprecated node-domexception@1.0.0: Use your platform's native DOMException instead | file:///home/runner/.npm/_npx/0f2c1300923bed27/node_modules/jfk-mcp/build/index.js:13 |     throw new Error(\""
   },
   {
    "package": "@techformist/seta-mcp",
-   "reason": "techformist__seta-mcp: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "techformist__seta-mcp: FAILED - techformist__seta-mcp: the server exited with status 1 before answering initialize; stderr: FATAL: LOCAL_DOCS_PATH environment variable is not set. The server cannot operate without it."
   },
   {
    "package": "stape-mcp-server",
-   "reason": "stape-mcp-server: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "stape-mcp-server: FAILED - stape-mcp-server: the server exited with status 2 before answering initialize"
   },
   {
    "package": "@chainreactionom/nano-mcp-server",
-   "reason": "chainreactionom__nano-mcp-server: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "chainreactionom__nano-mcp-server: FAILED - chainreactionom__nano-mcp-server: the server exited with status 0 before answering initialize; stderr: npm warn deprecated crypto-js@3.1.9-1: Active development of CryptoJS has been discontinued. This library is no longer maintained. | npm warn deprecated n"
   },
   {
    "package": "@quick-desk/mcp",
-   "reason": "quick-desk__mcp: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "quick-desk__mcp: FAILED - quick-desk__mcp: the server exited with status 1 before answering initialize; stderr: QUICKDESK_API_KEY is not set. | Create a key at Settings → Developers in QuickDesk, then set it in your | MCP client config, for example: |   \"env\": { \"QUICKDESK_API_KEY\": \"qd_live_...\" }"
   },
   {
    "package": "spacedock-mcp",
-   "reason": "spacedock-mcp: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "spacedock-mcp: FAILED - spacedock-mcp: the server exited with status 1 before answering initialize; stderr: set PLATFORM_API_URL and PLATFORM_API_KEY"
   },
   {
    "package": "@disocodes/server-email-beta",
-   "reason": "disocodes__server-email-beta: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "disocodes__server-email-beta: FAILED - disocodes__server-email-beta: the server exited with status 1 before answering initialize; stderr: npm warn deprecated uuid@8.3.2: uuid@10 and below is no longer supported.  For ESM codebases, update to uuid@latest.  For CommonJS codebases, use uuid@11 (but be "
   },
   {
    "package": "spine-mcp-server",
-   "reason": "spine-mcp-server: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "spine-mcp-server: FAILED - spine-mcp-server: the server exited with status 0 before answering initialize; stderr: npm warn deprecated prebuild-install@7.1.3: No longer maintained. Please contact the author of the relevant native addon; alternatives are available."
   },
   {
    "package": "@patrickcylai/paperless-ngx-mcp",
-   "reason": "patrickcylai__paperless-ngx-mcp: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "patrickcylai__paperless-ngx-mcp: FAILED - patrickcylai__paperless-ngx-mcp: the server exited with status 1 before answering initialize; stderr: paperless-ngx MCP server: PAPERLESS_URL is not set. Point it at your paperless-ngx install, e.g. https://paperless.example.com"
   },
   {
    "package": "hchain-mcp",
-   "reason": "hchain-mcp: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "hchain-mcp: FAILED - hchain-mcp: the server exited with status 1 before answering initialize; stderr: node:internal/modules/run_main:92 |   const type = getNearestParentPackageJSONType(mainPath); |                ^ | Error: Invalid package config /home/runner/.npm/_npx/509a0f9e76060093/node_modules/"
   },
   {
    "package": "shopify-store-mcp",
-   "reason": "shopify-store-mcp: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "shopify-store-mcp: FAILED - shopify-store-mcp: the server exited with status 1 before answering initialize; stderr: [shopify-store-mcp] Fatal error: Error: SHOPIFY_STORE_URL is required. Set it to your store's myshopify.com domain (e.g. my-store.myshopify.com). |     at loadConfig (file:///home/runn"
   },
   {
    "package": "@alsania-io/mcpnyx-u",
-   "reason": "alsania-io__mcpnyx-u: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "alsania-io__mcpnyx-u: FAILED - alsania-io__mcpnyx-u: the server exited with status 1 before answering initialize; stderr: npm warn deprecated node-domexception@1.0.0: Use your platform's native DOMException instead | npm warn deprecated @opentelemetry/propagator-jaeger@1.25.1: Package no longer supp"
   },
   {
    "package": "@chenlinyang/mcp-server-mysql",
-   "reason": "chenlinyang__mcp-server-mysql: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "chenlinyang__mcp-server-mysql: FAILED - chenlinyang__mcp-server-mysql: the server exited with status 0 before answering initialize; stderr: npm warn deprecated node-domexception@1.0.0: Use your platform's native DOMException instead"
   },
   {
    "package": "@dawipong/mcp-github",
-   "reason": "dawipong__mcp-github: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "dawipong__mcp-github: FAILED - dawipong__mcp-github: the server exited with status 0 before answering initialize"
   },
   {
    "package": "@iflow-mcp/bartwaardenburg-recraft-mcp-server",
-   "reason": "iflow-mcp__bartwaardenburg-recraft-mcp-server: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "iflow-mcp__bartwaardenburg-recraft-mcp-server: FAILED - iflow-mcp__bartwaardenburg-recraft-mcp-server: the server exited with status 1 before answering initialize; stderr: Error: Server does not support completions (required for completion/complete) |     at Server.assertRequestHandlerCapability (fi"
   },
   {
    "package": "@mseep/openrouterai",
-   "reason": "mseep__openrouterai: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "mseep__openrouterai: FAILED - mseep__openrouterai: the server exited with status 1 before answering initialize; stderr: npm warn deprecated node-domexception@1.0.0: Use your platform's native DOMException instead | file:///home/runner/.npm/_npx/8a69dad3a49bbdff/node_modules/@mseep/openrouterai/dist/"
   },
   {
    "package": "@rankgeo/mcp-server",
-   "reason": "rankgeo__mcp-server: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "rankgeo__mcp-server: FAILED - rankgeo__mcp-server: the server exited with status 1 before answering initialize; stderr: [MCP] RANKGEO_API_KEY env var is required. Generate a key in the RankGeo dashboard at /dashboard/settings."
   },
   {
    "package": "deer-flow-mcp",
-   "reason": "deer-flow-mcp: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "deer-flow-mcp: FAILED - deer-flow-mcp: the server exited with status 1 before answering initialize; stderr: DEERFLOW_BASE_URL is required. Set it to the base URL of your deployed DeerFlow instance (e.g. https://deerflow.example.com)."
   },
   {
    "package": "railway-mcp-op",
-   "reason": "railway-mcp-op: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "railway-mcp-op: FAILED - railway-mcp-op: the server exited with status 1 before answering initialize; stderr: No Railway token found. Set RAILWAY_API_TOKEN to a workspace or account token (create one at https://railway.com/account/tokens), or RAILWAY_PROJECT_TOKEN for a single project+environment. T"
   },
   {
    "package": "@lucid-spark/openapi-mcp-server",
-   "reason": "lucid-spark__openapi-mcp-server: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "lucid-spark__openapi-mcp-server: FAILED - lucid-spark__openapi-mcp-server: the server exited with status 1 before answering initialize; stderr: Error: Must specify one of --openapi-spec, --spec-from-stdin, --spec-inline, or OPENAPI_SPEC_PATH/OPENAPI_SPEC_INLINE environment variables"
   },
   {
    "package": "@mcp-collection/mssql-mcp",
-   "reason": "mcp-collection__mssql-mcp: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "mcp-collection__mssql-mcp: FAILED - mcp-collection__mssql-mcp: the server exited with status 2 before answering initialize; stderr: /home/runner/.npm/_npx/cfbef710aef94dc0/node_modules/.bin/mssql-mcp: 1: import: not found | /home/runner/.npm/_npx/cfbef710aef94dc0/node_modules/.bin/mssql-mcp: 2: impo"
   },
   {
    "package": "freaking-fast-mcp",
-   "reason": "freaking-fast-mcp: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "freaking-fast-mcp: FAILED - freaking-fast-mcp: the server exited with status 1 before answering initialize; stderr: freaking-fast-mcp: FREAKING_FAST_API_TOKEN is not set. See https://freakingfast.io/developers/mcp"
   },
   {
    "package": "reg-ru-mcp-server",
-   "reason": "reg-ru-mcp-server: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "reg-ru-mcp-server: FAILED - reg-ru-mcp-server: the server exited with status 1 before answering initialize; stderr: Error: REG_RU_USERNAME and REG_RU_PASSWORD environment variables are required"
   },
   {
    "package": "@replyinmyvoiceashuman/mcp-server",
-   "reason": "replyinmyvoiceashuman__mcp-server: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "replyinmyvoiceashuman__mcp-server: FAILED - replyinmyvoiceashuman__mcp-server: the server exited with status 1 before answering initialize; stderr: [replyinmyvoice-mcp] fatal: Error: Set REPLY_IN_MY_VOICE_API_KEY env var. Get one at https://replyinmyvoice.com/app/keys |     at readServerConfig (file"
   },
   {
    "package": "@roo-bz/roo-mcp",
-   "reason": "roo-bz__roo-mcp: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "roo-bz__roo-mcp: FAILED - roo-bz__roo-mcp: the server exited with status 1 before answering initialize; stderr: roo-mcp: ROO_API_KEY is not set. Checked process.env and .env in the package root. Set it via your MCP client config, or drop a .env file next to the package."
   },
   {
    "package": "@seofanboy/babbar-mcp-server",
-   "reason": "seofanboy__babbar-mcp-server: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "seofanboy__babbar-mcp-server: FAILED - seofanboy__babbar-mcp-server: the server exited with status 1 before answering initialize; stderr: {\"level\":50,\"time\":1794736818545,\"pid\":17919,\"hostname\":\"runnervmccnms\",\"msg\":\"BABBAR_API_KEY environment variable is required\"}"
   },
   {
    "package": "@talktowp/mcp",
-   "reason": "talktowp__mcp: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "talktowp__mcp: FAILED - talktowp__mcp: the server exited with status 1 before answering initialize; stderr: TALKTOWP_TOKEN is not set. | Create a token in TalkToWP under Settings > MCP, then set it in your MCP | client configuration: |   \"env\": { \"TALKTOWP_TOKEN\": \"twp_live_...\" }"
   },
   {
    "package": "cardgo-mcp",
-   "reason": "cardgo-mcp: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "cardgo-mcp: FAILED - cardgo-mcp: the server exited with status 1 before answering initialize; stderr: CardGo is not connected on this machine. Run `npx cardgo-mcp connect`."
   },
   {
    "package": "mcp-searxng-scrape",
-   "reason": "mcp-searxng-scrape: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "mcp-searxng-scrape: FAILED - mcp-searxng-scrape: the server exited with status 1 before answering initialize; stderr: npm warn deprecated whatwg-encoding@3.1.1: Use @exodus/bytes instead for a more spec-conformant and faster implementation | Error: SEARXNG_URL environment variable is required"
   },
   {
    "package": "tgrep-mcp",
-   "reason": "tgrep-mcp: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "tgrep-mcp: FAILED - tgrep-mcp: the server exited with status 0 before answering initialize"
   },
   {
    "package": "@buildwithlayer/mcp-analytics",
-   "reason": "buildwithlayer__mcp-analytics: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "buildwithlayer__mcp-analytics: FAILED - buildwithlayer__mcp-analytics: the server exited with status 1 before answering initialize; stderr: npm error could not determine executable to run | npm error A complete log of this run can be found in: /home/runner/.npm/_logs/2026-11-15T10_00_20_309Z-debug-0"
   },
   {
    "package": "@fdavidjm/youtube-data-mcp-server",
-   "reason": "fdavidjm__youtube-data-mcp-server: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "fdavidjm__youtube-data-mcp-server: FAILED - fdavidjm__youtube-data-mcp-server: the server exited with status 1 before answering initialize; stderr: npm warn deprecated uuid@9.0.1: uuid@10 and below is no longer supported.  For ESM codebases, update to uuid@latest.  For CommonJS codebases, use uuid@1"
   },
   {
    "package": "@miroslaw.franek/mediawiki-mcp-server-auth",
-   "reason": "miroslaw_franek__mediawiki-mcp-server-auth: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "miroslaw_franek__mediawiki-mcp-server-auth: FAILED - miroslaw_franek__mediawiki-mcp-server-auth: the server exited with status 1 before answering initialize; stderr: Error [ERR_MODULE_NOT_FOUND]: Cannot find module '/home/runner/.npm/_npx/a194e910f16fe5de/node_modules/@miroslaw.franek/mediawiki-mcp-"
   },
   {
    "package": "mcp-db-bridge",
-   "reason": "mcp-db-bridge: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "mcp-db-bridge: FAILED - mcp-db-bridge: no response to initialize within 40s; stderr: npm warn deprecated prebuild-install@7.1.3: No longer maintained. Please contact the author of the relevant native addon; alternatives are available."
   },
   {
    "package": "@iloveprd/mcp",
-   "reason": "iloveprd__mcp: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "iloveprd__mcp: FAILED - iloveprd__mcp: the server exited with status 1 before answering initialize; stderr: ILOVEPRD_API_KEY belum di-set. Buat API key di halaman Account IlovePRD, lalu set env ILOVEPRD_API_KEY."
   },
   {
    "package": "@kaminocorp/cream-mcp-server",
-   "reason": "kaminocorp__cream-mcp-server: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "kaminocorp__cream-mcp-server: FAILED - kaminocorp__cream-mcp-server: the server exited with status 1 before answering initialize; stderr: cream-mcp-server: fatal error: Error: CREAM_API_URL is required. Set it to the base URL of the Cream API (e.g. http://localhost:8080)"
   },
   {
    "package": "@msg2ai/hotel-ambassador",
-   "reason": "msg2ai__hotel-ambassador: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "msg2ai__hotel-ambassador: FAILED - msg2ai__hotel-ambassador: the server exited with status 1 before answering initialize"
   },
   {
    "package": "@bounded-sh/observe-mcp",
-   "reason": "bounded-sh__observe-mcp: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "bounded-sh__observe-mcp: FAILED - bounded-sh__observe-mcp: the server exited with status 2 before answering initialize; stderr:     bounded observe mcp --http --upstream <url> [flags] | Config (flags or env): |   --token / BOUNDED_SENSOR_TOKEN   obs1.<keyId>.<sig> sensor key (required). The key IS t"
   },
   {
    "package": "@iflow-mcp/mcp-dataforseo",
-   "reason": "iflow-mcp__mcp-dataforseo: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "iflow-mcp__mcp-dataforseo: FAILED - iflow-mcp__mcp-dataforseo: the server exited with status 1 before answering initialize; stderr: Username not provided in config or environment variables | Password not provided in config or environment variables | Error: DataForSEO username and password are requir"
   },
   {
    "package": "litemcpjs",
-   "reason": "litemcpjs: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "litemcpjs: FAILED - litemcpjs: the server exited with status 1 before answering initialize; stderr: npm error could not determine executable to run | npm error A complete log of this run can be found in: /home/runner/.npm/_logs/2026-11-15T10_00_39_957Z-debug-0.log"
   },
   {
    "package": "agentcraft-mcp",
-   "reason": ""
+   "status": "no-report",
+   "reason": "capture did not finish within 160s"
   },
   {
    "package": "@kocoro/twitter-mcp",
-   "reason": "kocoro__twitter-mcp: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "kocoro__twitter-mcp: FAILED - kocoro__twitter-mcp: the server exited with status 1 before answering initialize; stderr:     \"path\": [ |       \"accessTokenSecret\" |     ], |     \"message\": \"Required\" |   } | ] |     at new TwitterServer (file:///home/runner/.npm/_npx/1786bd41a362f723/node_modules/@ko"
   },
   {
    "package": "@layoutr/mcp-server",
-   "reason": "layoutr__mcp-server: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "layoutr__mcp-server: FAILED - layoutr__mcp-server: the server exited with status 1 before answering initialize; stderr: Error: LAYOUTR_API_KEY environment variable or --api-key= argument required"
   },
   {
    "package": "@mseep/directus-mcp-server",
-   "reason": "mseep__directus-mcp-server: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "mseep__directus-mcp-server: FAILED - mseep__directus-mcp-server: the server exited with status 1 before answering initialize; stderr:     }, |     { |       code: 'invalid_type', |       expected: 'string', |       received: 'undefined', |       path: [Array], |       message: 'Required' |     } |  "
   },
   {
    "package": "etsy-api",
-   "reason": "etsy-api: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "etsy-api: FAILED - etsy-api: the server exited with status 1 before answering initialize; stderr: etsy-api failed to start: Error: ETSY_API_KEY is required (your Etsy app keystring, sent as the x-api-key header). |     at loadConfig (file:///home/runner/.npm/_npx/7889ccf24e08b2ac/node_modules/etsy-a"
   },
   {
    "package": "noteit-mcp-server",
-   "reason": "noteit-mcp-server: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "noteit-mcp-server: FAILED - noteit-mcp-server: the server exited with status 1 before answering initialize; stderr: NOTEIT_API_KEY is missing or invalid (expected nit_ followed by 32 hex chars). | Generate one in NoteIt → Settings → API Keys, then set it in your MCP config."
   },
   {
    "package": "@benhaq/walhood",
-   "reason": "benhaq__walhood: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "benhaq__walhood: FAILED - benhaq__walhood: the server exited with status 1 before answering initialize; stderr: npm error code ETARGET | npm error notarget No matching version found for @benhaq/walhood@*. | npm error notarget In most cases you or one of your dependencies are requesting | npm error n"
   },
   {
    "package": "@fastmcp-me/mcp-db-bridge",
-   "reason": "fastmcp-me__mcp-db-bridge: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "fastmcp-me__mcp-db-bridge: FAILED - fastmcp-me__mcp-db-bridge: no response to initialize within 40s; stderr: npm warn deprecated prebuild-install@7.1.3: No longer maintained. Please contact the author of the relevant native addon; alternatives are available."
   },
   {
    "package": "@leadtale/mcp-server",
-   "reason": "leadtale__mcp-server: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "leadtale__mcp-server: FAILED - leadtale__mcp-server: the server exited with status 1 before answering initialize; stderr: Error: LEADTALE_API_KEY is not set. | Generate an API key at LeadTale → Settings → Developer → API Keys, | then add it to your MCP client config under `env.LEADTALE_API_KEY`."
   },
   {
    "package": "margin-mcp",
-   "reason": "margin-mcp: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "margin-mcp: FAILED - margin-mcp: the server exited with status 1 before answering initialize; stderr: file:///home/runner/.npm/_npx/3b596e5dc81a1ddf/node_modules/margin-mcp/dist/config.js:5 |         throw new Error(\"MARGIN_API_TOKEN is not set. Copy your API token from Margin → Settings → API.\"); |"
   },
   {
    "package": "@autorevai/mcp-server",
-   "reason": ""
+   "status": "no-report",
+   "reason": "capture did not finish within 160s"
   },
   {
    "package": "@iflow-mcp/codesys-mcp-toolkit",
-   "reason": "iflow-mcp__codesys-mcp-toolkit: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "iflow-mcp__codesys-mcp-toolkit: FAILED - iflow-mcp__codesys-mcp-toolkit: the server exited with status 1 before answering initialize; stderr: >>> BIN.TS End of synchronous execution <<< | BIN.TS: FATAL error during server startup: Error: CODESYS executable not found at specified path: C:\\Program Fil"
   },
   {
    "package": "plantkit-mcp",
-   "reason": "plantkit-mcp: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "plantkit-mcp: FAILED - plantkit-mcp: the server exited with status 0 before answering initialize"
   },
   {
    "package": "@iflow-mcp/onenote-mcp",
-   "reason": "iflow-mcp__onenote-mcp: no tool definitions available (run 'capture' or pass --probe to query the server)"
+   "status": "no-tools",
+   "reason": "iflow-mcp__onenote-mcp: FAILED - iflow-mcp__onenote-mcp: the server exited with status 1 before answering initialize; stderr: Error [ERR_MODULE_NOT_FOUND]: Cannot find module '/home/runner/.npm/_npx/00eddc58bfe22b85/node_modules/@iflow-mcp/onenote-mcp/typescript-sdk/dist/esm/server/mcp.js' imported "
   }
  ]
 }

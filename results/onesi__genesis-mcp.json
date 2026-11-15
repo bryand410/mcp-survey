@@ -1,18 +1,18 @@
 {
   "tool": {
     "name": "mcp-scrutiny",
-    "version": "0.1.3"
+    "version": "0.1.4"
   },
   "summary": {
     "servers": 1,
     "tools": 1127,
-    "findings": 11,
+    "findings": 10,
     "worst_severity": "high",
     "by_severity": {
       "info": 1,
       "low": 1,
       "medium": 3,
-      "high": 6,
+      "high": 5,
       "critical": 0
     }
   },
@@ -46,57 +46,6 @@
         "auto_confirm": true
       },
       "remediation": "Pin an exact version and an integrity hash: \"args\": [\"@onesi/genesis-mcp@<version>\"] and drop the -y flag. Re-pin deliberately, after reviewing the diff."
-    },
-    {
-      "detector": "semantic",
-      "severity": "high",
-      "title": "Description reads as instructions to the model (p=1.00): foundry_aggregateRoutingEvalDispatch",
-      "detail": "The description of 'onesi__genesis-mcp.foundry_aggregateRoutingEvalDispatch' scores 1.00 on the instruction-detection model, and carries intent signals: encoded_blob. Descriptions are documentation for a human, but they are delivered to the model as trusted context, so text that tells the model what to do is an attack surface rather than a description. The score is driven mainly by: encoded_blob, entropy, log_words, imperative_density.",
-      "server": "onesi__genesis-mcp",
-      "tool": "foundry_aggregateRoutingEvalDispatch",
-      "location": "onesi__genesis-mcp.foundry_aggregateRoutingEvalDispatch",
-      "evidence": {
-        "probability": 0.9997,
-        "threshold": 0.5,
-        "intent_signals": [
-          "encoded_blob"
-        ],
-        "driving_features": [
-          {
-            "feature": "encoded_blob",
-            "contribution": 7.9739
-          },
-          {
-            "feature": "entropy",
-            "contribution": 1.9357
-          },
-          {
-            "feature": "hardcoded_recipient",
-            "contribution": -1.2458
-          },
-          {
-            "feature": "log_words",
-            "contribution": 1.0365
-          },
-          {
-            "feature": "imperative_density",
-            "contribution": 0.9206
-          },
-          {
-            "feature": "concealment",
-            "contribution": -0.8605
-          }
-        ],
-        "active_features": {
-          "log_len": 4.6443908991413725,
-          "log_words": 2.302585092994046,
-          "entropy": 4.421884294907984,
-          "encoded_blob": 1.0,
-          "schema_additional_props": 1.0
-        },
-        "description": "Aggregate runner reports for a dispatched plan (POST /v1/foundry/routing/evals/plan/dispatch/aggregate)"
-      },
-      "remediation": "Read the description against what the tool actually does. If the text is legitimate, it usually means the tool should not have to instruct the model at all - move the guidance into the parameter descriptions or the server's own docs."
     },
     {
       "detector": "toxic_flow",

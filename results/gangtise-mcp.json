@@ -1,18 +1,18 @@
 {
   "tool": {
     "name": "mcp-scrutiny",
-    "version": "0.1.3"
+    "version": "0.1.4"
   },
   "summary": {
     "servers": 1,
     "tools": 127,
-    "findings": 3,
+    "findings": 2,
     "worst_severity": "high",
     "by_severity": {
       "info": 1,
       "low": 0,
       "medium": 0,
-      "high": 2,
+      "high": 1,
       "critical": 0
     }
   },
@@ -46,58 +46,6 @@
         "auto_confirm": true
       },
       "remediation": "Pin an exact version and an integrity hash: \"args\": [\"gangtise-mcp@<version>\"] and drop the -y flag. Re-pin deliberately, after reviewing the diff."
-    },
-    {
-      "detector": "semantic",
-      "severity": "high",
-      "title": "Description reads as instructions to the model (p=1.00): gangtise_realtime",
-      "detail": "The description of 'gangtise-mcp.gangtise_realtime' scores 1.00 on the instruction-detection model, and carries intent signals: encoded_blob. Descriptions are documentation for a human, but they are delivered to the model as trusted context, so text that tells the model what to do is an attack surface rather than a description. The score is driven mainly by: entropy, encoded_blob, log_len.",
-      "server": "gangtise-mcp",
-      "tool": "gangtise_realtime",
-      "location": "gangtise-mcp.gangtise_realtime",
-      "evidence": {
-        "probability": 1.0,
-        "threshold": 0.5,
-        "intent_signals": [
-          "encoded_blob"
-        ],
-        "driving_features": [
-          {
-            "feature": "entropy",
-            "contribution": 22.2817
-          },
-          {
-            "feature": "encoded_blob",
-            "contribution": 16.2327
-          },
-          {
-            "feature": "log_words",
-            "contribution": -2.8645
-          },
-          {
-            "feature": "log_len",
-            "contribution": 1.8201
-          },
-          {
-            "feature": "non_ascii_ratio",
-            "contribution": -1.6126
-          },
-          {
-            "feature": "hardcoded_recipient",
-            "contribution": -1.2458
-          }
-        ],
-        "active_features": {
-          "log_len": 7.147559271189454,
-          "log_words": 4.634728988229636,
-          "entropy": 7.009083715941849,
-          "non_ascii_ratio": 0.452755905511811,
-          "encoded_blob": 2.0,
-          "schema_nested_desc": 2.0
-        },
-        "description": "查询实时行情快照，单接口覆盖 A 股 / 港股 / 美股个股 + 沪深 ETF + 各类指数（含 20 个全球指数），可代码混合传入。非交易时间返回最近一个交易日的收盘快照；停牌证券返回停牌前最后一个有效快照。日 K 线接口（day-kline*）不含盘中数据，问\"现在/此刻\"请走本工具。⚠️ **volume 的单位是「股」**（ETF 为「份」），不是「手」——按手换算会差 100 倍且不报错。**全部字段仅这 15 个：securityCode/exchange/tradeDate/tradeTime/tradeStatus/open/high/low/latestPrice(最新价)/preClose(昨收)/change/pctChange/volume/amount/amplitude——没有 close、没有市值，也没有 turnoverRate / volumeRatio**（传了会连字段名一起被静默丢掉；换手率走 gangtise_indicator_cross_section 的 qte_turn，A 股）；总市值请用 gangtise_indicator_cros"
-      },
-      "remediation": "Read the description against what the tool actually does. If the text is legitimate, it usually means the tool should not have to instruct the model at all - move the guidance into the parameter descriptions or the server's own docs."
     },
     {
       "detector": "drift",

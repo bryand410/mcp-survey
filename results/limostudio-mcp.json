@@ -1,18 +1,18 @@
 {
   "tool": {
     "name": "mcp-scrutiny",
-    "version": "0.1.3"
+    "version": "0.1.4"
   },
   "summary": {
     "servers": 1,
     "tools": 189,
-    "findings": 9,
+    "findings": 8,
     "worst_severity": "high",
     "by_severity": {
       "info": 1,
       "low": 0,
       "medium": 1,
-      "high": 7,
+      "high": 6,
       "critical": 0
     }
   },
@@ -96,58 +96,6 @@
           "schema_nested_desc": 4.0
         },
         "description": "Make the pictures (kind 'image', the person's AI Img model) or the videos (kind 'video', the AI Vid model; each from its clip's picture) of MANY clips at once — every clip on the active track that takes AI words (at All of a project with scenes: every scene's), or the clipIds given — from their words. Asks the person ONCE with the count and about the total (bills credits per clip); dryRun gives the price without asking. Returns at once: they are made in the background, so end your turn. Caption,"
-      },
-      "remediation": "Read the description against what the tool actually does. If the text is legitimate, it usually means the tool should not have to instruct the model at all - move the guidance into the parameter descriptions or the server's own docs."
-    },
-    {
-      "detector": "semantic",
-      "severity": "high",
-      "title": "Description reads as instructions to the model (p=1.00): design_synth",
-      "detail": "The description of 'limostudio-mcp.design_synth' scores 1.00 on the instruction-detection model, and carries intent signals: encoded_blob. Descriptions are documentation for a human, but they are delivered to the model as trusted context, so text that tells the model what to do is an attack surface rather than a description. The score is driven mainly by: encoded_blob, entropy, log_len, imperative_density.",
-      "server": "limostudio-mcp",
-      "tool": "design_synth",
-      "location": "limostudio-mcp.design_synth",
-      "evidence": {
-        "probability": 0.9998,
-        "threshold": 0.5,
-        "intent_signals": [
-          "encoded_blob"
-        ],
-        "driving_features": [
-          {
-            "feature": "encoded_blob",
-            "contribution": 7.9739
-          },
-          {
-            "feature": "entropy",
-            "contribution": 5.2562
-          },
-          {
-            "feature": "log_words",
-            "contribution": -3.9322
-          },
-          {
-            "feature": "log_len",
-            "contribution": 1.8219
-          },
-          {
-            "feature": "hardcoded_recipient",
-            "contribution": -1.2458
-          },
-          {
-            "feature": "imperative_density",
-            "contribution": 0.9206
-          }
-        ],
-        "active_features": {
-          "log_len": 7.149916836132109,
-          "log_words": 5.272999558563747,
-          "entropy": 4.8441120003419496,
-          "non_ascii_ratio": 0.003142183817753339,
-          "encoded_blob": 1.0,
-          "schema_nested_desc": 17.0
-        },
-        "description": "Design a synthesizer SOUND and apply it to a synth clip (the patch — oscillators, FM, unison, filters, envelope, LFOs, a mod matrix, macros, sub, arp). Targets `clipId` if given, else the synth clip open in the editor, else the first synth clip; create one first with add_track type:'synth' or add_clip type:'synth'. Think in musical terms. Key tools: UNISON (`unison`/`detune`/`spread` per op) for fat supersaw/Reese leads & wide pads — THE EDM sound; an additive `harmonics` array for custom spectr"
       },
       "remediation": "Read the description against what the tool actually does. If the text is legitimate, it usually means the tool should not have to instruct the model at all - move the guidance into the parameter descriptions or the server's own docs."
     },

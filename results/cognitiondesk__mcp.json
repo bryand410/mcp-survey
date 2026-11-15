@@ -1,18 +1,18 @@
 {
   "tool": {
     "name": "mcp-scrutiny",
-    "version": "0.1.3"
+    "version": "0.1.4"
   },
   "summary": {
     "servers": 1,
     "tools": 133,
-    "findings": 15,
+    "findings": 14,
     "worst_severity": "high",
     "by_severity": {
       "info": 1,
       "low": 0,
       "medium": 3,
-      "high": 11,
+      "high": 10,
       "critical": 0
     }
   },
@@ -307,57 +307,6 @@
           "schema_nested_desc": 2.0
         },
         "description": "Turn a list of skillIds into what they ACTUALLY produce: the concrete tools they add and the text they append to the system prompt. Nothing is created or changed.\nThis is how you check the skill system is working. Two failures only show up here: a skillId that resolves to nothing (typo, or a skill the account cannot see — the assistant just silently lacks the capability), and skills whose prompt additions contradict each other.\nRead it together with try_assistant: this says what the assistant wa"
-      },
-      "remediation": "Read the description against what the tool actually does. If the text is legitimate, it usually means the tool should not have to instruct the model at all - move the guidance into the parameter descriptions or the server's own docs."
-    },
-    {
-      "detector": "semantic",
-      "severity": "high",
-      "title": "Description reads as instructions to the model (p=1.00): update_workflow",
-      "detail": "The description of 'cognitiondesk__mcp.update_workflow' scores 1.00 on the instruction-detection model, and carries intent signals: encoded_blob. Descriptions are documentation for a human, but they are delivered to the model as trusted context, so text that tells the model what to do is an attack surface rather than a description. The score is driven mainly by: encoded_blob, entropy, imperative_density.",
-      "server": "cognitiondesk__mcp",
-      "tool": "update_workflow",
-      "location": "cognitiondesk__mcp.update_workflow",
-      "evidence": {
-        "probability": 0.999,
-        "threshold": 0.5,
-        "intent_signals": [
-          "encoded_blob"
-        ],
-        "driving_features": [
-          {
-            "feature": "encoded_blob",
-            "contribution": 7.9739
-          },
-          {
-            "feature": "hardcoded_recipient",
-            "contribution": -1.2458
-          },
-          {
-            "feature": "entropy",
-            "contribution": 1.1025
-          },
-          {
-            "feature": "imperative_density",
-            "contribution": 0.9206
-          },
-          {
-            "feature": "concealment",
-            "contribution": -0.8605
-          },
-          {
-            "feature": "hidden_recipient",
-            "contribution": -0.7368
-          }
-        ],
-        "active_features": {
-          "log_len": 4.634728988229636,
-          "log_words": 2.5649493574615367,
-          "entropy": 4.315933440801123,
-          "non_ascii_ratio": 0.00980392156862745,
-          "encoded_blob": 1.0
-        },
-        "description": "Update a workflow draft (name/description/nodes/edges/category/tags — send only the fields to change)."
       },
       "remediation": "Read the description against what the tool actually does. If the text is legitimate, it usually means the tool should not have to instruct the model at all - move the guidance into the parameter descriptions or the server's own docs."
     },

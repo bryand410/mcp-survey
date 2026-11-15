@@ -1,18 +1,18 @@
 {
   "tool": {
     "name": "mcp-scrutiny",
-    "version": "0.1.3"
+    "version": "0.1.4"
   },
   "summary": {
     "servers": 1,
     "tools": 4684,
-    "findings": 27,
+    "findings": 23,
     "worst_severity": "high",
     "by_severity": {
       "info": 1,
       "low": 1,
       "medium": 2,
-      "high": 23,
+      "high": 19,
       "critical": 0
     }
   },
@@ -46,57 +46,6 @@
         "auto_confirm": true
       },
       "remediation": "Pin an exact version and an integrity hash: \"args\": [\"crawlora-mcp@<version>\"] and drop the -y flag. Re-pin deliberately, after reviewing the diff."
-    },
-    {
-      "detector": "semantic",
-      "severity": "high",
-      "title": "Description reads as instructions to the model (p=1.00): cvs_category",
-      "detail": "The description of 'crawlora-mcp.cvs_category' scores 1.00 on the instruction-detection model, and carries intent signals: encoded_blob. Descriptions are documentation for a human, but they are delivered to the model as trusted context, so text that tells the model what to do is an attack surface rather than a description. The score is driven mainly by: encoded_blob, entropy, log_len, imperative_density.",
-      "server": "crawlora-mcp",
-      "tool": "cvs_category",
-      "location": "crawlora-mcp.cvs_category",
-      "evidence": {
-        "probability": 0.9988,
-        "threshold": 0.5,
-        "intent_signals": [
-          "encoded_blob"
-        ],
-        "driving_features": [
-          {
-            "feature": "encoded_blob",
-            "contribution": 7.9739
-          },
-          {
-            "feature": "log_words",
-            "contribution": -3.9407
-          },
-          {
-            "feature": "entropy",
-            "contribution": 3.3641
-          },
-          {
-            "feature": "log_len",
-            "contribution": 1.8787
-          },
-          {
-            "feature": "hardcoded_recipient",
-            "contribution": -1.2458
-          },
-          {
-            "feature": "imperative_density",
-            "contribution": 0.9206
-          }
-        ],
-        "active_features": {
-          "log_len": 7.22402480828583,
-          "log_words": 5.278114659230518,
-          "entropy": 4.603508248022541,
-          "encoded_blob": 1.0,
-          "schema_nested_desc": 3.0
-        },
-        "description": "Browse a CVS OTC category page. Returns one page of a CVS.com OTC (over-the-counter) retail category, subcategory, or brand page's product grid: products with title, brand, image, current/original price, and sponsored/featured/new-product flags; the total result count; and the facets (brand, color, size, price range, and other category-specific attributes, each with its selectable values and result counts) available to filter the page further. Covers the non-prescription retail catalog only. pat"
-      },
-      "remediation": "Read the description against what the tool actually does. If the text is legitimate, it usually means the tool should not have to instruct the model at all - move the guidance into the parameter descriptions or the server's own docs."
     },
     {
       "detector": "semantic",
@@ -205,58 +154,6 @@
     {
       "detector": "semantic",
       "severity": "high",
-      "title": "Description reads as instructions to the model (p=1.00): datasets_trustmrr_search",
-      "detail": "The description of 'crawlora-mcp.datasets_trustmrr_search' scores 1.00 on the instruction-detection model, and carries intent signals: encoded_blob. Descriptions are documentation for a human, but they are delivered to the model as trusted context, so text that tells the model what to do is an attack surface rather than a description. The score is driven mainly by: encoded_blob, entropy, log_len, imperative_density.",
-      "server": "crawlora-mcp",
-      "tool": "datasets_trustmrr_search",
-      "location": "crawlora-mcp.datasets_trustmrr_search",
-      "evidence": {
-        "probability": 0.9996,
-        "threshold": 0.5,
-        "intent_signals": [
-          "encoded_blob"
-        ],
-        "driving_features": [
-          {
-            "feature": "encoded_blob",
-            "contribution": 7.9739
-          },
-          {
-            "feature": "entropy",
-            "contribution": 3.6068
-          },
-          {
-            "feature": "log_words",
-            "contribution": -2.4626
-          },
-          {
-            "feature": "log_len",
-            "contribution": 1.3228
-          },
-          {
-            "feature": "hardcoded_recipient",
-            "contribution": -1.2458
-          },
-          {
-            "feature": "imperative_density",
-            "contribution": 0.9206
-          }
-        ],
-        "active_features": {
-          "log_len": 6.498282149476434,
-          "log_words": 4.394449154672439,
-          "entropy": 4.6343702515975425,
-          "encoded_blob": 1.0,
-          "schema_wide_enum": 1.0,
-          "schema_nested_desc": 26.0
-        },
-        "description": "Search the TrustMRR dataset. Searches public startups with payment-provider-verified revenue and MRR, stored in a search index. Filter by category, country, payment provider, target audience, tech, marketing channel, listing tier and for-sale status, and by revenue/MRR/traffic/growth/multiple/asking-price ranges. Sort enum: `relevance`, `mrr_desc`, `revenue_desc`, `revenue_30d_desc`, `traffic_desc`, `growth_desc`, `deal_score_desc`, `price_asc`, `price_desc`, `multiple_asc`, `founded_desc`. stat"
-      },
-      "remediation": "Read the description against what the tool actually does. If the text is legitimate, it usually means the tool should not have to instruct the model at all - move the guidance into the parameter descriptions or the server's own docs."
-    },
-    {
-      "detector": "semantic",
-      "severity": "high",
       "title": "Description reads as instructions to the model (p=0.98): googleplay_developer",
       "detail": "The description of 'crawlora-mcp.googleplay_developer' scores 0.98 on the instruction-detection model, and carries intent signals: injection_markers. Descriptions are documentation for a human, but they are delivered to the model as trusted context, so text that tells the model what to do is an attack surface rather than a description. The score is driven mainly by: injection_markers, entropy, imperative_density.",
       "server": "crawlora-mcp",
@@ -353,58 +250,6 @@
           "schema_nested_desc": 8.0
         },
         "description": "Retrieve apps from a Google Play top collection. Lists apps from a Google Play chart. `collection` is `TOP_FREE`, `TOP_PAID`, `GROSSING`, `NEW_FREE` or `NEW_PAID`, and `category`, `device`, `age`, `num`, `country` and `lang` narrow it. Set `full_detail` to get full app details instead of the compact card."
-      },
-      "remediation": "Read the description against what the tool actually does. If the text is legitimate, it usually means the tool should not have to instruct the model at all - move the guidance into the parameter descriptions or the server's own docs."
-    },
-    {
-      "detector": "semantic",
-      "severity": "high",
-      "title": "Description reads as instructions to the model (p=1.00): imdb_search_title",
-      "detail": "The description of 'crawlora-mcp.imdb_search_title' scores 1.00 on the instruction-detection model, and carries intent signals: encoded_blob. Descriptions are documentation for a human, but they are delivered to the model as trusted context, so text that tells the model what to do is an attack surface rather than a description. The score is driven mainly by: encoded_blob, entropy, log_len.",
-      "server": "crawlora-mcp",
-      "tool": "imdb_search_title",
-      "location": "crawlora-mcp.imdb_search_title",
-      "evidence": {
-        "probability": 0.9991,
-        "threshold": 0.5,
-        "intent_signals": [
-          "encoded_blob"
-        ],
-        "driving_features": [
-          {
-            "feature": "encoded_blob",
-            "contribution": 7.9739
-          },
-          {
-            "feature": "entropy",
-            "contribution": 3.353
-          },
-          {
-            "feature": "log_words",
-            "contribution": -2.2656
-          },
-          {
-            "feature": "log_len",
-            "contribution": 1.2528
-          },
-          {
-            "feature": "hardcoded_recipient",
-            "contribution": -1.2458
-          },
-          {
-            "feature": "concealment",
-            "contribution": -0.8605
-          }
-        ],
-        "active_features": {
-          "log_len": 6.406879986069314,
-          "log_words": 4.276666119016055,
-          "entropy": 4.602101600777917,
-          "encoded_blob": 1.0,
-          "imperative_density": 0.014084507042253521,
-          "schema_nested_desc": 28.0
-        },
-        "description": "IMDb advanced title search. Returns IMDb advanced title-search results (imdb.com/search/title/). At least one filter is required; sort/limit alone are not enough. Limit defaults to 25 and clamps to 50; only IMDb's first page of results is returned (see `total`/`has_more`), there is no deeper cursor pagination. Genre/company/certificate/country/language/keyword/characters/role are include-only lists; there is no exclude support. Unsupported: genre exclude, three curated `groups` values (best-pict"
       },
       "remediation": "Read the description against what the tool actually does. If the text is legitimate, it usually means the tool should not have to instruct the model at all - move the guidance into the parameter descriptions or the server's own docs."
     },
@@ -869,57 +714,6 @@
           "schema_nested_desc": 1.0
         },
         "description": "Compact place (POI) record: address, coordinates, rating, hours, counters. Returns one place's compact record, keyed by the `poi_id` that the place search endpoint returns. The upstream is TikTok's POI read (`/tiktok/poi/get/v1`), the record behind a place card: `name`, `address`, `category`, `average_price`, `latitude`/`longitude`, `city_code`/`region_code`, `review_score` with `review_count`/`no_rating`, `video_count`, `favorite_count`, `opening_hours`/`opening_status`, `cover`, `share_url`/`s"
-      },
-      "remediation": "Read the description against what the tool actually does. If the text is legitimate, it usually means the tool should not have to instruct the model at all - move the guidance into the parameter descriptions or the server's own docs."
-    },
-    {
-      "detector": "semantic",
-      "severity": "high",
-      "title": "Description reads as instructions to the model (p=1.00): yahoo_sports_draft",
-      "detail": "The description of 'crawlora-mcp.yahoo_sports_draft' scores 1.00 on the instruction-detection model, and carries intent signals: encoded_blob. Descriptions are documentation for a human, but they are delivered to the model as trusted context, so text that tells the model what to do is an attack surface rather than a description. The score is driven mainly by: encoded_blob, entropy, log_len, imperative_density.",
-      "server": "crawlora-mcp",
-      "tool": "yahoo_sports_draft",
-      "location": "crawlora-mcp.yahoo_sports_draft",
-      "evidence": {
-        "probability": 0.999,
-        "threshold": 0.5,
-        "intent_signals": [
-          "encoded_blob"
-        ],
-        "driving_features": [
-          {
-            "feature": "encoded_blob",
-            "contribution": 7.9739
-          },
-          {
-            "feature": "entropy",
-            "contribution": 2.5449
-          },
-          {
-            "feature": "log_words",
-            "contribution": -2.0155
-          },
-          {
-            "feature": "hardcoded_recipient",
-            "contribution": -1.2458
-          },
-          {
-            "feature": "log_len",
-            "contribution": 0.9535
-          },
-          {
-            "feature": "imperative_density",
-            "contribution": 0.9206
-          }
-        ],
-        "active_features": {
-          "log_len": 6.016157159698354,
-          "log_words": 4.127134385045092,
-          "entropy": 4.499349054060082,
-          "encoded_blob": 1.0,
-          "schema_nested_desc": 2.0
-        },
-        "description": "Yahoo Sports NFL and NBA Draft hub. Returns Yahoo's Drafted Players, Mock Draft, Big Board, or News tab for NFL or NBA, together with the live tab list and exact client-side round/team/position/school/attribute/board selectors shown by that page. The selectors filter data in the browser, so this endpoint returns the complete upstream page data and exposes filter values without applying server-side filters."
       },
       "remediation": "Read the description against what the tool actually does. If the text is legitimate, it usually means the tool should not have to instruct the model at all - move the guidance into the parameter descriptions or the server's own docs."
     },

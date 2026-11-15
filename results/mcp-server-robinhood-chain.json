@@ -1,7 +1,7 @@
 {
   "tool": {
     "name": "mcp-scrutiny",
-    "version": "0.1.3"
+    "version": "0.1.4"
   },
   "summary": {
     "servers": 1,
@@ -64,7 +64,7 @@
         "driving_features": [
           {
             "feature": "encoded_blob",
-            "contribution": 16.2327
+            "contribution": 7.9739
           },
           {
             "feature": "cross_tool",
@@ -92,7 +92,7 @@
           "log_words": 5.337538079701318,
           "entropy": 4.952808149461287,
           "non_ascii_ratio": 0.005283018867924529,
-          "encoded_blob": 2.0,
+          "encoded_blob": 1.0,
           "cross_tool": 1.0,
           "imperative_density": 0.00966183574879227,
           "schema_defaults": 2.0,
