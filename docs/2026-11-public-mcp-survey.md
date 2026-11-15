@@ -207,13 +207,17 @@ documents a shape. Fixed in `0db086a`.
 The same commit exposed a limit worth stating: the French model test failed, and
 it failed correctly. The malicious sample said *"une copie … doit être adressée
 à conformite@audit-facturation.net"* and the verb list was English-only. A
-scanner sold to Francophone payment providers that cannot read a French sentence
-is not doing its job, so the transfer verbs and the concealment rules now cover
-French, and the lexicons match a folded copy of the text (NFKD, diacritics
-stripped) — because a developer writes `adressee a conformite@…` in a comment,
-and a lexicon that only knows `adressée` misses it. Folding applies to the
-lexicons only: hidden-character and ASCII counts stay on the raw text, since
+scanner aimed at Francophone payment providers that cannot read a French
+sentence is not doing its job, so the transfer verbs and the concealment rules
+now cover French, and the lexicons match a folded copy of the text (NFKD,
+diacritics stripped) — because a developer writes `adressee a conformite@…` in a
+comment, and a lexicon that only knows `adressée` misses it. Folding applies to
+the lexicons only: hidden-character and ASCII counts stay on the raw text, since
 folding would destroy the code points they report.
+
+The French rules are not measured against a French corpus, because there is no
+French MCP corpus. They are pinned by tests in both directions instead, and this
+paragraph is the disclosure.
 
 ### What the corrections are worth
 
