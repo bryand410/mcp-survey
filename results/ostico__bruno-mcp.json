@@ -1,0 +1,224 @@
+{
+  "tool": {
+    "name": "mcp-scrutiny",
+    "version": "0.1.3"
+  },
+  "summary": {
+    "servers": 1,
+    "tools": 18,
+    "findings": 7,
+    "worst_severity": "high",
+    "by_severity": {
+      "info": 1,
+      "low": 0,
+      "medium": 2,
+      "high": 4,
+      "critical": 0
+    }
+  },
+  "servers": [
+    {
+      "name": "ostico__bruno-mcp",
+      "transport": "stdio",
+      "command": "npx",
+      "args": [
+        "-y",
+        "@ostico/bruno-mcp"
+      ],
+      "url": null,
+      "pinned": false,
+      "floating_package": "@ostico/bruno-mcp",
+      "tools": 18
+    }
+  ],
+  "findings": [
+    {
+      "detector": "pinning",
+      "severity": "high",
+      "title": "Unpinned package executed on every start: @ostico/bruno-mcp",
+      "detail": "'ostico__bruno-mcp' launches @ostico/bruno-mcp through npx without a version. The client resolves the version at start time, so any future publish to that package name runs with your credentials. This is how postmark-mcp (Sept 2025) reached roughly 300 organisations.",
+      "server": "ostico__bruno-mcp",
+      "tool": null,
+      "location": "ostico__bruno-mcp",
+      "evidence": {
+        "package": "@ostico/bruno-mcp",
+        "runner": "npx",
+        "auto_confirm": true
+      },
+      "remediation": "Pin an exact version and an integrity hash: \"args\": [\"@ostico/bruno-mcp@<version>\"] and drop the -y flag. Re-pin deliberately, after reviewing the diff."
+    },
+    {
+      "detector": "toxic_flow",
+      "severity": "high",
+      "title": "Toxic flow within 'ostico__bruno-mcp': reads credentials or secrets + sends data outbound",
+      "detail": "5 combination(s) exist where one tool reads credentials or secrets and another sends data outbound. Neither tool is malicious on its own; together they reads credentials and can send data to an address it controls. A single prompt is enough to turn 'summarise this config' into a credential leak. Both sides live in the same server, which may well be by design; confirm it.",
+      "server": "ostico__bruno-mcp",
+      "tool": "read_environment",
+      "location": "ostico__bruno-mcp.read_environment",
+      "evidence": {
+        "source_capability": "read_secret",
+        "sink_capability": "network_out",
+        "cross_server": false,
+        "pair_count": 5,
+        "example": {
+          "source": "ostico__bruno-mcp.read_environment",
+          "sink": "ostico__bruno-mcp.get_collection_stats"
+        },
+        "sources": [
+          "ostico__bruno-mcp.read_environment",
+          "ostico__bruno-mcp.run_collection"
+        ],
+        "sinks": [
+          "ostico__bruno-mcp.get_collection_stats",
+          "ostico__bruno-mcp.run_collection",
+          "ostico__bruno-mcp.write_request"
+        ],
+        "servers": [
+          "ostico__bruno-mcp"
+        ]
+      },
+      "remediation": "Break the path, not the tools: scope the credential so the source tool cannot reach anything valuable, or require explicit user confirmation on the sink tool (destructiveHint / human-in-the-loop), or split the two capabilities across trust boundaries that cannot share a context window."
+    },
+    {
+      "detector": "toxic_flow",
+      "severity": "high",
+      "title": "Toxic flow within 'ostico__bruno-mcp': reads credentials or secrets + sends email or messages",
+      "detail": "1 combination(s) exist where one tool reads credentials or secrets and another sends email or messages. Neither tool is malicious on its own; together they reads credentials and can send mail. This is the postmark-mcp shape: the mail tool was legitimate, the credentials were reachable, and the combination was the incident. Both sides live in the same server, which may well be by design; confirm it.",
+      "server": "ostico__bruno-mcp",
+      "tool": "read_environment",
+      "location": "ostico__bruno-mcp.read_environment",
+      "evidence": {
+        "source_capability": "read_secret",
+        "sink_capability": "send_email",
+        "cross_server": false,
+        "pair_count": 1,
+        "example": {
+          "source": "ostico__bruno-mcp.read_environment",
+          "sink": "ostico__bruno-mcp.run_collection"
+        },
+        "sources": [
+          "ostico__bruno-mcp.read_environment",
+          "ostico__bruno-mcp.run_collection"
+        ],
+        "sinks": [
+          "ostico__bruno-mcp.run_collection"
+        ],
+        "servers": [
+          "ostico__bruno-mcp"
+        ]
+      },
+      "remediation": "Break the path, not the tools: scope the credential so the source tool cannot reach anything valuable, or require explicit user confirmation on the sink tool (destructiveHint / human-in-the-loop), or split the two capabilities across trust boundaries that cannot share a context window."
+    },
+    {
+      "detector": "toxic_flow",
+      "severity": "high",
+      "title": "Toxic flow within 'ostico__bruno-mcp': executes commands + sends data outbound",
+      "detail": "2 combination(s) exist where one tool executes commands and another sends data outbound. Neither tool is malicious on its own; together they executes commands and can reach the network, which is remote code execution with a delivery channel rather than a hint of one. Both sides live in the same server, which may well be by design; confirm it.",
+      "server": "ostico__bruno-mcp",
+      "tool": "run_collection",
+      "location": "ostico__bruno-mcp.run_collection",
+      "evidence": {
+        "source_capability": "exec",
+        "sink_capability": "network_out",
+        "cross_server": false,
+        "pair_count": 2,
+        "example": {
+          "source": "ostico__bruno-mcp.run_collection",
+          "sink": "ostico__bruno-mcp.get_collection_stats"
+        },
+        "sources": [
+          "ostico__bruno-mcp.run_collection"
+        ],
+        "sinks": [
+          "ostico__bruno-mcp.get_collection_stats",
+          "ostico__bruno-mcp.run_collection",
+          "ostico__bruno-mcp.write_request"
+        ],
+        "servers": [
+          "ostico__bruno-mcp"
+        ]
+      },
+      "remediation": "Break the path, not the tools: scope the credential so the source tool cannot reach anything valuable, or require explicit user confirmation on the sink tool (destructiveHint / human-in-the-loop), or split the two capabilities across trust boundaries that cannot share a context window."
+    },
+    {
+      "detector": "toxic_flow",
+      "severity": "medium",
+      "title": "Toxic flow within 'ostico__bruno-mcp': reads files + sends data outbound",
+      "detail": "11 combination(s) exist where one tool reads files and another sends data outbound. Neither tool is malicious on its own; together they reads files and can transmit them, so any file the server can reach is reachable by the model, including ones outside the project. Both sides live in the same server, which may well be by design; confirm it.",
+      "server": "ostico__bruno-mcp",
+      "tool": "list_requests",
+      "location": "ostico__bruno-mcp.list_requests",
+      "evidence": {
+        "source_capability": "read_fs",
+        "sink_capability": "network_out",
+        "cross_server": false,
+        "pair_count": 11,
+        "example": {
+          "source": "ostico__bruno-mcp.list_requests",
+          "sink": "ostico__bruno-mcp.get_collection_stats"
+        },
+        "sources": [
+          "ostico__bruno-mcp.list_requests",
+          "ostico__bruno-mcp.read_request",
+          "ostico__bruno-mcp.unregister_collection",
+          "ostico__bruno-mcp.write_request"
+        ],
+        "sinks": [
+          "ostico__bruno-mcp.get_collection_stats",
+          "ostico__bruno-mcp.run_collection",
+          "ostico__bruno-mcp.write_request"
+        ],
+        "servers": [
+          "ostico__bruno-mcp"
+        ]
+      },
+      "remediation": "Break the path, not the tools: scope the credential so the source tool cannot reach anything valuable, or require explicit user confirmation on the sink tool (destructiveHint / human-in-the-loop), or split the two capabilities across trust boundaries that cannot share a context window."
+    },
+    {
+      "detector": "toxic_flow",
+      "severity": "medium",
+      "title": "Toxic flow within 'ostico__bruno-mcp': executes commands + writes or deletes files",
+      "detail": "6 combination(s) exist where one tool executes commands and another writes or deletes files. Neither tool is malicious on its own; together they executes commands and writes files, so the agent can persist a payload for a later session to pick up. Both sides live in the same server, which may well be by design; confirm it.",
+      "server": "ostico__bruno-mcp",
+      "tool": "run_collection",
+      "location": "ostico__bruno-mcp.run_collection",
+      "evidence": {
+        "source_capability": "exec",
+        "sink_capability": "write_fs",
+        "cross_server": false,
+        "pair_count": 6,
+        "example": {
+          "source": "ostico__bruno-mcp.run_collection",
+          "sink": "ostico__bruno-mcp.create_environment"
+        },
+        "sources": [
+          "ostico__bruno-mcp.run_collection"
+        ],
+        "sinks": [
+          "ostico__bruno-mcp.create_environment",
+          "ostico__bruno-mcp.delete_collection",
+          "ostico__bruno-mcp.delete_request",
+          "ostico__bruno-mcp.move_request",
+          "ostico__bruno-mcp.update_environment",
+          "ostico__bruno-mcp.write_request"
+        ],
+        "servers": [
+          "ostico__bruno-mcp"
+        ]
+      },
+      "remediation": "Break the path, not the tools: scope the credential so the source tool cannot reach anything valuable, or require explicit user confirmation on the sink tool (destructiveHint / human-in-the-loop), or split the two capabilities across trust boundaries that cannot share a context window."
+    },
+    {
+      "detector": "drift",
+      "severity": "info",
+      "title": "No baseline supplied - drift detection is disabled",
+      "detail": "Without an approved snapshot the scanner cannot tell a tool that has always been there from one that appeared yesterday. The single most effective MCP control is the diff, and it needs a baseline to diff against.",
+      "server": "*",
+      "tool": null,
+      "location": "*",
+      "evidence": {},
+      "remediation": "Run 'mcp-scrutiny baseline --config <file> --out mcp-baseline.json', commit the file, and pass it back with --baseline on every later scan."
+    }
+  ],
+  "errors": []
+}

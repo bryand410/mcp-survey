@@ -1,0 +1,635 @@
+{
+  "tool": {
+    "name": "mcp-scrutiny",
+    "version": "0.1.3"
+  },
+  "summary": {
+    "servers": 1,
+    "tools": 291,
+    "findings": 11,
+    "worst_severity": "high",
+    "by_severity": {
+      "info": 1,
+      "low": 0,
+      "medium": 2,
+      "high": 8,
+      "critical": 0
+    }
+  },
+  "servers": [
+    {
+      "name": "doitintl__doit-mcp-server",
+      "transport": "stdio",
+      "command": "npx",
+      "args": [
+        "-y",
+        "@doitintl/doit-mcp-server"
+      ],
+      "url": null,
+      "pinned": false,
+      "floating_package": "@doitintl/doit-mcp-server",
+      "tools": 291
+    }
+  ],
+  "findings": [
+    {
+      "detector": "pinning",
+      "severity": "high",
+      "title": "Unpinned package executed on every start: @doitintl/doit-mcp-server",
+      "detail": "'doitintl__doit-mcp-server' launches @doitintl/doit-mcp-server through npx without a version. The client resolves the version at start time, so any future publish to that package name runs with your credentials. This is how postmark-mcp (Sept 2025) reached roughly 300 organisations.",
+      "server": "doitintl__doit-mcp-server",
+      "tool": null,
+      "location": "doitintl__doit-mcp-server",
+      "evidence": {
+        "package": "@doitintl/doit-mcp-server",
+        "runner": "npx",
+        "auto_confirm": true
+      },
+      "remediation": "Pin an exact version and an integrity hash: \"args\": [\"@doitintl/doit-mcp-server@<version>\"] and drop the -y flag. Re-pin deliberately, after reviewing the diff."
+    },
+    {
+      "detector": "semantic",
+      "severity": "high",
+      "title": "Description reads as instructions to the model (p=1.00): get_gcp_recommendation",
+      "detail": "The description of 'doitintl__doit-mcp-server.get_gcp_recommendation' scores 1.00 on the instruction-detection model, and carries intent signals: encoded_blob. Descriptions are documentation for a human, but they are delivered to the model as trusted context, so text that tells the model what to do is an attack surface rather than a description. The score is driven mainly by: encoded_blob, entropy, log_len.",
+      "server": "doitintl__doit-mcp-server",
+      "tool": "get_gcp_recommendation",
+      "location": "doitintl__doit-mcp-server.get_gcp_recommendation",
+      "evidence": {
+        "probability": 0.9976,
+        "threshold": 0.5,
+        "intent_signals": [
+          "encoded_blob"
+        ],
+        "driving_features": [
+          {
+            "feature": "encoded_blob",
+            "contribution": 7.9739
+          },
+          {
+            "feature": "entropy",
+            "contribution": 3.4268
+          },
+          {
+            "feature": "log_words",
+            "contribution": -3.3171
+          },
+          {
+            "feature": "log_len",
+            "contribution": 1.6194
+          },
+          {
+            "feature": "hardcoded_recipient",
+            "contribution": -1.2458
+          },
+          {
+            "feature": "concealment",
+            "contribution": -0.8605
+          }
+        ],
+        "active_features": {
+          "log_len": 6.885509670034818,
+          "log_words": 4.90527477843843,
+          "entropy": 4.611482542858689,
+          "non_ascii_ratio": 0.0020470829068577278,
+          "encoded_blob": 1.0,
+          "imperative_density": 0.022388059701492536,
+          "schema_nested_desc": 2.0
+        },
+        "description": "Evaluate current GCP commitments, plan and automate purchases, and optimize cloud costs with PerfectScale for Commitments. Returns the recommendation for one product line (`gcp_service`) and region scope on the GCP\nbilling account, including analysis metrics and time-bucketed eligible spend. Use\n`granularity` to choose the eligible-spend bucket size (defaults to `day`).\n\n**`region`**: optional for `compute`, defaulting to `global` (its only scope). Required\nfor `cloud_sql` — omitting it returns "
+      },
+      "remediation": "Read the description against what the tool actually does. If the text is legitimate, it usually means the tool should not have to instruct the model at all - move the guidance into the parameter descriptions or the server's own docs."
+    },
+    {
+      "detector": "semantic",
+      "severity": "high",
+      "title": "Description reads as instructions to the model (p=1.00): get_widget",
+      "detail": "The description of 'doitintl__doit-mcp-server.get_widget' scores 1.00 on the instruction-detection model, and carries intent signals: hardcoded_recipient. Descriptions are documentation for a human, but they are delivered to the model as trusted context, so text that tells the model what to do is an attack surface rather than a description. The score is driven mainly by: hardcoded_recipient, entropy, log_len, credentials.",
+      "server": "doitintl__doit-mcp-server",
+      "tool": "get_widget",
+      "location": "doitintl__doit-mcp-server.get_widget",
+      "evidence": {
+        "probability": 1.0,
+        "threshold": 0.5,
+        "intent_signals": [
+          "hardcoded_recipient"
+        ],
+        "driving_features": [
+          {
+            "feature": "hardcoded_recipient",
+            "contribution": 18.8258
+          },
+          {
+            "feature": "log_words",
+            "contribution": -3.8887
+          },
+          {
+            "feature": "entropy",
+            "contribution": 3.2101
+          },
+          {
+            "feature": "log_len",
+            "contribution": 1.9393
+          },
+          {
+            "feature": "credentials",
+            "contribution": 1.1924
+          },
+          {
+            "feature": "concealment",
+            "contribution": -0.8605
+          }
+        ],
+        "active_features": {
+          "log_len": 7.3031700512368,
+          "log_words": 5.247024072160486,
+          "entropy": 4.583931154137802,
+          "non_ascii_ratio": 0.0013477088948787063,
+          "credentials": 3.0,
+          "imperative_density": 0.005291005291005291,
+          "hardcoded_recipient": 2.0,
+          "schema_nested_desc": 1.0
+        },
+        "description": "Beta. Read precomputed current-month cloud spend and forecast metrics. Widget results are\nrefreshed in the background; reading a widget returns the latest cached result and never\nstarts a synchronous refresh. Use the list operation to discover the complete catalogue. Returns the latest precomputed cached result for one widget. This read does not refresh or\nrecompute the widget synchronously.\n\nUse either the customer-specific `id` returned by the list-widgets operation or one of these\nstable alia"
+      },
+      "remediation": "Read the description against what the tool actually does. If the text is legitimate, it usually means the tool should not have to instruct the model at all - move the guidance into the parameter descriptions or the server's own docs."
+    },
+    {
+      "detector": "semantic",
+      "severity": "high",
+      "title": "Description reads as instructions to the model (p=1.00): list_billing_transfer_reseller_accounts",
+      "detail": "The description of 'doitintl__doit-mcp-server.list_billing_transfer_reseller_accounts' scores 1.00 on the instruction-detection model, and carries intent signals: encoded_blob. Descriptions are documentation for a human, but they are delivered to the model as trusted context, so text that tells the model what to do is an attack surface rather than a description. The score is driven mainly by: encoded_blob, entropy, log_len, imperative_density.",
+      "server": "doitintl__doit-mcp-server",
+      "tool": "list_billing_transfer_reseller_accounts",
+      "location": "doitintl__doit-mcp-server.list_billing_transfer_reseller_accounts",
+      "evidence": {
+        "probability": 0.9989,
+        "threshold": 0.5,
+        "intent_signals": [
+          "encoded_blob"
+        ],
+        "driving_features": [
+          {
+            "feature": "encoded_blob",
+            "contribution": 7.9739
+          },
+          {
+            "feature": "entropy",
+            "contribution": 2.1311
+          },
+          {
+            "feature": "log_words",
+            "contribution": -1.6218
+          },
+          {
+            "feature": "hardcoded_recipient",
+            "contribution": -1.2458
+          },
+          {
+            "feature": "log_len",
+            "contribution": 0.925
+          },
+          {
+            "feature": "imperative_density",
+            "contribution": 0.9206
+          }
+        ],
+        "active_features": {
+          "log_len": 5.978885764901122,
+          "log_words": 3.8918202981106265,
+          "entropy": 4.446728204888095,
+          "non_ascii_ratio": 0.0025380710659898475,
+          "encoded_blob": 1.0,
+          "schema_nested_desc": 2.0
+        },
+        "description": "Manage AWS billing-transfer mappings between distributors and resellers and between resellers and end customers, and list program management accounts. Lists every reseller program management account (RPMA) node belonging to the calling\nreseller, with handshake state and status but without end-customer tenants — the\nreseller-tier analog of `GET /billingtransfer/v1/programmanagementaccounts`.\n"
+      },
+      "remediation": "Read the description against what the tool actually does. If the text is legitimate, it usually means the tool should not have to instruct the model at all - move the guidance into the parameter descriptions or the server's own docs."
+    },
+    {
+      "detector": "semantic",
+      "severity": "high",
+      "title": "Description reads as instructions to the model (p=1.00): list_billing_transfer_reseller_accounts_with_tenants",
+      "detail": "The description of 'doitintl__doit-mcp-server.list_billing_transfer_reseller_accounts_with_tenants' scores 1.00 on the instruction-detection model, and carries intent signals: encoded_blob. Descriptions are documentation for a human, but they are delivered to the model as trusted context, so text that tells the model what to do is an attack surface rather than a description. The score is driven mainly by: encoded_blob, entropy, log_len, imperative_density.",
+      "server": "doitintl__doit-mcp-server",
+      "tool": "list_billing_transfer_reseller_accounts_with_tenants",
+      "location": "doitintl__doit-mcp-server.list_billing_transfer_reseller_accounts_with_tenants",
+      "evidence": {
+        "probability": 0.9985,
+        "threshold": 0.5,
+        "intent_signals": [
+          "encoded_blob"
+        ],
+        "driving_features": [
+          {
+            "feature": "encoded_blob",
+            "contribution": 7.9739
+          },
+          {
+            "feature": "log_words",
+            "contribution": -2.1452
+          },
+          {
+            "feature": "entropy",
+            "contribution": 2.1362
+          },
+          {
+            "feature": "hardcoded_recipient",
+            "contribution": -1.2458
+          },
+          {
+            "feature": "log_len",
+            "contribution": 1.1162
+          },
+          {
+            "feature": "imperative_density",
+            "contribution": 0.9206
+          }
+        ],
+        "active_features": {
+          "log_len": 6.2285110035911835,
+          "log_words": 4.204692619390966,
+          "entropy": 4.447379680209976,
+          "non_ascii_ratio": 0.001976284584980237,
+          "encoded_blob": 1.0,
+          "schema_nested_desc": 2.0
+        },
+        "description": "Manage AWS billing-transfer mappings between distributors and resellers and between resellers and end customers, and list program management accounts. Lists every reseller PMA node belonging to the calling reseller, each with the\nend-customer tenants connected under it — the reseller-tier analog of\n`GET /billingtransfer/v1/programmanagementaccounts`. `region`, `iamStatus` and\n`lastRefreshTime` are inherited from the parent DPMA root; the reseller node itself\ncarries no IAM/region metadata of its"
+      },
+      "remediation": "Read the description against what the tool actually does. If the text is legitimate, it usually means the tool should not have to instruct the model at all - move the guidance into the parameter descriptions or the server's own docs."
+    },
+    {
+      "detector": "toxic_flow",
+      "severity": "high",
+      "title": "Toxic flow within 'doitintl__doit-mcp-server': executes commands + sends data outbound",
+      "detail": "718 combination(s) exist where one tool executes commands and another sends data outbound. Neither tool is malicious on its own; together they executes commands and can reach the network, which is remote code execution with a delivery channel rather than a hint of one. Both sides live in the same server, which may well be by design; confirm it.",
+      "server": "doitintl__doit-mcp-server",
+      "tool": "async_run_inline",
+      "location": "doitintl__doit-mcp-server.async_run_inline",
+      "evidence": {
+        "source_capability": "exec",
+        "sink_capability": "network_out",
+        "cross_server": false,
+        "pair_count": 718,
+        "example": {
+          "source": "doitintl__doit-mcp-server.async_run_inline",
+          "sink": "doitintl__doit-mcp-server.create_service_account"
+        },
+        "sources": [
+          "doitintl__doit-mcp-server.async_run_inline",
+          "doitintl__doit-mcp-server.async_run_report_by_id",
+          "doitintl__doit-mcp-server.build_cloud_flow",
+          "doitintl__doit-mcp-server.cancel_async_operation",
+          "doitintl__doit-mcp-server.confirm_action",
+          "doitintl__doit-mcp-server.create_signup_request",
+          "doitintl__doit-mcp-server.delete_customer_subscription",
+          "doitintl__doit-mcp-server.export_cloudflow_flow",
+          "doitintl__doit-mcp-server.get_allocation",
+          "doitintl__doit-mcp-server.get_async_operation",
+          "doitintl__doit-mcp-server.get_async_operation_results",
+          "doitintl__doit-mcp-server.get_aws_member_account",
+          "doitintl__doit-mcp-server.get_aws_organization",
+          "doitintl__doit-mcp-server.get_aws_recommendation",
+          "doitintl__doit-mcp-server.get_cloud_connect_requirements",
+          "doitintl__doit-mcp-server.get_cloudflow_flow_run",
+          "doitintl__doit-mcp-server.get_customer_subscription",
+          "doitintl__doit-mcp-server.get_dimension",
+          "doitintl__doit-mcp-server.get_gcp_billing_account",
+          "doitintl__doit-mcp-server.get_gcp_recommendation",
+          "doitintl__doit-mcp-server.get_report_results",
+          "doitintl__doit-mcp-server.list_aws_member_accounts",
+          "doitintl__doit-mcp-server.list_aws_organizations",
+          "doitintl__doit-mcp-server.list_aws_organizations_settings",
+          "doitintl__doit-mcp-server.list_aws_planned_purchases",
+          "doitintl__doit-mcp-server.list_aws_recommendations",
+          "doitintl__doit-mcp-server.list_aws_reserved_instances",
+          "doitintl__doit-mcp-server.list_aws_savings_plans",
+          "doitintl__doit-mcp-server.list_cloudflows",
+          "doitintl__doit-mcp-server.list_composer_recipe_results",
+          "doitintl__doit-mcp-server.list_composer_recipes",
+          "doitintl__doit-mcp-server.list_customer_subscriptions",
+          "doitintl__doit-mcp-server.list_dimensions",
+          "doitintl__doit-mcp-server.list_gcp_billing_accounts",
+          "doitintl__doit-mcp-server.list_gcp_billing_accounts_settings",
+          "doitintl__doit-mcp-server.list_gcp_planned_purchases",
+          "doitintl__doit-mcp-server.list_gcp_recommendations",
+          "doitintl__doit-mcp-server.list_gcp_resource_cuds",
+          "doitintl__doit-mcp-server.list_gcp_spend_cuds",
+          "doitintl__doit-mcp-server.list_reports",
+          "doitintl__doit-mcp-server.refine_cloudflow",
+          "doitintl__doit-mcp-server.run_query",
+          "doitintl__doit-mcp-server.stop_cloudflow_flow",
+          "doitintl__doit-mcp-server.test_run_cloudflow_flow",
+          "doitintl__doit-mcp-server.trigger_cloud_flow",
+          "doitintl__doit-mcp-server.update_cloud_connection",
+          "doitintl__doit-mcp-server.update_report",
+          "doitintl__doit-mcp-server.verify_cloud_connect"
+        ],
+        "sinks": [
+          "doitintl__doit-mcp-server.create_service_account",
+          "doitintl__doit-mcp-server.create_service_account_token",
+          "doitintl__doit-mcp-server.delete_service_account",
+          "doitintl__doit-mcp-server.delete_service_account_token",
+          "doitintl__doit-mcp-server.get_invoice_pdf",
+          "doitintl__doit-mcp-server.get_service_account",
+          "doitintl__doit-mcp-server.get_service_account_token",
+          "doitintl__doit-mcp-server.get_widget",
+          "doitintl__doit-mcp-server.list_service_account_tokens",
+          "doitintl__doit-mcp-server.list_service_accounts",
+          "doitintl__doit-mcp-server.test_run_cloudflow_flow",
+          "doitintl__doit-mcp-server.trigger_cloud_flow",
+          "doitintl__doit-mcp-server.trigger_cloudflow_flow",
+          "doitintl__doit-mcp-server.update_service_account",
+          "doitintl__doit-mcp-server.update_service_account_token"
+        ],
+        "servers": [
+          "doitintl__doit-mcp-server"
+        ]
+      },
+      "remediation": "Break the path, not the tools: scope the credential so the source tool cannot reach anything valuable, or require explicit user confirmation on the sink tool (destructiveHint / human-in-the-loop), or split the two capabilities across trust boundaries that cannot share a context window."
+    },
+    {
+      "detector": "toxic_flow",
+      "severity": "high",
+      "title": "Toxic flow within 'doitintl__doit-mcp-server': reads credentials or secrets + sends data outbound",
+      "detail": "431 combination(s) exist where one tool reads credentials or secrets and another sends data outbound. Neither tool is malicious on its own; together they reads credentials and can send data to an address it controls. A single prompt is enough to turn 'summarise this config' into a credential leak. Both sides live in the same server, which may well be by design; confirm it.",
+      "server": "doitintl__doit-mcp-server",
+      "tool": "count_attribute_attribution_sets",
+      "location": "doitintl__doit-mcp-server.count_attribute_attribution_sets",
+      "evidence": {
+        "source_capability": "read_secret",
+        "sink_capability": "network_out",
+        "cross_server": false,
+        "pair_count": 431,
+        "example": {
+          "source": "doitintl__doit-mcp-server.count_attribute_attribution_sets",
+          "sink": "doitintl__doit-mcp-server.create_service_account"
+        },
+        "sources": [
+          "doitintl__doit-mcp-server.count_attribute_attribution_sets",
+          "doitintl__doit-mcp-server.create_service_account_token",
+          "doitintl__doit-mcp-server.create_signup_request",
+          "doitintl__doit-mcp-server.create_signup_session",
+          "doitintl__doit-mcp-server.export_cloudflow_flow",
+          "doitintl__doit-mcp-server.get_attribute_attribution_set",
+          "doitintl__doit-mcp-server.get_attribute_workload_details",
+          "doitintl__doit-mcp-server.get_attribute_workloads_cost_data_status",
+          "doitintl__doit-mcp-server.get_attribute_workloads_signals",
+          "doitintl__doit-mcp-server.get_service_account_token",
+          "doitintl__doit-mcp-server.get_signup_request",
+          "doitintl__doit-mcp-server.get_widget",
+          "doitintl__doit-mcp-server.list_attribute_attribution_set_versions",
+          "doitintl__doit-mcp-server.list_attribute_attribution_sets",
+          "doitintl__doit-mcp-server.list_attribute_workload_non_network_resource_types",
+          "doitintl__doit-mcp-server.list_attribute_workloads_cloud_providers",
+          "doitintl__doit-mcp-server.list_attribute_workloads_filter_values",
+          "doitintl__doit-mcp-server.list_attribute_workloads_resource_tag_keys",
+          "doitintl__doit-mcp-server.list_attribute_workloads_resource_tag_values",
+          "doitintl__doit-mcp-server.list_service_account_tokens",
+          "doitintl__doit-mcp-server.list_widgets",
+          "doitintl__doit-mcp-server.query_attribute_workload_resources_over_time",
+          "doitintl__doit-mcp-server.query_attribute_workload_resources_stats",
+          "doitintl__doit-mcp-server.query_attribute_workload_resources_table",
+          "doitintl__doit-mcp-server.query_attribute_workloads_over_time",
+          "doitintl__doit-mcp-server.query_attribute_workloads_stats",
+          "doitintl__doit-mcp-server.query_attribute_workloads_table",
+          "doitintl__doit-mcp-server.resend_signup_verification",
+          "doitintl__doit-mcp-server.verify_signup_request"
+        ],
+        "sinks": [
+          "doitintl__doit-mcp-server.create_service_account",
+          "doitintl__doit-mcp-server.create_service_account_token",
+          "doitintl__doit-mcp-server.delete_service_account",
+          "doitintl__doit-mcp-server.delete_service_account_token",
+          "doitintl__doit-mcp-server.get_invoice_pdf",
+          "doitintl__doit-mcp-server.get_service_account",
+          "doitintl__doit-mcp-server.get_service_account_token",
+          "doitintl__doit-mcp-server.get_widget",
+          "doitintl__doit-mcp-server.list_service_account_tokens",
+          "doitintl__doit-mcp-server.list_service_accounts",
+          "doitintl__doit-mcp-server.test_run_cloudflow_flow",
+          "doitintl__doit-mcp-server.trigger_cloud_flow",
+          "doitintl__doit-mcp-server.trigger_cloudflow_flow",
+          "doitintl__doit-mcp-server.update_service_account",
+          "doitintl__doit-mcp-server.update_service_account_token"
+        ],
+        "servers": [
+          "doitintl__doit-mcp-server"
+        ]
+      },
+      "remediation": "Break the path, not the tools: scope the credential so the source tool cannot reach anything valuable, or require explicit user confirmation on the sink tool (destructiveHint / human-in-the-loop), or split the two capabilities across trust boundaries that cannot share a context window."
+    },
+    {
+      "detector": "toxic_flow",
+      "severity": "high",
+      "title": "Toxic flow within 'doitintl__doit-mcp-server': reads credentials or secrets + sends email or messages",
+      "detail": "546 combination(s) exist where one tool reads credentials or secrets and another sends email or messages. Neither tool is malicious on its own; together they reads credentials and can send mail. This is the postmark-mcp shape: the mail tool was legitimate, the credentials were reachable, and the combination was the incident. Both sides live in the same server, which may well be by design; confirm it.",
+      "server": "doitintl__doit-mcp-server",
+      "tool": "count_attribute_attribution_sets",
+      "location": "doitintl__doit-mcp-server.count_attribute_attribution_sets",
+      "evidence": {
+        "source_capability": "read_secret",
+        "sink_capability": "send_email",
+        "cross_server": false,
+        "pair_count": 546,
+        "example": {
+          "source": "doitintl__doit-mcp-server.count_attribute_attribution_sets",
+          "sink": "doitintl__doit-mcp-server.cancel_invite"
+        },
+        "sources": [
+          "doitintl__doit-mcp-server.count_attribute_attribution_sets",
+          "doitintl__doit-mcp-server.create_service_account_token",
+          "doitintl__doit-mcp-server.create_signup_request",
+          "doitintl__doit-mcp-server.create_signup_session",
+          "doitintl__doit-mcp-server.export_cloudflow_flow",
+          "doitintl__doit-mcp-server.get_attribute_attribution_set",
+          "doitintl__doit-mcp-server.get_attribute_workload_details",
+          "doitintl__doit-mcp-server.get_attribute_workloads_cost_data_status",
+          "doitintl__doit-mcp-server.get_attribute_workloads_signals",
+          "doitintl__doit-mcp-server.get_service_account_token",
+          "doitintl__doit-mcp-server.get_signup_request",
+          "doitintl__doit-mcp-server.get_widget",
+          "doitintl__doit-mcp-server.list_attribute_attribution_set_versions",
+          "doitintl__doit-mcp-server.list_attribute_attribution_sets",
+          "doitintl__doit-mcp-server.list_attribute_workload_non_network_resource_types",
+          "doitintl__doit-mcp-server.list_attribute_workloads_cloud_providers",
+          "doitintl__doit-mcp-server.list_attribute_workloads_filter_values",
+          "doitintl__doit-mcp-server.list_attribute_workloads_resource_tag_keys",
+          "doitintl__doit-mcp-server.list_attribute_workloads_resource_tag_values",
+          "doitintl__doit-mcp-server.list_service_account_tokens",
+          "doitintl__doit-mcp-server.list_widgets",
+          "doitintl__doit-mcp-server.query_attribute_workload_resources_over_time",
+          "doitintl__doit-mcp-server.query_attribute_workload_resources_stats",
+          "doitintl__doit-mcp-server.query_attribute_workload_resources_table",
+          "doitintl__doit-mcp-server.query_attribute_workloads_over_time",
+          "doitintl__doit-mcp-server.query_attribute_workloads_stats",
+          "doitintl__doit-mcp-server.query_attribute_workloads_table",
+          "doitintl__doit-mcp-server.resend_signup_verification",
+          "doitintl__doit-mcp-server.verify_signup_request"
+        ],
+        "sinks": [
+          "doitintl__doit-mcp-server.cancel_invite",
+          "doitintl__doit-mcp-server.create_customer_subscription",
+          "doitintl__doit-mcp-server.create_signup_request",
+          "doitintl__doit-mcp-server.create_signup_session",
+          "doitintl__doit-mcp-server.create_user_notification",
+          "doitintl__doit-mcp-server.delete_customer_subscription",
+          "doitintl__doit-mcp-server.export_cloudflow_flow",
+          "doitintl__doit-mcp-server.get_customer_subscription",
+          "doitintl__doit-mcp-server.get_signup_request",
+          "doitintl__doit-mcp-server.import_cloudflow_flow",
+          "doitintl__doit-mcp-server.invite_user",
+          "doitintl__doit-mcp-server.list_account_team",
+          "doitintl__doit-mcp-server.list_alert_slack_channels",
+          "doitintl__doit-mcp-server.list_customer_subscriptions",
+          "doitintl__doit-mcp-server.resend_invite",
+          "doitintl__doit-mcp-server.update_customer_subscription",
+          "doitintl__doit-mcp-server.update_ticket",
+          "doitintl__doit-mcp-server.validate_user",
+          "doitintl__doit-mcp-server.verify_signup_request"
+        ],
+        "servers": [
+          "doitintl__doit-mcp-server"
+        ]
+      },
+      "remediation": "Break the path, not the tools: scope the credential so the source tool cannot reach anything valuable, or require explicit user confirmation on the sink tool (destructiveHint / human-in-the-loop), or split the two capabilities across trust boundaries that cannot share a context window."
+    },
+    {
+      "detector": "toxic_flow",
+      "severity": "medium",
+      "title": "Toxic flow within 'doitintl__doit-mcp-server': executes commands + writes or deletes files",
+      "detail": "191 combination(s) exist where one tool executes commands and another writes or deletes files. Neither tool is malicious on its own; together they executes commands and writes files, so the agent can persist a payload for a later session to pick up. Both sides live in the same server, which may well be by design; confirm it.",
+      "server": "doitintl__doit-mcp-server",
+      "tool": "async_run_inline",
+      "location": "doitintl__doit-mcp-server.async_run_inline",
+      "evidence": {
+        "source_capability": "exec",
+        "sink_capability": "write_fs",
+        "cross_server": false,
+        "pair_count": 191,
+        "example": {
+          "source": "doitintl__doit-mcp-server.async_run_inline",
+          "sink": "doitintl__doit-mcp-server.create_folder"
+        },
+        "sources": [
+          "doitintl__doit-mcp-server.async_run_inline",
+          "doitintl__doit-mcp-server.async_run_report_by_id",
+          "doitintl__doit-mcp-server.build_cloud_flow",
+          "doitintl__doit-mcp-server.cancel_async_operation",
+          "doitintl__doit-mcp-server.confirm_action",
+          "doitintl__doit-mcp-server.create_signup_request",
+          "doitintl__doit-mcp-server.delete_customer_subscription",
+          "doitintl__doit-mcp-server.export_cloudflow_flow",
+          "doitintl__doit-mcp-server.get_allocation",
+          "doitintl__doit-mcp-server.get_async_operation",
+          "doitintl__doit-mcp-server.get_async_operation_results",
+          "doitintl__doit-mcp-server.get_aws_member_account",
+          "doitintl__doit-mcp-server.get_aws_organization",
+          "doitintl__doit-mcp-server.get_aws_recommendation",
+          "doitintl__doit-mcp-server.get_cloud_connect_requirements",
+          "doitintl__doit-mcp-server.get_cloudflow_flow_run",
+          "doitintl__doit-mcp-server.get_customer_subscription",
+          "doitintl__doit-mcp-server.get_dimension",
+          "doitintl__doit-mcp-server.get_gcp_billing_account",
+          "doitintl__doit-mcp-server.get_gcp_recommendation",
+          "doitintl__doit-mcp-server.get_report_results",
+          "doitintl__doit-mcp-server.list_aws_member_accounts",
+          "doitintl__doit-mcp-server.list_aws_organizations",
+          "doitintl__doit-mcp-server.list_aws_organizations_settings",
+          "doitintl__doit-mcp-server.list_aws_planned_purchases",
+          "doitintl__doit-mcp-server.list_aws_recommendations",
+          "doitintl__doit-mcp-server.list_aws_reserved_instances",
+          "doitintl__doit-mcp-server.list_aws_savings_plans",
+          "doitintl__doit-mcp-server.list_cloudflows",
+          "doitintl__doit-mcp-server.list_composer_recipe_results",
+          "doitintl__doit-mcp-server.list_composer_recipes",
+          "doitintl__doit-mcp-server.list_customer_subscriptions",
+          "doitintl__doit-mcp-server.list_dimensions",
+          "doitintl__doit-mcp-server.list_gcp_billing_accounts",
+          "doitintl__doit-mcp-server.list_gcp_billing_accounts_settings",
+          "doitintl__doit-mcp-server.list_gcp_planned_purchases",
+          "doitintl__doit-mcp-server.list_gcp_recommendations",
+          "doitintl__doit-mcp-server.list_gcp_resource_cuds",
+          "doitintl__doit-mcp-server.list_gcp_spend_cuds",
+          "doitintl__doit-mcp-server.list_reports",
+          "doitintl__doit-mcp-server.refine_cloudflow",
+          "doitintl__doit-mcp-server.run_query",
+          "doitintl__doit-mcp-server.stop_cloudflow_flow",
+          "doitintl__doit-mcp-server.test_run_cloudflow_flow",
+          "doitintl__doit-mcp-server.trigger_cloud_flow",
+          "doitintl__doit-mcp-server.update_cloud_connection",
+          "doitintl__doit-mcp-server.update_report",
+          "doitintl__doit-mcp-server.verify_cloud_connect"
+        ],
+        "sinks": [
+          "doitintl__doit-mcp-server.create_folder",
+          "doitintl__doit-mcp-server.delete_folder",
+          "doitintl__doit-mcp-server.update_folder",
+          "doitintl__doit-mcp-server.update_report"
+        ],
+        "servers": [
+          "doitintl__doit-mcp-server"
+        ]
+      },
+      "remediation": "Break the path, not the tools: scope the credential so the source tool cannot reach anything valuable, or require explicit user confirmation on the sink tool (destructiveHint / human-in-the-loop), or split the two capabilities across trust boundaries that cannot share a context window."
+    },
+    {
+      "detector": "toxic_flow",
+      "severity": "medium",
+      "title": "Toxic flow within 'doitintl__doit-mcp-server': reads files + sends data outbound",
+      "detail": "60 combination(s) exist where one tool reads files and another sends data outbound. Neither tool is malicious on its own; together they reads files and can transmit them, so any file the server can reach is reachable by the model, including ones outside the project. Both sides live in the same server, which may well be by design; confirm it.",
+      "server": "doitintl__doit-mcp-server",
+      "tool": "get_cloud_connect_requirements",
+      "location": "doitintl__doit-mcp-server.get_cloud_connect_requirements",
+      "evidence": {
+        "source_capability": "read_fs",
+        "sink_capability": "network_out",
+        "cross_server": false,
+        "pair_count": 60,
+        "example": {
+          "source": "doitintl__doit-mcp-server.get_cloud_connect_requirements",
+          "sink": "doitintl__doit-mcp-server.create_service_account"
+        },
+        "sources": [
+          "doitintl__doit-mcp-server.get_cloud_connect_requirements",
+          "doitintl__doit-mcp-server.get_folder",
+          "doitintl__doit-mcp-server.list_folders",
+          "doitintl__doit-mcp-server.update_customer"
+        ],
+        "sinks": [
+          "doitintl__doit-mcp-server.create_service_account",
+          "doitintl__doit-mcp-server.create_service_account_token",
+          "doitintl__doit-mcp-server.delete_service_account",
+          "doitintl__doit-mcp-server.delete_service_account_token",
+          "doitintl__doit-mcp-server.get_invoice_pdf",
+          "doitintl__doit-mcp-server.get_service_account",
+          "doitintl__doit-mcp-server.get_service_account_token",
+          "doitintl__doit-mcp-server.get_widget",
+          "doitintl__doit-mcp-server.list_service_account_tokens",
+          "doitintl__doit-mcp-server.list_service_accounts",
+          "doitintl__doit-mcp-server.test_run_cloudflow_flow",
+          "doitintl__doit-mcp-server.trigger_cloud_flow",
+          "doitintl__doit-mcp-server.trigger_cloudflow_flow",
+          "doitintl__doit-mcp-server.update_service_account",
+          "doitintl__doit-mcp-server.update_service_account_token"
+        ],
+        "servers": [
+          "doitintl__doit-mcp-server"
+        ]
+      },
+      "remediation": "Break the path, not the tools: scope the credential so the source tool cannot reach anything valuable, or require explicit user confirmation on the sink tool (destructiveHint / human-in-the-loop), or split the two capabilities across trust boundaries that cannot share a context window."
+    },
+    {
+      "detector": "drift",
+      "severity": "info",
+      "title": "No baseline supplied - drift detection is disabled",
+      "detail": "Without an approved snapshot the scanner cannot tell a tool that has always been there from one that appeared yesterday. The single most effective MCP control is the diff, and it needs a baseline to diff against.",
+      "server": "*",
+      "tool": null,
+      "location": "*",
+      "evidence": {},
+      "remediation": "Run 'mcp-scrutiny baseline --config <file> --out mcp-baseline.json', commit the file, and pass it back with --baseline on every later scan."
+    }
+  ],
+  "errors": []
+}

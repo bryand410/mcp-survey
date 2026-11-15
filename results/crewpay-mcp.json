@@ -1,0 +1,96 @@
+{
+  "tool": {
+    "name": "mcp-scrutiny",
+    "version": "0.1.3"
+  },
+  "summary": {
+    "servers": 1,
+    "tools": 17,
+    "findings": 3,
+    "worst_severity": "high",
+    "by_severity": {
+      "info": 1,
+      "low": 0,
+      "medium": 0,
+      "high": 2,
+      "critical": 0
+    }
+  },
+  "servers": [
+    {
+      "name": "crewpay-mcp",
+      "transport": "stdio",
+      "command": "npx",
+      "args": [
+        "-y",
+        "crewpay-mcp"
+      ],
+      "url": null,
+      "pinned": false,
+      "floating_package": "crewpay-mcp",
+      "tools": 17
+    }
+  ],
+  "findings": [
+    {
+      "detector": "pinning",
+      "severity": "high",
+      "title": "Unpinned package executed on every start: crewpay-mcp",
+      "detail": "'crewpay-mcp' launches crewpay-mcp through npx without a version. The client resolves the version at start time, so any future publish to that package name runs with your credentials. This is how postmark-mcp (Sept 2025) reached roughly 300 organisations.",
+      "server": "crewpay-mcp",
+      "tool": null,
+      "location": "crewpay-mcp",
+      "evidence": {
+        "package": "crewpay-mcp",
+        "runner": "npx",
+        "auto_confirm": true
+      },
+      "remediation": "Pin an exact version and an integrity hash: \"args\": [\"crewpay-mcp@<version>\"] and drop the -y flag. Re-pin deliberately, after reviewing the diff."
+    },
+    {
+      "detector": "toxic_flow",
+      "severity": "high",
+      "title": "Toxic flow within 'crewpay-mcp': reads credentials or secrets + sends data outbound",
+      "detail": "6 combination(s) exist where one tool reads credentials or secrets and another sends data outbound. Neither tool is malicious on its own; together they reads credentials and can send data to an address it controls. A single prompt is enough to turn 'summarise this config' into a credential leak. Both sides live in the same server, which may well be by design; confirm it.",
+      "server": "crewpay-mcp",
+      "tool": "crew_build_unsigned",
+      "location": "crewpay-mcp.crew_build_unsigned",
+      "evidence": {
+        "source_capability": "read_secret",
+        "sink_capability": "network_out",
+        "cross_server": false,
+        "pair_count": 6,
+        "example": {
+          "source": "crewpay-mcp.crew_build_unsigned",
+          "sink": "crewpay-mcp.crew_claim_key"
+        },
+        "sources": [
+          "crewpay-mcp.crew_build_unsigned",
+          "crewpay-mcp.crew_claim_key",
+          "crewpay-mcp.crew_proof",
+          "crewpay-mcp.crew_wire_fees"
+        ],
+        "sinks": [
+          "crewpay-mcp.crew_claim_key",
+          "crewpay-mcp.crew_wire_fees"
+        ],
+        "servers": [
+          "crewpay-mcp"
+        ]
+      },
+      "remediation": "Break the path, not the tools: scope the credential so the source tool cannot reach anything valuable, or require explicit user confirmation on the sink tool (destructiveHint / human-in-the-loop), or split the two capabilities across trust boundaries that cannot share a context window."
+    },
+    {
+      "detector": "drift",
+      "severity": "info",
+      "title": "No baseline supplied - drift detection is disabled",
+      "detail": "Without an approved snapshot the scanner cannot tell a tool that has always been there from one that appeared yesterday. The single most effective MCP control is the diff, and it needs a baseline to diff against.",
+      "server": "*",
+      "tool": null,
+      "location": "*",
+      "evidence": {},
+      "remediation": "Run 'mcp-scrutiny baseline --config <file> --out mcp-baseline.json', commit the file, and pass it back with --baseline on every later scan."
+    }
+  ],
+  "errors": []
+}

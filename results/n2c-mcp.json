@@ -1,0 +1,299 @@
+{
+  "tool": {
+    "name": "mcp-scrutiny",
+    "version": "0.1.3"
+  },
+  "summary": {
+    "servers": 1,
+    "tools": 36,
+    "findings": 8,
+    "worst_severity": "high",
+    "by_severity": {
+      "info": 1,
+      "low": 0,
+      "medium": 1,
+      "high": 6,
+      "critical": 0
+    }
+  },
+  "servers": [
+    {
+      "name": "n2c-mcp",
+      "transport": "stdio",
+      "command": "npx",
+      "args": [
+        "-y",
+        "n2c-mcp"
+      ],
+      "url": null,
+      "pinned": false,
+      "floating_package": "n2c-mcp",
+      "tools": 36
+    }
+  ],
+  "findings": [
+    {
+      "detector": "pinning",
+      "severity": "high",
+      "title": "Unpinned package executed on every start: n2c-mcp",
+      "detail": "'n2c-mcp' launches n2c-mcp through npx without a version. The client resolves the version at start time, so any future publish to that package name runs with your credentials. This is how postmark-mcp (Sept 2025) reached roughly 300 organisations.",
+      "server": "n2c-mcp",
+      "tool": null,
+      "location": "n2c-mcp",
+      "evidence": {
+        "package": "n2c-mcp",
+        "runner": "npx",
+        "auto_confirm": true
+      },
+      "remediation": "Pin an exact version and an integrity hash: \"args\": [\"n2c-mcp@<version>\"] and drop the -y flag. Re-pin deliberately, after reviewing the diff."
+    },
+    {
+      "detector": "semantic",
+      "severity": "high",
+      "title": "Description reads as instructions to the model (p=1.00): deploy_workflow",
+      "detail": "The description of 'n2c-mcp.deploy_workflow' scores 1.00 on the instruction-detection model, and carries intent signals: concealment. Descriptions are documentation for a human, but they are delivered to the model as trusted context, so text that tells the model what to do is an attack surface rather than a description. The score is driven mainly by: concealment, entropy, log_len, imperative_density.",
+      "server": "n2c-mcp",
+      "tool": "deploy_workflow",
+      "location": "n2c-mcp.deploy_workflow",
+      "evidence": {
+        "probability": 0.9993,
+        "threshold": 0.5,
+        "intent_signals": [
+          "concealment"
+        ],
+        "driving_features": [
+          {
+            "feature": "concealment",
+            "contribution": 9.537
+          },
+          {
+            "feature": "log_words",
+            "contribution": -3.4016
+          },
+          {
+            "feature": "entropy",
+            "contribution": 1.647
+          },
+          {
+            "feature": "log_len",
+            "contribution": 1.5209
+          },
+          {
+            "feature": "hardcoded_recipient",
+            "contribution": -1.2458
+          },
+          {
+            "feature": "imperative_density",
+            "contribution": 0.9206
+          }
+        ],
+        "active_features": {
+          "log_len": 6.756932389247553,
+          "log_words": 4.955827057601261,
+          "entropy": 4.385171535072539,
+          "concealment": 1.0,
+          "schema_nested_desc": 2.0
+        },
+        "description": "Deploy a saved workflow to the user's own Cloudflare account, replacing any live version. The server recompiles the saved graph itself; no code you send is ever deployed. Save and validate first, and call check_setup early so missing connections are fixed in time. Unless the owner allowed this connection to deploy without asking, the call waits up to 90 seconds for the owner to approve it in an open Nodes2Cloud browser tab: tell the user to approve it there. Some protected connections need an ex"
+      },
+      "remediation": "Read the description against what the tool actually does. If the text is legitimate, it usually means the tool should not have to instruct the model at all - move the guidance into the parameter descriptions or the server's own docs."
+    },
+    {
+      "detector": "semantic",
+      "severity": "high",
+      "title": "Description reads as instructions to the model (p=0.96): file-processing",
+      "detail": "The description of 'n2c-mcp.file-processing' scores 0.96 on the instruction-detection model, and carries intent signals: hidden_recipient. Descriptions are documentation for a human, but they are delivered to the model as trusted context, so text that tells the model what to do is an attack surface rather than a description. The score is driven mainly by: hidden_recipient, imperative_density, log_words.",
+      "server": "n2c-mcp",
+      "tool": "file-processing",
+      "location": "n2c-mcp.file-processing",
+      "evidence": {
+        "probability": 0.9585,
+        "threshold": 0.5,
+        "intent_signals": [
+          "hidden_recipient"
+        ],
+        "driving_features": [
+          {
+            "feature": "hidden_recipient",
+            "contribution": 6.3853
+          },
+          {
+            "feature": "entropy",
+            "contribution": -1.3465
+          },
+          {
+            "feature": "hardcoded_recipient",
+            "contribution": -1.2458
+          },
+          {
+            "feature": "imperative_density",
+            "contribution": 0.9206
+          },
+          {
+            "feature": "concealment",
+            "contribution": -0.8605
+          },
+          {
+            "feature": "log_words",
+            "contribution": 0.7315
+          }
+        ],
+        "active_features": {
+          "log_len": 4.127134385045092,
+          "log_words": 2.4849066497880004,
+          "entropy": 4.004508552540467,
+          "hidden_recipient": 1.0
+        },
+        "description": "Accept a file, transform it, and store or forward the result."
+      },
+      "remediation": "Read the description against what the tool actually does. If the text is legitimate, it usually means the tool should not have to instruct the model at all - move the guidance into the parameter descriptions or the server's own docs."
+    },
+    {
+      "detector": "toxic_flow",
+      "severity": "high",
+      "title": "Toxic flow within 'n2c-mcp': reads credentials or secrets + sends data outbound",
+      "detail": "14 combination(s) exist where one tool reads credentials or secrets and another sends data outbound. Neither tool is malicious on its own; together they reads credentials and can send data to an address it controls. A single prompt is enough to turn 'summarise this config' into a credential leak. Both sides live in the same server, which may well be by design; confirm it.",
+      "server": "n2c-mcp",
+      "tool": "check_setup",
+      "location": "n2c-mcp.check_setup",
+      "evidence": {
+        "source_capability": "read_secret",
+        "sink_capability": "network_out",
+        "cross_server": false,
+        "pair_count": 14,
+        "example": {
+          "source": "n2c-mcp.check_setup",
+          "sink": "n2c-mcp.list_node_types"
+        },
+        "sources": [
+          "n2c-mcp.check_setup",
+          "n2c-mcp.list_connections",
+          "n2c-mcp.request_connections",
+          "n2c-mcp.rotate_webhook_secret",
+          "n2c-mcp.verify_connection"
+        ],
+        "sinks": [
+          "n2c-mcp.list_node_types",
+          "n2c-mcp.rotate_webhook_secret",
+          "n2c-mcp.webhook-to-slack"
+        ],
+        "servers": [
+          "n2c-mcp"
+        ]
+      },
+      "remediation": "Break the path, not the tools: scope the credential so the source tool cannot reach anything valuable, or require explicit user confirmation on the sink tool (destructiveHint / human-in-the-loop), or split the two capabilities across trust boundaries that cannot share a context window."
+    },
+    {
+      "detector": "toxic_flow",
+      "severity": "high",
+      "title": "Toxic flow within 'n2c-mcp': reads credentials or secrets + sends email or messages",
+      "detail": "24 combination(s) exist where one tool reads credentials or secrets and another sends email or messages. Neither tool is malicious on its own; together they reads credentials and can send mail. This is the postmark-mcp shape: the mail tool was legitimate, the credentials were reachable, and the combination was the incident. Both sides live in the same server, which may well be by design; confirm it.",
+      "server": "n2c-mcp",
+      "tool": "check_setup",
+      "location": "n2c-mcp.check_setup",
+      "evidence": {
+        "source_capability": "read_secret",
+        "sink_capability": "send_email",
+        "cross_server": false,
+        "pair_count": 24,
+        "example": {
+          "source": "n2c-mcp.check_setup",
+          "sink": "n2c-mcp.email-to-sheet"
+        },
+        "sources": [
+          "n2c-mcp.check_setup",
+          "n2c-mcp.list_connections",
+          "n2c-mcp.request_connections",
+          "n2c-mcp.rotate_webhook_secret",
+          "n2c-mcp.verify_connection"
+        ],
+        "sinks": [
+          "n2c-mcp.email-to-sheet",
+          "n2c-mcp.list_connections",
+          "n2c-mcp.list_node_types",
+          "n2c-mcp.scheduled-report",
+          "n2c-mcp.webhook-to-slack"
+        ],
+        "servers": [
+          "n2c-mcp"
+        ]
+      },
+      "remediation": "Break the path, not the tools: scope the credential so the source tool cannot reach anything valuable, or require explicit user confirmation on the sink tool (destructiveHint / human-in-the-loop), or split the two capabilities across trust boundaries that cannot share a context window."
+    },
+    {
+      "detector": "toxic_flow",
+      "severity": "high",
+      "title": "Toxic flow within 'n2c-mcp': executes commands + sends data outbound",
+      "detail": "6 combination(s) exist where one tool executes commands and another sends data outbound. Neither tool is malicious on its own; together they executes commands and can reach the network, which is remote code execution with a delivery channel rather than a hint of one. Both sides live in the same server, which may well be by design; confirm it.",
+      "server": "n2c-mcp",
+      "tool": "get_run",
+      "location": "n2c-mcp.get_run",
+      "evidence": {
+        "source_capability": "exec",
+        "sink_capability": "network_out",
+        "cross_server": false,
+        "pair_count": 6,
+        "example": {
+          "source": "n2c-mcp.get_run",
+          "sink": "n2c-mcp.list_node_types"
+        },
+        "sources": [
+          "n2c-mcp.get_run",
+          "n2c-mcp.list_runs"
+        ],
+        "sinks": [
+          "n2c-mcp.list_node_types",
+          "n2c-mcp.rotate_webhook_secret",
+          "n2c-mcp.webhook-to-slack"
+        ],
+        "servers": [
+          "n2c-mcp"
+        ]
+      },
+      "remediation": "Break the path, not the tools: scope the credential so the source tool cannot reach anything valuable, or require explicit user confirmation on the sink tool (destructiveHint / human-in-the-loop), or split the two capabilities across trust boundaries that cannot share a context window."
+    },
+    {
+      "detector": "toxic_flow",
+      "severity": "medium",
+      "title": "Toxic flow within 'n2c-mcp': reads files + sends data outbound",
+      "detail": "3 combination(s) exist where one tool reads files and another sends data outbound. Neither tool is malicious on its own; together they reads files and can transmit them, so any file the server can reach is reachable by the model, including ones outside the project. Both sides live in the same server, which may well be by design; confirm it.",
+      "server": "n2c-mcp",
+      "tool": "list_workflow_files",
+      "location": "n2c-mcp.list_workflow_files",
+      "evidence": {
+        "source_capability": "read_fs",
+        "sink_capability": "network_out",
+        "cross_server": false,
+        "pair_count": 3,
+        "example": {
+          "source": "n2c-mcp.list_workflow_files",
+          "sink": "n2c-mcp.list_node_types"
+        },
+        "sources": [
+          "n2c-mcp.list_workflow_files"
+        ],
+        "sinks": [
+          "n2c-mcp.list_node_types",
+          "n2c-mcp.rotate_webhook_secret",
+          "n2c-mcp.webhook-to-slack"
+        ],
+        "servers": [
+          "n2c-mcp"
+        ]
+      },
+      "remediation": "Break the path, not the tools: scope the credential so the source tool cannot reach anything valuable, or require explicit user confirmation on the sink tool (destructiveHint / human-in-the-loop), or split the two capabilities across trust boundaries that cannot share a context window."
+    },
+    {
+      "detector": "drift",
+      "severity": "info",
+      "title": "No baseline supplied - drift detection is disabled",
+      "detail": "Without an approved snapshot the scanner cannot tell a tool that has always been there from one that appeared yesterday. The single most effective MCP control is the diff, and it needs a baseline to diff against.",
+      "server": "*",
+      "tool": null,
+      "location": "*",
+      "evidence": {},
+      "remediation": "Run 'mcp-scrutiny baseline --config <file> --out mcp-baseline.json', commit the file, and pass it back with --baseline on every later scan."
+    }
+  ],
+  "errors": []
+}

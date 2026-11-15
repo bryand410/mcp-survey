@@ -1,0 +1,50 @@
+{
+  "tool": {
+    "name": "mcp-scrutiny",
+    "version": "0.1.3"
+  },
+  "summary": {
+    "servers": 1,
+    "tools": 0,
+    "findings": 1,
+    "worst_severity": "info",
+    "by_severity": {
+      "info": 1,
+      "low": 0,
+      "medium": 0,
+      "high": 0,
+      "critical": 0
+    }
+  },
+  "servers": [
+    {
+      "name": "23telecom__mcp",
+      "transport": "stdio",
+      "command": "npx",
+      "args": [
+        "-y",
+        "@23telecom/mcp"
+      ],
+      "url": null,
+      "pinned": true,
+      "floating_package": null,
+      "tools": 0
+    }
+  ],
+  "findings": [
+    {
+      "detector": "drift",
+      "severity": "info",
+      "title": "No baseline supplied - drift detection is disabled",
+      "detail": "Without an approved snapshot the scanner cannot tell a tool that has always been there from one that appeared yesterday. The single most effective MCP control is the diff, and it needs a baseline to diff against.",
+      "server": "*",
+      "tool": null,
+      "location": "*",
+      "evidence": {},
+      "remediation": "Run 'mcp-scrutiny baseline --config <file> --out mcp-baseline.json', commit the file, and pass it back with --baseline on every later scan."
+    }
+  ],
+  "errors": [
+    "23telecom__mcp: no tool definitions available (run 'capture' or pass --probe to query the server)"
+  ]
+}

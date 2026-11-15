@@ -1,22 +1,64 @@
 {
- "tested": 250,
- "answered": 119,
- "silent": 131,
- "tools": 9475,
+ "tested": 514,
+ "answered": 268,
+ "silent": 246,
+ "tools": 12756,
  "findings_excluding": [
   "drift",
   "pinning"
  ],
  "by_severity": {
-  "high": 547,
-  "medium": 41,
-  "low": 5
+  "high": 205,
+  "medium": 72,
+  "low": 8
  },
  "by_detector": {
-  "semantic": 484,
-  "toxic_flow": 109
+  "toxic_flow": 165,
+  "semantic": 120
  },
  "flagged_servers": {
+  "comfyui-mcp": [
+   {
+    "severity": "high",
+    "detector": "toxic_flow",
+    "title": "Toxic flow within 'comfyui-mcp': executes commands + sends data outbound"
+   },
+   {
+    "severity": "high",
+    "detector": "toxic_flow",
+    "title": "Toxic flow within 'comfyui-mcp': reads credentials or secrets + sends data outbound"
+   },
+   {
+    "severity": "high",
+    "detector": "toxic_flow",
+    "title": "Toxic flow within 'comfyui-mcp': reads credentials or secrets + sends email or messages"
+   },
+   {
+    "severity": "high",
+    "detector": "toxic_flow",
+    "title": "Toxic flow within 'comfyui-mcp': reads environment variables + sends data outbound"
+   },
+   {
+    "severity": "medium",
+    "detector": "toxic_flow",
+    "title": "Toxic flow within 'comfyui-mcp': executes commands + writes or deletes files"
+   },
+   {
+    "severity": "medium",
+    "detector": "toxic_flow",
+    "title": "Toxic flow within 'comfyui-mcp': reads files + sends data outbound"
+   },
+   {
+    "severity": "medium",
+    "detector": "toxic_flow",
+    "title": "Toxic flow within 'comfyui-mcp': reads environment variables + sends email or messages"
+   },
+   {
+    "severity": "low",
+    "detector": "toxic_flow",
+    "title": "Toxic flow within 'comfyui-mcp': reads files + modifies a database"
+   }
+  ],
   "premiere-pro-mcp": [
    {
     "severity": "high",
@@ -73,82 +115,33 @@
     "title": "Toxic flow within 'qase__mcp-server': executes commands + writes or deletes files"
    }
   ],
-  "howtocook-mcp": [
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: mcp_howtocook_getRecipeById"
-   }
-  ],
   "@cachly-dev/mcp-server": [
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Description reads as instructions to the model (p=0.81): recall_best_solution"
-   },
    {
     "severity": "high",
     "detector": "toxic_flow",
     "title": "Toxic flow within 'cachly-dev__mcp-server': reads credentials or secrets + sends email or messages"
    }
   ],
-  "tax-law-mcp": [
+  "brightspace-mcp-server": [
    {
     "severity": "high",
     "detector": "semantic",
-    "title": "Mixed-script text in tool description: get_law"
+    "title": "Description reads as instructions to the model (p=1.00): download_course_files"
    },
    {
     "severity": "high",
     "detector": "semantic",
-    "title": "Mixed-script text in tool description: get_saiketsu"
+    "title": "Description reads as instructions to the model (p=1.00): get_assignments"
    },
    {
     "severity": "high",
     "detector": "semantic",
-    "title": "Mixed-script text in tool description: get_tsutatsu"
+    "title": "Description reads as instructions to the model (p=1.00): get_course_content"
    },
    {
     "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: search_law"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: search_saiketsu"
-   }
-  ],
-  "labor-law-mcp": [
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: get_jaish_tsutatsu"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: get_law"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: get_mhlw_tsutatsu"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: search_jaish_tsutatsu"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: search_law"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: tsutatsu_research"
+    "detector": "toxic_flow",
+    "title": "Toxic flow within 'brightspace-mcp-server': reads credentials or secrets + sends email or messages"
    }
   ],
   "@cyanheads/git-mcp-server": [
@@ -166,186 +159,6 @@
    }
   ],
   "@mearl/mcp-server": [
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: browser_get_capabilities"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: browser_get_cookie"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: browser_get_events"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: browser_get_logs"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: browser_get_mocks"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: browser_get_requests"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: browser_get_rules"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: browser_list"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: browser_manage"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: browser_page_call_tool"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: browser_page_click"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: browser_page_download"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: browser_page_drag"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: browser_page_frames"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: browser_page_inspect"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: browser_page_navigate"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: browser_page_record"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: browser_page_screenshot"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: browser_page_scroll"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: browser_page_snapshot"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: browser_page_wait"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: browser_request_permission"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: browser_run_actions"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: browser_run_code"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: browser_send_request"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: browser_set_app_profile"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: browser_set_cookie"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: browser_set_device_emulation"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: browser_set_mock"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: browser_set_rule"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: browser_set_timezone"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: browser_tab_checkpoint"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: browser_tab_list"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: browser_tab_open"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: plugin_invoke"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: session_manage"
-   },
    {
     "severity": "high",
     "detector": "toxic_flow",
@@ -528,11 +341,6 @@
   "@pinepaper.studio/mcp-server": [
    {
     "severity": "high",
-    "detector": "semantic",
-    "title": "Description reads as instructions to the model (p=0.97): pinepaper_text_effect"
-   },
-   {
-    "severity": "high",
     "detector": "toxic_flow",
     "title": "Toxic flow within 'pinepaper_studio__mcp-server': executes commands + sends data outbound"
    },
@@ -680,1167 +488,7 @@
    {
     "severity": "high",
     "detector": "semantic",
-    "title": "Mixed-script text in tool description: admob_create_app"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: admob_list_apps"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: android_check_billing_compliance"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: android_generate_keystore"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: android_signing_setup"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Description reads as instructions to the model (p=1.00): appstore_add_beta_testers"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Description reads as instructions to the model (p=1.00): appstore_add_product_to_review"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: appstore_add_product_to_review"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Description reads as instructions to the model (p=1.00): appstore_add_version_to_review_submission"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: appstore_add_version_to_review_submission"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: appstore_attach_build"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Description reads as instructions to the model (p=1.00): appstore_cancel_review"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: appstore_cancel_review"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: appstore_check_submission_risks"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: appstore_create_app_info_localization"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: appstore_create_inapp_purchase"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: appstore_create_subscription"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: appstore_create_version"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Description reads as instructions to the model (p=1.00): appstore_declare_encryption"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Description reads as instructions to the model (p=1.00): appstore_delete_preview"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Description reads as instructions to the model (p=1.00): appstore_delete_product"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: appstore_delete_product"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Description reads as instructions to the model (p=1.00): appstore_delete_screenshot"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: appstore_delete_screenshot"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Description reads as instructions to the model (p=1.00): appstore_delete_screenshot_set"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: appstore_delete_screenshot_set"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: appstore_get_age_rating"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: appstore_get_app_info"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: appstore_get_availability"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Description reads as instructions to the model (p=1.00): appstore_get_finance_report"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: appstore_get_finance_report"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: appstore_get_review_notes"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Description reads as instructions to the model (p=1.00): appstore_get_sales_report"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: appstore_get_sales_report"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: appstore_get_weekly_insight"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: appstore_list_app_info_localizations"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: appstore_list_previews"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: appstore_list_product_localizations"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: appstore_list_products"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: appstore_list_review_submissions"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: appstore_list_reviews"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Description reads as instructions to the model (p=1.00): appstore_notify_beta_testers"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: appstore_notify_beta_testers"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Description reads as instructions to the model (p=1.00): appstore_phased_release"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: appstore_phased_release"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Description reads as instructions to the model (p=1.00): appstore_plan_release"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: appstore_plan_release"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: appstore_release_status"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Description reads as instructions to the model (p=1.00): appstore_release_version"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: appstore_release_version"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Description reads as instructions to the model (p=1.00): appstore_remove_review_submission_item"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: appstore_remove_review_submission_item"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Description reads as instructions to the model (p=1.00): appstore_reply_review"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: appstore_reply_review"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Description reads as instructions to the model (p=1.00): appstore_set_beta_group_build"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: appstore_set_beta_group_build"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Description reads as instructions to the model (p=1.00): appstore_set_territory_availability"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: appstore_submit_beta_review"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Description reads as instructions to the model (p=1.00): appstore_submit_for_review"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: appstore_submit_for_review"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: appstore_update_app_info_localization"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: appstore_update_localization"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Description reads as instructions to the model (p=1.00): appstore_update_product_localization"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: appstore_update_product_localization"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: appstore_update_product_review_note"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: appstore_update_release_type"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: appstore_update_review_notes"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Description reads as instructions to the model (p=1.00): appstore_update_version_string"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: appstore_update_whats_new"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: appstore_update_whats_to_test"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Description reads as instructions to the model (p=1.00): appstore_upload_preview"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: appstore_upload_preview"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: appstore_upload_product_review_screenshot"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: appstore_upload_screenshot"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: appstore_verify_credentials"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: bigquery_auth_status"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Description reads as instructions to the model (p=1.00): bigquery_run_query"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: bigquery_run_query"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Description reads as instructions to the model (p=1.00): ci_cancel_build"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: ci_cancel_build"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: ci_get_build_status"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: ci_list_workflows"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: ci_trigger_build"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: drive_create_folder"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Description reads as instructions to the model (p=1.00): drive_trash_file"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: drive_trash_file"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Description reads as instructions to the model (p=1.00): drive_update_file_content"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: drive_update_file_content"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: facebook_list_pages"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Description reads as instructions to the model (p=1.00): facebook_post_multi_photo"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: facebook_post_multi_photo"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Description reads as instructions to the model (p=1.00): facebook_post_photo"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: facebook_post_photo"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: facebook_save_config"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: firebase_create_android_app"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: firebase_create_ios_app"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: firebase_create_project"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: firebase_create_web_app"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Description reads as instructions to the model (p=1.00): firebase_delete_android_app"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: firebase_delete_android_app"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Description reads as instructions to the model (p=1.00): firebase_delete_ios_app"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: firebase_delete_ios_app"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Description reads as instructions to the model (p=1.00): firebase_delete_web_app"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: firebase_delete_web_app"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: firebase_get_analytics_details"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: firebase_get_remote_config_overview"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: firebase_link_analytics"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: ga4_create_bigquery_link"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: ga4_create_data_stream"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: ga4_create_property"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Description reads as instructions to the model (p=1.00): gcp_create_budget"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: gcp_create_budget"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Description reads as instructions to the model (p=1.00): gcp_get_billing_info"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: gcp_get_billing_info"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: gcp_list_billing_projects"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: generate_release_notes_from_commits"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: generate_review_reply"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: googleads_get_campaign_report"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: googleads_get_uac_report"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Description reads as instructions to the model (p=1.00): gsc_list_sitemaps"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: gsc_list_sites"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
     "title": "Description reads as instructions to the model (p=1.00): gsc_search_analytics"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: gsc_search_analytics"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: gsc_submit_sitemap"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Description reads as instructions to the model (p=1.00): iam_add_iam_policy_binding"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: iam_add_iam_policy_binding"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Description reads as instructions to the model (p=1.00): iam_create_key"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: iam_create_key"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: iam_create_service_account"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: iam_list_service_accounts"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Description reads as instructions to the model (p=1.00): instagram_post_carousel"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: instagram_post_carousel"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Description reads as instructions to the model (p=1.00): instagram_post_image"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: instagram_post_image"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: instagram_save_config"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: jenkins_create_credential"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Description reads as instructions to the model (p=1.00): jenkins_create_job"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: jenkins_create_job"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Description reads as instructions to the model (p=1.00): jenkins_delete_credential"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: jenkins_delete_credential"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: jenkins_list_credentials"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: jenkins_list_jobs"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: jenkins_save_config"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: jenkins_status"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Description reads as instructions to the model (p=1.00): jenkins_trigger_build"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: jenkins_trigger_build"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Description reads as instructions to the model (p=1.00): jenkins_update_job"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: jenkins_update_job"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: jenkins_upload_keystore"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: jenkins_upload_playstore_sa"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: mimi_seed_auth_start"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: mimi_seed_auth_status"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: mimi_seed_remote_sync_credentials"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: mimi_seed_status"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: naver_check_page"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: naver_indexnow_submit"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: playstore_create_onetime_product"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Description reads as instructions to the model (p=1.00): playstore_create_recovery_action"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: playstore_create_subscription"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Description reads as instructions to the model (p=1.00): playstore_delete_all_images"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: playstore_delete_all_images"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Description reads as instructions to the model (p=1.00): playstore_delete_product"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: playstore_delete_product"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Description reads as instructions to the model (p=1.00): playstore_delete_service_account"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: playstore_delete_service_account"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Description reads as instructions to the model (p=1.00): playstore_deploy_recovery_action"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Description reads as instructions to the model (p=1.00): playstore_get_financial_report"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: playstore_get_financial_report"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: playstore_get_statistics"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Description reads as instructions to the model (p=1.00): playstore_list_financial_reports"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: playstore_list_financial_reports"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: playstore_list_images"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: playstore_list_products"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: playstore_list_recovery_actions"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: playstore_list_service_accounts"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Description reads as instructions to the model (p=1.00): playstore_plan_release"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: playstore_plan_release"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Description reads as instructions to the model (p=1.00): playstore_promote_release"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: playstore_promote_release"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: playstore_register_service_account"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Description reads as instructions to the model (p=1.00): playstore_replace_images"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: playstore_replace_images"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Description reads as instructions to the model (p=1.00): playstore_reply_review"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: playstore_reply_review"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Description reads as instructions to the model (p=1.00): playstore_submit_release"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: playstore_submit_release"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Description reads as instructions to the model (p=1.00): playstore_update_details"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: playstore_update_details"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Description reads as instructions to the model (p=1.00): playstore_update_listing"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: playstore_update_listing"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Description reads as instructions to the model (p=1.00): playstore_update_release_notes"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: playstore_update_release_notes"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: playstore_update_subscription_listing"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Description reads as instructions to the model (p=1.00): playstore_upload_data_safety"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: playstore_upload_data_safety"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Description reads as instructions to the model (p=1.00): playstore_upload_image"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: playstore_upload_image"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: playstore_verify_service_account"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Description reads as instructions to the model (p=1.00): setup_playstore_connection"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: setup_playstore_connection"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Description reads as instructions to the model (p=1.00): threads_post"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: threads_post"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Description reads as instructions to the model (p=1.00): threads_post_carousel"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: threads_post_carousel"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Description reads as instructions to the model (p=1.00): threads_post_video"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: threads_post_video"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: threads_refresh_token"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: threads_save_config"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: tiktok_business_auth_status"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: tiktok_business_plan_video_post"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: tiktok_business_publish_video"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: video_add_local_asset"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: video_build_timeline"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: video_download_stock_assets"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: video_generate_image"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: video_job_status"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: video_plan_from_story"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: video_render"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: video_research_youtube"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: video_save_plan"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: video_search_stock_assets"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: video_synthesize_research"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: video_validate"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: youtube_get_video_status"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: youtube_list_comment_replies"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: youtube_list_comments"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: youtube_list_videos"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: youtube_reply_comment"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: youtube_schedule_video"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: youtube_set_thumbnail"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: youtube_update_video_metadata"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: youtube_update_video_privacy"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: youtube_upload_video"
    },
    {
     "severity": "high",
@@ -1865,38 +513,6 @@
     "severity": "high",
     "detector": "toxic_flow",
     "title": "Toxic flow within 'purmemo-mcp': reads credentials or secrets + sends email or messages"
-   }
-  ],
-  "cito-mcp": [
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Description reads as instructions to the model (p=1.00): create_webhook"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Description reads as instructions to the model (p=1.00): replay_webhook"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Description reads as instructions to the model (p=0.99): test_webhook"
-   },
-   {
-    "severity": "high",
-    "detector": "toxic_flow",
-    "title": "Toxic flow within 'cito-mcp': reads credentials or secrets + sends data outbound"
-   },
-   {
-    "severity": "high",
-    "detector": "toxic_flow",
-    "title": "Toxic flow within 'cito-mcp': reads environment variables + sends data outbound"
-   },
-   {
-    "severity": "medium",
-    "detector": "toxic_flow",
-    "title": "Toxic flow within 'cito-mcp': reads files + sends data outbound"
    }
   ],
   "limostudio-mcp": [
@@ -1964,26 +580,6 @@
    }
   ],
   "specguard-mcp": [
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Description reads as instructions to the model (p=1.00): add_repository"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Description reads as instructions to the model (p=0.81): create_repository_api_key"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Description reads as instructions to the model (p=0.95): rename_repository"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Description reads as instructions to the model (p=0.97): update_repository_member_permissions"
-   },
    {
     "severity": "high",
     "detector": "toxic_flow",
@@ -2107,11 +703,6 @@
    {
     "severity": "high",
     "detector": "semantic",
-    "title": "Mixed-script text in tool description: handoff_doc_req_import"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
     "title": "Description reads as instructions to the model (p=1.00): handoff_doc_verify"
    },
    {
@@ -2123,11 +714,6 @@
     "severity": "high",
     "detector": "semantic",
     "title": "Description reads as instructions to the model (p=1.00): handoff_report"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: handoff_trace_matrix"
    },
    {
     "severity": "high",
@@ -2157,33 +743,6 @@
     "severity": "medium",
     "detector": "toxic_flow",
     "title": "Toxic flow within 'layoutbridge-spm': reads files + sends data outbound"
-   }
-  ],
-  "taibu-mcp": [
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: bazi_dayun"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: bazi_liunian_scan"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: bazi_relations"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: load_analysis_method"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: ziwei_palace"
    }
   ],
   "@ostico/bruno-mcp": [
@@ -2253,612 +812,7 @@
    {
     "severity": "high",
     "detector": "semantic",
-    "title": "Mixed-script text in tool description: gangtise_announcement_list"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: gangtise_balance_sheet"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: gangtise_bond_announcement_list"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: gangtise_bond_basic_info"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: gangtise_bond_cash_flow"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: gangtise_bond_daily_quote"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Description reads as instructions to the model (p=1.00): gangtise_bond_default_list"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: gangtise_bond_default_list"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: gangtise_bond_exercise_notice"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: gangtise_bond_issuance_detail"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Description reads as instructions to the model (p=1.00): gangtise_bond_issuance_plan"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: gangtise_bond_issuance_plan"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Description reads as instructions to the model (p=1.00): gangtise_bond_issuer_info"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: gangtise_bond_issuer_info"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: gangtise_bond_issuer_rating_change"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: gangtise_bond_rating_change"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: gangtise_bond_rating_overview"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: gangtise_bond_valuation"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: gangtise_cash_flow"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: gangtise_chiefs_search"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: gangtise_concept_info"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: gangtise_concept_search"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: gangtise_concept_securities"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: gangtise_constant_category"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: gangtise_constant_list"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: gangtise_current_date"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Description reads as instructions to the model (p=1.00): gangtise_day_kline"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: gangtise_day_kline"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: gangtise_download"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: gangtise_drive_folder_list"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Description reads as instructions to the model (p=1.00): gangtise_drive_manage"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: gangtise_drive_manage"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Description reads as instructions to the model (p=1.00): gangtise_drive_upload"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: gangtise_drive_upload"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: gangtise_earning_forecast"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: gangtise_earnings_review"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: gangtise_earnings_review_check"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: gangtise_edb_data"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: gangtise_edb_search"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: gangtise_expert_intel"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: gangtise_file_parse"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: gangtise_file_parse_check"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: gangtise_foreign_opinion_list"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: gangtise_fund_asset_allocation"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: gangtise_fund_asset_size"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: gangtise_fund_basic_info"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: gangtise_fund_bond_portfolio"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Description reads as instructions to the model (p=1.00): gangtise_fund_bond_type_allocation"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: gangtise_fund_bond_type_allocation"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Description reads as instructions to the model (p=1.00): gangtise_fund_etf_pcf_components"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: gangtise_fund_etf_pcf_components"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: gangtise_fund_etf_pcf_header"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: gangtise_fund_etf_share_change"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Description reads as instructions to the model (p=1.00): gangtise_fund_fee_rate"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: gangtise_fund_fee_rate"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: gangtise_fund_flow"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: gangtise_fund_fund_portfolio"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: gangtise_fund_fund_type_allocation"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: gangtise_fund_holder_structure"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: gangtise_fund_industry_allocation"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: gangtise_fund_manager_history"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: gangtise_fund_manager_info"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: gangtise_fund_nav"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Description reads as instructions to the model (p=1.00): gangtise_fund_stock_portfolio"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: gangtise_fund_stock_portfolio"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: gangtise_fund_top10_holders"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Description reads as instructions to the model (p=1.00): gangtise_highlight_list"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: gangtise_highlight_list"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: gangtise_income_statement"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Description reads as instructions to the model (p=1.00): gangtise_index_day_kline"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: gangtise_index_day_kline"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: gangtise_index_weight"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: gangtise_indicator_cross_section"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: gangtise_indicator_screener"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Description reads as instructions to the model (p=1.00): gangtise_indicator_search"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: gangtise_indicator_search"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: gangtise_indicator_time_series"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: gangtise_institution_search"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: gangtise_knowledge_batch"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: gangtise_lookup"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: gangtise_management_sentiment_conclusion"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: gangtise_management_sentiment_detail"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: gangtise_management_sentiment_indicator"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Description reads as instructions to the model (p=1.00): gangtise_minute_kline"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: gangtise_minute_kline"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: gangtise_official_account_search"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Description reads as instructions to the model (p=1.00): gangtise_opinion_detail"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: gangtise_opinion_detail"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: gangtise_opinion_list"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: gangtise_overseas_account_search"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: gangtise_overseas_opinion_list"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Description reads as instructions to the model (p=1.00): gangtise_pamirs_summary_list"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: gangtise_pamirs_summary_list"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: gangtise_performance_calendar_list"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: gangtise_qa_list"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
     "title": "Description reads as instructions to the model (p=1.00): gangtise_realtime"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: gangtise_realtime"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Description reads as instructions to the model (p=1.00): gangtise_report_image_list"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: gangtise_report_image_list"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: gangtise_roadshow_list"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: gangtise_sector_constituents"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: gangtise_sector_fund_flow"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: gangtise_sector_search"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: gangtise_securities_search"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: gangtise_site_visit_list"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Description reads as instructions to the model (p=1.00): gangtise_stock_note_add"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: gangtise_stock_note_add"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: gangtise_stock_note_delete"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: gangtise_stock_note_list"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: gangtise_stock_pool_add_stock"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Description reads as instructions to the model (p=1.00): gangtise_stock_pool_create"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: gangtise_stock_pool_create"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: gangtise_stock_pool_delete"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: gangtise_stock_pool_list"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: gangtise_stock_pool_rename"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: gangtise_strategy_list"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: gangtise_viewpoint_debate"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: gangtise_viewpoint_debate_check"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Description reads as instructions to the model (p=1.00): gangtise_web_search"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: gangtise_web_search"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: gangtise_wechat_chatroom_list"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: gangtise_wechat_message_list"
    }
   ],
   "@gemmein/mcp": [
@@ -3093,164 +1047,698 @@
     "detector": "toxic_flow",
     "title": "Toxic flow within 'crawlora-mcp': reads files + modifies a database"
    }
+  ],
+  "@renzo.johnson/firebase-mcp": [
+   {
+    "severity": "high",
+    "detector": "toxic_flow",
+    "title": "Toxic flow within 'renzo_johnson__firebase-mcp': reads credentials or secrets + sends email or messages"
+   }
+  ],
+  "mcp-yandex-wordstat": [
+   {
+    "severity": "medium",
+    "detector": "semantic",
+    "title": "Mixed-script text in tool description: dynamics"
+   },
+   {
+    "severity": "medium",
+    "detector": "semantic",
+    "title": "Mixed-script text in tool description: list_regions"
+   },
+   {
+    "severity": "medium",
+    "detector": "semantic",
+    "title": "Mixed-script text in tool description: raw_request"
+   },
+   {
+    "severity": "medium",
+    "detector": "semantic",
+    "title": "Mixed-script text in tool description: regions"
+   },
+   {
+    "severity": "medium",
+    "detector": "semantic",
+    "title": "Mixed-script text in tool description: top_requests"
+   }
+  ],
+  "@quackai/q402-mcp": [
+   {
+    "severity": "high",
+    "detector": "semantic",
+    "title": "Description reads as instructions to the model (p=1.00): q402_escrow_status"
+   },
+   {
+    "severity": "high",
+    "detector": "semantic",
+    "title": "Description reads as instructions to the model (p=1.00): q402_pay"
+   },
+   {
+    "severity": "high",
+    "detector": "semantic",
+    "title": "Description reads as instructions to the model (p=1.00): q402_x402_fetch"
+   },
+   {
+    "severity": "high",
+    "detector": "toxic_flow",
+    "title": "Toxic flow within 'quackai__q402-mcp': reads credentials or secrets + sends data outbound"
+   },
+   {
+    "severity": "high",
+    "detector": "toxic_flow",
+    "title": "Toxic flow within 'quackai__q402-mcp': reads credentials or secrets + sends email or messages"
+   },
+   {
+    "severity": "high",
+    "detector": "toxic_flow",
+    "title": "Toxic flow within 'quackai__q402-mcp': executes commands + sends data outbound"
+   },
+   {
+    "severity": "medium",
+    "detector": "toxic_flow",
+    "title": "Toxic flow within 'quackai__q402-mcp': executes commands + writes or deletes files"
+   },
+   {
+    "severity": "medium",
+    "detector": "toxic_flow",
+    "title": "Toxic flow within 'quackai__q402-mcp': reads files + sends data outbound"
+   }
+  ],
+  "mcp-server-robinhood-chain": [
+   {
+    "severity": "high",
+    "detector": "semantic",
+    "title": "Description reads as instructions to the model (p=1.00): rhc_equities"
+   },
+   {
+    "severity": "high",
+    "detector": "semantic",
+    "title": "Description reads as instructions to the model (p=1.00): rhc_token_risk"
+   },
+   {
+    "severity": "high",
+    "detector": "toxic_flow",
+    "title": "Toxic flow within 'mcp-server-robinhood-chain': executes commands + sends data outbound"
+   },
+   {
+    "severity": "high",
+    "detector": "toxic_flow",
+    "title": "Toxic flow within 'mcp-server-robinhood-chain': reads credentials or secrets + sends data outbound"
+   },
+   {
+    "severity": "high",
+    "detector": "toxic_flow",
+    "title": "Toxic flow within 'mcp-server-robinhood-chain': reads credentials or secrets + sends email or messages"
+   },
+   {
+    "severity": "medium",
+    "detector": "toxic_flow",
+    "title": "Toxic flow within 'mcp-server-robinhood-chain': reads files + sends data outbound"
+   }
+  ],
+  "@onesi/genesis-mcp": [
+   {
+    "severity": "high",
+    "detector": "semantic",
+    "title": "Description reads as instructions to the model (p=1.00): foundry_aggregateRoutingEvalDispatch"
+   },
+   {
+    "severity": "high",
+    "detector": "toxic_flow",
+    "title": "Toxic flow within 'onesi__genesis-mcp': reads credentials or secrets + sends data outbound"
+   },
+   {
+    "severity": "high",
+    "detector": "toxic_flow",
+    "title": "Toxic flow within 'onesi__genesis-mcp': reads credentials or secrets + sends email or messages"
+   },
+   {
+    "severity": "high",
+    "detector": "toxic_flow",
+    "title": "Toxic flow within 'onesi__genesis-mcp': executes commands + sends data outbound"
+   },
+   {
+    "severity": "high",
+    "detector": "toxic_flow",
+    "title": "Toxic flow within 'onesi__genesis-mcp': reads environment variables + sends data outbound"
+   },
+   {
+    "severity": "medium",
+    "detector": "toxic_flow",
+    "title": "Toxic flow within 'onesi__genesis-mcp': reads files + sends data outbound"
+   },
+   {
+    "severity": "medium",
+    "detector": "toxic_flow",
+    "title": "Toxic flow within 'onesi__genesis-mcp': executes commands + writes or deletes files"
+   },
+   {
+    "severity": "medium",
+    "detector": "toxic_flow",
+    "title": "Toxic flow within 'onesi__genesis-mcp': reads environment variables + sends email or messages"
+   },
+   {
+    "severity": "low",
+    "detector": "toxic_flow",
+    "title": "Toxic flow within 'onesi__genesis-mcp': reads files + modifies a database"
+   }
+  ],
+  "devglow-mcp": [
+   {
+    "severity": "high",
+    "detector": "toxic_flow",
+    "title": "Toxic flow within 'devglow-mcp': reads credentials or secrets + sends email or messages"
+   }
+  ],
+  "omniflow-mcp": [
+   {
+    "severity": "medium",
+    "detector": "semantic",
+    "title": "Mixed-script text in tool description: flow_postprod"
+   },
+   {
+    "severity": "medium",
+    "detector": "semantic",
+    "title": "Mixed-script text in tool description: vids_avatar"
+   }
+  ],
+  "audionaut-mcp": [
+   {
+    "severity": "high",
+    "detector": "semantic",
+    "title": "Description reads as instructions to the model (p=1.00): get_project_info"
+   }
+  ],
+  "easy-email-builder-mcp": [
+   {
+    "severity": "high",
+    "detector": "toxic_flow",
+    "title": "Toxic flow within 'easy-email-builder-mcp': reads credentials or secrets + sends email or messages"
+   }
+  ],
+  "@trishchuk/codex-mcp-tool": [
+   {
+    "severity": "medium",
+    "detector": "toxic_flow",
+    "title": "Toxic flow within 'trishchuk__codex-mcp-tool': executes commands + writes or deletes files"
+   }
+  ],
+  "cosmos-mcp": [
+   {
+    "severity": "high",
+    "detector": "toxic_flow",
+    "title": "Toxic flow within 'cosmos-mcp': reads credentials or secrets + sends data outbound"
+   },
+   {
+    "severity": "high",
+    "detector": "toxic_flow",
+    "title": "Toxic flow within 'cosmos-mcp': reads environment variables + sends data outbound"
+   }
+  ],
+  "@uuaid/mcp": [
+   {
+    "severity": "high",
+    "detector": "toxic_flow",
+    "title": "Toxic flow within 'uuaid__mcp': reads credentials or secrets + sends email or messages"
+   }
+  ],
+  "37soul-mcp": [
+   {
+    "severity": "high",
+    "detector": "semantic",
+    "title": "Description reads as instructions to the model (p=1.00): log_turn"
+   }
+  ],
+  "@theyahia/mindbox-mcp": [
+   {
+    "severity": "medium",
+    "detector": "semantic",
+    "title": "Mixed-script text in tool description: create_order"
+   },
+   {
+    "severity": "medium",
+    "detector": "semantic",
+    "title": "Mixed-script text in tool description: get_customer"
+   },
+   {
+    "severity": "medium",
+    "detector": "semantic",
+    "title": "Mixed-script text in tool description: get_product_list"
+   },
+   {
+    "severity": "medium",
+    "detector": "semantic",
+    "title": "Mixed-script text in tool description: get_segments"
+   },
+   {
+    "severity": "medium",
+    "detector": "semantic",
+    "title": "Mixed-script text in tool description: run_operation"
+   },
+   {
+    "severity": "medium",
+    "detector": "semantic",
+    "title": "Mixed-script text in tool description: update_customer"
+   }
+  ],
+  "n2c-mcp": [
+   {
+    "severity": "high",
+    "detector": "semantic",
+    "title": "Description reads as instructions to the model (p=1.00): deploy_workflow"
+   },
+   {
+    "severity": "high",
+    "detector": "semantic",
+    "title": "Description reads as instructions to the model (p=0.96): file-processing"
+   },
+   {
+    "severity": "high",
+    "detector": "toxic_flow",
+    "title": "Toxic flow within 'n2c-mcp': reads credentials or secrets + sends data outbound"
+   },
+   {
+    "severity": "high",
+    "detector": "toxic_flow",
+    "title": "Toxic flow within 'n2c-mcp': reads credentials or secrets + sends email or messages"
+   },
+   {
+    "severity": "high",
+    "detector": "toxic_flow",
+    "title": "Toxic flow within 'n2c-mcp': executes commands + sends data outbound"
+   },
+   {
+    "severity": "medium",
+    "detector": "toxic_flow",
+    "title": "Toxic flow within 'n2c-mcp': reads files + sends data outbound"
+   }
+  ],
+  "@pagai/mcp": [
+   {
+    "severity": "high",
+    "detector": "semantic",
+    "title": "Description reads as instructions to the model (p=1.00): update_client"
+   }
+  ],
+  "blixtworks-mcp": [
+   {
+    "severity": "high",
+    "detector": "semantic",
+    "title": "Description reads as instructions to the model (p=1.00): email_validate"
+   },
+   {
+    "severity": "high",
+    "detector": "semantic",
+    "title": "Description reads as instructions to the model (p=1.00): http_headers"
+   },
+   {
+    "severity": "high",
+    "detector": "semantic",
+    "title": "Description reads as instructions to the model (p=1.00): image_crop"
+   },
+   {
+    "severity": "high",
+    "detector": "semantic",
+    "title": "Description reads as instructions to the model (p=1.00): image_info"
+   },
+   {
+    "severity": "high",
+    "detector": "semantic",
+    "title": "Description reads as instructions to the model (p=1.00): image_palette"
+   },
+   {
+    "severity": "high",
+    "detector": "semantic",
+    "title": "Description reads as instructions to the model (p=1.00): image_resize"
+   },
+   {
+    "severity": "high",
+    "detector": "semantic",
+    "title": "Description reads as instructions to the model (p=1.00): metadata"
+   },
+   {
+    "severity": "high",
+    "detector": "semantic",
+    "title": "Description reads as instructions to the model (p=1.00): robots_check"
+   },
+   {
+    "severity": "high",
+    "detector": "semantic",
+    "title": "Description reads as instructions to the model (p=1.00): rss_parse"
+   },
+   {
+    "severity": "high",
+    "detector": "semantic",
+    "title": "Description reads as instructions to the model (p=1.00): sitemap_parse"
+   },
+   {
+    "severity": "high",
+    "detector": "semantic",
+    "title": "Description reads as instructions to the model (p=1.00): url_expand"
+   }
+  ],
+  "makehybrid-mcp": [
+   {
+    "severity": "high",
+    "detector": "semantic",
+    "title": "Description reads as instructions to the model (p=1.00): complete_rooms_work_ready"
+   },
+   {
+    "severity": "high",
+    "detector": "toxic_flow",
+    "title": "Toxic flow within 'makehybrid-mcp': reads credentials or secrets + sends data outbound"
+   },
+   {
+    "severity": "high",
+    "detector": "toxic_flow",
+    "title": "Toxic flow within 'makehybrid-mcp': reads credentials or secrets + sends email or messages"
+   },
+   {
+    "severity": "high",
+    "detector": "toxic_flow",
+    "title": "Toxic flow within 'makehybrid-mcp': executes commands + sends data outbound"
+   },
+   {
+    "severity": "medium",
+    "detector": "toxic_flow",
+    "title": "Toxic flow within 'makehybrid-mcp': reads files + sends data outbound"
+   }
+  ],
+  "mcp-google-docs": [
+   {
+    "severity": "low",
+    "detector": "toxic_flow",
+    "title": "Toxic flow within 'mcp-google-docs': reads files + modifies a database"
+   }
+  ],
+  "toolrouter-mcp": [
+   {
+    "severity": "high",
+    "detector": "semantic",
+    "title": "Description reads as instructions to the model (p=1.00): discover"
+   },
+   {
+    "severity": "high",
+    "detector": "toxic_flow",
+    "title": "Toxic flow within 'toolrouter-mcp': reads credentials or secrets + sends email or messages"
+   },
+   {
+    "severity": "medium",
+    "detector": "toxic_flow",
+    "title": "Toxic flow within 'toolrouter-mcp': executes commands + writes or deletes files"
+   }
+  ],
+  "namesniper-mcp": [
+   {
+    "severity": "high",
+    "detector": "toxic_flow",
+    "title": "Toxic flow within 'namesniper-mcp': reads credentials or secrets + sends email or messages"
+   }
+  ],
+  "technical-seo-mcp": [
+   {
+    "severity": "high",
+    "detector": "semantic",
+    "title": "Description reads as instructions to the model (p=1.00): check_structured_data"
+   }
+  ],
+  "wolt-mcp": [
+   {
+    "severity": "high",
+    "detector": "semantic",
+    "title": "Description reads as instructions to the model (p=0.87): use_saved_address"
+   }
+  ],
+  "@cognitiondesk/mcp": [
+   {
+    "severity": "high",
+    "detector": "semantic",
+    "title": "Description reads as instructions to the model (p=0.98): create_skill"
+   },
+   {
+    "severity": "high",
+    "detector": "semantic",
+    "title": "Description reads as instructions to the model (p=1.00): ingest_knowledge_github"
+   },
+   {
+    "severity": "high",
+    "detector": "semantic",
+    "title": "Description reads as instructions to the model (p=0.98): list_assistant_versions"
+   },
+   {
+    "severity": "high",
+    "detector": "semantic",
+    "title": "Description reads as instructions to the model (p=0.99): manage_loops"
+   },
+   {
+    "severity": "high",
+    "detector": "semantic",
+    "title": "Description reads as instructions to the model (p=0.98): resolve_skills"
+   },
+   {
+    "severity": "high",
+    "detector": "semantic",
+    "title": "Description reads as instructions to the model (p=1.00): update_workflow"
+   },
+   {
+    "severity": "high",
+    "detector": "toxic_flow",
+    "title": "Toxic flow within 'cognitiondesk__mcp': reads credentials or secrets + sends data outbound"
+   },
+   {
+    "severity": "high",
+    "detector": "toxic_flow",
+    "title": "Toxic flow within 'cognitiondesk__mcp': reads credentials or secrets + sends email or messages"
+   },
+   {
+    "severity": "high",
+    "detector": "toxic_flow",
+    "title": "Toxic flow within 'cognitiondesk__mcp': executes commands + sends data outbound"
+   },
+   {
+    "severity": "high",
+    "detector": "toxic_flow",
+    "title": "Toxic flow within 'cognitiondesk__mcp': reads environment variables + sends data outbound"
+   },
+   {
+    "severity": "medium",
+    "detector": "toxic_flow",
+    "title": "Toxic flow within 'cognitiondesk__mcp': reads files + sends data outbound"
+   },
+   {
+    "severity": "medium",
+    "detector": "toxic_flow",
+    "title": "Toxic flow within 'cognitiondesk__mcp': executes commands + writes or deletes files"
+   },
+   {
+    "severity": "medium",
+    "detector": "toxic_flow",
+    "title": "Toxic flow within 'cognitiondesk__mcp': reads environment variables + sends email or messages"
+   }
+  ],
+  "@qaeverestsupport.ai/qaeverest-mcp": [
+   {
+    "severity": "high",
+    "detector": "toxic_flow",
+    "title": "Toxic flow within 'qaeverestsupport_ai__qaeverest-mcp': reads credentials or secrets + sends data outbound"
+   },
+   {
+    "severity": "high",
+    "detector": "toxic_flow",
+    "title": "Toxic flow within 'qaeverestsupport_ai__qaeverest-mcp': reads credentials or secrets + sends email or messages"
+   },
+   {
+    "severity": "high",
+    "detector": "toxic_flow",
+    "title": "Toxic flow within 'qaeverestsupport_ai__qaeverest-mcp': executes commands + sends data outbound"
+   },
+   {
+    "severity": "medium",
+    "detector": "toxic_flow",
+    "title": "Toxic flow within 'qaeverestsupport_ai__qaeverest-mcp': reads files + sends data outbound"
+   }
+  ],
+  "@sloflash/ml-training-mcp": [
+   {
+    "severity": "medium",
+    "detector": "toxic_flow",
+    "title": "Toxic flow within 'sloflash__ml-training-mcp': executes commands + writes or deletes files"
+   }
+  ],
+  "filament-mcp": [
+   {
+    "severity": "high",
+    "detector": "semantic",
+    "title": "Description reads as instructions to the model (p=1.00): read_filament_docs"
+   }
+  ],
+  "mcp-interaction-studio": [
+   {
+    "severity": "high",
+    "detector": "toxic_flow",
+    "title": "Toxic flow within 'mcp-interaction-studio': reads credentials or secrets + sends email or messages"
+   },
+   {
+    "severity": "medium",
+    "detector": "toxic_flow",
+    "title": "Toxic flow within 'mcp-interaction-studio': executes commands + writes or deletes files"
+   }
+  ],
+  "@iflow-mcp/super-win-cli-mcp-server": [
+   {
+    "severity": "high",
+    "detector": "semantic",
+    "title": "Description reads as instructions to the model (p=1.00): execute_command"
+   },
+   {
+    "severity": "high",
+    "detector": "semantic",
+    "title": "Description reads as instructions to the model (p=1.00): get_command_history"
+   },
+   {
+    "severity": "high",
+    "detector": "semantic",
+    "title": "Description reads as instructions to the model (p=0.99): ssh_disconnect"
+   },
+   {
+    "severity": "high",
+    "detector": "semantic",
+    "title": "Description reads as instructions to the model (p=1.00): ssh_execute"
+   }
   ]
  },
  "silent_servers": [
   {
    "package": "agent-device",
-   "reason": "agent-device: the server exited with status 1 before answering initialize"
+   "reason": "agent-device: no tool definitions available (run 'capture' or pass --probe to query the server)"
   },
   {
    "package": "rea-agents",
-   "reason": "rea-agents: no response to initialize within 40s"
+   "reason": "rea-agents: no tool definitions available (run 'capture' or pass --probe to query the server)"
   },
   {
    "package": "@zereight/mcp-gitlab",
-   "reason": "zereight__mcp-gitlab: the server exited with status 1 before answering initialize; stderr: \u001b[31mERROR\u001b[39m [12:35:35.690] (3398): \u001b[36mGITLAB_PERSONAL_ACCESS_TO"
+   "reason": "zereight__mcp-gitlab: no tool definitions available (run 'capture' or pass --probe to query the server)"
   },
   {
    "package": "@currents/mcp",
-   "reason": "currents__mcp: the server exited with status 1 before answering initialize; stderr: [12:35:33.090] \u001b[31mERROR\u001b[39m (3371): \u001b[36mCURRENTS_API_KEY is not set. Add"
+   "reason": "currents__mcp: no tool definitions available (run 'capture' or pass --probe to query the server)"
   },
   {
    "package": "kordoc",
-   "reason": "kordoc: the server exited with status 1 before answering initialize; stderr: error: missing required argument 'files'"
+   "reason": "kordoc: no tool definitions available (run 'capture' or pass --probe to query the server)"
   },
   {
    "package": "@serdnaley/metabase-mcp",
-   "reason": "serdnaley__metabase-mcp: the server exited with status 1 before answering initialize; stderr: Configuration error: Invalid input: expected string, received unde"
+   "reason": "serdnaley__metabase-mcp: no tool definitions available (run 'capture' or pass --probe to query the server)"
   },
   {
    "package": "@benborla29/mcp-server-mysql",
-   "reason": "benborla29__mcp-server-mysql: the server exited with status 1 before answering tools/list; stderr: npm warn deprecated node-domexception@1.0.0: Use your platfor"
-  },
-  {
-   "package": "12306-mcp",
-   "reason": "12306-mcp: no response to initialize within 40s"
+   "reason": "benborla29__mcp-server-mysql: no tool definitions available (run 'capture' or pass --probe to query the server)"
   },
   {
    "package": "@hypequery/mcp",
-   "reason": "hypequery__mcp: the server exited with status 1 before answering initialize; stderr: Error: --config flag is required | Usage: hypequery-mcp --config ./mcp-conf"
+   "reason": "hypequery__mcp: no tool definitions available (run 'capture' or pass --probe to query the server)"
   },
   {
    "package": "@ironbee-ai/devtools",
-   "reason": "ironbee-ai__devtools: no response to initialize within 40s; stderr: npm warn deprecated prebuild-install@7.1.3: No longer maintained. Please contact the author "
+   "reason": "ironbee-ai__devtools: no tool definitions available (run 'capture' or pass --probe to query the server)"
   },
   {
    "package": "shinjuku-shield",
-   "reason": "shinjuku-shield: the server exited with status 0 before answering initialize"
+   "reason": "shinjuku-shield: no tool definitions available (run 'capture' or pass --probe to query the server)"
   },
   {
    "package": "dsh-computer-use-win",
-   "reason": "dsh-computer-use-win: the server exited with status 1 before answering initialize; stderr: npm error code EBADPLATFORM | npm error notsup Unsupported platform f"
-  },
-  {
-   "package": "comfyui-mcp",
-   "reason": "comfyui-mcp: no response to initialize within 40s"
+   "reason": "dsh-computer-use-win: no tool definitions available (run 'capture' or pass --probe to query the server)"
   },
   {
    "package": "ffmpeg-skill",
-   "reason": "ffmpeg-skill: the server exited with status 0 before answering initialize; stderr:   warning: ffmpeg was not found on PATH. The skill needs FFmpeg to run: |    "
+   "reason": "ffmpeg-skill: no tool definitions available (run 'capture' or pass --probe to query the server)"
   },
   {
    "package": "@microsoft/workiq",
-   "reason": "microsoft__workiq: the server exited with status 1 before answering initialize; stderr: Required command was not provided."
+   "reason": "microsoft__workiq: no tool definitions available (run 'capture' or pass --probe to query the server)"
   },
   {
    "package": "@claude-flow/mcp",
-   "reason": "claude-flow__mcp: the server exited with status 1 before answering initialize; stderr: npm error could not determine executable to run | npm error A complete lo"
+   "reason": "claude-flow__mcp: no tool definitions available (run 'capture' or pass --probe to query the server)"
   },
   {
    "package": "@hui-xu-ai/dsh-wensu",
-   "reason": "hui-xu-ai__dsh-wensu: the server exited with status 1 before answering initialize; stderr: npm error could not determine executable to run | npm error A complet"
+   "reason": "hui-xu-ai__dsh-wensu: no tool definitions available (run 'capture' or pass --probe to query the server)"
   },
   {
    "package": "@agimon-ai/po-style-system-tooling",
-   "reason": "agimon-ai__po-style-system-tooling: the server exited with status 1 before answering initialize; stderr:                                     configuration. Retu"
+   "reason": "agimon-ai__po-style-system-tooling: no tool definitions available (run 'capture' or pass --probe to query the server)"
   },
   {
    "package": "apple-notes-mcp",
-   "reason": "apple-notes-mcp: the server exited with status 1 before answering initialize; stderr: npm error code EBADPLATFORM | npm error notsup Unsupported platform for ap"
+   "reason": "apple-notes-mcp: no tool definitions available (run 'capture' or pass --probe to query the server)"
   },
   {
    "package": "@flyle/ai-operator-mcp",
-   "reason": "flyle__ai-operator-mcp: the server exited with status 1 before answering initialize; stderr: この作業ディレクトリはまだログインしていません。このディレクトリで `npx @flyle/ai-operator-mcp@lates"
+   "reason": "flyle__ai-operator-mcp: no tool definitions available (run 'capture' or pass --probe to query the server)"
   },
   {
    "package": "alterlab-mcp-server",
-   "reason": "alterlab-mcp-server: the server exited with status 1 before answering initialize; stderr:   Error: No API key found for AlterLab MCP Server. |   Add your API ke"
+   "reason": "alterlab-mcp-server: no tool definitions available (run 'capture' or pass --probe to query the server)"
   },
   {
    "package": "@postman/postman-mcp-server",
-   "reason": "postman__postman-mcp-server: the server exited with status 1 before answering initialize; stderr: npm warn deprecated har-validator@5.1.5: this library is no lo"
+   "reason": "postman__postman-mcp-server: no tool definitions available (run 'capture' or pass --probe to query the server)"
   },
   {
    "package": "@procedures/mcp-server",
-   "reason": "procedures__mcp-server: the server exited with status 1 before answering initialize; stderr: npm error could not determine executable to run | npm error A compl"
-  },
-  {
-   "package": "mcp-local-rag",
-   "reason": "mcp-local-rag: no response to initialize within 40s; stderr: npm warn deprecated node-domexception@1.0.0: Use your platform's native DOMException instead"
+   "reason": "procedures__mcp-server: no tool definitions available (run 'capture' or pass --probe to query the server)"
   },
   {
    "package": "@lark-apaas/nestjs-mcp",
-   "reason": "lark-apaas__nestjs-mcp: the server exited with status 1 before answering initialize; stderr: npm error could not determine executable to run | npm error A compl"
+   "reason": "lark-apaas__nestjs-mcp: no tool definitions available (run 'capture' or pass --probe to query the server)"
   },
   {
    "package": "gdharness",
-   "reason": ""
+   "reason": "gdharness: no tool definitions available (run 'capture' or pass --probe to query the server)"
   },
   {
    "package": "seo",
-   "reason": "seo: the server exited with status 0 before answering initialize"
-  },
-  {
-   "package": "brightspace-mcp-server",
-   "reason": "brightspace-mcp-server: no response to initialize within 40s"
-  },
-  {
-   "package": "trace-mcp",
-   "reason": "trace-mcp: no response to initialize within 40s"
+   "reason": "seo: no tool definitions available (run 'capture' or pass --probe to query the server)"
   },
   {
    "package": "@abyssinia-labs/sokie",
-   "reason": "abyssinia-labs__sokie: the server exited with status 2 before answering initialize"
+   "reason": "abyssinia-labs__sokie: no tool definitions available (run 'capture' or pass --probe to query the server)"
   },
   {
    "package": "nowaikit",
-   "reason": "nowaikit: the server exited with status 1 before answering initialize; stderr: [ERROR] No ServiceNow instance configured. Set SERVICENOW_INSTANCE_URL or SN_INST"
+   "reason": "nowaikit: no tool definitions available (run 'capture' or pass --probe to query the server)"
   },
   {
    "package": "@kud/mcp-jenkins",
-   "reason": "kud__mcp-jenkins: the server exited with status 1 before answering initialize; stderr: {\"level\":\"error\",\"msg\":\"Failed to initialize Jenkins clients\",\"time\":\"202"
+   "reason": "kud__mcp-jenkins: no tool definitions available (run 'capture' or pass --probe to query the server)"
   },
   {
    "package": "@roychri/mcp-server-asana",
-   "reason": "roychri__mcp-server-asana: the server exited with status 1 before answering initialize; stderr: npm warn deprecated inflight@1.0.6: This module is not supported"
+   "reason": "roychri__mcp-server-asana: no tool definitions available (run 'capture' or pass --probe to query the server)"
   },
   {
    "package": "@mcp-z/server",
-   "reason": "mcp-z__server: the server exited with status 1 before answering initialize; stderr: npm error could not determine executable to run | npm error A complete log o"
-  },
-  {
-   "package": "@hisma/server-puppeteer",
-   "reason": "hisma__server-puppeteer: no response to initialize within 40s"
+   "reason": "mcp-z__server: no tool definitions available (run 'capture' or pass --probe to query the server)"
   },
   {
    "package": "@onelogin/onelogin-mcp",
-   "reason": "onelogin__onelogin-mcp: the server exited with status 127 before answering initialize; stderr: env: 'bun': No such file or directory | env: use -[v]S to pass op"
+   "reason": "onelogin__onelogin-mcp: no tool definitions available (run 'capture' or pass --probe to query the server)"
   },
   {
    "package": "@structured-world/gitlab-mcp",
-   "reason": ""
+   "reason": "structured-world__gitlab-mcp: no tool definitions available (run 'capture' or pass --probe to query the server)"
   },
   {
    "package": "donsetch",
-   "reason": "donsetch: the server exited with status 0 before answering initialize"
+   "reason": "donsetch: no tool definitions available (run 'capture' or pass --probe to query the server)"
   },
   {
    "package": "@haven_ai/mcp",
-   "reason": "haven_ai__mcp: no response to initialize within 40s"
+   "reason": "haven_ai__mcp: no tool definitions available (run 'capture' or pass --probe to query the server)"
   },
   {
    "package": "react-native-ai-devtools",
@@ -3258,27 +1746,27 @@
   },
   {
    "package": "@raytio/mcp-server",
-   "reason": "raytio__mcp-server: the server exited with status 1 before answering initialize; stderr: file:///home/runner/.npm/_npx/97a3d02f9f1b4b59/node_modules/@raytio/mcp"
+   "reason": "raytio__mcp-server: no tool definitions available (run 'capture' or pass --probe to query the server)"
   },
   {
    "package": "@maroonedsoftware/mcp",
-   "reason": "maroonedsoftware__mcp: the server exited with status 1 before answering initialize; stderr: npm error could not determine executable to run | npm error A comple"
+   "reason": "maroonedsoftware__mcp: no tool definitions available (run 'capture' or pass --probe to query the server)"
   },
   {
    "package": "agentic-payments",
-   "reason": "agentic-payments: the server exited with status 1 before answering initialize; stderr:   $ agentic-payments active-mandate verify --file signed.json |   # Verif"
+   "reason": "agentic-payments: no tool definitions available (run 'capture' or pass --probe to query the server)"
   },
   {
    "package": "yazio-mcp",
-   "reason": "yazio-mcp: the server exited with status 1 before answering initialize; stderr: ❌ YAZIO_USERNAME and YAZIO_PASSWORD environment variables are required | 💡 Pleas"
+   "reason": "yazio-mcp: no tool definitions available (run 'capture' or pass --probe to query the server)"
   },
   {
    "package": "@mcp-z/mcp-gmail",
-   "reason": "mcp-z__mcp-gmail: the server exited with status 255 before answering initialize; stderr: npm warn deprecated node-domexception@1.0.0: Use your platform's native"
+   "reason": "mcp-z__mcp-gmail: no tool definitions available (run 'capture' or pass --probe to query the server)"
   },
   {
    "package": "@opencx/mcp",
-   "reason": "opencx__mcp: the server exited with status 1 before answering initialize; stderr: Get your API key from the OpenCX dashboard: |   Settings → API Keys → Create A"
+   "reason": "opencx__mcp: no tool definitions available (run 'capture' or pass --probe to query the server)"
   },
   {
    "package": "backlens",
@@ -3286,35 +1774,35 @@
   },
   {
    "package": "@respira/wordpress-mcp-server",
-   "reason": "respira__wordpress-mcp-server: the server exited with status 1 before answering initialize; stderr: No configuration file found. Creating default configuration."
+   "reason": "respira__wordpress-mcp-server: no tool definitions available (run 'capture' or pass --probe to query the server)"
   },
   {
    "package": "summer-engine",
-   "reason": "summer-engine: the server exited with status 0 before answering initialize"
+   "reason": "summer-engine: no tool definitions available (run 'capture' or pass --probe to query the server)"
   },
   {
    "package": "@jrmc/adonis-mcp",
-   "reason": "jrmc__adonis-mcp: the server exited with status 1 before answering initialize; stderr: npm error could not determine executable to run | npm error A complete lo"
+   "reason": "jrmc__adonis-mcp: no tool definitions available (run 'capture' or pass --probe to query the server)"
   },
   {
    "package": "agentic-text",
-   "reason": "agentic-text: the server exited with status 0 before answering initialize"
+   "reason": "agentic-text: no tool definitions available (run 'capture' or pass --probe to query the server)"
   },
   {
    "package": "@cmssy/mcp-server",
-   "reason": "cmssy__mcp-server: the server exited with status 1 before answering initialize; stderr: Error: API token required. Use --token <cs_xxx> or set CMSSY_API_TOKEN e"
+   "reason": "cmssy__mcp-server: no tool definitions available (run 'capture' or pass --probe to query the server)"
   },
   {
    "package": "@arvoretech/posthog-mcp",
-   "reason": "arvoretech__posthog-mcp: the server exited with status 1 before answering initialize; stderr: POSTHOG_BASE_URL and POSTHOG_API_KEY environment variables are req"
+   "reason": "arvoretech__posthog-mcp: no tool definitions available (run 'capture' or pass --probe to query the server)"
   },
   {
    "package": "@infisical/mcp",
-   "reason": "infisical__mcp: the server exited with status 1 before answering initialize; stderr:   } | ] |     at getEnvironmentVariables (/home/runner/.npm/_npx/30b7f33779"
+   "reason": "infisical__mcp: no tool definitions available (run 'capture' or pass --probe to query the server)"
   },
   {
    "package": "mcp-solarwinds",
-   "reason": "mcp-solarwinds: the server exited with status 1 before answering initialize; stderr: Starting SolarWinds Observability MCP server... | Error starting SolarWinds"
+   "reason": "mcp-solarwinds: no tool definitions available (run 'capture' or pass --probe to query the server)"
   },
   {
    "package": "react-native-ai-debugger",
@@ -3322,47 +1810,47 @@
   },
   {
    "package": "@microsoft/dataverse",
-   "reason": "microsoft__dataverse: the server exited with status 1 before answering initialize; stderr:   --context <value>    Operation context appended to User-Agent (or s"
+   "reason": "microsoft__dataverse: no tool definitions available (run 'capture' or pass --probe to query the server)"
   },
   {
    "package": "@norbix.ai/mcp",
-   "reason": "norbix_ai__mcp: the server exited with status 1 before answering initialize; stderr: norbix-mcp: fatal — Missing required environment variable(s): NORBIX_API_KE"
+   "reason": "norbix_ai__mcp: no tool definitions available (run 'capture' or pass --probe to query the server)"
   },
   {
    "package": "@scm-js/cli",
-   "reason": "scm-js__cli: the server exited with status 0 before answering initialize"
+   "reason": "scm-js__cli: no tool definitions available (run 'capture' or pass --probe to query the server)"
   },
   {
    "package": "@fangjunjie/ssh-mcp-server",
-   "reason": "fangjunjie__ssh-mcp-server: the server exited with status 1 before answering initialize; stderr: [2026-11-14T12:39:33.182Z] [ERROR] 【SSH MCP Server Error】: Miss"
+   "reason": "fangjunjie__ssh-mcp-server: no tool definitions available (run 'capture' or pass --probe to query the server)"
   },
   {
    "package": "@ngrislain/ergo-mcp",
-   "reason": "ngrislain__ergo-mcp: the server exited with status 1 before answering initialize; stderr: /usr/bin/xdg-open: 1032: www-browser: not found | /usr/bin/xdg-open: 1"
+   "reason": "ngrislain__ergo-mcp: no tool definitions available (run 'capture' or pass --probe to query the server)"
   },
   {
    "package": "datadog-mcp-server",
-   "reason": "datadog-mcp-server: no response to initialize within 40s"
+   "reason": "datadog-mcp-server: no tool definitions available (run 'capture' or pass --probe to query the server)"
   },
   {
    "package": "@nxuss/lemma",
-   "reason": "nxuss__lemma: no response to initialize within 40s; stderr: npm warn deprecated prebuild-install@7.1.3: No longer maintained. Please contact the author of the r"
+   "reason": "nxuss__lemma: no tool definitions available (run 'capture' or pass --probe to query the server)"
   },
   {
    "package": "mcp-mongo-server",
-   "reason": "mcp-mongo-server: the server exited with status 1 before answering initialize; stderr: Failed to start MongoDB MCP server: Error: A default MongoDB connection i"
+   "reason": "mcp-mongo-server: no tool definitions available (run 'capture' or pass --probe to query the server)"
   },
   {
    "package": "kicad-mcp-pro",
-   "reason": "kicad-mcp-pro: the server exited with status 127 before answering initialize; stderr: uvx was not found on PATH. | Install uv from https://docs.astral.sh/uv/get"
+   "reason": "kicad-mcp-pro: no tool definitions available (run 'capture' or pass --probe to query the server)"
   },
   {
    "package": "@stratusagent/plugin-mcp",
-   "reason": "stratusagent__plugin-mcp: the server exited with status 1 before answering initialize; stderr: npm error could not determine executable to run | npm error A com"
+   "reason": "stratusagent__plugin-mcp: no tool definitions available (run 'capture' or pass --probe to query the server)"
   },
   {
    "package": "@davidfuchs/mcp-uptime-kuma",
-   "reason": "davidfuchs__mcp-uptime-kuma: the server exited with status 1 before answering initialize; stderr: Error: UPTIME_KUMA_URL environment variable is required"
+   "reason": "davidfuchs__mcp-uptime-kuma: no tool definitions available (run 'capture' or pass --probe to query the server)"
   },
   {
    "package": "european-parliament-mcp-server",
@@ -3370,19 +1858,19 @@
   },
   {
    "package": "@iwe-org/iwe",
-   "reason": "iwe-org__iwe: the server exited with status 2 before answering initialize; stderr:   extract      Extract a section to a new document with an inclusion link |  "
+   "reason": "iwe-org__iwe: no tool definitions available (run 'capture' or pass --probe to query the server)"
   },
   {
    "package": "fritzkit",
-   "reason": "fritzkit: the server exited with status 1 before answering initialize"
+   "reason": "fritzkit: no tool definitions available (run 'capture' or pass --probe to query the server)"
   },
   {
    "package": "electron-mcp-server",
-   "reason": "electron-mcp-server: the server exited with status 2 before answering initialize; stderr: npm warn deprecated boolean@3.2.0: Package no longer supported. Contac"
+   "reason": "electron-mcp-server: no tool definitions available (run 'capture' or pass --probe to query the server)"
   },
   {
    "package": "@salesforce/pwa-kit-mcp",
-   "reason": "salesforce__pwa-kit-mcp: the server exited with status 1 before answering initialize; stderr: Error: Tool pwakit_create_storefront expected a Zod schema or Tool"
+   "reason": "salesforce__pwa-kit-mcp: no tool definitions available (run 'capture' or pass --probe to query the server)"
   },
   {
    "package": "@icoretech/warden-mcp",
@@ -3394,163 +1882,159 @@
   },
   {
    "package": "weflow-cli",
-   "reason": "weflow-cli: no response to initialize within 40s; stderr: npm warn deprecated inflight@1.0.6: This module is not supported, and leaks memory. Do not use it. Che"
+   "reason": "weflow-cli: no tool definitions available (run 'capture' or pass --probe to query the server)"
   },
   {
    "package": "groovehq-mcp",
-   "reason": "groovehq-mcp: the server exited with status 1 before answering initialize; stderr: Error: GROOVE_API_TOKEN environment variable is required"
+   "reason": "groovehq-mcp: no tool definitions available (run 'capture' or pass --probe to query the server)"
   },
   {
    "package": "zw3d-mcp",
-   "reason": "zw3d-mcp: the server exited with status 1 before answering initialize; stderr: npm error code EBADPLATFORM | npm error notsup Unsupported platform for zw3d-mcp@"
+   "reason": "zw3d-mcp: no tool definitions available (run 'capture' or pass --probe to query the server)"
   },
   {
    "package": "music-metadata-mcp",
-   "reason": "music-metadata-mcp: the server exited with status 1 before answering initialize; stderr: [music-metadata-mcp] Error: no API key set. | Pass --api-key=fb_live_.."
+   "reason": "music-metadata-mcp: no tool definitions available (run 'capture' or pass --probe to query the server)"
   },
   {
    "package": "@securecode-ai/mcp",
-   "reason": "securecode-ai__mcp: the server exited with status 0 before answering initialize"
+   "reason": "securecode-ai__mcp: no tool definitions available (run 'capture' or pass --probe to query the server)"
   },
   {
    "package": "@noesis-brain/mcp-server",
-   "reason": "noesis-brain__mcp-server: the server exited with status 1 before answering initialize; stderr: ╟──────────────────────────────────────────────────────────────╢ "
+   "reason": "noesis-brain__mcp-server: no tool definitions available (run 'capture' or pass --probe to query the server)"
   },
   {
    "package": "@terreno/mcp",
-   "reason": "terreno__mcp: the server exited with status 1 before answering initialize; stderr: npm error could not determine executable to run | npm error A complete log of"
+   "reason": "terreno__mcp: no tool definitions available (run 'capture' or pass --probe to query the server)"
   },
   {
    "package": "@maiaos/cli",
-   "reason": "maiaos__cli: the server exited with status 1 before answering initialize; stderr: npm error code ETARGET | npm error notarget No matching version found for @mai"
+   "reason": "maiaos__cli: no tool definitions available (run 'capture' or pass --probe to query the server)"
   },
   {
    "package": "agentdocs-mcp",
-   "reason": "agentdocs-mcp: the server exited with status 1 before answering initialize; stderr: agentdocs-mcp: no API token found. | Provide one via either: |   - the AGENT"
+   "reason": "agentdocs-mcp: no tool definitions available (run 'capture' or pass --probe to query the server)"
   },
   {
    "package": "dsh-artcraft-plugin-deckcraft",
-   "reason": "dsh-artcraft-plugin-deckcraft: the server exited with status 1 before answering initialize; stderr: npm error could not determine executable to run | npm error "
+   "reason": "dsh-artcraft-plugin-deckcraft: no tool definitions available (run 'capture' or pass --probe to query the server)"
   },
   {
    "package": "@bevel-software/hexis-mcp",
-   "reason": "bevel-software__hexis-mcp: the server exited with status 1 before answering initialize; stderr: Missing the workspace URL. Pass --url https://your-workspace.exa"
+   "reason": "bevel-software__hexis-mcp: no tool definitions available (run 'capture' or pass --probe to query the server)"
   },
   {
    "package": "dsh-artcraft-plugin-designcraft",
-   "reason": "dsh-artcraft-plugin-designcraft: the server exited with status 1 before answering initialize; stderr: npm error could not determine executable to run | npm erro"
+   "reason": "dsh-artcraft-plugin-designcraft: no tool definitions available (run 'capture' or pass --probe to query the server)"
   },
   {
    "package": "@kevinwatt/yt-dlp-mcp",
-   "reason": "kevinwatt__yt-dlp-mcp: the server exited with status 1 before answering initialize; stderr: Initialization failed: Error: Downloads directory does not exist: /h"
+   "reason": "kevinwatt__yt-dlp-mcp: no tool definitions available (run 'capture' or pass --probe to query the server)"
   },
   {
    "package": "@absmartly/mcp",
-   "reason": "absmartly__mcp: the server exited with status 1 before answering initialize; stderr: npm warn deprecated prebuild-install@7.1.3: No longer maintained. Please co"
+   "reason": "absmartly__mcp: no tool definitions available (run 'capture' or pass --probe to query the server)"
   },
   {
    "package": "@homie-rocks/studio",
-   "reason": "homie-rocks__studio: no response to initialize within 40s; stderr: npm warn deprecated axios-retry@4.5.0: axios-retry is no longer maintained. See https://githu"
+   "reason": "homie-rocks__studio: no tool definitions available (run 'capture' or pass --probe to query the server)"
   },
   {
    "package": "opsgenie-mcp-server",
-   "reason": "opsgenie-mcp-server: the server exited with status 1 before answering initialize; stderr: Error: Opsgenie API key is required for stdio transport. | Provide it "
+   "reason": "opsgenie-mcp-server: no tool definitions available (run 'capture' or pass --probe to query the server)"
   },
   {
    "package": "@annseraf/mcp-mail",
-   "reason": "annseraf__mcp-mail: the server exited with status 1 before answering initialize; stderr: Fatal startup error: Error: Missing required environment variable: AUTH"
+   "reason": "annseraf__mcp-mail: no tool definitions available (run 'capture' or pass --probe to query the server)"
   },
   {
    "package": "@applyra/mcp-server",
-   "reason": "applyra__mcp-server: the server exited with status 1 before answering initialize; stderr: Error: APPLYRA_API_KEY environment variable is required. | Get your AP"
+   "reason": "applyra__mcp-server: no tool definitions available (run 'capture' or pass --probe to query the server)"
   },
   {
    "package": "microsoft365-mcp-server",
-   "reason": "microsoft365-mcp-server: the server exited with status 1 before answering initialize; stderr: npm warn deprecated inflight@1.0.6: This module is not supported, "
+   "reason": "microsoft365-mcp-server: no tool definitions available (run 'capture' or pass --probe to query the server)"
   },
   {
    "package": "@xuandev/atlassian-mcp",
-   "reason": "xuandev__atlassian-mcp: the server exited with status 1 before answering initialize; stderr:               ^ | Error: Missing required configuration: domain, em"
+   "reason": "xuandev__atlassian-mcp: no tool definitions available (run 'capture' or pass --probe to query the server)"
   },
   {
    "package": "@skeletiq/mcp",
-   "reason": "skeletiq__mcp: the server exited with status 1 before answering initialize; stderr: SKELETIQ_API_KEY is not set. Create a token in SkeletIQ under Settings → Age"
+   "reason": "skeletiq__mcp: no tool definitions available (run 'capture' or pass --probe to query the server)"
   },
   {
    "package": "@commercetools/commerce-mcp",
-   "reason": "commercetools__commerce-mcp: no response to initialize within 40s; stderr: npm warn deprecated boolean@3.2.0: Package no longer supported. Contact Support at ht"
+   "reason": "commercetools__commerce-mcp: no tool definitions available (run 'capture' or pass --probe to query the server)"
   },
   {
    "package": "@seatable/mcp-seatable",
-   "reason": "seatable__mcp-seatable: the server exited with status 1 before answering initialize; stderr: npm warn deprecated axios-retry@4.5.0: axios-retry is no longer mai"
+   "reason": "seatable__mcp-seatable: no tool definitions available (run 'capture' or pass --probe to query the server)"
   },
   {
    "package": "taiga-api-mcp-server",
-   "reason": "taiga-api-mcp-server: the server exited with status 1 before answering initialize; stderr:   TAIGA_TZ                  UTC offset for taiga_activity windows, de"
+   "reason": "taiga-api-mcp-server: no tool definitions available (run 'capture' or pass --probe to query the server)"
   },
   {
    "package": "@diviops/mcp-server",
-   "reason": "diviops__mcp-server: the server exited with status 1 before answering initialize; stderr: npm error could not determine executable to run | npm error A complete"
+   "reason": "diviops__mcp-server: no tool definitions available (run 'capture' or pass --probe to query the server)"
   },
   {
    "package": "boxery-vm",
-   "reason": "boxery-vm: the server exited with status 1 before answering initialize; stderr: file:///home/runner/.npm/_npx/98cb2bec7d8588ad/node_modules/boxery-vm/core/boxer"
+   "reason": "boxery-vm: no tool definitions available (run 'capture' or pass --probe to query the server)"
   },
   {
    "package": "wso2-docs-mcp-server",
-   "reason": "wso2-docs-mcp-server: the server exited with status 1 before answering initialize; stderr: npm warn deprecated whatwg-encoding@3.1.1: Use @exodus/bytes instead "
+   "reason": "wso2-docs-mcp-server: no tool definitions available (run 'capture' or pass --probe to query the server)"
   },
   {
    "package": "@gethmy/mcp",
-   "reason": "gethmy__mcp: the server exited with status 1 before answering initialize; stderr: Commands: |   serve                           Start the MCP server (stdio tran"
+   "reason": "gethmy__mcp: no tool definitions available (run 'capture' or pass --probe to query the server)"
   },
   {
    "package": "@getmcpads/meta-ads-mcp-server",
-   "reason": ""
+   "reason": "getmcpads__meta-ads-mcp-server: no tool definitions available (run 'capture' or pass --probe to query the server)"
   },
   {
    "package": "@nacre.work/mcp",
-   "reason": "nacre_work__mcp: the server exited with status 2 before answering initialize; stderr: configuration is not usable: |   - NACRE_CANONICAL_URL is not set |   - NA"
+   "reason": "nacre_work__mcp: no tool definitions available (run 'capture' or pass --probe to query the server)"
   },
   {
    "package": "@hhxg/dsh-hhxg-market",
-   "reason": "hhxg__dsh-hhxg-market: the server exited with status 1 before answering initialize; stderr: npm error could not determine executable to run | npm error A comple"
-  },
-  {
-   "package": "icon-mcp",
-   "reason": "icon-mcp: no response to initialize within 40s"
+   "reason": "hhxg__dsh-hhxg-market: no tool definitions available (run 'capture' or pass --probe to query the server)"
   },
   {
    "package": "@node2flow/telegram-bot-mcp",
-   "reason": "node2flow__telegram-bot-mcp: the server exited with status 1 before answering initialize; stderr: Fatal error: Error: inputSchema must be a Zod schema or raw sh"
+   "reason": "node2flow__telegram-bot-mcp: no tool definitions available (run 'capture' or pass --probe to query the server)"
   },
   {
    "package": "flagrix",
-   "reason": "flagrix: the server exited with status 1 before answering initialize"
+   "reason": "flagrix: no tool definitions available (run 'capture' or pass --probe to query the server)"
   },
   {
    "package": "@usejunior/email-mcp",
-   "reason": "usejunior__email-mcp: the server exited with status 1 before answering initialize; stderr: npm error could not determine executable to run | npm error A complet"
+   "reason": "usejunior__email-mcp: no tool definitions available (run 'capture' or pass --probe to query the server)"
   },
   {
    "package": "@ahdev/dokploy-mcp",
-   "reason": "ahdev__dokploy-mcp: the server exited with status 1 before answering initialize; stderr: file:///home/runner/.npm/_npx/e9dd71df703b6246/node_modules/@ahdev/dokp"
+   "reason": "ahdev__dokploy-mcp: no tool definitions available (run 'capture' or pass --probe to query the server)"
   },
   {
    "package": "@enescinar/twitter-mcp",
-   "reason": "enescinar__twitter-mcp: the server exited with status 1 before answering initialize; stderr:     \"path\": [ |       \"accessTokenSecret\" |     ], |     \"message\":"
+   "reason": "enescinar__twitter-mcp: no tool definitions available (run 'capture' or pass --probe to query the server)"
   },
   {
    "package": "zubeid-youtube-mcp-server",
-   "reason": "zubeid-youtube-mcp-server: the server exited with status 1 before answering initialize; stderr: npm warn deprecated node-domexception@1.0.0: Use your platform's"
+   "reason": "zubeid-youtube-mcp-server: no tool definitions available (run 'capture' or pass --probe to query the server)"
   },
   {
    "package": "plex-mcp-server",
-   "reason": "plex-mcp-server: the server exited with status 1 before answering initialize; stderr: Server error: Error: PLEX_TOKEN environment variable is required |     at "
+   "reason": "plex-mcp-server: no tool definitions available (run 'capture' or pass --probe to query the server)"
   },
   {
    "package": "codex-claude-council",
-   "reason": "codex-claude-council: the server exited with status 1 before answering initialize"
+   "reason": "codex-claude-council: no tool definitions available (run 'capture' or pass --probe to query the server)"
   },
   {
    "package": "financial-modeling-prep-mcp-server",
@@ -3558,11 +2042,11 @@
   },
   {
    "package": "hivenet",
-   "reason": "hivenet: the server exited with status 1 before answering initialize; stderr: A feedback message is required. Pass --message or -m (40–5,000 characters after tr"
+   "reason": "hivenet: no tool definitions available (run 'capture' or pass --probe to query the server)"
   },
   {
    "package": "@spuentesp/lain-mcp",
-   "reason": "spuentesp__lain-mcp: the server exited with status 0 before answering initialize"
+   "reason": "spuentesp__lain-mcp: no tool definitions available (run 'capture' or pass --probe to query the server)"
   },
   {
    "package": "@t4dhg/mcp-factorial",
@@ -3570,47 +2054,43 @@
   },
   {
    "package": "@morluto/rea",
-   "reason": "morluto__rea: the server exited with status 0 before answering initialize"
-  },
-  {
-   "package": "@munhq/sealkeep",
-   "reason": "munhq__sealkeep: the server exited with status 0 before answering tools/list"
+   "reason": "morluto__rea: no tool definitions available (run 'capture' or pass --probe to query the server)"
   },
   {
    "package": "@czp3009/factorio-mcp",
-   "reason": "czp3009__factorio-mcp: the server exited with status 127 before answering initialize; stderr: /home/runner/.npm/_npx/cf0454074894f8a2/node_modules/@czp3009/fact"
+   "reason": "czp3009__factorio-mcp: no tool definitions available (run 'capture' or pass --probe to query the server)"
   },
   {
    "package": "reis-mobile",
-   "reason": "reis-mobile: the server exited with status 1 before answering initialize"
+   "reason": "reis-mobile: no tool definitions available (run 'capture' or pass --probe to query the server)"
   },
   {
    "package": "@vygruppen/spor-mcp-server",
-   "reason": "vygruppen__spor-mcp-server: no response to initialize within 40s"
+   "reason": "vygruppen__spor-mcp-server: no tool definitions available (run 'capture' or pass --probe to query the server)"
   },
   {
    "package": "kolide-mcp-server",
-   "reason": "kolide-mcp-server: the server exited with status 1 before answering initialize; stderr: npm warn deprecated node-abort-controller@3.1.1: This package is no long"
+   "reason": "kolide-mcp-server: no tool definitions available (run 'capture' or pass --probe to query the server)"
   },
   {
    "package": "mcp-confluence-dc",
-   "reason": "mcp-confluence-dc: the server exited with status 1 before answering initialize; stderr: file:///home/runner/.npm/_npx/4454b8893c686a76/node_modules/mcp-confluen"
+   "reason": "mcp-confluence-dc: no tool definitions available (run 'capture' or pass --probe to query the server)"
   },
   {
    "package": "@bashcat/ai-image-chat-mcp",
-   "reason": "bashcat__ai-image-chat-mcp: the server exited with status 1 before answering initialize; stderr: file:///home/runner/.npm/_npx/6037059a58654d7f/node_modules/@ba"
+   "reason": "bashcat__ai-image-chat-mcp: no tool definitions available (run 'capture' or pass --probe to query the server)"
   },
   {
    "package": "@suncreation/mcp-google-docs",
-   "reason": "suncreation__mcp-google-docs: the server exited with status 1 before answering initialize; stderr:     at async Module.readFile (node:internal/fs/promises:1252:"
+   "reason": "suncreation__mcp-google-docs: no tool definitions available (run 'capture' or pass --probe to query the server)"
   },
   {
    "package": "@indiebob/mcp",
-   "reason": "indiebob__mcp: the server exited with status 1 before answering initialize; stderr: indiebob-mcp: INDIEBOB_API_KEY is not set. | Make an agent key in IndieBob: "
+   "reason": "indiebob__mcp: no tool definitions available (run 'capture' or pass --probe to query the server)"
   },
   {
    "package": "@us-all/datadog-mcp",
-   "reason": "us-all__datadog-mcp: the server exited with status 1 before answering initialize; stderr: file:///home/runner/.npm/_npx/a8a7365216c435fc/node_modules/@us-all/da"
+   "reason": "us-all__datadog-mcp: no tool definitions available (run 'capture' or pass --probe to query the server)"
   },
   {
    "package": "@asksakina/islamic-knowledge-mcp",
@@ -3618,7 +2098,499 @@
   },
   {
    "package": "khala-cli",
-   "reason": "khala-cli: the server exited with status 1 before answering initialize; stderr: usage: khala mcp | khala watch [--harness <id>] [--session <id>] | khala hook <n"
+   "reason": "khala-cli: no tool definitions available (run 'capture' or pass --probe to query the server)"
+  },
+  {
+   "package": "screenrec-agent",
+   "reason": "screenrec-agent: no tool definitions available (run 'capture' or pass --probe to query the server)"
+  },
+  {
+   "package": "@canera/mcp-server",
+   "reason": "canera__mcp-server: no tool definitions available (run 'capture' or pass --probe to query the server)"
+  },
+  {
+   "package": "mcp-dataverse",
+   "reason": "mcp-dataverse: no tool definitions available (run 'capture' or pass --probe to query the server)"
+  },
+  {
+   "package": "@tedorigawa001/servicenow-mcp",
+   "reason": "tedorigawa001__servicenow-mcp: no tool definitions available (run 'capture' or pass --probe to query the server)"
+  },
+  {
+   "package": "hackmd-mcp",
+   "reason": "hackmd-mcp: no tool definitions available (run 'capture' or pass --probe to query the server)"
+  },
+  {
+   "package": "companies-house-mcp",
+   "reason": "companies-house-mcp: no tool definitions available (run 'capture' or pass --probe to query the server)"
+  },
+  {
+   "package": "@everme/memory-mcp",
+   "reason": "everme__memory-mcp: no tool definitions available (run 'capture' or pass --probe to query the server)"
+  },
+  {
+   "package": "mcpspan-lint",
+   "reason": "mcpspan-lint: no tool definitions available (run 'capture' or pass --probe to query the server)"
+  },
+  {
+   "package": "@voyagier/cli",
+   "reason": "voyagier__cli: no tool definitions available (run 'capture' or pass --probe to query the server)"
+  },
+  {
+   "package": "bizrouter",
+   "reason": "bizrouter: no tool definitions available (run 'capture' or pass --probe to query the server)"
+  },
+  {
+   "package": "@hrtips/cvx",
+   "reason": "hrtips__cvx: no tool definitions available (run 'capture' or pass --probe to query the server)"
+  },
+  {
+   "package": "endfield-mcp",
+   "reason": "endfield-mcp: no tool definitions available (run 'capture' or pass --probe to query the server)"
+  },
+  {
+   "package": "duckduckgo-mcp",
+   "reason": "duckduckgo-mcp: no tool definitions available (run 'capture' or pass --probe to query the server)"
+  },
+  {
+   "package": "agent-mc-world",
+   "reason": "agent-mc-world: no tool definitions available (run 'capture' or pass --probe to query the server)"
+  },
+  {
+   "package": "zapsmtp-mcp",
+   "reason": "zapsmtp-mcp: no tool definitions available (run 'capture' or pass --probe to query the server)"
+  },
+  {
+   "package": "@falkordb/mcpserver",
+   "reason": "falkordb__mcpserver: no tool definitions available (run 'capture' or pass --probe to query the server)"
+  },
+  {
+   "package": "rxlocal-mcp",
+   "reason": "rxlocal-mcp: no tool definitions available (run 'capture' or pass --probe to query the server)"
+  },
+  {
+   "package": "zipline-mcp",
+   "reason": "zipline-mcp: no tool definitions available (run 'capture' or pass --probe to query the server)"
+  },
+  {
+   "package": "@msg2ai/ai-ambassador-toolkit",
+   "reason": "msg2ai__ai-ambassador-toolkit: no tool definitions available (run 'capture' or pass --probe to query the server)"
+  },
+  {
+   "package": "@zerotal/arch",
+   "reason": "zerotal__arch: no tool definitions available (run 'capture' or pass --probe to query the server)"
+  },
+  {
+   "package": "@design-twin/dtwin",
+   "reason": "design-twin__dtwin: no tool definitions available (run 'capture' or pass --probe to query the server)"
+  },
+  {
+   "package": "grafana-mcp",
+   "reason": "grafana-mcp: no tool definitions available (run 'capture' or pass --probe to query the server)"
+  },
+  {
+   "package": "hostkey-mcp-server-ru",
+   "reason": "hostkey-mcp-server-ru: no tool definitions available (run 'capture' or pass --probe to query the server)"
+  },
+  {
+   "package": "@para-space-dev/cli",
+   "reason": "para-space-dev__cli: no tool definitions available (run 'capture' or pass --probe to query the server)"
+  },
+  {
+   "package": "@belvador/mcp",
+   "reason": "belvador__mcp: no tool definitions available (run 'capture' or pass --probe to query the server)"
+  },
+  {
+   "package": "the-real-bitwarden-mcp",
+   "reason": "the-real-bitwarden-mcp: no tool definitions available (run 'capture' or pass --probe to query the server)"
+  },
+  {
+   "package": "@hanoak/pixabay-mcp-server",
+   "reason": "hanoak__pixabay-mcp-server: no tool definitions available (run 'capture' or pass --probe to query the server)"
+  },
+  {
+   "package": "gd-tiku-mcp-server",
+   "reason": "gd-tiku-mcp-server: no tool definitions available (run 'capture' or pass --probe to query the server)"
+  },
+  {
+   "package": "pyth-mcp",
+   "reason": "pyth-mcp: no tool definitions available (run 'capture' or pass --probe to query the server)"
+  },
+  {
+   "package": "hostkey-mcp-server",
+   "reason": "hostkey-mcp-server: no tool definitions available (run 'capture' or pass --probe to query the server)"
+  },
+  {
+   "package": "@alfe.ai/myob-mcp",
+   "reason": "alfe_ai__myob-mcp: no tool definitions available (run 'capture' or pass --probe to query the server)"
+  },
+  {
+   "package": "@verygoodplugins/mcp-evernote",
+   "reason": "verygoodplugins__mcp-evernote: no tool definitions available (run 'capture' or pass --probe to query the server)"
+  },
+  {
+   "package": "okr-ai",
+   "reason": "okr-ai: no tool definitions available (run 'capture' or pass --probe to query the server)"
+  },
+  {
+   "package": "@leiutils/mcp-transcribe",
+   "reason": "leiutils__mcp-transcribe: no tool definitions available (run 'capture' or pass --probe to query the server)"
+  },
+  {
+   "package": "@alfe.ai/news-mcp",
+   "reason": "alfe_ai__news-mcp: no tool definitions available (run 'capture' or pass --probe to query the server)"
+  },
+  {
+   "package": "heresay",
+   "reason": "heresay: no tool definitions available (run 'capture' or pass --probe to query the server)"
+  },
+  {
+   "package": "layoza",
+   "reason": "layoza: no tool definitions available (run 'capture' or pass --probe to query the server)"
+  },
+  {
+   "package": "obsidian-mcp-brain",
+   "reason": "obsidian-mcp-brain: no tool definitions available (run 'capture' or pass --probe to query the server)"
+  },
+  {
+   "package": "@backwork/mcp",
+   "reason": "backwork__mcp: no tool definitions available (run 'capture' or pass --probe to query the server)"
+  },
+  {
+   "package": "@informatik_tirol/redmine-mcp-server",
+   "reason": "informatik_tirol__redmine-mcp-server: no tool definitions available (run 'capture' or pass --probe to query the server)"
+  },
+  {
+   "package": "@aidalinfo/unifi-mcp",
+   "reason": "aidalinfo__unifi-mcp: no tool definitions available (run 'capture' or pass --probe to query the server)"
+  },
+  {
+   "package": "ridvay-mcp",
+   "reason": "ridvay-mcp: no tool definitions available (run 'capture' or pass --probe to query the server)"
+  },
+  {
+   "package": "dominus-cli",
+   "reason": "dominus-cli: no tool definitions available (run 'capture' or pass --probe to query the server)"
+  },
+  {
+   "package": "spawner-cli",
+   "reason": "spawner-cli: no tool definitions available (run 'capture' or pass --probe to query the server)"
+  },
+  {
+   "package": "@textwatermarking/mcp-server",
+   "reason": "textwatermarking__mcp-server: no tool definitions available (run 'capture' or pass --probe to query the server)"
+  },
+  {
+   "package": "@jesec/retellai-mcp-server",
+   "reason": "jesec__retellai-mcp-server: no tool definitions available (run 'capture' or pass --probe to query the server)"
+  },
+  {
+   "package": "@theyahia/tkassa-mcp",
+   "reason": "theyahia__tkassa-mcp: no tool definitions available (run 'capture' or pass --probe to query the server)"
+  },
+  {
+   "package": "ibabs-mcp",
+   "reason": "ibabs-mcp: no tool definitions available (run 'capture' or pass --probe to query the server)"
+  },
+  {
+   "package": "symplax",
+   "reason": "symplax: no tool definitions available (run 'capture' or pass --probe to query the server)"
+  },
+  {
+   "package": "@asyntai/mcp",
+   "reason": ""
+  },
+  {
+   "package": "@caikiji/mcp-search",
+   "reason": "caikiji__mcp-search: no tool definitions available (run 'capture' or pass --probe to query the server)"
+  },
+  {
+   "package": "serpex-mcp",
+   "reason": "serpex-mcp: no tool definitions available (run 'capture' or pass --probe to query the server)"
+  },
+  {
+   "package": "mcpemails",
+   "reason": "mcpemails: no tool definitions available (run 'capture' or pass --probe to query the server)"
+  },
+  {
+   "package": "@airbook1/mcp",
+   "reason": "airbook1__mcp: no tool definitions available (run 'capture' or pass --probe to query the server)"
+  },
+  {
+   "package": "@srigi/mcp-google-images-search",
+   "reason": "srigi__mcp-google-images-search: no tool definitions available (run 'capture' or pass --probe to query the server)"
+  },
+  {
+   "package": "ditto-workflows-mcp",
+   "reason": "ditto-workflows-mcp: no tool definitions available (run 'capture' or pass --probe to query the server)"
+  },
+  {
+   "package": "@webdesiz/cli",
+   "reason": "webdesiz__cli: no tool definitions available (run 'capture' or pass --probe to query the server)"
+  },
+  {
+   "package": "@qampi/mcp-server",
+   "reason": "qampi__mcp-server: no tool definitions available (run 'capture' or pass --probe to query the server)"
+  },
+  {
+   "package": "@sealgate/agent-cli-mcp",
+   "reason": "sealgate__agent-cli-mcp: no tool definitions available (run 'capture' or pass --probe to query the server)"
+  },
+  {
+   "package": "ossian-mcp",
+   "reason": "ossian-mcp: no tool definitions available (run 'capture' or pass --probe to query the server)"
+  },
+  {
+   "package": "x-mcp-automation",
+   "reason": "x-mcp-automation: no tool definitions available (run 'capture' or pass --probe to query the server)"
+  },
+  {
+   "package": "sponson",
+   "reason": "sponson: no tool definitions available (run 'capture' or pass --probe to query the server)"
+  },
+  {
+   "package": "@aputime/mcp",
+   "reason": ""
+  },
+  {
+   "package": "@synergic-apis/mcp",
+   "reason": "synergic-apis__mcp: no tool definitions available (run 'capture' or pass --probe to query the server)"
+  },
+  {
+   "package": "jamp-mcp",
+   "reason": "jamp-mcp: no tool definitions available (run 'capture' or pass --probe to query the server)"
+  },
+  {
+   "package": "screenshot-studio-mcp",
+   "reason": "screenshot-studio-mcp: no tool definitions available (run 'capture' or pass --probe to query the server)"
+  },
+  {
+   "package": "@23telecom/mcp",
+   "reason": "23telecom__mcp: no tool definitions available (run 'capture' or pass --probe to query the server)"
+  },
+  {
+   "package": "pulsecloud-mcp",
+   "reason": "pulsecloud-mcp: no tool definitions available (run 'capture' or pass --probe to query the server)"
+  },
+  {
+   "package": "selfhosted-sentry-mcp",
+   "reason": "selfhosted-sentry-mcp: no tool definitions available (run 'capture' or pass --probe to query the server)"
+  },
+  {
+   "package": "jfk-mcp",
+   "reason": "jfk-mcp: no tool definitions available (run 'capture' or pass --probe to query the server)"
+  },
+  {
+   "package": "@techformist/seta-mcp",
+   "reason": "techformist__seta-mcp: no tool definitions available (run 'capture' or pass --probe to query the server)"
+  },
+  {
+   "package": "stape-mcp-server",
+   "reason": "stape-mcp-server: no tool definitions available (run 'capture' or pass --probe to query the server)"
+  },
+  {
+   "package": "@chainreactionom/nano-mcp-server",
+   "reason": "chainreactionom__nano-mcp-server: no tool definitions available (run 'capture' or pass --probe to query the server)"
+  },
+  {
+   "package": "@quick-desk/mcp",
+   "reason": "quick-desk__mcp: no tool definitions available (run 'capture' or pass --probe to query the server)"
+  },
+  {
+   "package": "spacedock-mcp",
+   "reason": "spacedock-mcp: no tool definitions available (run 'capture' or pass --probe to query the server)"
+  },
+  {
+   "package": "@disocodes/server-email-beta",
+   "reason": "disocodes__server-email-beta: no tool definitions available (run 'capture' or pass --probe to query the server)"
+  },
+  {
+   "package": "spine-mcp-server",
+   "reason": "spine-mcp-server: no tool definitions available (run 'capture' or pass --probe to query the server)"
+  },
+  {
+   "package": "@patrickcylai/paperless-ngx-mcp",
+   "reason": "patrickcylai__paperless-ngx-mcp: no tool definitions available (run 'capture' or pass --probe to query the server)"
+  },
+  {
+   "package": "hchain-mcp",
+   "reason": "hchain-mcp: no tool definitions available (run 'capture' or pass --probe to query the server)"
+  },
+  {
+   "package": "shopify-store-mcp",
+   "reason": "shopify-store-mcp: no tool definitions available (run 'capture' or pass --probe to query the server)"
+  },
+  {
+   "package": "@alsania-io/mcpnyx-u",
+   "reason": "alsania-io__mcpnyx-u: no tool definitions available (run 'capture' or pass --probe to query the server)"
+  },
+  {
+   "package": "@chenlinyang/mcp-server-mysql",
+   "reason": "chenlinyang__mcp-server-mysql: no tool definitions available (run 'capture' or pass --probe to query the server)"
+  },
+  {
+   "package": "@dawipong/mcp-github",
+   "reason": "dawipong__mcp-github: no tool definitions available (run 'capture' or pass --probe to query the server)"
+  },
+  {
+   "package": "@iflow-mcp/bartwaardenburg-recraft-mcp-server",
+   "reason": "iflow-mcp__bartwaardenburg-recraft-mcp-server: no tool definitions available (run 'capture' or pass --probe to query the server)"
+  },
+  {
+   "package": "@mseep/openrouterai",
+   "reason": "mseep__openrouterai: no tool definitions available (run 'capture' or pass --probe to query the server)"
+  },
+  {
+   "package": "@rankgeo/mcp-server",
+   "reason": "rankgeo__mcp-server: no tool definitions available (run 'capture' or pass --probe to query the server)"
+  },
+  {
+   "package": "deer-flow-mcp",
+   "reason": "deer-flow-mcp: no tool definitions available (run 'capture' or pass --probe to query the server)"
+  },
+  {
+   "package": "railway-mcp-op",
+   "reason": "railway-mcp-op: no tool definitions available (run 'capture' or pass --probe to query the server)"
+  },
+  {
+   "package": "@lucid-spark/openapi-mcp-server",
+   "reason": "lucid-spark__openapi-mcp-server: no tool definitions available (run 'capture' or pass --probe to query the server)"
+  },
+  {
+   "package": "@mcp-collection/mssql-mcp",
+   "reason": "mcp-collection__mssql-mcp: no tool definitions available (run 'capture' or pass --probe to query the server)"
+  },
+  {
+   "package": "freaking-fast-mcp",
+   "reason": "freaking-fast-mcp: no tool definitions available (run 'capture' or pass --probe to query the server)"
+  },
+  {
+   "package": "reg-ru-mcp-server",
+   "reason": "reg-ru-mcp-server: no tool definitions available (run 'capture' or pass --probe to query the server)"
+  },
+  {
+   "package": "@replyinmyvoiceashuman/mcp-server",
+   "reason": "replyinmyvoiceashuman__mcp-server: no tool definitions available (run 'capture' or pass --probe to query the server)"
+  },
+  {
+   "package": "@roo-bz/roo-mcp",
+   "reason": "roo-bz__roo-mcp: no tool definitions available (run 'capture' or pass --probe to query the server)"
+  },
+  {
+   "package": "@seofanboy/babbar-mcp-server",
+   "reason": "seofanboy__babbar-mcp-server: no tool definitions available (run 'capture' or pass --probe to query the server)"
+  },
+  {
+   "package": "@talktowp/mcp",
+   "reason": "talktowp__mcp: no tool definitions available (run 'capture' or pass --probe to query the server)"
+  },
+  {
+   "package": "cardgo-mcp",
+   "reason": "cardgo-mcp: no tool definitions available (run 'capture' or pass --probe to query the server)"
+  },
+  {
+   "package": "mcp-searxng-scrape",
+   "reason": "mcp-searxng-scrape: no tool definitions available (run 'capture' or pass --probe to query the server)"
+  },
+  {
+   "package": "tgrep-mcp",
+   "reason": "tgrep-mcp: no tool definitions available (run 'capture' or pass --probe to query the server)"
+  },
+  {
+   "package": "@buildwithlayer/mcp-analytics",
+   "reason": "buildwithlayer__mcp-analytics: no tool definitions available (run 'capture' or pass --probe to query the server)"
+  },
+  {
+   "package": "@fdavidjm/youtube-data-mcp-server",
+   "reason": "fdavidjm__youtube-data-mcp-server: no tool definitions available (run 'capture' or pass --probe to query the server)"
+  },
+  {
+   "package": "@miroslaw.franek/mediawiki-mcp-server-auth",
+   "reason": "miroslaw_franek__mediawiki-mcp-server-auth: no tool definitions available (run 'capture' or pass --probe to query the server)"
+  },
+  {
+   "package": "mcp-db-bridge",
+   "reason": "mcp-db-bridge: no tool definitions available (run 'capture' or pass --probe to query the server)"
+  },
+  {
+   "package": "@iloveprd/mcp",
+   "reason": "iloveprd__mcp: no tool definitions available (run 'capture' or pass --probe to query the server)"
+  },
+  {
+   "package": "@kaminocorp/cream-mcp-server",
+   "reason": "kaminocorp__cream-mcp-server: no tool definitions available (run 'capture' or pass --probe to query the server)"
+  },
+  {
+   "package": "@msg2ai/hotel-ambassador",
+   "reason": "msg2ai__hotel-ambassador: no tool definitions available (run 'capture' or pass --probe to query the server)"
+  },
+  {
+   "package": "@bounded-sh/observe-mcp",
+   "reason": "bounded-sh__observe-mcp: no tool definitions available (run 'capture' or pass --probe to query the server)"
+  },
+  {
+   "package": "@iflow-mcp/mcp-dataforseo",
+   "reason": "iflow-mcp__mcp-dataforseo: no tool definitions available (run 'capture' or pass --probe to query the server)"
+  },
+  {
+   "package": "litemcpjs",
+   "reason": "litemcpjs: no tool definitions available (run 'capture' or pass --probe to query the server)"
+  },
+  {
+   "package": "agentcraft-mcp",
+   "reason": ""
+  },
+  {
+   "package": "@kocoro/twitter-mcp",
+   "reason": "kocoro__twitter-mcp: no tool definitions available (run 'capture' or pass --probe to query the server)"
+  },
+  {
+   "package": "@layoutr/mcp-server",
+   "reason": "layoutr__mcp-server: no tool definitions available (run 'capture' or pass --probe to query the server)"
+  },
+  {
+   "package": "@mseep/directus-mcp-server",
+   "reason": "mseep__directus-mcp-server: no tool definitions available (run 'capture' or pass --probe to query the server)"
+  },
+  {
+   "package": "etsy-api",
+   "reason": "etsy-api: no tool definitions available (run 'capture' or pass --probe to query the server)"
+  },
+  {
+   "package": "noteit-mcp-server",
+   "reason": "noteit-mcp-server: no tool definitions available (run 'capture' or pass --probe to query the server)"
+  },
+  {
+   "package": "@benhaq/walhood",
+   "reason": "benhaq__walhood: no tool definitions available (run 'capture' or pass --probe to query the server)"
+  },
+  {
+   "package": "@fastmcp-me/mcp-db-bridge",
+   "reason": "fastmcp-me__mcp-db-bridge: no tool definitions available (run 'capture' or pass --probe to query the server)"
+  },
+  {
+   "package": "@leadtale/mcp-server",
+   "reason": "leadtale__mcp-server: no tool definitions available (run 'capture' or pass --probe to query the server)"
+  },
+  {
+   "package": "margin-mcp",
+   "reason": "margin-mcp: no tool definitions available (run 'capture' or pass --probe to query the server)"
+  },
+  {
+   "package": "@autorevai/mcp-server",
+   "reason": ""
+  },
+  {
+   "package": "@iflow-mcp/codesys-mcp-toolkit",
+   "reason": "iflow-mcp__codesys-mcp-toolkit: no tool definitions available (run 'capture' or pass --probe to query the server)"
+  },
+  {
+   "package": "plantkit-mcp",
+   "reason": "plantkit-mcp: no tool definitions available (run 'capture' or pass --probe to query the server)"
+  },
+  {
+   "package": "@iflow-mcp/onenote-mcp",
+   "reason": "iflow-mcp__onenote-mcp: no tool definitions available (run 'capture' or pass --probe to query the server)"
   }
  ]
 }

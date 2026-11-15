@@ -1,0 +1,237 @@
+{
+  "tool": {
+    "name": "mcp-scrutiny",
+    "version": "0.1.3"
+  },
+  "summary": {
+    "servers": 1,
+    "tools": 51,
+    "findings": 7,
+    "worst_severity": "high",
+    "by_severity": {
+      "info": 1,
+      "low": 0,
+      "medium": 1,
+      "high": 5,
+      "critical": 0
+    }
+  },
+  "servers": [
+    {
+      "name": "viralspin__mcp",
+      "transport": "stdio",
+      "command": "npx",
+      "args": [
+        "-y",
+        "@viralspin/mcp"
+      ],
+      "url": null,
+      "pinned": false,
+      "floating_package": "@viralspin/mcp",
+      "tools": 51
+    }
+  ],
+  "findings": [
+    {
+      "detector": "pinning",
+      "severity": "high",
+      "title": "Unpinned package executed on every start: @viralspin/mcp",
+      "detail": "'viralspin__mcp' launches @viralspin/mcp through npx without a version. The client resolves the version at start time, so any future publish to that package name runs with your credentials. This is how postmark-mcp (Sept 2025) reached roughly 300 organisations.",
+      "server": "viralspin__mcp",
+      "tool": null,
+      "location": "viralspin__mcp",
+      "evidence": {
+        "package": "@viralspin/mcp",
+        "runner": "npx",
+        "auto_confirm": true
+      },
+      "remediation": "Pin an exact version and an integrity hash: \"args\": [\"@viralspin/mcp@<version>\"] and drop the -y flag. Re-pin deliberately, after reviewing the diff."
+    },
+    {
+      "detector": "semantic",
+      "severity": "high",
+      "title": "Description reads as instructions to the model (p=1.00): render_locally",
+      "detail": "The description of 'viralspin__mcp.render_locally' scores 1.00 on the instruction-detection model, and carries intent signals: injection_markers. Descriptions are documentation for a human, but they are delivered to the model as trusted context, so text that tells the model what to do is an attack surface rather than a description. The score is driven mainly by: injection_markers, cross_tool, entropy, log_len.",
+      "server": "viralspin__mcp",
+      "tool": "render_locally",
+      "location": "viralspin__mcp.render_locally",
+      "evidence": {
+        "probability": 1.0,
+        "threshold": 0.5,
+        "intent_signals": [
+          "injection_markers"
+        ],
+        "driving_features": [
+          {
+            "feature": "injection_markers",
+            "contribution": 6.2052
+          },
+          {
+            "feature": "cross_tool",
+            "contribution": 6.1813
+          },
+          {
+            "feature": "log_words",
+            "contribution": -3.6629
+          },
+          {
+            "feature": "entropy",
+            "contribution": 2.9318
+          },
+          {
+            "feature": "log_len",
+            "contribution": 1.5923
+          },
+          {
+            "feature": "hardcoded_recipient",
+            "contribution": -1.2458
+          }
+        ],
+        "active_features": {
+          "log_len": 6.8501261661455,
+          "log_words": 5.111987788356544,
+          "entropy": 4.548545852294894,
+          "injection_markers": 1.0,
+          "cross_tool": 1.0,
+          "schema_nested_desc": 8.0
+        },
+        "description": "Render a ViralSpin REEL on THIS computer (Mac or Windows) instead of the cloud: ViralSpin plans the reel and hands over the media, this machine does the Remotion draw and the audio mix, and the finished mp4 stays on disk (nothing is published or uploaded; 0 credits). First use downloads a ~0.5 GB render kit into ~/.viralspin/kit (needs Node 20+ and 8 GB free disk); later runs reuse it. WITH NO ARGUMENTS it renders the newest reel the person sent to their computer from the ViralSpin app (it says "
+      },
+      "remediation": "Read the description against what the tool actually does. If the text is legitimate, it usually means the tool should not have to instruct the model at all - move the guidance into the parameter descriptions or the server's own docs."
+    },
+    {
+      "detector": "toxic_flow",
+      "severity": "high",
+      "title": "Toxic flow within 'viralspin__mcp': executes commands + sends data outbound",
+      "detail": "3 combination(s) exist where one tool executes commands and another sends data outbound. Neither tool is malicious on its own; together they executes commands and can reach the network, which is remote code execution with a delivery channel rather than a hint of one. Both sides live in the same server, which may well be by design; confirm it.",
+      "server": "viralspin__mcp",
+      "tool": "create_kinetic_text",
+      "location": "viralspin__mcp.create_kinetic_text",
+      "evidence": {
+        "source_capability": "exec",
+        "sink_capability": "network_out",
+        "cross_server": false,
+        "pair_count": 3,
+        "example": {
+          "source": "viralspin__mcp.create_kinetic_text",
+          "sink": "viralspin__mcp.publish_carousel_as_video"
+        },
+        "sources": [
+          "viralspin__mcp.create_kinetic_text",
+          "viralspin__mcp.list_ideas",
+          "viralspin__mcp.queue_idea"
+        ],
+        "sinks": [
+          "viralspin__mcp.publish_carousel_as_video"
+        ],
+        "servers": [
+          "viralspin__mcp"
+        ]
+      },
+      "remediation": "Break the path, not the tools: scope the credential so the source tool cannot reach anything valuable, or require explicit user confirmation on the sink tool (destructiveHint / human-in-the-loop), or split the two capabilities across trust boundaries that cannot share a context window."
+    },
+    {
+      "detector": "toxic_flow",
+      "severity": "high",
+      "title": "Toxic flow within 'viralspin__mcp': reads credentials or secrets + sends data outbound",
+      "detail": "1 combination(s) exist where one tool reads credentials or secrets and another sends data outbound. Neither tool is malicious on its own; together they reads credentials and can send data to an address it controls. A single prompt is enough to turn 'summarise this config' into a credential leak. Both sides live in the same server, which may well be by design; confirm it.",
+      "server": "viralspin__mcp",
+      "tool": "queue_idea",
+      "location": "viralspin__mcp.queue_idea",
+      "evidence": {
+        "source_capability": "read_secret",
+        "sink_capability": "network_out",
+        "cross_server": false,
+        "pair_count": 1,
+        "example": {
+          "source": "viralspin__mcp.queue_idea",
+          "sink": "viralspin__mcp.publish_carousel_as_video"
+        },
+        "sources": [
+          "viralspin__mcp.queue_idea"
+        ],
+        "sinks": [
+          "viralspin__mcp.publish_carousel_as_video"
+        ],
+        "servers": [
+          "viralspin__mcp"
+        ]
+      },
+      "remediation": "Break the path, not the tools: scope the credential so the source tool cannot reach anything valuable, or require explicit user confirmation on the sink tool (destructiveHint / human-in-the-loop), or split the two capabilities across trust boundaries that cannot share a context window."
+    },
+    {
+      "detector": "toxic_flow",
+      "severity": "high",
+      "title": "Toxic flow within 'viralspin__mcp': reads credentials or secrets + sends email or messages",
+      "detail": "1 combination(s) exist where one tool reads credentials or secrets and another sends email or messages. Neither tool is malicious on its own; together they reads credentials and can send mail. This is the postmark-mcp shape: the mail tool was legitimate, the credentials were reachable, and the combination was the incident. Both sides live in the same server, which may well be by design; confirm it.",
+      "server": "viralspin__mcp",
+      "tool": "queue_idea",
+      "location": "viralspin__mcp.queue_idea",
+      "evidence": {
+        "source_capability": "read_secret",
+        "sink_capability": "send_email",
+        "cross_server": false,
+        "pair_count": 1,
+        "example": {
+          "source": "viralspin__mcp.queue_idea",
+          "sink": "viralspin__mcp.create_review_link"
+        },
+        "sources": [
+          "viralspin__mcp.queue_idea"
+        ],
+        "sinks": [
+          "viralspin__mcp.create_review_link"
+        ],
+        "servers": [
+          "viralspin__mcp"
+        ]
+      },
+      "remediation": "Break the path, not the tools: scope the credential so the source tool cannot reach anything valuable, or require explicit user confirmation on the sink tool (destructiveHint / human-in-the-loop), or split the two capabilities across trust boundaries that cannot share a context window."
+    },
+    {
+      "detector": "toxic_flow",
+      "severity": "medium",
+      "title": "Toxic flow within 'viralspin__mcp': executes commands + writes or deletes files",
+      "detail": "9 combination(s) exist where one tool executes commands and another writes or deletes files. Neither tool is malicious on its own; together they executes commands and writes files, so the agent can persist a payload for a later session to pick up. Both sides live in the same server, which may well be by design; confirm it.",
+      "server": "viralspin__mcp",
+      "tool": "create_kinetic_text",
+      "location": "viralspin__mcp.create_kinetic_text",
+      "evidence": {
+        "source_capability": "exec",
+        "sink_capability": "write_fs",
+        "cross_server": false,
+        "pair_count": 9,
+        "example": {
+          "source": "viralspin__mcp.create_kinetic_text",
+          "sink": "viralspin__mcp.organize_apply"
+        },
+        "sources": [
+          "viralspin__mcp.create_kinetic_text",
+          "viralspin__mcp.list_ideas",
+          "viralspin__mcp.queue_idea"
+        ],
+        "sinks": [
+          "viralspin__mcp.organize_apply",
+          "viralspin__mcp.organize_undo",
+          "viralspin__mcp.preview_folder"
+        ],
+        "servers": [
+          "viralspin__mcp"
+        ]
+      },
+      "remediation": "Break the path, not the tools: scope the credential so the source tool cannot reach anything valuable, or require explicit user confirmation on the sink tool (destructiveHint / human-in-the-loop), or split the two capabilities across trust boundaries that cannot share a context window."
+    },
+    {
+      "detector": "drift",
+      "severity": "info",
+      "title": "No baseline supplied - drift detection is disabled",
+      "detail": "Without an approved snapshot the scanner cannot tell a tool that has always been there from one that appeared yesterday. The single most effective MCP control is the diff, and it needs a baseline to diff against.",
+      "server": "*",
+      "tool": null,
+      "location": "*",
+      "evidence": {},
+      "remediation": "Run 'mcp-scrutiny baseline --config <file> --out mcp-baseline.json', commit the file, and pass it back with --baseline on every later scan."
+    }
+  ],
+  "errors": []
+}

@@ -1,0 +1,425 @@
+{
+  "tool": {
+    "name": "mcp-scrutiny",
+    "version": "0.1.3"
+  },
+  "summary": {
+    "servers": 1,
+    "tools": 378,
+    "findings": 8,
+    "worst_severity": "high",
+    "by_severity": {
+      "info": 1,
+      "low": 1,
+      "medium": 2,
+      "high": 4,
+      "critical": 0
+    }
+  },
+  "servers": [
+    {
+      "name": "adrata__adrata-mcp",
+      "transport": "stdio",
+      "command": "npx",
+      "args": [
+        "-y",
+        "@adrata/adrata-mcp"
+      ],
+      "url": null,
+      "pinned": false,
+      "floating_package": "@adrata/adrata-mcp",
+      "tools": 378
+    }
+  ],
+  "findings": [
+    {
+      "detector": "pinning",
+      "severity": "high",
+      "title": "Unpinned package executed on every start: @adrata/adrata-mcp",
+      "detail": "'adrata__adrata-mcp' launches @adrata/adrata-mcp through npx without a version. The client resolves the version at start time, so any future publish to that package name runs with your credentials. This is how postmark-mcp (Sept 2025) reached roughly 300 organisations.",
+      "server": "adrata__adrata-mcp",
+      "tool": null,
+      "location": "adrata__adrata-mcp",
+      "evidence": {
+        "package": "@adrata/adrata-mcp",
+        "runner": "npx",
+        "auto_confirm": true
+      },
+      "remediation": "Pin an exact version and an integrity hash: \"args\": [\"@adrata/adrata-mcp@<version>\"] and drop the -y flag. Re-pin deliberately, after reviewing the diff."
+    },
+    {
+      "detector": "toxic_flow",
+      "severity": "high",
+      "title": "Toxic flow within 'adrata__adrata-mcp': executes commands + sends data outbound",
+      "detail": "350 combination(s) exist where one tool executes commands and another sends data outbound. Neither tool is malicious on its own; together they executes commands and can reach the network, which is remote code execution with a delivery channel rather than a hint of one. Both sides live in the same server, which may well be by design; confirm it.",
+      "server": "adrata__adrata-mcp",
+      "tool": "add_sequence_step",
+      "location": "adrata__adrata-mcp.add_sequence_step",
+      "evidence": {
+        "source_capability": "exec",
+        "sink_capability": "network_out",
+        "cross_server": false,
+        "pair_count": 350,
+        "example": {
+          "source": "adrata__adrata-mcp.add_sequence_step",
+          "sink": "adrata__adrata-mcp.adrata_api_catalog"
+        },
+        "sources": [
+          "adrata__adrata-mcp.add_sequence_step",
+          "adrata__adrata-mcp.add_work_item_acceptance_criterion",
+          "adrata__adrata-mcp.adrata_ai_tool_execute",
+          "adrata__adrata-mcp.approve_partner_attribution",
+          "adrata__adrata-mcp.attribute_partner_to_deal",
+          "adrata__adrata-mcp.build_pursuit_command_center",
+          "adrata__adrata-mcp.classify_work_item_acceptance_criterion",
+          "adrata__adrata-mcp.create_executive_partner_meeting",
+          "adrata__adrata-mcp.create_work_item",
+          "adrata__adrata-mcp.describe_capability",
+          "adrata__adrata-mcp.dry_run_workflow",
+          "adrata__adrata-mcp.get_inbound",
+          "adrata__adrata-mcp.get_workflows",
+          "adrata__adrata-mcp.list_executive_partner_meetings",
+          "adrata__adrata-mcp.list_work_item_acceptance_criteria",
+          "adrata__adrata-mcp.manage_lightspeed_run",
+          "adrata__adrata-mcp.manage_revenue_pipeline",
+          "adrata__adrata-mcp.manage_workflow",
+          "adrata__adrata-mcp.move_work_item",
+          "adrata__adrata-mcp.record_partner_consumption",
+          "adrata__adrata-mcp.request_provider_action_execution",
+          "adrata__adrata-mcp.run_capability",
+          "adrata__adrata-mcp.search_capabilities",
+          "adrata__adrata-mcp.sloan_handoff",
+          "adrata__adrata-mcp.sloan_status",
+          "adrata__adrata-mcp.submit_adrata_command",
+          "adrata__adrata-mcp.test_provider_credential"
+        ],
+        "sinks": [
+          "adrata__adrata-mcp.adrata_api_catalog",
+          "adrata__adrata-mcp.create_webhook",
+          "adrata__adrata-mcp.delete_webhook",
+          "adrata__adrata-mcp.get_webhook_delivery",
+          "adrata__adrata-mcp.list_source_control_connections",
+          "adrata__adrata-mcp.list_webhook_deliveries",
+          "adrata__adrata-mcp.list_webhook_events",
+          "adrata__adrata-mcp.list_webhooks",
+          "adrata__adrata-mcp.move_work_item",
+          "adrata__adrata-mcp.replay_webhook_delivery",
+          "adrata__adrata-mcp.requeue_work_item_qa_after_fix",
+          "adrata__adrata-mcp.test_webhook",
+          "adrata__adrata-mcp.update_webhook"
+        ],
+        "servers": [
+          "adrata__adrata-mcp"
+        ]
+      },
+      "remediation": "Break the path, not the tools: scope the credential so the source tool cannot reach anything valuable, or require explicit user confirmation on the sink tool (destructiveHint / human-in-the-loop), or split the two capabilities across trust boundaries that cannot share a context window."
+    },
+    {
+      "detector": "toxic_flow",
+      "severity": "high",
+      "title": "Toxic flow within 'adrata__adrata-mcp': reads credentials or secrets + sends data outbound",
+      "detail": "259 combination(s) exist where one tool reads credentials or secrets and another sends data outbound. Neither tool is malicious on its own; together they reads credentials and can send data to an address it controls. A single prompt is enough to turn 'summarise this config' into a credential leak. Both sides live in the same server, which may well be by design; confirm it.",
+      "server": "adrata__adrata-mcp",
+      "tool": "classify_work_item_acceptance_criterion",
+      "location": "adrata__adrata-mcp.classify_work_item_acceptance_criterion",
+      "evidence": {
+        "source_capability": "read_secret",
+        "sink_capability": "network_out",
+        "cross_server": false,
+        "pair_count": 259,
+        "example": {
+          "source": "adrata__adrata-mcp.classify_work_item_acceptance_criterion",
+          "sink": "adrata__adrata-mcp.adrata_api_catalog"
+        },
+        "sources": [
+          "adrata__adrata-mcp.classify_work_item_acceptance_criterion",
+          "adrata__adrata-mcp.create_document_share",
+          "adrata__adrata-mcp.create_onboarding_link",
+          "adrata__adrata-mcp.create_webhook",
+          "adrata__adrata-mcp.flag_work_item",
+          "adrata__adrata-mcp.get_work_item_field_changes",
+          "adrata__adrata-mcp.get_work_item_worker_activity",
+          "adrata__adrata-mcp.get_work_item_worker_lease",
+          "adrata__adrata-mcp.list_files",
+          "adrata__adrata-mcp.manage_inbound",
+          "adrata__adrata-mcp.manage_portal",
+          "adrata__adrata-mcp.record_work_item_criterion_engineering_proof",
+          "adrata__adrata-mcp.record_work_item_local_proof",
+          "adrata__adrata-mcp.record_work_item_qa_failure_and_release",
+          "adrata__adrata-mcp.satisfy_work_item_acceptance_criterion",
+          "adrata__adrata-mcp.tag_work_item_criterion_staging_only",
+          "adrata__adrata-mcp.test_provider_credential",
+          "adrata__adrata-mcp.update_document_share",
+          "adrata__adrata-mcp.verify_work_item_qa_evidence_playback",
+          "adrata__adrata-mcp.workspace_status"
+        ],
+        "sinks": [
+          "adrata__adrata-mcp.adrata_api_catalog",
+          "adrata__adrata-mcp.create_webhook",
+          "adrata__adrata-mcp.delete_webhook",
+          "adrata__adrata-mcp.get_webhook_delivery",
+          "adrata__adrata-mcp.list_source_control_connections",
+          "adrata__adrata-mcp.list_webhook_deliveries",
+          "adrata__adrata-mcp.list_webhook_events",
+          "adrata__adrata-mcp.list_webhooks",
+          "adrata__adrata-mcp.move_work_item",
+          "adrata__adrata-mcp.replay_webhook_delivery",
+          "adrata__adrata-mcp.requeue_work_item_qa_after_fix",
+          "adrata__adrata-mcp.test_webhook",
+          "adrata__adrata-mcp.update_webhook"
+        ],
+        "servers": [
+          "adrata__adrata-mcp"
+        ]
+      },
+      "remediation": "Break the path, not the tools: scope the credential so the source tool cannot reach anything valuable, or require explicit user confirmation on the sink tool (destructiveHint / human-in-the-loop), or split the two capabilities across trust boundaries that cannot share a context window."
+    },
+    {
+      "detector": "toxic_flow",
+      "severity": "high",
+      "title": "Toxic flow within 'adrata__adrata-mcp': reads credentials or secrets + sends email or messages",
+      "detail": "519 combination(s) exist where one tool reads credentials or secrets and another sends email or messages. Neither tool is malicious on its own; together they reads credentials and can send mail. This is the postmark-mcp shape: the mail tool was legitimate, the credentials were reachable, and the combination was the incident. Both sides live in the same server, which may well be by design; confirm it.",
+      "server": "adrata__adrata-mcp",
+      "tool": "classify_work_item_acceptance_criterion",
+      "location": "adrata__adrata-mcp.classify_work_item_acceptance_criterion",
+      "evidence": {
+        "source_capability": "read_secret",
+        "sink_capability": "send_email",
+        "cross_server": false,
+        "pair_count": 519,
+        "example": {
+          "source": "adrata__adrata-mcp.classify_work_item_acceptance_criterion",
+          "sink": "adrata__adrata-mcp.build_pursuit_command_center"
+        },
+        "sources": [
+          "adrata__adrata-mcp.classify_work_item_acceptance_criterion",
+          "adrata__adrata-mcp.create_document_share",
+          "adrata__adrata-mcp.create_onboarding_link",
+          "adrata__adrata-mcp.create_webhook",
+          "adrata__adrata-mcp.flag_work_item",
+          "adrata__adrata-mcp.get_work_item_field_changes",
+          "adrata__adrata-mcp.get_work_item_worker_activity",
+          "adrata__adrata-mcp.get_work_item_worker_lease",
+          "adrata__adrata-mcp.list_files",
+          "adrata__adrata-mcp.manage_inbound",
+          "adrata__adrata-mcp.manage_portal",
+          "adrata__adrata-mcp.record_work_item_criterion_engineering_proof",
+          "adrata__adrata-mcp.record_work_item_local_proof",
+          "adrata__adrata-mcp.record_work_item_qa_failure_and_release",
+          "adrata__adrata-mcp.satisfy_work_item_acceptance_criterion",
+          "adrata__adrata-mcp.tag_work_item_criterion_staging_only",
+          "adrata__adrata-mcp.test_provider_credential",
+          "adrata__adrata-mcp.update_document_share",
+          "adrata__adrata-mcp.verify_work_item_qa_evidence_playback",
+          "adrata__adrata-mcp.workspace_status"
+        ],
+        "sinks": [
+          "adrata__adrata-mcp.build_pursuit_command_center",
+          "adrata__adrata-mcp.create_sequence",
+          "adrata__adrata-mcp.enrich_person",
+          "adrata__adrata-mcp.find_or_create_person",
+          "adrata__adrata-mcp.get_email",
+          "adrata__adrata-mcp.get_email_health",
+          "adrata__adrata-mcp.get_inbox_thread",
+          "adrata__adrata-mcp.get_work_item",
+          "adrata__adrata-mcp.list_document_share_views",
+          "adrata__adrata-mcp.list_domains",
+          "adrata__adrata-mcp.list_email_accounts",
+          "adrata__adrata-mcp.list_sequences",
+          "adrata__adrata-mcp.list_sequences_full",
+          "adrata__adrata-mcp.manage_messages",
+          "adrata__adrata-mcp.manage_portal",
+          "adrata__adrata-mcp.purchase_domain",
+          "adrata__adrata-mcp.read_messages",
+          "adrata__adrata-mcp.schedule_demo",
+          "adrata__adrata-mcp.search_domains",
+          "adrata__adrata-mcp.search_emails",
+          "adrata__adrata-mcp.search_people",
+          "adrata__adrata-mcp.send_mailbox_email",
+          "adrata__adrata-mcp.setup_domain",
+          "adrata__adrata-mcp.share_file",
+          "adrata__adrata-mcp.sloan_handoff",
+          "adrata__adrata-mcp.verify_domain"
+        ],
+        "servers": [
+          "adrata__adrata-mcp"
+        ]
+      },
+      "remediation": "Break the path, not the tools: scope the credential so the source tool cannot reach anything valuable, or require explicit user confirmation on the sink tool (destructiveHint / human-in-the-loop), or split the two capabilities across trust boundaries that cannot share a context window."
+    },
+    {
+      "detector": "toxic_flow",
+      "severity": "medium",
+      "title": "Toxic flow within 'adrata__adrata-mcp': executes commands + writes or deletes files",
+      "detail": "243 combination(s) exist where one tool executes commands and another writes or deletes files. Neither tool is malicious on its own; together they executes commands and writes files, so the agent can persist a payload for a later session to pick up. Both sides live in the same server, which may well be by design; confirm it.",
+      "server": "adrata__adrata-mcp",
+      "tool": "add_sequence_step",
+      "location": "adrata__adrata-mcp.add_sequence_step",
+      "evidence": {
+        "source_capability": "exec",
+        "sink_capability": "write_fs",
+        "cross_server": false,
+        "pair_count": 243,
+        "example": {
+          "source": "adrata__adrata-mcp.add_sequence_step",
+          "sink": "adrata__adrata-mcp.create_document_share"
+        },
+        "sources": [
+          "adrata__adrata-mcp.add_sequence_step",
+          "adrata__adrata-mcp.add_work_item_acceptance_criterion",
+          "adrata__adrata-mcp.adrata_ai_tool_execute",
+          "adrata__adrata-mcp.approve_partner_attribution",
+          "adrata__adrata-mcp.attribute_partner_to_deal",
+          "adrata__adrata-mcp.build_pursuit_command_center",
+          "adrata__adrata-mcp.classify_work_item_acceptance_criterion",
+          "adrata__adrata-mcp.create_executive_partner_meeting",
+          "adrata__adrata-mcp.create_work_item",
+          "adrata__adrata-mcp.describe_capability",
+          "adrata__adrata-mcp.dry_run_workflow",
+          "adrata__adrata-mcp.get_inbound",
+          "adrata__adrata-mcp.get_workflows",
+          "adrata__adrata-mcp.list_executive_partner_meetings",
+          "adrata__adrata-mcp.list_work_item_acceptance_criteria",
+          "adrata__adrata-mcp.manage_lightspeed_run",
+          "adrata__adrata-mcp.manage_revenue_pipeline",
+          "adrata__adrata-mcp.manage_workflow",
+          "adrata__adrata-mcp.move_work_item",
+          "adrata__adrata-mcp.record_partner_consumption",
+          "adrata__adrata-mcp.request_provider_action_execution",
+          "adrata__adrata-mcp.run_capability",
+          "adrata__adrata-mcp.search_capabilities",
+          "adrata__adrata-mcp.sloan_handoff",
+          "adrata__adrata-mcp.sloan_status",
+          "adrata__adrata-mcp.submit_adrata_command",
+          "adrata__adrata-mcp.test_provider_credential"
+        ],
+        "sinks": [
+          "adrata__adrata-mcp.create_document_share",
+          "adrata__adrata-mcp.create_file",
+          "adrata__adrata-mcp.create_folder",
+          "adrata__adrata-mcp.delete_file",
+          "adrata__adrata-mcp.manage_file",
+          "adrata__adrata-mcp.move_work_scope_under",
+          "adrata__adrata-mcp.rank_paths_to_power",
+          "adrata__adrata-mcp.set_decision_status",
+          "adrata__adrata-mcp.set_file_media_text"
+        ],
+        "servers": [
+          "adrata__adrata-mcp"
+        ]
+      },
+      "remediation": "Break the path, not the tools: scope the credential so the source tool cannot reach anything valuable, or require explicit user confirmation on the sink tool (destructiveHint / human-in-the-loop), or split the two capabilities across trust boundaries that cannot share a context window."
+    },
+    {
+      "detector": "toxic_flow",
+      "severity": "medium",
+      "title": "Toxic flow within 'adrata__adrata-mcp': reads files + sends data outbound",
+      "detail": "195 combination(s) exist where one tool reads files and another sends data outbound. Neither tool is malicious on its own; together they reads files and can transmit them, so any file the server can reach is reachable by the model, including ones outside the project. Both sides live in the same server, which may well be by design; confirm it.",
+      "server": "adrata__adrata-mcp",
+      "tool": "add_to_roadmap",
+      "location": "adrata__adrata-mcp.add_to_roadmap",
+      "evidence": {
+        "source_capability": "read_fs",
+        "sink_capability": "network_out",
+        "cross_server": false,
+        "pair_count": 195,
+        "example": {
+          "source": "adrata__adrata-mcp.add_to_roadmap",
+          "sink": "adrata__adrata-mcp.adrata_api_catalog"
+        },
+        "sources": [
+          "adrata__adrata-mcp.add_to_roadmap",
+          "adrata__adrata-mcp.attach_work_item_qa_evidence",
+          "adrata__adrata-mcp.get_file",
+          "adrata__adrata-mcp.get_file_backlinks",
+          "adrata__adrata-mcp.get_file_decision",
+          "adrata__adrata-mcp.get_file_link_graph",
+          "adrata__adrata-mcp.get_file_media",
+          "adrata__adrata-mcp.list_content_files",
+          "adrata__adrata-mcp.list_file_decisions",
+          "adrata__adrata-mcp.list_file_media",
+          "adrata__adrata-mcp.list_file_versions",
+          "adrata__adrata-mcp.list_files",
+          "adrata__adrata-mcp.propose_file_change",
+          "adrata__adrata-mcp.read_code",
+          "adrata__adrata-mcp.upload_file_media"
+        ],
+        "sinks": [
+          "adrata__adrata-mcp.adrata_api_catalog",
+          "adrata__adrata-mcp.create_webhook",
+          "adrata__adrata-mcp.delete_webhook",
+          "adrata__adrata-mcp.get_webhook_delivery",
+          "adrata__adrata-mcp.list_source_control_connections",
+          "adrata__adrata-mcp.list_webhook_deliveries",
+          "adrata__adrata-mcp.list_webhook_events",
+          "adrata__adrata-mcp.list_webhooks",
+          "adrata__adrata-mcp.move_work_item",
+          "adrata__adrata-mcp.replay_webhook_delivery",
+          "adrata__adrata-mcp.requeue_work_item_qa_after_fix",
+          "adrata__adrata-mcp.test_webhook",
+          "adrata__adrata-mcp.update_webhook"
+        ],
+        "servers": [
+          "adrata__adrata-mcp"
+        ]
+      },
+      "remediation": "Break the path, not the tools: scope the credential so the source tool cannot reach anything valuable, or require explicit user confirmation on the sink tool (destructiveHint / human-in-the-loop), or split the two capabilities across trust boundaries that cannot share a context window."
+    },
+    {
+      "detector": "toxic_flow",
+      "severity": "low",
+      "title": "Toxic flow within 'adrata__adrata-mcp': reads files + modifies a database",
+      "detail": "30 combination(s) exist where one tool reads files and another modifies a database. Neither tool is malicious on its own; together they reads files and writes to a database, so local content can be moved into a shared store the model can read back. Both sides live in the same server, which may well be by design; confirm it.",
+      "server": "adrata__adrata-mcp",
+      "tool": "add_to_roadmap",
+      "location": "adrata__adrata-mcp.add_to_roadmap",
+      "evidence": {
+        "source_capability": "read_fs",
+        "sink_capability": "db_write",
+        "cross_server": false,
+        "pair_count": 30,
+        "example": {
+          "source": "adrata__adrata-mcp.add_to_roadmap",
+          "sink": "adrata__adrata-mcp.delete_work_item"
+        },
+        "sources": [
+          "adrata__adrata-mcp.add_to_roadmap",
+          "adrata__adrata-mcp.attach_work_item_qa_evidence",
+          "adrata__adrata-mcp.get_file",
+          "adrata__adrata-mcp.get_file_backlinks",
+          "adrata__adrata-mcp.get_file_decision",
+          "adrata__adrata-mcp.get_file_link_graph",
+          "adrata__adrata-mcp.get_file_media",
+          "adrata__adrata-mcp.list_content_files",
+          "adrata__adrata-mcp.list_file_decisions",
+          "adrata__adrata-mcp.list_file_media",
+          "adrata__adrata-mcp.list_file_versions",
+          "adrata__adrata-mcp.list_files",
+          "adrata__adrata-mcp.propose_file_change",
+          "adrata__adrata-mcp.read_code",
+          "adrata__adrata-mcp.upload_file_media"
+        ],
+        "sinks": [
+          "adrata__adrata-mcp.delete_work_item",
+          "adrata__adrata-mcp.remove_buyer_group_member"
+        ],
+        "servers": [
+          "adrata__adrata-mcp"
+        ]
+      },
+      "remediation": "Break the path, not the tools: scope the credential so the source tool cannot reach anything valuable, or require explicit user confirmation on the sink tool (destructiveHint / human-in-the-loop), or split the two capabilities across trust boundaries that cannot share a context window."
+    },
+    {
+      "detector": "drift",
+      "severity": "info",
+      "title": "No baseline supplied - drift detection is disabled",
+      "detail": "Without an approved snapshot the scanner cannot tell a tool that has always been there from one that appeared yesterday. The single most effective MCP control is the diff, and it needs a baseline to diff against.",
+      "server": "*",
+      "tool": null,
+      "location": "*",
+      "evidence": {},
+      "remediation": "Run 'mcp-scrutiny baseline --config <file> --out mcp-baseline.json', commit the file, and pass it back with --baseline on every later scan."
+    }
+  ],
+  "errors": []
+}

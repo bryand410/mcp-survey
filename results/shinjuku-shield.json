@@ -60,6 +60,6 @@
     }
   ],
   "errors": [
-    "shinjuku-shield: the server exited with status 0 before answering initialize"
+    "shinjuku-shield: no tool definitions available (run 'capture' or pass --probe to query the server)"
   ]
 }

@@ -1,0 +1,153 @@
+{
+  "tool": {
+    "name": "mcp-scrutiny",
+    "version": "0.1.3"
+  },
+  "summary": {
+    "servers": 1,
+    "tools": 132,
+    "findings": 4,
+    "worst_severity": "high",
+    "by_severity": {
+      "info": 1,
+      "low": 0,
+      "medium": 1,
+      "high": 2,
+      "critical": 0
+    }
+  },
+  "servers": [
+    {
+      "name": "layoutbridge-spm",
+      "transport": "stdio",
+      "command": "npx",
+      "args": [
+        "-y",
+        "layoutbridge-spm"
+      ],
+      "url": null,
+      "pinned": false,
+      "floating_package": "layoutbridge-spm",
+      "tools": 132
+    }
+  ],
+  "findings": [
+    {
+      "detector": "pinning",
+      "severity": "high",
+      "title": "Unpinned package executed on every start: layoutbridge-spm",
+      "detail": "'layoutbridge-spm' launches layoutbridge-spm through npx without a version. The client resolves the version at start time, so any future publish to that package name runs with your credentials. This is how postmark-mcp (Sept 2025) reached roughly 300 organisations.",
+      "server": "layoutbridge-spm",
+      "tool": null,
+      "location": "layoutbridge-spm",
+      "evidence": {
+        "package": "layoutbridge-spm",
+        "runner": "npx",
+        "auto_confirm": true
+      },
+      "remediation": "Pin an exact version and an integrity hash: \"args\": [\"layoutbridge-spm@<version>\"] and drop the -y flag. Re-pin deliberately, after reviewing the diff."
+    },
+    {
+      "detector": "semantic",
+      "severity": "high",
+      "title": "Description reads as instructions to the model (p=0.99): place_image",
+      "detail": "The description of 'layoutbridge-spm.place_image' scores 0.99 on the instruction-detection model, and carries intent signals: hidden_recipient. Descriptions are documentation for a human, but they are delivered to the model as trusted context, so text that tells the model what to do is an attack surface rather than a description. The score is driven mainly by: hidden_recipient, entropy, log_len.",
+      "server": "layoutbridge-spm",
+      "tool": "place_image",
+      "location": "layoutbridge-spm.place_image",
+      "evidence": {
+        "probability": 0.9911,
+        "threshold": 0.5,
+        "intent_signals": [
+          "hidden_recipient"
+        ],
+        "driving_features": [
+          {
+            "feature": "hidden_recipient",
+            "contribution": 6.3853
+          },
+          {
+            "feature": "log_words",
+            "contribution": -4.4326
+          },
+          {
+            "feature": "entropy",
+            "contribution": 2.6656
+          },
+          {
+            "feature": "log_len",
+            "contribution": 2.0055
+          },
+          {
+            "feature": "hardcoded_recipient",
+            "contribution": -1.2458
+          },
+          {
+            "feature": "concealment",
+            "contribution": -0.8605
+          }
+        ],
+        "active_features": {
+          "log_len": 7.389563953677635,
+          "log_words": 5.572154032177765,
+          "entropy": 4.514690283744477,
+          "non_ascii_ratio": 0.004326328800988875,
+          "credentials": 1.0,
+          "imperative_density": 0.003816793893129771,
+          "hidden_recipient": 1.0,
+          "schema_nested_desc": 8.0
+        },
+        "description": "Place an image or PDF file (real path on the InDesign machine) into a graphic frame, replacing whatever it held (crop and scale are reset – to merely swap the file use relink_links). fit: fill_proportionally, fit_proportionally, fit_content_to_frame or center_content; without it the frame fitting options of the frame apply. pdf_crop chooses the PDF page box: media (InDesign default – the whole sheet including printer marks, the usual reason for misplaced ads), crop, trim, bleed (for bleed ads), "
+      },
+      "remediation": "Read the description against what the tool actually does. If the text is legitimate, it usually means the tool should not have to instruct the model at all - move the guidance into the parameter descriptions or the server's own docs."
+    },
+    {
+      "detector": "toxic_flow",
+      "severity": "medium",
+      "title": "Toxic flow within 'layoutbridge-spm': reads files + sends data outbound",
+      "detail": "18 combination(s) exist where one tool reads files and another sends data outbound. Neither tool is malicious on its own; together they reads files and can transmit them, so any file the server can reach is reachable by the model, including ones outside the project. Both sides live in the same server, which may well be by design; confirm it.",
+      "server": "layoutbridge-spm",
+      "tool": "create_polygon",
+      "location": "layoutbridge-spm.create_polygon",
+      "evidence": {
+        "source_capability": "read_fs",
+        "sink_capability": "network_out",
+        "cross_server": false,
+        "pair_count": 18,
+        "example": {
+          "source": "layoutbridge-spm.create_polygon",
+          "sink": "layoutbridge-spm.check_epub"
+        },
+        "sources": [
+          "layoutbridge-spm.create_polygon",
+          "layoutbridge-spm.define_character_style",
+          "layoutbridge-spm.define_paragraph_style",
+          "layoutbridge-spm.export_epub",
+          "layoutbridge-spm.export_page_image",
+          "layoutbridge-spm.save_document_as"
+        ],
+        "sinks": [
+          "layoutbridge-spm.check_epub",
+          "layoutbridge-spm.check_print_on_demand",
+          "layoutbridge-spm.create_book_cover"
+        ],
+        "servers": [
+          "layoutbridge-spm"
+        ]
+      },
+      "remediation": "Break the path, not the tools: scope the credential so the source tool cannot reach anything valuable, or require explicit user confirmation on the sink tool (destructiveHint / human-in-the-loop), or split the two capabilities across trust boundaries that cannot share a context window."
+    },
+    {
+      "detector": "drift",
+      "severity": "info",
+      "title": "No baseline supplied - drift detection is disabled",
+      "detail": "Without an approved snapshot the scanner cannot tell a tool that has always been there from one that appeared yesterday. The single most effective MCP control is the diff, and it needs a baseline to diff against.",
+      "server": "*",
+      "tool": null,
+      "location": "*",
+      "evidence": {},
+      "remediation": "Run 'mcp-scrutiny baseline --config <file> --out mcp-baseline.json', commit the file, and pass it back with --baseline on every later scan."
+    }
+  ],
+  "errors": []
+}

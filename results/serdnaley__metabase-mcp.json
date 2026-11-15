@@ -60,6 +60,6 @@
     }
   ],
   "errors": [
-    "serdnaley__metabase-mcp: the server exited with status 1 before answering initialize; stderr: Configuration error: Invalid input: expected string, received undefined"
+    "serdnaley__metabase-mcp: no tool definitions available (run 'capture' or pass --probe to query the server)"
   ]
 }

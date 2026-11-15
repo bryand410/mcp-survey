@@ -1,0 +1,318 @@
+{
+  "tool": {
+    "name": "mcp-scrutiny",
+    "version": "0.1.3"
+  },
+  "summary": {
+    "servers": 1,
+    "tools": 73,
+    "findings": 8,
+    "worst_severity": "high",
+    "by_severity": {
+      "info": 1,
+      "low": 0,
+      "medium": 1,
+      "high": 6,
+      "critical": 0
+    }
+  },
+  "servers": [
+    {
+      "name": "mcp-server-robinhood-chain",
+      "transport": "stdio",
+      "command": "npx",
+      "args": [
+        "-y",
+        "mcp-server-robinhood-chain"
+      ],
+      "url": null,
+      "pinned": false,
+      "floating_package": "mcp-server-robinhood-chain",
+      "tools": 73
+    }
+  ],
+  "findings": [
+    {
+      "detector": "pinning",
+      "severity": "high",
+      "title": "Unpinned package executed on every start: mcp-server-robinhood-chain",
+      "detail": "'mcp-server-robinhood-chain' launches mcp-server-robinhood-chain through npx without a version. The client resolves the version at start time, so any future publish to that package name runs with your credentials. This is how postmark-mcp (Sept 2025) reached roughly 300 organisations.",
+      "server": "mcp-server-robinhood-chain",
+      "tool": null,
+      "location": "mcp-server-robinhood-chain",
+      "evidence": {
+        "package": "mcp-server-robinhood-chain",
+        "runner": "npx",
+        "auto_confirm": true
+      },
+      "remediation": "Pin an exact version and an integrity hash: \"args\": [\"mcp-server-robinhood-chain@<version>\"] and drop the -y flag. Re-pin deliberately, after reviewing the diff."
+    },
+    {
+      "detector": "semantic",
+      "severity": "high",
+      "title": "Description reads as instructions to the model (p=1.00): rhc_equities",
+      "detail": "The description of 'mcp-server-robinhood-chain.rhc_equities' scores 1.00 on the instruction-detection model, and carries intent signals: encoded_blob. Descriptions are documentation for a human, but they are delivered to the model as trusted context, so text that tells the model what to do is an attack surface rather than a description. The score is driven mainly by: encoded_blob, cross_tool, entropy, log_len.",
+      "server": "mcp-server-robinhood-chain",
+      "tool": "rhc_equities",
+      "location": "mcp-server-robinhood-chain.rhc_equities",
+      "evidence": {
+        "probability": 1.0,
+        "threshold": 0.5,
+        "intent_signals": [
+          "encoded_blob"
+        ],
+        "driving_features": [
+          {
+            "feature": "encoded_blob",
+            "contribution": 16.2327
+          },
+          {
+            "feature": "cross_tool",
+            "contribution": 6.1813
+          },
+          {
+            "feature": "entropy",
+            "contribution": 6.111
+          },
+          {
+            "feature": "log_words",
+            "contribution": -4.0401
+          },
+          {
+            "feature": "log_len",
+            "contribution": 1.8526
+          },
+          {
+            "feature": "hardcoded_recipient",
+            "contribution": -1.2458
+          }
+        ],
+        "active_features": {
+          "log_len": 7.189922170745808,
+          "log_words": 5.337538079701318,
+          "entropy": 4.952808149461287,
+          "non_ascii_ratio": 0.005283018867924529,
+          "encoded_blob": 2.0,
+          "cross_tool": 1.0,
+          "imperative_density": 0.00966183574879227,
+          "schema_defaults": 2.0,
+          "schema_nested_desc": 4.0
+        },
+        "description": "Robinhood Chain tokenized equities — every official Robinhood tokenized stock and ETF (NVDA, SPY, AAPL, …) with live price / market cap / liquidity and 24h trades, ETH volume, buys/sells and distinct buyers/sellers. IDENTITY IS THE ISSUER BEACON, NEVER THE NAME: a token is listed only if its contract is an EIP-1967 beacon proxy on Robinhood's issuer beacon 0xe10b6f6b275de231345c20d14ab812db62151b00, read from our own node (re-classified every 10 min). The day this shipped there were 20 fake 'Gam"
+      },
+      "remediation": "Read the description against what the tool actually does. If the text is legitimate, it usually means the tool should not have to instruct the model at all - move the guidance into the parameter descriptions or the server's own docs."
+    },
+    {
+      "detector": "semantic",
+      "severity": "high",
+      "title": "Description reads as instructions to the model (p=1.00): rhc_token_risk",
+      "detail": "The description of 'mcp-server-robinhood-chain.rhc_token_risk' scores 1.00 on the instruction-detection model, and carries intent signals: concealment. Descriptions are documentation for a human, but they are delivered to the model as trusted context, so text that tells the model what to do is an attack surface rather than a description. The score is driven mainly by: concealment, cross_tool, entropy, log_len.",
+      "server": "mcp-server-robinhood-chain",
+      "tool": "rhc_token_risk",
+      "location": "mcp-server-robinhood-chain.rhc_token_risk",
+      "evidence": {
+        "probability": 1.0,
+        "threshold": 0.5,
+        "intent_signals": [
+          "concealment"
+        ],
+        "driving_features": [
+          {
+            "feature": "concealment",
+            "contribution": 9.537
+          },
+          {
+            "feature": "cross_tool",
+            "contribution": 6.1813
+          },
+          {
+            "feature": "entropy",
+            "contribution": 4.5811
+          },
+          {
+            "feature": "log_words",
+            "contribution": -3.6221
+          },
+          {
+            "feature": "log_len",
+            "contribution": 1.6257
+          },
+          {
+            "feature": "hardcoded_recipient",
+            "contribution": -1.2458
+          }
+        ],
+        "active_features": {
+          "log_len": 6.893656354602635,
+          "log_words": 5.087596335232384,
+          "entropy": 4.758269996052275,
+          "non_ascii_ratio": 0.0010152284263959391,
+          "concealment": 1.0,
+          "cross_tool": 1.0,
+          "imperative_density": 0.012422360248447204,
+          "schema_nested_desc": 1.0
+        },
+        "description": "EVM-native risk assessment for a Robinhood Chain token, computed LIVE against a self-hosted RHC node. THIS IS NOT THE SOLANA RISK MODEL: EVM has no mint or freeze authority. Across 300 random RHC tokens only 2.3% even expose an owner() function and 0% expose mint in their own bytecode — so an ABSENT capability flag is the NORM and is NOT a safety signal. Never tell a user a token is safe because can_mint is false. The signals that actually discriminate are proxy upgradeability, LP custody and ab"
+      },
+      "remediation": "Read the description against what the tool actually does. If the text is legitimate, it usually means the tool should not have to instruct the model at all - move the guidance into the parameter descriptions or the server's own docs."
+    },
+    {
+      "detector": "toxic_flow",
+      "severity": "high",
+      "title": "Toxic flow within 'mcp-server-robinhood-chain': executes commands + sends data outbound",
+      "detail": "34 combination(s) exist where one tool executes commands and another sends data outbound. Neither tool is malicious on its own; together they executes commands and can reach the network, which is remote code execution with a delivery channel rather than a hint of one. Both sides live in the same server, which may well be by design; confirm it.",
+      "server": "mcp-server-robinhood-chain",
+      "tool": "rhc_price_alerts_create",
+      "location": "mcp-server-robinhood-chain.rhc_price_alerts_create",
+      "evidence": {
+        "source_capability": "exec",
+        "sink_capability": "network_out",
+        "cross_server": false,
+        "pair_count": 34,
+        "example": {
+          "source": "mcp-server-robinhood-chain.rhc_price_alerts_create",
+          "sink": "mcp-server-robinhood-chain.rhc_coordination_alerts_create"
+        },
+        "sources": [
+          "mcp-server-robinhood-chain.rhc_price_alerts_create",
+          "mcp-server-robinhood-chain.rhc_price_alerts_events",
+          "mcp-server-robinhood-chain.rhc_price_alerts_list",
+          "mcp-server-robinhood-chain.rhc_trades"
+        ],
+        "sinks": [
+          "mcp-server-robinhood-chain.rhc_coordination_alerts_create",
+          "mcp-server-robinhood-chain.rhc_copytrade_create",
+          "mcp-server-robinhood-chain.rhc_copytrade_list",
+          "mcp-server-robinhood-chain.rhc_copytrade_signals",
+          "mcp-server-robinhood-chain.rhc_first_touch_subscriptions_create",
+          "mcp-server-robinhood-chain.rhc_price_alerts_create",
+          "mcp-server-robinhood-chain.rhc_price_alerts_events",
+          "mcp-server-robinhood-chain.rhc_token_batch",
+          "mcp-server-robinhood-chain.rhc_token_batch_buyer_quality"
+        ],
+        "servers": [
+          "mcp-server-robinhood-chain"
+        ]
+      },
+      "remediation": "Break the path, not the tools: scope the credential so the source tool cannot reach anything valuable, or require explicit user confirmation on the sink tool (destructiveHint / human-in-the-loop), or split the two capabilities across trust boundaries that cannot share a context window."
+    },
+    {
+      "detector": "toxic_flow",
+      "severity": "high",
+      "title": "Toxic flow within 'mcp-server-robinhood-chain': reads credentials or secrets + sends data outbound",
+      "detail": "9 combination(s) exist where one tool reads credentials or secrets and another sends data outbound. Neither tool is malicious on its own; together they reads credentials and can send data to an address it controls. A single prompt is enough to turn 'summarise this config' into a credential leak. Both sides live in the same server, which may well be by design; confirm it.",
+      "server": "mcp-server-robinhood-chain",
+      "tool": "rhc_token_locks",
+      "location": "mcp-server-robinhood-chain.rhc_token_locks",
+      "evidence": {
+        "source_capability": "read_secret",
+        "sink_capability": "network_out",
+        "cross_server": false,
+        "pair_count": 9,
+        "example": {
+          "source": "mcp-server-robinhood-chain.rhc_token_locks",
+          "sink": "mcp-server-robinhood-chain.rhc_coordination_alerts_create"
+        },
+        "sources": [
+          "mcp-server-robinhood-chain.rhc_token_locks"
+        ],
+        "sinks": [
+          "mcp-server-robinhood-chain.rhc_coordination_alerts_create",
+          "mcp-server-robinhood-chain.rhc_copytrade_create",
+          "mcp-server-robinhood-chain.rhc_copytrade_list",
+          "mcp-server-robinhood-chain.rhc_copytrade_signals",
+          "mcp-server-robinhood-chain.rhc_first_touch_subscriptions_create",
+          "mcp-server-robinhood-chain.rhc_price_alerts_create",
+          "mcp-server-robinhood-chain.rhc_price_alerts_events",
+          "mcp-server-robinhood-chain.rhc_token_batch",
+          "mcp-server-robinhood-chain.rhc_token_batch_buyer_quality"
+        ],
+        "servers": [
+          "mcp-server-robinhood-chain"
+        ]
+      },
+      "remediation": "Break the path, not the tools: scope the credential so the source tool cannot reach anything valuable, or require explicit user confirmation on the sink tool (destructiveHint / human-in-the-loop), or split the two capabilities across trust boundaries that cannot share a context window."
+    },
+    {
+      "detector": "toxic_flow",
+      "severity": "high",
+      "title": "Toxic flow within 'mcp-server-robinhood-chain': reads credentials or secrets + sends email or messages",
+      "detail": "2 combination(s) exist where one tool reads credentials or secrets and another sends email or messages. Neither tool is malicious on its own; together they reads credentials and can send mail. This is the postmark-mcp shape: the mail tool was legitimate, the credentials were reachable, and the combination was the incident. Both sides live in the same server, which may well be by design; confirm it.",
+      "server": "mcp-server-robinhood-chain",
+      "tool": "rhc_token_locks",
+      "location": "mcp-server-robinhood-chain.rhc_token_locks",
+      "evidence": {
+        "source_capability": "read_secret",
+        "sink_capability": "send_email",
+        "cross_server": false,
+        "pair_count": 2,
+        "example": {
+          "source": "mcp-server-robinhood-chain.rhc_token_locks",
+          "sink": "mcp-server-robinhood-chain.rhc_token_lock_summary"
+        },
+        "sources": [
+          "mcp-server-robinhood-chain.rhc_token_locks"
+        ],
+        "sinks": [
+          "mcp-server-robinhood-chain.rhc_token_lock_summary",
+          "mcp-server-robinhood-chain.rhc_token_locks",
+          "mcp-server-robinhood-chain.rhc_trades"
+        ],
+        "servers": [
+          "mcp-server-robinhood-chain"
+        ]
+      },
+      "remediation": "Break the path, not the tools: scope the credential so the source tool cannot reach anything valuable, or require explicit user confirmation on the sink tool (destructiveHint / human-in-the-loop), or split the two capabilities across trust boundaries that cannot share a context window."
+    },
+    {
+      "detector": "toxic_flow",
+      "severity": "medium",
+      "title": "Toxic flow within 'mcp-server-robinhood-chain': reads files + sends data outbound",
+      "detail": "16 combination(s) exist where one tool reads files and another sends data outbound. Neither tool is malicious on its own; together they reads files and can transmit them, so any file the server can reach is reachable by the model, including ones outside the project. Both sides live in the same server, which may well be by design; confirm it.",
+      "server": "mcp-server-robinhood-chain",
+      "tool": "rhc_copytrade_signals",
+      "location": "mcp-server-robinhood-chain.rhc_copytrade_signals",
+      "evidence": {
+        "source_capability": "read_fs",
+        "sink_capability": "network_out",
+        "cross_server": false,
+        "pair_count": 16,
+        "example": {
+          "source": "mcp-server-robinhood-chain.rhc_copytrade_signals",
+          "sink": "mcp-server-robinhood-chain.rhc_coordination_alerts_create"
+        },
+        "sources": [
+          "mcp-server-robinhood-chain.rhc_copytrade_signals",
+          "mcp-server-robinhood-chain.rhc_price_alerts_events"
+        ],
+        "sinks": [
+          "mcp-server-robinhood-chain.rhc_coordination_alerts_create",
+          "mcp-server-robinhood-chain.rhc_copytrade_create",
+          "mcp-server-robinhood-chain.rhc_copytrade_list",
+          "mcp-server-robinhood-chain.rhc_copytrade_signals",
+          "mcp-server-robinhood-chain.rhc_first_touch_subscriptions_create",
+          "mcp-server-robinhood-chain.rhc_price_alerts_create",
+          "mcp-server-robinhood-chain.rhc_price_alerts_events",
+          "mcp-server-robinhood-chain.rhc_token_batch",
+          "mcp-server-robinhood-chain.rhc_token_batch_buyer_quality"
+        ],
+        "servers": [
+          "mcp-server-robinhood-chain"
+        ]
+      },
+      "remediation": "Break the path, not the tools: scope the credential so the source tool cannot reach anything valuable, or require explicit user confirmation on the sink tool (destructiveHint / human-in-the-loop), or split the two capabilities across trust boundaries that cannot share a context window."
+    },
+    {
+      "detector": "drift",
+      "severity": "info",
+      "title": "No baseline supplied - drift detection is disabled",
+      "detail": "Without an approved snapshot the scanner cannot tell a tool that has always been there from one that appeared yesterday. The single most effective MCP control is the diff, and it needs a baseline to diff against.",
+      "server": "*",
+      "tool": null,
+      "location": "*",
+      "evidence": {},
+      "remediation": "Run 'mcp-scrutiny baseline --config <file> --out mcp-baseline.json', commit the file, and pass it back with --baseline on every later scan."
+    }
+  ],
+  "errors": []
+}

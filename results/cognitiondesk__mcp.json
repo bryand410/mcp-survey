@@ -1,0 +1,635 @@
+{
+  "tool": {
+    "name": "mcp-scrutiny",
+    "version": "0.1.3"
+  },
+  "summary": {
+    "servers": 1,
+    "tools": 133,
+    "findings": 15,
+    "worst_severity": "high",
+    "by_severity": {
+      "info": 1,
+      "low": 0,
+      "medium": 3,
+      "high": 11,
+      "critical": 0
+    }
+  },
+  "servers": [
+    {
+      "name": "cognitiondesk__mcp",
+      "transport": "stdio",
+      "command": "npx",
+      "args": [
+        "-y",
+        "@cognitiondesk/mcp"
+      ],
+      "url": null,
+      "pinned": false,
+      "floating_package": "@cognitiondesk/mcp",
+      "tools": 133
+    }
+  ],
+  "findings": [
+    {
+      "detector": "pinning",
+      "severity": "high",
+      "title": "Unpinned package executed on every start: @cognitiondesk/mcp",
+      "detail": "'cognitiondesk__mcp' launches @cognitiondesk/mcp through npx without a version. The client resolves the version at start time, so any future publish to that package name runs with your credentials. This is how postmark-mcp (Sept 2025) reached roughly 300 organisations.",
+      "server": "cognitiondesk__mcp",
+      "tool": null,
+      "location": "cognitiondesk__mcp",
+      "evidence": {
+        "package": "@cognitiondesk/mcp",
+        "runner": "npx",
+        "auto_confirm": true
+      },
+      "remediation": "Pin an exact version and an integrity hash: \"args\": [\"@cognitiondesk/mcp@<version>\"] and drop the -y flag. Re-pin deliberately, after reviewing the diff."
+    },
+    {
+      "detector": "semantic",
+      "severity": "high",
+      "title": "Description reads as instructions to the model (p=0.98): create_skill",
+      "detail": "The description of 'cognitiondesk__mcp.create_skill' scores 0.98 on the instruction-detection model, and carries intent signals: injection_markers. Descriptions are documentation for a human, but they are delivered to the model as trusted context, so text that tells the model what to do is an attack surface rather than a description. The score is driven mainly by: injection_markers, entropy, log_len.",
+      "server": "cognitiondesk__mcp",
+      "tool": "create_skill",
+      "location": "cognitiondesk__mcp.create_skill",
+      "evidence": {
+        "probability": 0.9754,
+        "threshold": 0.5,
+        "intent_signals": [
+          "injection_markers"
+        ],
+        "driving_features": [
+          {
+            "feature": "injection_markers",
+            "contribution": 6.2052
+          },
+          {
+            "feature": "log_words",
+            "contribution": -3.4366
+          },
+          {
+            "feature": "entropy",
+            "contribution": 2.5545
+          },
+          {
+            "feature": "log_len",
+            "contribution": 1.4626
+          },
+          {
+            "feature": "hardcoded_recipient",
+            "contribution": -1.2458
+          },
+          {
+            "feature": "concealment",
+            "contribution": -0.8605
+          }
+        ],
+        "active_features": {
+          "log_len": 6.680854678790215,
+          "log_words": 4.976733742420574,
+          "entropy": 4.500570582843267,
+          "non_ascii_ratio": 0.007537688442211055,
+          "injection_markers": 1.0,
+          "imperative_density": 0.013888888888888888,
+          "schema_nested_desc": 5.0
+        },
+        "description": "Create a reusable skill. Requires the skills scope.\nWHEN TO REACH FOR THIS instead of the alternatives — they are not interchangeable:\n· A SKILL is a behaviour with the tools it needs, reusable across assistants. Use it when more than one assistant should behave the same way, or when the behaviour has its own tool set.\n· A CUSTOM TOOL (create_custom_tool) is a single capability — one call that does one thing. Use it when what is missing is an action, not a way of behaving.\n· The PROMPT is for wh"
+      },
+      "remediation": "Read the description against what the tool actually does. If the text is legitimate, it usually means the tool should not have to instruct the model at all - move the guidance into the parameter descriptions or the server's own docs."
+    },
+    {
+      "detector": "semantic",
+      "severity": "high",
+      "title": "Description reads as instructions to the model (p=1.00): ingest_knowledge_github",
+      "detail": "The description of 'cognitiondesk__mcp.ingest_knowledge_github' scores 1.00 on the instruction-detection model, and carries intent signals: injection_markers. Descriptions are documentation for a human, but they are delivered to the model as trusted context, so text that tells the model what to do is an attack surface rather than a description. The score is driven mainly by: injection_markers, cross_tool, entropy.",
+      "server": "cognitiondesk__mcp",
+      "tool": "ingest_knowledge_github",
+      "location": "cognitiondesk__mcp.ingest_knowledge_github",
+      "evidence": {
+        "probability": 1.0,
+        "threshold": 0.5,
+        "intent_signals": [
+          "injection_markers"
+        ],
+        "driving_features": [
+          {
+            "feature": "injection_markers",
+            "contribution": 6.2052
+          },
+          {
+            "feature": "cross_tool",
+            "contribution": 6.1813
+          },
+          {
+            "feature": "entropy",
+            "contribution": 2.0159
+          },
+          {
+            "feature": "log_words",
+            "contribution": -1.7531
+          },
+          {
+            "feature": "hardcoded_recipient",
+            "contribution": -1.2458
+          },
+          {
+            "feature": "concealment",
+            "contribution": -0.8605
+          }
+        ],
+        "active_features": {
+          "log_len": 5.8805329864007,
+          "log_words": 3.970291913552122,
+          "entropy": 4.43208014208675,
+          "non_ascii_ratio": 0.0028011204481792717,
+          "injection_markers": 1.0,
+          "cross_tool": 1.0,
+          "imperative_density": 0.019230769230769232,
+          "schema_nested_desc": 2.0
+        },
+        "description": "Ingest a GitHub repository into the knowledge base. Requires \"knowledge:write\".\nNarrow it with `includePatterns`/`excludePatterns` before running: a whole repo is mostly lockfiles, builds and vendored code, and every one of those files costs embedding quota and dilutes retrieval — the assistant ends up answering from a minified bundle instead of the docs."
+      },
+      "remediation": "Read the description against what the tool actually does. If the text is legitimate, it usually means the tool should not have to instruct the model at all - move the guidance into the parameter descriptions or the server's own docs."
+    },
+    {
+      "detector": "semantic",
+      "severity": "high",
+      "title": "Description reads as instructions to the model (p=0.98): list_assistant_versions",
+      "detail": "The description of 'cognitiondesk__mcp.list_assistant_versions' scores 0.98 on the instruction-detection model, and carries intent signals: hidden_recipient. Descriptions are documentation for a human, but they are delivered to the model as trusted context, so text that tells the model what to do is an attack surface rather than a description. The score is driven mainly by: hidden_recipient, entropy, log_len.",
+      "server": "cognitiondesk__mcp",
+      "tool": "list_assistant_versions",
+      "location": "cognitiondesk__mcp.list_assistant_versions",
+      "evidence": {
+        "probability": 0.9793,
+        "threshold": 0.5,
+        "intent_signals": [
+          "hidden_recipient"
+        ],
+        "driving_features": [
+          {
+            "feature": "hidden_recipient",
+            "contribution": 6.3853
+          },
+          {
+            "feature": "log_words",
+            "contribution": -2.5821
+          },
+          {
+            "feature": "entropy",
+            "contribution": 2.0965
+          },
+          {
+            "feature": "hardcoded_recipient",
+            "contribution": -1.2458
+          },
+          {
+            "feature": "log_len",
+            "contribution": 1.2059
+          },
+          {
+            "feature": "concealment",
+            "contribution": -0.8605
+          }
+        ],
+        "active_features": {
+          "log_len": 6.345636360828596,
+          "log_words": 4.465908118654584,
+          "entropy": 4.4423203213211675,
+          "imperative_density": 0.023255813953488372,
+          "hidden_recipient": 1.0,
+          "schema_nested_desc": 1.0
+        },
+        "description": "Published versions of an assistant, newest first, with which one is LIVE. Requires \"assistants:read\".\nRead this before publish_assistant on an assistant that already serves customers (to know what you are replacing) and before rollback_assistant (to pick the versionId). An empty list means the assistant was never published: its draft is what customers get, and there is nothing to roll back to.\nEach version is a frozen copy of the definition (prompt, model, skills, tools, scopes) with publishedAt"
+      },
+      "remediation": "Read the description against what the tool actually does. If the text is legitimate, it usually means the tool should not have to instruct the model at all - move the guidance into the parameter descriptions or the server's own docs."
+    },
+    {
+      "detector": "semantic",
+      "severity": "high",
+      "title": "Description reads as instructions to the model (p=0.99): manage_loops",
+      "detail": "The description of 'cognitiondesk__mcp.manage_loops' scores 0.99 on the instruction-detection model, and carries intent signals: injection_markers. Descriptions are documentation for a human, but they are delivered to the model as trusted context, so text that tells the model what to do is an attack surface rather than a description. The score is driven mainly by: injection_markers, entropy, log_len, imperative_density.",
+      "server": "cognitiondesk__mcp",
+      "tool": "manage_loops",
+      "location": "cognitiondesk__mcp.manage_loops",
+      "evidence": {
+        "probability": 0.9916,
+        "threshold": 0.5,
+        "intent_signals": [
+          "injection_markers"
+        ],
+        "driving_features": [
+          {
+            "feature": "injection_markers",
+            "contribution": 6.2052
+          },
+          {
+            "feature": "log_words",
+            "contribution": -2.7983
+          },
+          {
+            "feature": "entropy",
+            "contribution": 2.6082
+          },
+          {
+            "feature": "log_len",
+            "contribution": 1.2616
+          },
+          {
+            "feature": "hardcoded_recipient",
+            "contribution": -1.2458
+          },
+          {
+            "feature": "imperative_density",
+            "contribution": 0.9206
+          }
+        ],
+        "active_features": {
+          "log_len": 6.418364935936212,
+          "log_words": 4.59511985013459,
+          "entropy": 4.507392098707303,
+          "non_ascii_ratio": 0.024509803921568627,
+          "injection_markers": 1.0,
+          "schema_nested_desc": 2.0
+        },
+        "description": "Loops: recurring autonomous work items an agent claims and reports on, iteration by iteration. This is the claim/submit machinery for a WORKER agent — most sessions only need list/get to see state.\nActions:\n· list — nothing · get — targetId · iterations — targetId (the run history)\n· create — data:{title, spec, ...} · patch — targetId + data (pause/resume/edit)\n· claim_next — targetId: atomically claims the next pending iteration (you are now responsible for it) · submit_result — targetId + iter"
+      },
+      "remediation": "Read the description against what the tool actually does. If the text is legitimate, it usually means the tool should not have to instruct the model at all - move the guidance into the parameter descriptions or the server's own docs."
+    },
+    {
+      "detector": "semantic",
+      "severity": "high",
+      "title": "Description reads as instructions to the model (p=0.98): resolve_skills",
+      "detail": "The description of 'cognitiondesk__mcp.resolve_skills' scores 0.98 on the instruction-detection model, and carries intent signals: injection_markers. Descriptions are documentation for a human, but they are delivered to the model as trusted context, so text that tells the model what to do is an attack surface rather than a description. The score is driven mainly by: injection_markers, entropy, log_len, imperative_density.",
+      "server": "cognitiondesk__mcp",
+      "tool": "resolve_skills",
+      "location": "cognitiondesk__mcp.resolve_skills",
+      "evidence": {
+        "probability": 0.9787,
+        "threshold": 0.5,
+        "intent_signals": [
+          "injection_markers"
+        ],
+        "driving_features": [
+          {
+            "feature": "injection_markers",
+            "contribution": 6.2052
+          },
+          {
+            "feature": "log_words",
+            "contribution": -2.7293
+          },
+          {
+            "feature": "entropy",
+            "contribution": 1.594
+          },
+          {
+            "feature": "hardcoded_recipient",
+            "contribution": -1.2458
+          },
+          {
+            "feature": "log_len",
+            "contribution": 1.1771
+          },
+          {
+            "feature": "imperative_density",
+            "contribution": 0.9206
+          }
+        ],
+        "active_features": {
+          "log_len": 6.3080984415095305,
+          "log_words": 4.553876891600541,
+          "entropy": 4.378422989733188,
+          "non_ascii_ratio": 0.0018248175182481751,
+          "injection_markers": 1.0,
+          "schema_nested_desc": 2.0
+        },
+        "description": "Turn a list of skillIds into what they ACTUALLY produce: the concrete tools they add and the text they append to the system prompt. Nothing is created or changed.\nThis is how you check the skill system is working. Two failures only show up here: a skillId that resolves to nothing (typo, or a skill the account cannot see — the assistant just silently lacks the capability), and skills whose prompt additions contradict each other.\nRead it together with try_assistant: this says what the assistant wa"
+      },
+      "remediation": "Read the description against what the tool actually does. If the text is legitimate, it usually means the tool should not have to instruct the model at all - move the guidance into the parameter descriptions or the server's own docs."
+    },
+    {
+      "detector": "semantic",
+      "severity": "high",
+      "title": "Description reads as instructions to the model (p=1.00): update_workflow",
+      "detail": "The description of 'cognitiondesk__mcp.update_workflow' scores 1.00 on the instruction-detection model, and carries intent signals: encoded_blob. Descriptions are documentation for a human, but they are delivered to the model as trusted context, so text that tells the model what to do is an attack surface rather than a description. The score is driven mainly by: encoded_blob, entropy, imperative_density.",
+      "server": "cognitiondesk__mcp",
+      "tool": "update_workflow",
+      "location": "cognitiondesk__mcp.update_workflow",
+      "evidence": {
+        "probability": 0.999,
+        "threshold": 0.5,
+        "intent_signals": [
+          "encoded_blob"
+        ],
+        "driving_features": [
+          {
+            "feature": "encoded_blob",
+            "contribution": 7.9739
+          },
+          {
+            "feature": "hardcoded_recipient",
+            "contribution": -1.2458
+          },
+          {
+            "feature": "entropy",
+            "contribution": 1.1025
+          },
+          {
+            "feature": "imperative_density",
+            "contribution": 0.9206
+          },
+          {
+            "feature": "concealment",
+            "contribution": -0.8605
+          },
+          {
+            "feature": "hidden_recipient",
+            "contribution": -0.7368
+          }
+        ],
+        "active_features": {
+          "log_len": 4.634728988229636,
+          "log_words": 2.5649493574615367,
+          "entropy": 4.315933440801123,
+          "non_ascii_ratio": 0.00980392156862745,
+          "encoded_blob": 1.0
+        },
+        "description": "Update a workflow draft (name/description/nodes/edges/category/tags — send only the fields to change)."
+      },
+      "remediation": "Read the description against what the tool actually does. If the text is legitimate, it usually means the tool should not have to instruct the model at all - move the guidance into the parameter descriptions or the server's own docs."
+    },
+    {
+      "detector": "toxic_flow",
+      "severity": "high",
+      "title": "Toxic flow within 'cognitiondesk__mcp': reads credentials or secrets + sends data outbound",
+      "detail": "47 combination(s) exist where one tool reads credentials or secrets and another sends data outbound. Neither tool is malicious on its own; together they reads credentials and can send data to an address it controls. A single prompt is enough to turn 'summarise this config' into a credential leak. Both sides live in the same server, which may well be by design; confirm it.",
+      "server": "cognitiondesk__mcp",
+      "tool": "create_api_key",
+      "location": "cognitiondesk__mcp.create_api_key",
+      "evidence": {
+        "source_capability": "read_secret",
+        "sink_capability": "network_out",
+        "cross_server": false,
+        "pair_count": 47,
+        "example": {
+          "source": "cognitiondesk__mcp.create_api_key",
+          "sink": "cognitiondesk__mcp.connect_youtube_channel"
+        },
+        "sources": [
+          "cognitiondesk__mcp.create_api_key",
+          "cognitiondesk__mcp.create_email_campaign_draft",
+          "cognitiondesk__mcp.delete_api_key",
+          "cognitiondesk__mcp.get_api_key_stats",
+          "cognitiondesk__mcp.get_connection_status",
+          "cognitiondesk__mcp.get_usage",
+          "cognitiondesk__mcp.get_web_widget",
+          "cognitiondesk__mcp.list_assistants",
+          "cognitiondesk__mcp.list_custom_tools",
+          "cognitiondesk__mcp.list_inventory",
+          "cognitiondesk__mcp.list_scopes",
+          "cognitiondesk__mcp.list_social_connections",
+          "cognitiondesk__mcp.publish_assistant",
+          "cognitiondesk__mcp.revoke_api_key",
+          "cognitiondesk__mcp.use_account",
+          "cognitiondesk__mcp.widget_identity"
+        ],
+        "sinks": [
+          "cognitiondesk__mcp.connect_youtube_channel",
+          "cognitiondesk__mcp.create_email_campaign_draft",
+          "cognitiondesk__mcp.update_web_widget"
+        ],
+        "servers": [
+          "cognitiondesk__mcp"
+        ]
+      },
+      "remediation": "Break the path, not the tools: scope the credential so the source tool cannot reach anything valuable, or require explicit user confirmation on the sink tool (destructiveHint / human-in-the-loop), or split the two capabilities across trust boundaries that cannot share a context window."
+    },
+    {
+      "detector": "toxic_flow",
+      "severity": "high",
+      "title": "Toxic flow within 'cognitiondesk__mcp': reads credentials or secrets + sends email or messages",
+      "detail": "126 combination(s) exist where one tool reads credentials or secrets and another sends email or messages. Neither tool is malicious on its own; together they reads credentials and can send mail. This is the postmark-mcp shape: the mail tool was legitimate, the credentials were reachable, and the combination was the incident. Both sides live in the same server, which may well be by design; confirm it.",
+      "server": "cognitiondesk__mcp",
+      "tool": "create_api_key",
+      "location": "cognitiondesk__mcp.create_api_key",
+      "evidence": {
+        "source_capability": "read_secret",
+        "sink_capability": "send_email",
+        "cross_server": false,
+        "pair_count": 126,
+        "example": {
+          "source": "cognitiondesk__mcp.create_api_key",
+          "sink": "cognitiondesk__mcp.create_email_campaign_draft"
+        },
+        "sources": [
+          "cognitiondesk__mcp.create_api_key",
+          "cognitiondesk__mcp.create_email_campaign_draft",
+          "cognitiondesk__mcp.delete_api_key",
+          "cognitiondesk__mcp.get_api_key_stats",
+          "cognitiondesk__mcp.get_connection_status",
+          "cognitiondesk__mcp.get_usage",
+          "cognitiondesk__mcp.get_web_widget",
+          "cognitiondesk__mcp.list_assistants",
+          "cognitiondesk__mcp.list_custom_tools",
+          "cognitiondesk__mcp.list_inventory",
+          "cognitiondesk__mcp.list_scopes",
+          "cognitiondesk__mcp.list_social_connections",
+          "cognitiondesk__mcp.publish_assistant",
+          "cognitiondesk__mcp.revoke_api_key",
+          "cognitiondesk__mcp.use_account",
+          "cognitiondesk__mcp.widget_identity"
+        ],
+        "sinks": [
+          "cognitiondesk__mcp.create_email_campaign_draft",
+          "cognitiondesk__mcp.create_web_widget",
+          "cognitiondesk__mcp.delete_assistant_contact",
+          "cognitiondesk__mcp.delete_assistant_person",
+          "cognitiondesk__mcp.list_email_campaigns",
+          "cognitiondesk__mcp.propose_schedule",
+          "cognitiondesk__mcp.try_assistant",
+          "cognitiondesk__mcp.widget_identity"
+        ],
+        "servers": [
+          "cognitiondesk__mcp"
+        ]
+      },
+      "remediation": "Break the path, not the tools: scope the credential so the source tool cannot reach anything valuable, or require explicit user confirmation on the sink tool (destructiveHint / human-in-the-loop), or split the two capabilities across trust boundaries that cannot share a context window."
+    },
+    {
+      "detector": "toxic_flow",
+      "severity": "high",
+      "title": "Toxic flow within 'cognitiondesk__mcp': executes commands + sends data outbound",
+      "detail": "6 combination(s) exist where one tool executes commands and another sends data outbound. Neither tool is malicious on its own; together they executes commands and can reach the network, which is remote code execution with a delivery channel rather than a hint of one. Both sides live in the same server, which may well be by design; confirm it.",
+      "server": "cognitiondesk__mcp",
+      "tool": "propose_schedule",
+      "location": "cognitiondesk__mcp.propose_schedule",
+      "evidence": {
+        "source_capability": "exec",
+        "sink_capability": "network_out",
+        "cross_server": false,
+        "pair_count": 6,
+        "example": {
+          "source": "cognitiondesk__mcp.propose_schedule",
+          "sink": "cognitiondesk__mcp.connect_youtube_channel"
+        },
+        "sources": [
+          "cognitiondesk__mcp.propose_schedule",
+          "cognitiondesk__mcp.try_assistant"
+        ],
+        "sinks": [
+          "cognitiondesk__mcp.connect_youtube_channel",
+          "cognitiondesk__mcp.create_email_campaign_draft",
+          "cognitiondesk__mcp.update_web_widget"
+        ],
+        "servers": [
+          "cognitiondesk__mcp"
+        ]
+      },
+      "remediation": "Break the path, not the tools: scope the credential so the source tool cannot reach anything valuable, or require explicit user confirmation on the sink tool (destructiveHint / human-in-the-loop), or split the two capabilities across trust boundaries that cannot share a context window."
+    },
+    {
+      "detector": "toxic_flow",
+      "severity": "high",
+      "title": "Toxic flow within 'cognitiondesk__mcp': reads environment variables + sends data outbound",
+      "detail": "3 combination(s) exist where one tool reads environment variables and another sends data outbound. Neither tool is malicious on its own; together they reads the process environment and can transmit it. API keys, cloud credentials and CI tokens live in that environment. Both sides live in the same server, which may well be by design; confirm it.",
+      "server": "cognitiondesk__mcp",
+      "tool": "widget_identity",
+      "location": "cognitiondesk__mcp.widget_identity",
+      "evidence": {
+        "source_capability": "read_env",
+        "sink_capability": "network_out",
+        "cross_server": false,
+        "pair_count": 3,
+        "example": {
+          "source": "cognitiondesk__mcp.widget_identity",
+          "sink": "cognitiondesk__mcp.connect_youtube_channel"
+        },
+        "sources": [
+          "cognitiondesk__mcp.widget_identity"
+        ],
+        "sinks": [
+          "cognitiondesk__mcp.connect_youtube_channel",
+          "cognitiondesk__mcp.create_email_campaign_draft",
+          "cognitiondesk__mcp.update_web_widget"
+        ],
+        "servers": [
+          "cognitiondesk__mcp"
+        ]
+      },
+      "remediation": "Break the path, not the tools: scope the credential so the source tool cannot reach anything valuable, or require explicit user confirmation on the sink tool (destructiveHint / human-in-the-loop), or split the two capabilities across trust boundaries that cannot share a context window."
+    },
+    {
+      "detector": "toxic_flow",
+      "severity": "medium",
+      "title": "Toxic flow within 'cognitiondesk__mcp': reads files + sends data outbound",
+      "detail": "3 combination(s) exist where one tool reads files and another sends data outbound. Neither tool is malicious on its own; together they reads files and can transmit them, so any file the server can reach is reachable by the model, including ones outside the project. Both sides live in the same server, which may well be by design; confirm it.",
+      "server": "cognitiondesk__mcp",
+      "tool": "assistant_files",
+      "location": "cognitiondesk__mcp.assistant_files",
+      "evidence": {
+        "source_capability": "read_fs",
+        "sink_capability": "network_out",
+        "cross_server": false,
+        "pair_count": 3,
+        "example": {
+          "source": "cognitiondesk__mcp.assistant_files",
+          "sink": "cognitiondesk__mcp.connect_youtube_channel"
+        },
+        "sources": [
+          "cognitiondesk__mcp.assistant_files"
+        ],
+        "sinks": [
+          "cognitiondesk__mcp.connect_youtube_channel",
+          "cognitiondesk__mcp.create_email_campaign_draft",
+          "cognitiondesk__mcp.update_web_widget"
+        ],
+        "servers": [
+          "cognitiondesk__mcp"
+        ]
+      },
+      "remediation": "Break the path, not the tools: scope the credential so the source tool cannot reach anything valuable, or require explicit user confirmation on the sink tool (destructiveHint / human-in-the-loop), or split the two capabilities across trust boundaries that cannot share a context window."
+    },
+    {
+      "detector": "toxic_flow",
+      "severity": "medium",
+      "title": "Toxic flow within 'cognitiondesk__mcp': executes commands + writes or deletes files",
+      "detail": "4 combination(s) exist where one tool executes commands and another writes or deletes files. Neither tool is malicious on its own; together they executes commands and writes files, so the agent can persist a payload for a later session to pick up. Both sides live in the same server, which may well be by design; confirm it.",
+      "server": "cognitiondesk__mcp",
+      "tool": "propose_schedule",
+      "location": "cognitiondesk__mcp.propose_schedule",
+      "evidence": {
+        "source_capability": "exec",
+        "sink_capability": "write_fs",
+        "cross_server": false,
+        "pair_count": 4,
+        "example": {
+          "source": "cognitiondesk__mcp.propose_schedule",
+          "sink": "cognitiondesk__mcp.user_memory"
+        },
+        "sources": [
+          "cognitiondesk__mcp.propose_schedule",
+          "cognitiondesk__mcp.try_assistant"
+        ],
+        "sinks": [
+          "cognitiondesk__mcp.user_memory",
+          "cognitiondesk__mcp.widget_identity"
+        ],
+        "servers": [
+          "cognitiondesk__mcp"
+        ]
+      },
+      "remediation": "Break the path, not the tools: scope the credential so the source tool cannot reach anything valuable, or require explicit user confirmation on the sink tool (destructiveHint / human-in-the-loop), or split the two capabilities across trust boundaries that cannot share a context window."
+    },
+    {
+      "detector": "toxic_flow",
+      "severity": "medium",
+      "title": "Toxic flow within 'cognitiondesk__mcp': reads environment variables + sends email or messages",
+      "detail": "7 combination(s) exist where one tool reads environment variables and another sends email or messages. Neither tool is malicious on its own; together they reads the environment and can send messages, giving an exfiltration channel that needs no direct network tool. Both sides live in the same server, which may well be by design; confirm it.",
+      "server": "cognitiondesk__mcp",
+      "tool": "widget_identity",
+      "location": "cognitiondesk__mcp.widget_identity",
+      "evidence": {
+        "source_capability": "read_env",
+        "sink_capability": "send_email",
+        "cross_server": false,
+        "pair_count": 7,
+        "example": {
+          "source": "cognitiondesk__mcp.widget_identity",
+          "sink": "cognitiondesk__mcp.create_email_campaign_draft"
+        },
+        "sources": [
+          "cognitiondesk__mcp.widget_identity"
+        ],
+        "sinks": [
+          "cognitiondesk__mcp.create_email_campaign_draft",
+          "cognitiondesk__mcp.create_web_widget",
+          "cognitiondesk__mcp.delete_assistant_contact",
+          "cognitiondesk__mcp.delete_assistant_person",
+          "cognitiondesk__mcp.list_email_campaigns",
+          "cognitiondesk__mcp.propose_schedule",
+          "cognitiondesk__mcp.try_assistant",
+          "cognitiondesk__mcp.widget_identity"
+        ],
+        "servers": [
+          "cognitiondesk__mcp"
+        ]
+      },
+      "remediation": "Break the path, not the tools: scope the credential so the source tool cannot reach anything valuable, or require explicit user confirmation on the sink tool (destructiveHint / human-in-the-loop), or split the two capabilities across trust boundaries that cannot share a context window."
+    },
+    {
+      "detector": "drift",
+      "severity": "info",
+      "title": "No baseline supplied - drift detection is disabled",
+      "detail": "Without an approved snapshot the scanner cannot tell a tool that has always been there from one that appeared yesterday. The single most effective MCP control is the diff, and it needs a baseline to diff against.",
+      "server": "*",
+      "tool": null,
+      "location": "*",
+      "evidence": {},
+      "remediation": "Run 'mcp-scrutiny baseline --config <file> --out mcp-baseline.json', commit the file, and pass it back with --baseline on every later scan."
+    }
+  ],
+  "errors": []
+}

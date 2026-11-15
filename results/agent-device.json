@@ -60,6 +60,6 @@
     }
   ],
   "errors": [
-    "agent-device: the server exited with status 1 before answering initialize"
+    "agent-device: no tool definitions available (run 'capture' or pass --probe to query the server)"
   ]
 }

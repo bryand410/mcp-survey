@@ -1,0 +1,94 @@
+{
+  "tool": {
+    "name": "mcp-scrutiny",
+    "version": "0.1.3"
+  },
+  "summary": {
+    "servers": 1,
+    "tools": 13,
+    "findings": 3,
+    "worst_severity": "high",
+    "by_severity": {
+      "info": 1,
+      "low": 0,
+      "medium": 1,
+      "high": 1,
+      "critical": 0
+    }
+  },
+  "servers": [
+    {
+      "name": "trishchuk__codex-mcp-tool",
+      "transport": "stdio",
+      "command": "npx",
+      "args": [
+        "-y",
+        "@trishchuk/codex-mcp-tool"
+      ],
+      "url": null,
+      "pinned": false,
+      "floating_package": "@trishchuk/codex-mcp-tool",
+      "tools": 13
+    }
+  ],
+  "findings": [
+    {
+      "detector": "pinning",
+      "severity": "high",
+      "title": "Unpinned package executed on every start: @trishchuk/codex-mcp-tool",
+      "detail": "'trishchuk__codex-mcp-tool' launches @trishchuk/codex-mcp-tool through npx without a version. The client resolves the version at start time, so any future publish to that package name runs with your credentials. This is how postmark-mcp (Sept 2025) reached roughly 300 organisations.",
+      "server": "trishchuk__codex-mcp-tool",
+      "tool": null,
+      "location": "trishchuk__codex-mcp-tool",
+      "evidence": {
+        "package": "@trishchuk/codex-mcp-tool",
+        "runner": "npx",
+        "auto_confirm": true
+      },
+      "remediation": "Pin an exact version and an integrity hash: \"args\": [\"@trishchuk/codex-mcp-tool@<version>\"] and drop the -y flag. Re-pin deliberately, after reviewing the diff."
+    },
+    {
+      "detector": "toxic_flow",
+      "severity": "medium",
+      "title": "Toxic flow within 'trishchuk__codex-mcp-tool': executes commands + writes or deletes files",
+      "detail": "3 combination(s) exist where one tool executes commands and another writes or deletes files. Neither tool is malicious on its own; together they executes commands and writes files, so the agent can persist a payload for a later session to pick up. Both sides live in the same server, which may well be by design; confirm it.",
+      "server": "trishchuk__codex-mcp-tool",
+      "tool": "ask-codex",
+      "location": "trishchuk__codex-mcp-tool.ask-codex",
+      "evidence": {
+        "source_capability": "exec",
+        "sink_capability": "write_fs",
+        "cross_server": false,
+        "pair_count": 3,
+        "example": {
+          "source": "trishchuk__codex-mcp-tool.ask-codex",
+          "sink": "trishchuk__codex-mcp-tool.image-gen"
+        },
+        "sources": [
+          "trishchuk__codex-mcp-tool.ask-codex",
+          "trishchuk__codex-mcp-tool.do-act",
+          "trishchuk__codex-mcp-tool.review-changes"
+        ],
+        "sinks": [
+          "trishchuk__codex-mcp-tool.image-gen"
+        ],
+        "servers": [
+          "trishchuk__codex-mcp-tool"
+        ]
+      },
+      "remediation": "Break the path, not the tools: scope the credential so the source tool cannot reach anything valuable, or require explicit user confirmation on the sink tool (destructiveHint / human-in-the-loop), or split the two capabilities across trust boundaries that cannot share a context window."
+    },
+    {
+      "detector": "drift",
+      "severity": "info",
+      "title": "No baseline supplied - drift detection is disabled",
+      "detail": "Without an approved snapshot the scanner cannot tell a tool that has always been there from one that appeared yesterday. The single most effective MCP control is the diff, and it needs a baseline to diff against.",
+      "server": "*",
+      "tool": null,
+      "location": "*",
+      "evidence": {},
+      "remediation": "Run 'mcp-scrutiny baseline --config <file> --out mcp-baseline.json', commit the file, and pass it back with --baseline on every later scan."
+    }
+  ],
+  "errors": []
+}

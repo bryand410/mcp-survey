@@ -1,0 +1,613 @@
+{
+  "tool": {
+    "name": "mcp-scrutiny",
+    "version": "0.1.3"
+  },
+  "summary": {
+    "servers": 1,
+    "tools": 64,
+    "findings": 13,
+    "worst_severity": "high",
+    "by_severity": {
+      "info": 1,
+      "low": 0,
+      "medium": 0,
+      "high": 12,
+      "critical": 0
+    }
+  },
+  "servers": [
+    {
+      "name": "blixtworks-mcp",
+      "transport": "stdio",
+      "command": "npx",
+      "args": [
+        "-y",
+        "blixtworks-mcp"
+      ],
+      "url": null,
+      "pinned": false,
+      "floating_package": "blixtworks-mcp",
+      "tools": 64
+    }
+  ],
+  "findings": [
+    {
+      "detector": "pinning",
+      "severity": "high",
+      "title": "Unpinned package executed on every start: blixtworks-mcp",
+      "detail": "'blixtworks-mcp' launches blixtworks-mcp through npx without a version. The client resolves the version at start time, so any future publish to that package name runs with your credentials. This is how postmark-mcp (Sept 2025) reached roughly 300 organisations.",
+      "server": "blixtworks-mcp",
+      "tool": null,
+      "location": "blixtworks-mcp",
+      "evidence": {
+        "package": "blixtworks-mcp",
+        "runner": "npx",
+        "auto_confirm": true
+      },
+      "remediation": "Pin an exact version and an integrity hash: \"args\": [\"blixtworks-mcp@<version>\"] and drop the -y flag. Re-pin deliberately, after reviewing the diff."
+    },
+    {
+      "detector": "semantic",
+      "severity": "high",
+      "title": "Description reads as instructions to the model (p=1.00): email_validate",
+      "detail": "The description of 'blixtworks-mcp.email_validate' scores 1.00 on the instruction-detection model, and carries intent signals: hardcoded_recipient. Descriptions are documentation for a human, but they are delivered to the model as trusted context, so text that tells the model what to do is an attack surface rather than a description. The score is driven mainly by: hardcoded_recipient, entropy, imperative_density.",
+      "server": "blixtworks-mcp",
+      "tool": "email_validate",
+      "location": "blixtworks-mcp.email_validate",
+      "evidence": {
+        "probability": 1.0,
+        "threshold": 0.5,
+        "intent_signals": [
+          "hardcoded_recipient"
+        ],
+        "driving_features": [
+          {
+            "feature": "hardcoded_recipient",
+            "contribution": 8.79
+          },
+          {
+            "feature": "entropy",
+            "contribution": 4.2146
+          },
+          {
+            "feature": "imperative_density",
+            "contribution": 0.9206
+          },
+          {
+            "feature": "concealment",
+            "contribution": -0.8605
+          },
+          {
+            "feature": "hidden_recipient",
+            "contribution": -0.7368
+          },
+          {
+            "feature": "exfiltration",
+            "contribution": -0.6774
+          }
+        ],
+        "active_features": {
+          "log_len": 5.062595033026967,
+          "log_words": 3.258096538021482,
+          "entropy": 4.711659200480272,
+          "hardcoded_recipient": 1.0
+        },
+        "description": "Validate an email address: syntax plus live MX record check on the domain. POST {\"email\": \"a@b.com\"} -> deliverability signals. Billed $0.01 in USDC on Base."
+      },
+      "remediation": "Read the description against what the tool actually does. If the text is legitimate, it usually means the tool should not have to instruct the model at all - move the guidance into the parameter descriptions or the server's own docs."
+    },
+    {
+      "detector": "semantic",
+      "severity": "high",
+      "title": "Description reads as instructions to the model (p=1.00): http_headers",
+      "detail": "The description of 'blixtworks-mcp.http_headers' scores 1.00 on the instruction-detection model, and carries intent signals: exfiltration. Descriptions are documentation for a human, but they are delivered to the model as trusted context, so text that tells the model what to do is an attack surface rather than a description. The score is driven mainly by: exfiltration, entropy, imperative_density.",
+      "server": "blixtworks-mcp",
+      "tool": "http_headers",
+      "location": "blixtworks-mcp.http_headers",
+      "evidence": {
+        "probability": 0.9999,
+        "threshold": 0.5,
+        "intent_signals": [
+          "exfiltration"
+        ],
+        "driving_features": [
+          {
+            "feature": "exfiltration",
+            "contribution": 6.3381
+          },
+          {
+            "feature": "entropy",
+            "contribution": 5.4544
+          },
+          {
+            "feature": "hardcoded_recipient",
+            "contribution": -1.2458
+          },
+          {
+            "feature": "imperative_density",
+            "contribution": 0.9206
+          },
+          {
+            "feature": "concealment",
+            "contribution": -0.8605
+          },
+          {
+            "feature": "hidden_recipient",
+            "contribution": -0.7368
+          }
+        ],
+        "active_features": {
+          "log_len": 5.081404364984463,
+          "log_words": 3.2188758248682006,
+          "entropy": 4.869323017434711,
+          "exfiltration": 1.0
+        },
+        "description": "Inspect HTTP response headers for a URL. POST {\"url\": \"https://...\", \"method\": \"HEAD\"} -> status, headers, timing, redirect chain. Billed $0.01 in USDC on Base."
+      },
+      "remediation": "Read the description against what the tool actually does. If the text is legitimate, it usually means the tool should not have to instruct the model at all - move the guidance into the parameter descriptions or the server's own docs."
+    },
+    {
+      "detector": "semantic",
+      "severity": "high",
+      "title": "Description reads as instructions to the model (p=1.00): image_crop",
+      "detail": "The description of 'blixtworks-mcp.image_crop' scores 1.00 on the instruction-detection model, and carries intent signals: exfiltration. Descriptions are documentation for a human, but they are delivered to the model as trusted context, so text that tells the model what to do is an attack surface rather than a description. The score is driven mainly by: exfiltration, entropy, imperative_density.",
+      "server": "blixtworks-mcp",
+      "tool": "image_crop",
+      "location": "blixtworks-mcp.image_crop",
+      "evidence": {
+        "probability": 0.9996,
+        "threshold": 0.5,
+        "intent_signals": [
+          "exfiltration"
+        ],
+        "driving_features": [
+          {
+            "feature": "exfiltration",
+            "contribution": 6.3381
+          },
+          {
+            "feature": "entropy",
+            "contribution": 4.2109
+          },
+          {
+            "feature": "hardcoded_recipient",
+            "contribution": -1.2458
+          },
+          {
+            "feature": "imperative_density",
+            "contribution": 0.9206
+          },
+          {
+            "feature": "concealment",
+            "contribution": -0.8605
+          },
+          {
+            "feature": "hidden_recipient",
+            "contribution": -0.7368
+          }
+        ],
+        "active_features": {
+          "log_len": 5.0238805208462765,
+          "log_words": 3.332204510175204,
+          "entropy": 4.711195374781411,
+          "exfiltration": 1.0
+        },
+        "description": "Crop an image. POST {\"image\": \"https://...\", \"x\": 0, \"y\": 0, \"width\": 200, \"height\": 200} -> cropped image as a data URI. Billed $0.02 in USDC on Base."
+      },
+      "remediation": "Read the description against what the tool actually does. If the text is legitimate, it usually means the tool should not have to instruct the model at all - move the guidance into the parameter descriptions or the server's own docs."
+    },
+    {
+      "detector": "semantic",
+      "severity": "high",
+      "title": "Description reads as instructions to the model (p=1.00): image_info",
+      "detail": "The description of 'blixtworks-mcp.image_info' scores 1.00 on the instruction-detection model, and carries intent signals: exfiltration. Descriptions are documentation for a human, but they are delivered to the model as trusted context, so text that tells the model what to do is an attack surface rather than a description. The score is driven mainly by: exfiltration, entropy, imperative_density.",
+      "server": "blixtworks-mcp",
+      "tool": "image_info",
+      "location": "blixtworks-mcp.image_info",
+      "evidence": {
+        "probability": 0.9998,
+        "threshold": 0.5,
+        "intent_signals": [
+          "exfiltration"
+        ],
+        "driving_features": [
+          {
+            "feature": "exfiltration",
+            "contribution": 6.3381
+          },
+          {
+            "feature": "entropy",
+            "contribution": 4.8799
+          },
+          {
+            "feature": "hardcoded_recipient",
+            "contribution": -1.2458
+          },
+          {
+            "feature": "imperative_density",
+            "contribution": 0.9206
+          },
+          {
+            "feature": "concealment",
+            "contribution": -0.8605
+          },
+          {
+            "feature": "hidden_recipient",
+            "contribution": -0.7368
+          }
+        ],
+        "active_features": {
+          "log_len": 5.153291594497779,
+          "log_words": 3.258096538021482,
+          "entropy": 4.796259175171901,
+          "exfiltration": 1.0
+        },
+        "description": "Image dimensions and properties without any ML. POST {\"image\": \"https://...\"} -> width, height, aspect ratio, format, file size, transparency. Billed $0.01 in USDC on Base."
+      },
+      "remediation": "Read the description against what the tool actually does. If the text is legitimate, it usually means the tool should not have to instruct the model at all - move the guidance into the parameter descriptions or the server's own docs."
+    },
+    {
+      "detector": "semantic",
+      "severity": "high",
+      "title": "Description reads as instructions to the model (p=1.00): image_palette",
+      "detail": "The description of 'blixtworks-mcp.image_palette' scores 1.00 on the instruction-detection model, and carries intent signals: exfiltration. Descriptions are documentation for a human, but they are delivered to the model as trusted context, so text that tells the model what to do is an attack surface rather than a description. The score is driven mainly by: exfiltration, entropy, imperative_density.",
+      "server": "blixtworks-mcp",
+      "tool": "image_palette",
+      "location": "blixtworks-mcp.image_palette",
+      "evidence": {
+        "probability": 0.9998,
+        "threshold": 0.5,
+        "intent_signals": [
+          "exfiltration"
+        ],
+        "driving_features": [
+          {
+            "feature": "exfiltration",
+            "contribution": 6.3381
+          },
+          {
+            "feature": "entropy",
+            "contribution": 4.6087
+          },
+          {
+            "feature": "hardcoded_recipient",
+            "contribution": -1.2458
+          },
+          {
+            "feature": "imperative_density",
+            "contribution": 0.9206
+          },
+          {
+            "feature": "concealment",
+            "contribution": -0.8605
+          },
+          {
+            "feature": "hidden_recipient",
+            "contribution": -0.7368
+          }
+        ],
+        "active_features": {
+          "log_len": 5.099866427824199,
+          "log_words": 3.258096538021482,
+          "entropy": 4.761781108914501,
+          "exfiltration": 1.0
+        },
+        "description": "Extract the dominant colour palette from an image. POST {\"image\": \"https://...\", \"colors\": 5} -> hex colours with share percentages. Billed $0.015 in USDC on Base."
+      },
+      "remediation": "Read the description against what the tool actually does. If the text is legitimate, it usually means the tool should not have to instruct the model at all - move the guidance into the parameter descriptions or the server's own docs."
+    },
+    {
+      "detector": "semantic",
+      "severity": "high",
+      "title": "Description reads as instructions to the model (p=1.00): image_resize",
+      "detail": "The description of 'blixtworks-mcp.image_resize' scores 1.00 on the instruction-detection model, and carries intent signals: exfiltration. Descriptions are documentation for a human, but they are delivered to the model as trusted context, so text that tells the model what to do is an attack surface rather than a description. The score is driven mainly by: exfiltration, entropy, imperative_density.",
+      "server": "blixtworks-mcp",
+      "tool": "image_resize",
+      "location": "blixtworks-mcp.image_resize",
+      "evidence": {
+        "probability": 0.9999,
+        "threshold": 0.5,
+        "intent_signals": [
+          "exfiltration"
+        ],
+        "driving_features": [
+          {
+            "feature": "exfiltration",
+            "contribution": 6.3381
+          },
+          {
+            "feature": "entropy",
+            "contribution": 5.5831
+          },
+          {
+            "feature": "hardcoded_recipient",
+            "contribution": -1.2458
+          },
+          {
+            "feature": "imperative_density",
+            "contribution": 0.9206
+          },
+          {
+            "feature": "concealment",
+            "contribution": -0.8605
+          },
+          {
+            "feature": "log_words",
+            "contribution": -0.7445
+          }
+        ],
+        "active_features": {
+          "log_len": 5.214935757608986,
+          "log_words": 3.367295829986474,
+          "entropy": 4.885678457485777,
+          "exfiltration": 1.0
+        },
+        "description": "Resize or convert an image. POST {\"image\": \"https://...\", \"width\": 800, \"height\": null, \"format\": \"jpeg\"|\"png\", \"quality\": 80} -> data URI of the result. Billed $0.02 in USDC on Base."
+      },
+      "remediation": "Read the description against what the tool actually does. If the text is legitimate, it usually means the tool should not have to instruct the model at all - move the guidance into the parameter descriptions or the server's own docs."
+    },
+    {
+      "detector": "semantic",
+      "severity": "high",
+      "title": "Description reads as instructions to the model (p=1.00): metadata",
+      "detail": "The description of 'blixtworks-mcp.metadata' scores 1.00 on the instruction-detection model, and carries intent signals: exfiltration. Descriptions are documentation for a human, but they are delivered to the model as trusted context, so text that tells the model what to do is an attack surface rather than a description. The score is driven mainly by: exfiltration, entropy, imperative_density.",
+      "server": "blixtworks-mcp",
+      "tool": "metadata",
+      "location": "blixtworks-mcp.metadata",
+      "evidence": {
+        "probability": 0.9998,
+        "threshold": 0.5,
+        "intent_signals": [
+          "exfiltration"
+        ],
+        "driving_features": [
+          {
+            "feature": "exfiltration",
+            "contribution": 6.3381
+          },
+          {
+            "feature": "entropy",
+            "contribution": 4.657
+          },
+          {
+            "feature": "hardcoded_recipient",
+            "contribution": -1.2458
+          },
+          {
+            "feature": "imperative_density",
+            "contribution": 0.9206
+          },
+          {
+            "feature": "concealment",
+            "contribution": -0.8605
+          },
+          {
+            "feature": "hidden_recipient",
+            "contribution": -0.7368
+          }
+        ],
+        "active_features": {
+          "log_len": 5.062595033026967,
+          "log_words": 3.091042453358316,
+          "entropy": 4.767918592813852,
+          "exfiltration": 1.0
+        },
+        "description": "Extract page metadata: title, description, Open Graph, Twitter card, canonical, favicon, language. POST {\"url\": \"https://...\"}. Billed $0.02 in USDC on Base."
+      },
+      "remediation": "Read the description against what the tool actually does. If the text is legitimate, it usually means the tool should not have to instruct the model at all - move the guidance into the parameter descriptions or the server's own docs."
+    },
+    {
+      "detector": "semantic",
+      "severity": "high",
+      "title": "Description reads as instructions to the model (p=1.00): robots_check",
+      "detail": "The description of 'blixtworks-mcp.robots_check' scores 1.00 on the instruction-detection model, and carries intent signals: exfiltration. Descriptions are documentation for a human, but they are delivered to the model as trusted context, so text that tells the model what to do is an attack surface rather than a description. The score is driven mainly by: exfiltration, entropy, imperative_density.",
+      "server": "blixtworks-mcp",
+      "tool": "robots_check",
+      "location": "blixtworks-mcp.robots_check",
+      "evidence": {
+        "probability": 0.9999,
+        "threshold": 0.5,
+        "intent_signals": [
+          "exfiltration"
+        ],
+        "driving_features": [
+          {
+            "feature": "exfiltration",
+            "contribution": 6.3381
+          },
+          {
+            "feature": "entropy",
+            "contribution": 5.2046
+          },
+          {
+            "feature": "hardcoded_recipient",
+            "contribution": -1.2458
+          },
+          {
+            "feature": "imperative_density",
+            "contribution": 0.9206
+          },
+          {
+            "feature": "concealment",
+            "contribution": -0.8605
+          },
+          {
+            "feature": "hidden_recipient",
+            "contribution": -0.7368
+          }
+        ],
+        "active_features": {
+          "log_len": 5.198497031265826,
+          "log_words": 3.2188758248682006,
+          "entropy": 4.83755591804179,
+          "exfiltration": 1.0
+        },
+        "description": "Fetch and interpret robots.txt. POST {\"url\": \"https://example.com\", \"userAgent\": \"GPTBot\", \"path\": \"/\"} -> whether crawling is allowed, plus sitemaps. Billed $0.01 in USDC on Base."
+      },
+      "remediation": "Read the description against what the tool actually does. If the text is legitimate, it usually means the tool should not have to instruct the model at all - move the guidance into the parameter descriptions or the server's own docs."
+    },
+    {
+      "detector": "semantic",
+      "severity": "high",
+      "title": "Description reads as instructions to the model (p=1.00): rss_parse",
+      "detail": "The description of 'blixtworks-mcp.rss_parse' scores 1.00 on the instruction-detection model, and carries intent signals: exfiltration. Descriptions are documentation for a human, but they are delivered to the model as trusted context, so text that tells the model what to do is an attack surface rather than a description. The score is driven mainly by: exfiltration, entropy, imperative_density.",
+      "server": "blixtworks-mcp",
+      "tool": "rss_parse",
+      "location": "blixtworks-mcp.rss_parse",
+      "evidence": {
+        "probability": 0.9994,
+        "threshold": 0.5,
+        "intent_signals": [
+          "exfiltration"
+        ],
+        "driving_features": [
+          {
+            "feature": "exfiltration",
+            "contribution": 6.3381
+          },
+          {
+            "feature": "entropy",
+            "contribution": 3.7074
+          },
+          {
+            "feature": "hardcoded_recipient",
+            "contribution": -1.2458
+          },
+          {
+            "feature": "imperative_density",
+            "contribution": 0.9206
+          },
+          {
+            "feature": "concealment",
+            "contribution": -0.8605
+          },
+          {
+            "feature": "hidden_recipient",
+            "contribution": -0.7368
+          }
+        ],
+        "active_features": {
+          "log_len": 5.003946305945459,
+          "log_words": 3.332204510175204,
+          "entropy": 4.6471667467120295,
+          "exfiltration": 1.0
+        },
+        "description": "Parse an RSS or Atom feed. POST {\"url\": \"https://...\"} or {\"xml\": \"...\"} -> feed title and items with links and dates. Billed $0.02 in USDC on Base."
+      },
+      "remediation": "Read the description against what the tool actually does. If the text is legitimate, it usually means the tool should not have to instruct the model at all - move the guidance into the parameter descriptions or the server's own docs."
+    },
+    {
+      "detector": "semantic",
+      "severity": "high",
+      "title": "Description reads as instructions to the model (p=1.00): sitemap_parse",
+      "detail": "The description of 'blixtworks-mcp.sitemap_parse' scores 1.00 on the instruction-detection model, and carries intent signals: exfiltration. Descriptions are documentation for a human, but they are delivered to the model as trusted context, so text that tells the model what to do is an attack surface rather than a description. The score is driven mainly by: exfiltration, entropy, imperative_density.",
+      "server": "blixtworks-mcp",
+      "tool": "sitemap_parse",
+      "location": "blixtworks-mcp.sitemap_parse",
+      "evidence": {
+        "probability": 0.9999,
+        "threshold": 0.5,
+        "intent_signals": [
+          "exfiltration"
+        ],
+        "driving_features": [
+          {
+            "feature": "exfiltration",
+            "contribution": 6.3381
+          },
+          {
+            "feature": "entropy",
+            "contribution": 5.0118
+          },
+          {
+            "feature": "hardcoded_recipient",
+            "contribution": -1.2458
+          },
+          {
+            "feature": "imperative_density",
+            "contribution": 0.9206
+          },
+          {
+            "feature": "concealment",
+            "contribution": -0.8605
+          },
+          {
+            "feature": "hidden_recipient",
+            "contribution": -0.7368
+          }
+        ],
+        "active_features": {
+          "log_len": 5.081404364984463,
+          "log_words": 3.044522437723423,
+          "entropy": 4.813035332744379,
+          "exfiltration": 1.0
+        },
+        "description": "Parse a sitemap.xml (including sitemap indexes). POST {\"url\": \"https://example.com/sitemap.xml\"} -> URLs with last-modified dates. Billed $0.02 in USDC on Base."
+      },
+      "remediation": "Read the description against what the tool actually does. If the text is legitimate, it usually means the tool should not have to instruct the model at all - move the guidance into the parameter descriptions or the server's own docs."
+    },
+    {
+      "detector": "semantic",
+      "severity": "high",
+      "title": "Description reads as instructions to the model (p=1.00): url_expand",
+      "detail": "The description of 'blixtworks-mcp.url_expand' scores 1.00 on the instruction-detection model, and carries intent signals: exfiltration. Descriptions are documentation for a human, but they are delivered to the model as trusted context, so text that tells the model what to do is an attack surface rather than a description. The score is driven mainly by: exfiltration, entropy, imperative_density.",
+      "server": "blixtworks-mcp",
+      "tool": "url_expand",
+      "location": "blixtworks-mcp.url_expand",
+      "evidence": {
+        "probability": 0.9999,
+        "threshold": 0.5,
+        "intent_signals": [
+          "exfiltration"
+        ],
+        "driving_features": [
+          {
+            "feature": "exfiltration",
+            "contribution": 6.3381
+          },
+          {
+            "feature": "entropy",
+            "contribution": 5.1666
+          },
+          {
+            "feature": "hardcoded_recipient",
+            "contribution": -1.2458
+          },
+          {
+            "feature": "imperative_density",
+            "contribution": 0.9206
+          },
+          {
+            "feature": "concealment",
+            "contribution": -0.8605
+          },
+          {
+            "feature": "hidden_recipient",
+            "contribution": -0.7368
+          }
+        ],
+        "active_features": {
+          "log_len": 4.983606621708336,
+          "log_words": 3.1354942159291497,
+          "entropy": 4.832724154706826,
+          "exfiltration": 1.0
+        },
+        "description": "Expand a shortened URL by following redirects. POST {\"url\": \"https://bit.ly/x\"} -> final destination and hop chain. Billed $0.01 in USDC on Base."
+      },
+      "remediation": "Read the description against what the tool actually does. If the text is legitimate, it usually means the tool should not have to instruct the model at all - move the guidance into the parameter descriptions or the server's own docs."
+    },
+    {
+      "detector": "drift",
+      "severity": "info",
+      "title": "No baseline supplied - drift detection is disabled",
+      "detail": "Without an approved snapshot the scanner cannot tell a tool that has always been there from one that appeared yesterday. The single most effective MCP control is the diff, and it needs a baseline to diff against.",
+      "server": "*",
+      "tool": null,
+      "location": "*",
+      "evidence": {},
+      "remediation": "Run 'mcp-scrutiny baseline --config <file> --out mcp-baseline.json', commit the file, and pass it back with --baseline on every later scan."
+    }
+  ],
+  "errors": []
+}

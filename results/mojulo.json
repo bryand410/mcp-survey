@@ -1,0 +1,116 @@
+{
+  "tool": {
+    "name": "mcp-scrutiny",
+    "version": "0.1.3"
+  },
+  "summary": {
+    "servers": 1,
+    "tools": 28,
+    "findings": 3,
+    "worst_severity": "high",
+    "by_severity": {
+      "info": 1,
+      "low": 0,
+      "medium": 0,
+      "high": 2,
+      "critical": 0
+    }
+  },
+  "servers": [
+    {
+      "name": "mojulo",
+      "transport": "stdio",
+      "command": "npx",
+      "args": [
+        "-y",
+        "mojulo"
+      ],
+      "url": null,
+      "pinned": false,
+      "floating_package": "mojulo",
+      "tools": 28
+    }
+  ],
+  "findings": [
+    {
+      "detector": "pinning",
+      "severity": "high",
+      "title": "Unpinned package executed on every start: mojulo",
+      "detail": "'mojulo' launches mojulo through npx without a version. The client resolves the version at start time, so any future publish to that package name runs with your credentials. This is how postmark-mcp (Sept 2025) reached roughly 300 organisations.",
+      "server": "mojulo",
+      "tool": null,
+      "location": "mojulo",
+      "evidence": {
+        "package": "mojulo",
+        "runner": "npx",
+        "auto_confirm": true
+      },
+      "remediation": "Pin an exact version and an integrity hash: \"args\": [\"mojulo@<version>\"] and drop the -y flag. Re-pin deliberately, after reviewing the diff."
+    },
+    {
+      "detector": "semantic",
+      "severity": "high",
+      "title": "Description reads as instructions to the model (p=0.89): forward_context",
+      "detail": "The description of 'mojulo.forward_context' scores 0.89 on the instruction-detection model, and carries intent signals: hidden_recipient. Descriptions are documentation for a human, but they are delivered to the model as trusted context, so text that tells the model what to do is an attack surface rather than a description. The score is driven mainly by: hidden_recipient, entropy, log_len.",
+      "server": "mojulo",
+      "tool": "forward_context",
+      "location": "mojulo.forward_context",
+      "evidence": {
+        "probability": 0.8916,
+        "threshold": 0.5,
+        "intent_signals": [
+          "hidden_recipient"
+        ],
+        "driving_features": [
+          {
+            "feature": "hidden_recipient",
+            "contribution": 6.3853
+          },
+          {
+            "feature": "redaction_language",
+            "contribution": -4.0522
+          },
+          {
+            "feature": "entropy",
+            "contribution": 3.7932
+          },
+          {
+            "feature": "log_words",
+            "contribution": -2.4418
+          },
+          {
+            "feature": "hardcoded_recipient",
+            "contribution": -1.2458
+          },
+          {
+            "feature": "log_len",
+            "contribution": 1.1673
+          }
+        ],
+        "active_features": {
+          "log_len": 6.295266001439646,
+          "log_words": 4.382026634673881,
+          "entropy": 4.658083378801621,
+          "non_ascii_ratio": 0.009242144177449169,
+          "hidden_recipient": 1.0,
+          "redaction_language": 1.0,
+          "schema_nested_desc": 3.0
+        },
+        "description": "Forward the agent mojulo's routing index: what it makes, named by use (Play · Print · Read · Hear · Observe) as FORM recognizer rows → the tool to call, the export dispatch, the Workflows row (plans, sweeps, catalysts), the guards, and a drawer directory (`get_creative_toolset`, routing cards, `get_tool_index`, `get_register_kit`, `get_ui_map`, `get_substrate`). Call FIRST when unsure which tool fits. A thin map, not a manual. Optional per-call `register` / `disclosure` override the operator anc"
+      },
+      "remediation": "Read the description against what the tool actually does. If the text is legitimate, it usually means the tool should not have to instruct the model at all - move the guidance into the parameter descriptions or the server's own docs."
+    },
+    {
+      "detector": "drift",
+      "severity": "info",
+      "title": "No baseline supplied - drift detection is disabled",
+      "detail": "Without an approved snapshot the scanner cannot tell a tool that has always been there from one that appeared yesterday. The single most effective MCP control is the diff, and it needs a baseline to diff against.",
+      "server": "*",
+      "tool": null,
+      "location": "*",
+      "evidence": {},
+      "remediation": "Run 'mcp-scrutiny baseline --config <file> --out mcp-baseline.json', commit the file, and pass it back with --baseline on every later scan."
+    }
+  ],
+  "errors": []
+}

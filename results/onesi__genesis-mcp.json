@@ -1,0 +1,629 @@
+{
+  "tool": {
+    "name": "mcp-scrutiny",
+    "version": "0.1.3"
+  },
+  "summary": {
+    "servers": 1,
+    "tools": 1127,
+    "findings": 11,
+    "worst_severity": "high",
+    "by_severity": {
+      "info": 1,
+      "low": 1,
+      "medium": 3,
+      "high": 6,
+      "critical": 0
+    }
+  },
+  "servers": [
+    {
+      "name": "onesi__genesis-mcp",
+      "transport": "stdio",
+      "command": "npx",
+      "args": [
+        "-y",
+        "@onesi/genesis-mcp"
+      ],
+      "url": null,
+      "pinned": false,
+      "floating_package": "@onesi/genesis-mcp",
+      "tools": 1127
+    }
+  ],
+  "findings": [
+    {
+      "detector": "pinning",
+      "severity": "high",
+      "title": "Unpinned package executed on every start: @onesi/genesis-mcp",
+      "detail": "'onesi__genesis-mcp' launches @onesi/genesis-mcp through npx without a version. The client resolves the version at start time, so any future publish to that package name runs with your credentials. This is how postmark-mcp (Sept 2025) reached roughly 300 organisations.",
+      "server": "onesi__genesis-mcp",
+      "tool": null,
+      "location": "onesi__genesis-mcp",
+      "evidence": {
+        "package": "@onesi/genesis-mcp",
+        "runner": "npx",
+        "auto_confirm": true
+      },
+      "remediation": "Pin an exact version and an integrity hash: \"args\": [\"@onesi/genesis-mcp@<version>\"] and drop the -y flag. Re-pin deliberately, after reviewing the diff."
+    },
+    {
+      "detector": "semantic",
+      "severity": "high",
+      "title": "Description reads as instructions to the model (p=1.00): foundry_aggregateRoutingEvalDispatch",
+      "detail": "The description of 'onesi__genesis-mcp.foundry_aggregateRoutingEvalDispatch' scores 1.00 on the instruction-detection model, and carries intent signals: encoded_blob. Descriptions are documentation for a human, but they are delivered to the model as trusted context, so text that tells the model what to do is an attack surface rather than a description. The score is driven mainly by: encoded_blob, entropy, log_words, imperative_density.",
+      "server": "onesi__genesis-mcp",
+      "tool": "foundry_aggregateRoutingEvalDispatch",
+      "location": "onesi__genesis-mcp.foundry_aggregateRoutingEvalDispatch",
+      "evidence": {
+        "probability": 0.9997,
+        "threshold": 0.5,
+        "intent_signals": [
+          "encoded_blob"
+        ],
+        "driving_features": [
+          {
+            "feature": "encoded_blob",
+            "contribution": 7.9739
+          },
+          {
+            "feature": "entropy",
+            "contribution": 1.9357
+          },
+          {
+            "feature": "hardcoded_recipient",
+            "contribution": -1.2458
+          },
+          {
+            "feature": "log_words",
+            "contribution": 1.0365
+          },
+          {
+            "feature": "imperative_density",
+            "contribution": 0.9206
+          },
+          {
+            "feature": "concealment",
+            "contribution": -0.8605
+          }
+        ],
+        "active_features": {
+          "log_len": 4.6443908991413725,
+          "log_words": 2.302585092994046,
+          "entropy": 4.421884294907984,
+          "encoded_blob": 1.0,
+          "schema_additional_props": 1.0
+        },
+        "description": "Aggregate runner reports for a dispatched plan (POST /v1/foundry/routing/evals/plan/dispatch/aggregate)"
+      },
+      "remediation": "Read the description against what the tool actually does. If the text is legitimate, it usually means the tool should not have to instruct the model at all - move the guidance into the parameter descriptions or the server's own docs."
+    },
+    {
+      "detector": "toxic_flow",
+      "severity": "high",
+      "title": "Toxic flow within 'onesi__genesis-mcp': reads credentials or secrets + sends data outbound",
+      "detail": "304 combination(s) exist where one tool reads credentials or secrets and another sends data outbound. Neither tool is malicious on its own; together they reads credentials and can send data to an address it controls. A single prompt is enough to turn 'summarise this config' into a credential leak. Both sides live in the same server, which may well be by design; confirm it.",
+      "server": "onesi__genesis-mcp",
+      "tool": "auto_getCredential",
+      "location": "onesi__genesis-mcp.auto_getCredential",
+      "evidence": {
+        "source_capability": "read_secret",
+        "sink_capability": "network_out",
+        "cross_server": false,
+        "pair_count": 304,
+        "example": {
+          "source": "onesi__genesis-mcp.auto_getCredential",
+          "sink": "onesi__genesis-mcp.dials_createOutboundCall"
+        },
+        "sources": [
+          "onesi__genesis-mcp.auto_getCredential",
+          "onesi__genesis-mcp.auto_verifyAuthorityToken",
+          "onesi__genesis-mcp.auto_whoami",
+          "onesi__genesis-mcp.blinds_deleteCredential",
+          "onesi__genesis-mcp.blinds_listCredentials",
+          "onesi__genesis-mcp.blinds_revokeAllCredentials",
+          "onesi__genesis-mcp.blinds_storeCredential",
+          "onesi__genesis-mcp.fleets_deleteComputerConnection",
+          "onesi__genesis-mcp.fleets_deleteWebConnection",
+          "onesi__genesis-mcp.fleets_getComputerConnection",
+          "onesi__genesis-mcp.fleets_getWebConnection",
+          "onesi__genesis-mcp.fleets_putComputerConnection",
+          "onesi__genesis-mcp.fleets_putWebConnection",
+          "onesi__genesis-mcp.flocks_exchangeJoinToken",
+          "onesi__genesis-mcp.flocks_rotateNodeCredential",
+          "onesi__genesis-mcp.foundry_getCurrentApiKey",
+          "onesi__genesis-mcp.foundry_getProviderCredentialSummary",
+          "onesi__genesis-mcp.foundry_listProviderCredentialPolicies",
+          "onesi__genesis-mcp.foundry_setProviderCredentialPolicy",
+          "onesi__genesis-mcp.garden_whoami",
+          "onesi__genesis-mcp.henry_getConfig",
+          "onesi__genesis-mcp.henry_listFoundryModels",
+          "onesi__genesis-mcp.henry_putCredential",
+          "onesi__genesis-mcp.hives_create_secret",
+          "onesi__genesis-mcp.hives_delete_secret",
+          "onesi__genesis-mcp.hives_get_secret",
+          "onesi__genesis-mcp.hives_reveal_secret",
+          "onesi__genesis-mcp.hives_rotateTimerTarget",
+          "onesi__genesis-mcp.hives_update_secret",
+          "onesi__genesis-mcp.iam_createOrgApiKey",
+          "onesi__genesis-mcp.iam_revokeApiKey",
+          "onesi__genesis-mcp.iam_verifyCredential",
+          "onesi__genesis-mcp.minds_agentInsertEpisodicMemory",
+          "onesi__genesis-mcp.orgs_whoami",
+          "onesi__genesis-mcp.panes_openPaneTerm",
+          "onesi__genesis-mcp.rigs_openRigTerm",
+          "onesi__genesis-mcp.scopes_whoami",
+          "onesi__genesis-mcp.shells_openShellTerm"
+        ],
+        "sinks": [
+          "onesi__genesis-mcp.dials_createOutboundCall",
+          "onesi__genesis-mcp.dials_createOutboundMessage",
+          "onesi__genesis-mcp.dials_recoverOutboundCall",
+          "onesi__genesis-mcp.dials_validateOutboundCall",
+          "onesi__genesis-mcp.genesis_call",
+          "onesi__genesis-mcp.hives_upload_object",
+          "onesi__genesis-mcp.minds_createWebhookDelivery",
+          "onesi__genesis-mcp.minds_getWebhookDelivery"
+        ],
+        "servers": [
+          "onesi__genesis-mcp"
+        ]
+      },
+      "remediation": "Break the path, not the tools: scope the credential so the source tool cannot reach anything valuable, or require explicit user confirmation on the sink tool (destructiveHint / human-in-the-loop), or split the two capabilities across trust boundaries that cannot share a context window."
+    },
+    {
+      "detector": "toxic_flow",
+      "severity": "high",
+      "title": "Toxic flow within 'onesi__genesis-mcp': reads credentials or secrets + sends email or messages",
+      "detail": "1254 combination(s) exist where one tool reads credentials or secrets and another sends email or messages. Neither tool is malicious on its own; together they reads credentials and can send mail. This is the postmark-mcp shape: the mail tool was legitimate, the credentials were reachable, and the combination was the incident. Both sides live in the same server, which may well be by design; confirm it.",
+      "server": "onesi__genesis-mcp",
+      "tool": "auto_getCredential",
+      "location": "onesi__genesis-mcp.auto_getCredential",
+      "evidence": {
+        "source_capability": "read_secret",
+        "sink_capability": "send_email",
+        "cross_server": false,
+        "pair_count": 1254,
+        "example": {
+          "source": "onesi__genesis-mcp.auto_getCredential",
+          "sink": "onesi__genesis-mcp.auto_callMcp"
+        },
+        "sources": [
+          "onesi__genesis-mcp.auto_getCredential",
+          "onesi__genesis-mcp.auto_verifyAuthorityToken",
+          "onesi__genesis-mcp.auto_whoami",
+          "onesi__genesis-mcp.blinds_deleteCredential",
+          "onesi__genesis-mcp.blinds_listCredentials",
+          "onesi__genesis-mcp.blinds_revokeAllCredentials",
+          "onesi__genesis-mcp.blinds_storeCredential",
+          "onesi__genesis-mcp.fleets_deleteComputerConnection",
+          "onesi__genesis-mcp.fleets_deleteWebConnection",
+          "onesi__genesis-mcp.fleets_getComputerConnection",
+          "onesi__genesis-mcp.fleets_getWebConnection",
+          "onesi__genesis-mcp.fleets_putComputerConnection",
+          "onesi__genesis-mcp.fleets_putWebConnection",
+          "onesi__genesis-mcp.flocks_exchangeJoinToken",
+          "onesi__genesis-mcp.flocks_rotateNodeCredential",
+          "onesi__genesis-mcp.foundry_getCurrentApiKey",
+          "onesi__genesis-mcp.foundry_getProviderCredentialSummary",
+          "onesi__genesis-mcp.foundry_listProviderCredentialPolicies",
+          "onesi__genesis-mcp.foundry_setProviderCredentialPolicy",
+          "onesi__genesis-mcp.garden_whoami",
+          "onesi__genesis-mcp.henry_getConfig",
+          "onesi__genesis-mcp.henry_listFoundryModels",
+          "onesi__genesis-mcp.henry_putCredential",
+          "onesi__genesis-mcp.hives_create_secret",
+          "onesi__genesis-mcp.hives_delete_secret",
+          "onesi__genesis-mcp.hives_get_secret",
+          "onesi__genesis-mcp.hives_reveal_secret",
+          "onesi__genesis-mcp.hives_rotateTimerTarget",
+          "onesi__genesis-mcp.hives_update_secret",
+          "onesi__genesis-mcp.iam_createOrgApiKey",
+          "onesi__genesis-mcp.iam_revokeApiKey",
+          "onesi__genesis-mcp.iam_verifyCredential",
+          "onesi__genesis-mcp.minds_agentInsertEpisodicMemory",
+          "onesi__genesis-mcp.orgs_whoami",
+          "onesi__genesis-mcp.panes_openPaneTerm",
+          "onesi__genesis-mcp.rigs_openRigTerm",
+          "onesi__genesis-mcp.scopes_whoami",
+          "onesi__genesis-mcp.shells_openShellTerm"
+        ],
+        "sinks": [
+          "onesi__genesis-mcp.auto_callMcp",
+          "onesi__genesis-mcp.boxes_mail_addresses_create",
+          "onesi__genesis-mcp.boxes_mail_addresses_list",
+          "onesi__genesis-mcp.boxes_mail_agents_create",
+          "onesi__genesis-mcp.boxes_mail_agents_delete",
+          "onesi__genesis-mcp.boxes_mail_agents_get",
+          "onesi__genesis-mcp.boxes_mail_agents_inbox_list",
+          "onesi__genesis-mcp.boxes_mail_agents_list",
+          "onesi__genesis-mcp.boxes_mail_agents_messages_get",
+          "onesi__genesis-mcp.boxes_mail_agents_send",
+          "onesi__genesis-mcp.boxes_mail_agents_threads_get",
+          "onesi__genesis-mcp.boxes_mail_agents_threads_list",
+          "onesi__genesis-mcp.boxes_mail_domains_list",
+          "onesi__genesis-mcp.boxes_mail_inbox_list",
+          "onesi__genesis-mcp.boxes_mail_labels_list",
+          "onesi__genesis-mcp.boxes_mail_mailboxes_list",
+          "onesi__genesis-mcp.boxes_mail_memory_recall",
+          "onesi__genesis-mcp.boxes_mail_memory_search",
+          "onesi__genesis-mcp.boxes_mail_memory_store",
+          "onesi__genesis-mcp.boxes_mail_messages_get",
+          "onesi__genesis-mcp.boxes_mail_search",
+          "onesi__genesis-mcp.boxes_mail_send",
+          "onesi__genesis-mcp.boxes_mail_threads_get",
+          "onesi__genesis-mcp.boxes_mail_threads_list",
+          "onesi__genesis-mcp.dials_createMessageTemplate",
+          "onesi__genesis-mcp.dials_createOutboundMessage",
+          "onesi__genesis-mcp.dials_listMessageTemplates",
+          "onesi__genesis-mcp.flares_sendConversationMessage",
+          "onesi__genesis-mcp.foundry_createMessage",
+          "onesi__genesis-mcp.henry_sendRunMessage",
+          "onesi__genesis-mcp.hives_send_native_queue",
+          "onesi__genesis-mcp.relays_createDomainForwardingRule",
+          "onesi__genesis-mcp.relays_updateIncident"
+        ],
+        "servers": [
+          "onesi__genesis-mcp"
+        ]
+      },
+      "remediation": "Break the path, not the tools: scope the credential so the source tool cannot reach anything valuable, or require explicit user confirmation on the sink tool (destructiveHint / human-in-the-loop), or split the two capabilities across trust boundaries that cannot share a context window."
+    },
+    {
+      "detector": "toxic_flow",
+      "severity": "high",
+      "title": "Toxic flow within 'onesi__genesis-mcp': executes commands + sends data outbound",
+      "detail": "352 combination(s) exist where one tool executes commands and another sends data outbound. Neither tool is malicious on its own; together they executes commands and can reach the network, which is remote code execution with a delivery channel rather than a hint of one. Both sides live in the same server, which may well be by design; confirm it.",
+      "server": "onesi__genesis-mcp",
+      "tool": "brews_evalBrew",
+      "location": "onesi__genesis-mcp.brews_evalBrew",
+      "evidence": {
+        "source_capability": "exec",
+        "sink_capability": "network_out",
+        "cross_server": false,
+        "pair_count": 352,
+        "example": {
+          "source": "onesi__genesis-mcp.brews_evalBrew",
+          "sink": "onesi__genesis-mcp.dials_createOutboundCall"
+        },
+        "sources": [
+          "onesi__genesis-mcp.brews_evalBrew",
+          "onesi__genesis-mcp.flares_checkTrust",
+          "onesi__genesis-mcp.fleets_getTaskReceipt",
+          "onesi__genesis-mcp.fleets_listUsageEvents",
+          "onesi__genesis-mcp.fleets_releasePool",
+          "onesi__genesis-mcp.fleets_releaseSeat",
+          "onesi__genesis-mcp.flocks_cancelAgent",
+          "onesi__genesis-mcp.flocks_executeAgent",
+          "onesi__genesis-mcp.flocks_getAgentStatus",
+          "onesi__genesis-mcp.foundry_aggregatePlannedRoutingEval",
+          "onesi__genesis-mcp.foundry_aggregateRoutingEval",
+          "onesi__genesis-mcp.foundry_aggregateRoutingEvalDispatch",
+          "onesi__genesis-mcp.foundry_checkRoutingEvalClaimReadiness",
+          "onesi__genesis-mcp.foundry_deleteFineTuningJob",
+          "onesi__genesis-mcp.foundry_dispatchRoutingEvalPlan",
+          "onesi__genesis-mcp.foundry_listFineTuningProviders",
+          "onesi__genesis-mcp.foundry_listModels",
+          "onesi__genesis-mcp.foundry_planRoutingEval",
+          "onesi__genesis-mcp.foundry_previewRoute",
+          "onesi__genesis-mcp.gears_resumeRun",
+          "onesi__genesis-mcp.henry_commandRun",
+          "onesi__genesis-mcp.henry_createRun",
+          "onesi__genesis-mcp.hives_create_terminal_session",
+          "onesi__genesis-mcp.hives_invoke_deployment",
+          "onesi__genesis-mcp.hives_invoke_function",
+          "onesi__genesis-mcp.hives_invoke_function_async",
+          "onesi__genesis-mcp.hives_list_flight_processes",
+          "onesi__genesis-mcp.iam_runnerSelfExecutionGrant",
+          "onesi__genesis-mcp.lanes_evaluatePolicy",
+          "onesi__genesis-mcp.runner_getCatalog",
+          "onesi__genesis-mcp.shells_actOnShell",
+          "onesi__genesis-mcp.shells_createShell",
+          "onesi__genesis-mcp.shells_deleteShell",
+          "onesi__genesis-mcp.shells_execShell",
+          "onesi__genesis-mcp.shells_getShell",
+          "onesi__genesis-mcp.shells_getShellEgress",
+          "onesi__genesis-mcp.shells_getShellEgressLog",
+          "onesi__genesis-mcp.shells_openShellTerm",
+          "onesi__genesis-mcp.shells_requestShellEgress",
+          "onesi__genesis-mcp.shells_revokeShellEgress",
+          "onesi__genesis-mcp.traces_checkMonitor",
+          "onesi__genesis-mcp.zaps_command",
+          "onesi__genesis-mcp.zaps_pipeline",
+          "onesi__genesis-mcp.zaps_zapCommand"
+        ],
+        "sinks": [
+          "onesi__genesis-mcp.dials_createOutboundCall",
+          "onesi__genesis-mcp.dials_createOutboundMessage",
+          "onesi__genesis-mcp.dials_recoverOutboundCall",
+          "onesi__genesis-mcp.dials_validateOutboundCall",
+          "onesi__genesis-mcp.genesis_call",
+          "onesi__genesis-mcp.hives_upload_object",
+          "onesi__genesis-mcp.minds_createWebhookDelivery",
+          "onesi__genesis-mcp.minds_getWebhookDelivery"
+        ],
+        "servers": [
+          "onesi__genesis-mcp"
+        ]
+      },
+      "remediation": "Break the path, not the tools: scope the credential so the source tool cannot reach anything valuable, or require explicit user confirmation on the sink tool (destructiveHint / human-in-the-loop), or split the two capabilities across trust boundaries that cannot share a context window."
+    },
+    {
+      "detector": "toxic_flow",
+      "severity": "high",
+      "title": "Toxic flow within 'onesi__genesis-mcp': reads environment variables + sends data outbound",
+      "detail": "8 combination(s) exist where one tool reads environment variables and another sends data outbound. Neither tool is malicious on its own; together they reads the process environment and can transmit it. API keys, cloud credentials and CI tokens live in that environment. Both sides live in the same server, which may well be by design; confirm it.",
+      "server": "onesi__genesis-mcp",
+      "tool": "hives_delete_project_env_key",
+      "location": "onesi__genesis-mcp.hives_delete_project_env_key",
+      "evidence": {
+        "source_capability": "read_env",
+        "sink_capability": "network_out",
+        "cross_server": false,
+        "pair_count": 8,
+        "example": {
+          "source": "onesi__genesis-mcp.hives_delete_project_env_key",
+          "sink": "onesi__genesis-mcp.dials_createOutboundCall"
+        },
+        "sources": [
+          "onesi__genesis-mcp.hives_delete_project_env_key"
+        ],
+        "sinks": [
+          "onesi__genesis-mcp.dials_createOutboundCall",
+          "onesi__genesis-mcp.dials_createOutboundMessage",
+          "onesi__genesis-mcp.dials_recoverOutboundCall",
+          "onesi__genesis-mcp.dials_validateOutboundCall",
+          "onesi__genesis-mcp.genesis_call",
+          "onesi__genesis-mcp.hives_upload_object",
+          "onesi__genesis-mcp.minds_createWebhookDelivery",
+          "onesi__genesis-mcp.minds_getWebhookDelivery"
+        ],
+        "servers": [
+          "onesi__genesis-mcp"
+        ]
+      },
+      "remediation": "Break the path, not the tools: scope the credential so the source tool cannot reach anything valuable, or require explicit user confirmation on the sink tool (destructiveHint / human-in-the-loop), or split the two capabilities across trust boundaries that cannot share a context window."
+    },
+    {
+      "detector": "toxic_flow",
+      "severity": "medium",
+      "title": "Toxic flow within 'onesi__genesis-mcp': reads files + sends data outbound",
+      "detail": "96 combination(s) exist where one tool reads files and another sends data outbound. Neither tool is malicious on its own; together they reads files and can transmit them, so any file the server can reach is reachable by the model, including ones outside the project. Both sides live in the same server, which may well be by design; confirm it.",
+      "server": "onesi__genesis-mcp",
+      "tool": "boxes_docs_documents_list",
+      "location": "onesi__genesis-mcp.boxes_docs_documents_list",
+      "evidence": {
+        "source_capability": "read_fs",
+        "sink_capability": "network_out",
+        "cross_server": false,
+        "pair_count": 96,
+        "example": {
+          "source": "onesi__genesis-mcp.boxes_docs_documents_list",
+          "sink": "onesi__genesis-mcp.dials_createOutboundCall"
+        },
+        "sources": [
+          "onesi__genesis-mcp.boxes_docs_documents_list",
+          "onesi__genesis-mcp.boxes_files_get",
+          "onesi__genesis-mcp.boxes_files_list",
+          "onesi__genesis-mcp.boxes_files_search",
+          "onesi__genesis-mcp.boxes_mail_agents_inbox_list",
+          "onesi__genesis-mcp.boxes_mail_inbox_list",
+          "onesi__genesis-mcp.foundry_getFile",
+          "onesi__genesis-mcp.foundry_listFiles",
+          "onesi__genesis-mcp.hives_list_flight_files",
+          "onesi__genesis-mcp.hives_read_flight_file",
+          "onesi__genesis-mcp.hives_sftp_list",
+          "onesi__genesis-mcp.hives_sftp_read"
+        ],
+        "sinks": [
+          "onesi__genesis-mcp.dials_createOutboundCall",
+          "onesi__genesis-mcp.dials_createOutboundMessage",
+          "onesi__genesis-mcp.dials_recoverOutboundCall",
+          "onesi__genesis-mcp.dials_validateOutboundCall",
+          "onesi__genesis-mcp.genesis_call",
+          "onesi__genesis-mcp.hives_upload_object",
+          "onesi__genesis-mcp.minds_createWebhookDelivery",
+          "onesi__genesis-mcp.minds_getWebhookDelivery"
+        ],
+        "servers": [
+          "onesi__genesis-mcp"
+        ]
+      },
+      "remediation": "Break the path, not the tools: scope the credential so the source tool cannot reach anything valuable, or require explicit user confirmation on the sink tool (destructiveHint / human-in-the-loop), or split the two capabilities across trust boundaries that cannot share a context window."
+    },
+    {
+      "detector": "toxic_flow",
+      "severity": "medium",
+      "title": "Toxic flow within 'onesi__genesis-mcp': executes commands + writes or deletes files",
+      "detail": "176 combination(s) exist where one tool executes commands and another writes or deletes files. Neither tool is malicious on its own; together they executes commands and writes files, so the agent can persist a payload for a later session to pick up. Both sides live in the same server, which may well be by design; confirm it.",
+      "server": "onesi__genesis-mcp",
+      "tool": "brews_evalBrew",
+      "location": "onesi__genesis-mcp.brews_evalBrew",
+      "evidence": {
+        "source_capability": "exec",
+        "sink_capability": "write_fs",
+        "cross_server": false,
+        "pair_count": 176,
+        "example": {
+          "source": "onesi__genesis-mcp.brews_evalBrew",
+          "sink": "onesi__genesis-mcp.boxes_files_folders_create"
+        },
+        "sources": [
+          "onesi__genesis-mcp.brews_evalBrew",
+          "onesi__genesis-mcp.flares_checkTrust",
+          "onesi__genesis-mcp.fleets_getTaskReceipt",
+          "onesi__genesis-mcp.fleets_listUsageEvents",
+          "onesi__genesis-mcp.fleets_releasePool",
+          "onesi__genesis-mcp.fleets_releaseSeat",
+          "onesi__genesis-mcp.flocks_cancelAgent",
+          "onesi__genesis-mcp.flocks_executeAgent",
+          "onesi__genesis-mcp.flocks_getAgentStatus",
+          "onesi__genesis-mcp.foundry_aggregatePlannedRoutingEval",
+          "onesi__genesis-mcp.foundry_aggregateRoutingEval",
+          "onesi__genesis-mcp.foundry_aggregateRoutingEvalDispatch",
+          "onesi__genesis-mcp.foundry_checkRoutingEvalClaimReadiness",
+          "onesi__genesis-mcp.foundry_deleteFineTuningJob",
+          "onesi__genesis-mcp.foundry_dispatchRoutingEvalPlan",
+          "onesi__genesis-mcp.foundry_listFineTuningProviders",
+          "onesi__genesis-mcp.foundry_listModels",
+          "onesi__genesis-mcp.foundry_planRoutingEval",
+          "onesi__genesis-mcp.foundry_previewRoute",
+          "onesi__genesis-mcp.gears_resumeRun",
+          "onesi__genesis-mcp.henry_commandRun",
+          "onesi__genesis-mcp.henry_createRun",
+          "onesi__genesis-mcp.hives_create_terminal_session",
+          "onesi__genesis-mcp.hives_invoke_deployment",
+          "onesi__genesis-mcp.hives_invoke_function",
+          "onesi__genesis-mcp.hives_invoke_function_async",
+          "onesi__genesis-mcp.hives_list_flight_processes",
+          "onesi__genesis-mcp.iam_runnerSelfExecutionGrant",
+          "onesi__genesis-mcp.lanes_evaluatePolicy",
+          "onesi__genesis-mcp.runner_getCatalog",
+          "onesi__genesis-mcp.shells_actOnShell",
+          "onesi__genesis-mcp.shells_createShell",
+          "onesi__genesis-mcp.shells_deleteShell",
+          "onesi__genesis-mcp.shells_execShell",
+          "onesi__genesis-mcp.shells_getShell",
+          "onesi__genesis-mcp.shells_getShellEgress",
+          "onesi__genesis-mcp.shells_getShellEgressLog",
+          "onesi__genesis-mcp.shells_openShellTerm",
+          "onesi__genesis-mcp.shells_requestShellEgress",
+          "onesi__genesis-mcp.shells_revokeShellEgress",
+          "onesi__genesis-mcp.traces_checkMonitor",
+          "onesi__genesis-mcp.zaps_command",
+          "onesi__genesis-mcp.zaps_pipeline",
+          "onesi__genesis-mcp.zaps_zapCommand"
+        ],
+        "sinks": [
+          "onesi__genesis-mcp.boxes_files_folders_create",
+          "onesi__genesis-mcp.foundry_deleteFile",
+          "onesi__genesis-mcp.hives_sftp_delete",
+          "onesi__genesis-mcp.hives_sftp_write"
+        ],
+        "servers": [
+          "onesi__genesis-mcp"
+        ]
+      },
+      "remediation": "Break the path, not the tools: scope the credential so the source tool cannot reach anything valuable, or require explicit user confirmation on the sink tool (destructiveHint / human-in-the-loop), or split the two capabilities across trust boundaries that cannot share a context window."
+    },
+    {
+      "detector": "toxic_flow",
+      "severity": "medium",
+      "title": "Toxic flow within 'onesi__genesis-mcp': reads environment variables + sends email or messages",
+      "detail": "33 combination(s) exist where one tool reads environment variables and another sends email or messages. Neither tool is malicious on its own; together they reads the environment and can send messages, giving an exfiltration channel that needs no direct network tool. Both sides live in the same server, which may well be by design; confirm it.",
+      "server": "onesi__genesis-mcp",
+      "tool": "hives_delete_project_env_key",
+      "location": "onesi__genesis-mcp.hives_delete_project_env_key",
+      "evidence": {
+        "source_capability": "read_env",
+        "sink_capability": "send_email",
+        "cross_server": false,
+        "pair_count": 33,
+        "example": {
+          "source": "onesi__genesis-mcp.hives_delete_project_env_key",
+          "sink": "onesi__genesis-mcp.auto_callMcp"
+        },
+        "sources": [
+          "onesi__genesis-mcp.hives_delete_project_env_key"
+        ],
+        "sinks": [
+          "onesi__genesis-mcp.auto_callMcp",
+          "onesi__genesis-mcp.boxes_mail_addresses_create",
+          "onesi__genesis-mcp.boxes_mail_addresses_list",
+          "onesi__genesis-mcp.boxes_mail_agents_create",
+          "onesi__genesis-mcp.boxes_mail_agents_delete",
+          "onesi__genesis-mcp.boxes_mail_agents_get",
+          "onesi__genesis-mcp.boxes_mail_agents_inbox_list",
+          "onesi__genesis-mcp.boxes_mail_agents_list",
+          "onesi__genesis-mcp.boxes_mail_agents_messages_get",
+          "onesi__genesis-mcp.boxes_mail_agents_send",
+          "onesi__genesis-mcp.boxes_mail_agents_threads_get",
+          "onesi__genesis-mcp.boxes_mail_agents_threads_list",
+          "onesi__genesis-mcp.boxes_mail_domains_list",
+          "onesi__genesis-mcp.boxes_mail_inbox_list",
+          "onesi__genesis-mcp.boxes_mail_labels_list",
+          "onesi__genesis-mcp.boxes_mail_mailboxes_list",
+          "onesi__genesis-mcp.boxes_mail_memory_recall",
+          "onesi__genesis-mcp.boxes_mail_memory_search",
+          "onesi__genesis-mcp.boxes_mail_memory_store",
+          "onesi__genesis-mcp.boxes_mail_messages_get",
+          "onesi__genesis-mcp.boxes_mail_search",
+          "onesi__genesis-mcp.boxes_mail_send",
+          "onesi__genesis-mcp.boxes_mail_threads_get",
+          "onesi__genesis-mcp.boxes_mail_threads_list",
+          "onesi__genesis-mcp.dials_createMessageTemplate",
+          "onesi__genesis-mcp.dials_createOutboundMessage",
+          "onesi__genesis-mcp.dials_listMessageTemplates",
+          "onesi__genesis-mcp.flares_sendConversationMessage",
+          "onesi__genesis-mcp.foundry_createMessage",
+          "onesi__genesis-mcp.henry_sendRunMessage",
+          "onesi__genesis-mcp.hives_send_native_queue",
+          "onesi__genesis-mcp.relays_createDomainForwardingRule",
+          "onesi__genesis-mcp.relays_updateIncident"
+        ],
+        "servers": [
+          "onesi__genesis-mcp"
+        ]
+      },
+      "remediation": "Break the path, not the tools: scope the credential so the source tool cannot reach anything valuable, or require explicit user confirmation on the sink tool (destructiveHint / human-in-the-loop), or split the two capabilities across trust boundaries that cannot share a context window."
+    },
+    {
+      "detector": "toxic_flow",
+      "severity": "low",
+      "title": "Toxic flow within 'onesi__genesis-mcp': reads files + modifies a database",
+      "detail": "84 combination(s) exist where one tool reads files and another modifies a database. Neither tool is malicious on its own; together they reads files and writes to a database, so local content can be moved into a shared store the model can read back. Both sides live in the same server, which may well be by design; confirm it.",
+      "server": "onesi__genesis-mcp",
+      "tool": "boxes_docs_documents_list",
+      "location": "onesi__genesis-mcp.boxes_docs_documents_list",
+      "evidence": {
+        "source_capability": "read_fs",
+        "sink_capability": "db_write",
+        "cross_server": false,
+        "pair_count": 84,
+        "example": {
+          "source": "onesi__genesis-mcp.boxes_docs_documents_list",
+          "sink": "onesi__genesis-mcp.beacons_deleteDashboardResource"
+        },
+        "sources": [
+          "onesi__genesis-mcp.boxes_docs_documents_list",
+          "onesi__genesis-mcp.boxes_files_get",
+          "onesi__genesis-mcp.boxes_files_list",
+          "onesi__genesis-mcp.boxes_files_search",
+          "onesi__genesis-mcp.boxes_mail_agents_inbox_list",
+          "onesi__genesis-mcp.boxes_mail_inbox_list",
+          "onesi__genesis-mcp.foundry_getFile",
+          "onesi__genesis-mcp.foundry_listFiles",
+          "onesi__genesis-mcp.hives_list_flight_files",
+          "onesi__genesis-mcp.hives_read_flight_file",
+          "onesi__genesis-mcp.hives_sftp_list",
+          "onesi__genesis-mcp.hives_sftp_read"
+        ],
+        "sinks": [
+          "onesi__genesis-mcp.beacons_deleteDashboardResource",
+          "onesi__genesis-mcp.orgs_update_entity",
+          "onesi__genesis-mcp.orgs_update_filing",
+          "onesi__genesis-mcp.relays_deleteRecord",
+          "onesi__genesis-mcp.relays_deleteZone",
+          "onesi__genesis-mcp.relays_updateRecord",
+          "onesi__genesis-mcp.silos_deleteInstance"
+        ],
+        "servers": [
+          "onesi__genesis-mcp"
+        ]
+      },
+      "remediation": "Break the path, not the tools: scope the credential so the source tool cannot reach anything valuable, or require explicit user confirmation on the sink tool (destructiveHint / human-in-the-loop), or split the two capabilities across trust boundaries that cannot share a context window."
+    },
+    {
+      "detector": "drift",
+      "severity": "info",
+      "title": "No baseline supplied - drift detection is disabled",
+      "detail": "Without an approved snapshot the scanner cannot tell a tool that has always been there from one that appeared yesterday. The single most effective MCP control is the diff, and it needs a baseline to diff against.",
+      "server": "*",
+      "tool": null,
+      "location": "*",
+      "evidence": {},
+      "remediation": "Run 'mcp-scrutiny baseline --config <file> --out mcp-baseline.json', commit the file, and pass it back with --baseline on every later scan."
+    }
+  ],
+  "errors": []
+}

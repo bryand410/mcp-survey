@@ -60,6 +60,6 @@
     }
   ],
   "errors": [
-    "benborla29__mcp-server-mysql: the server exited with status 1 before answering tools/list; stderr: npm warn deprecated node-domexception@1.0.0: Use your platform's native DOMException instead"
+    "benborla29__mcp-server-mysql: no tool definitions available (run 'capture' or pass --probe to query the server)"
   ]
 }

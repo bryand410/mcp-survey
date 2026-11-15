@@ -1,0 +1,93 @@
+{
+  "tool": {
+    "name": "mcp-scrutiny",
+    "version": "0.1.3"
+  },
+  "summary": {
+    "servers": 1,
+    "tools": 127,
+    "findings": 3,
+    "worst_severity": "high",
+    "by_severity": {
+      "info": 1,
+      "low": 0,
+      "medium": 1,
+      "high": 1,
+      "critical": 0
+    }
+  },
+  "servers": [
+    {
+      "name": "casys__mcp-erpnext",
+      "transport": "stdio",
+      "command": "npx",
+      "args": [
+        "-y",
+        "@casys/mcp-erpnext"
+      ],
+      "url": null,
+      "pinned": false,
+      "floating_package": "@casys/mcp-erpnext",
+      "tools": 127
+    }
+  ],
+  "findings": [
+    {
+      "detector": "pinning",
+      "severity": "high",
+      "title": "Unpinned package executed on every start: @casys/mcp-erpnext",
+      "detail": "'casys__mcp-erpnext' launches @casys/mcp-erpnext through npx without a version. The client resolves the version at start time, so any future publish to that package name runs with your credentials. This is how postmark-mcp (Sept 2025) reached roughly 300 organisations.",
+      "server": "casys__mcp-erpnext",
+      "tool": null,
+      "location": "casys__mcp-erpnext",
+      "evidence": {
+        "package": "@casys/mcp-erpnext",
+        "runner": "npx",
+        "auto_confirm": true
+      },
+      "remediation": "Pin an exact version and an integrity hash: \"args\": [\"@casys/mcp-erpnext@<version>\"] and drop the -y flag. Re-pin deliberately, after reviewing the diff."
+    },
+    {
+      "detector": "toxic_flow",
+      "severity": "medium",
+      "title": "Toxic flow within 'casys__mcp-erpnext': reads files + sends data outbound",
+      "detail": "2 combination(s) exist where one tool reads files and another sends data outbound. Neither tool is malicious on its own; together they reads files and can transmit them, so any file the server can reach is reachable by the model, including ones outside the project. Both sides live in the same server, which may well be by design; confirm it.",
+      "server": "casys__mcp-erpnext",
+      "tool": "erpnext_file_list",
+      "location": "casys__mcp-erpnext.erpnext_file_list",
+      "evidence": {
+        "source_capability": "read_fs",
+        "sink_capability": "network_out",
+        "cross_server": false,
+        "pair_count": 2,
+        "example": {
+          "source": "casys__mcp-erpnext.erpnext_file_list",
+          "sink": "casys__mcp-erpnext.erpnext_doc_submit"
+        },
+        "sources": [
+          "casys__mcp-erpnext.erpnext_file_list"
+        ],
+        "sinks": [
+          "casys__mcp-erpnext.erpnext_doc_submit",
+          "casys__mcp-erpnext.erpnext_method_call"
+        ],
+        "servers": [
+          "casys__mcp-erpnext"
+        ]
+      },
+      "remediation": "Break the path, not the tools: scope the credential so the source tool cannot reach anything valuable, or require explicit user confirmation on the sink tool (destructiveHint / human-in-the-loop), or split the two capabilities across trust boundaries that cannot share a context window."
+    },
+    {
+      "detector": "drift",
+      "severity": "info",
+      "title": "No baseline supplied - drift detection is disabled",
+      "detail": "Without an approved snapshot the scanner cannot tell a tool that has always been there from one that appeared yesterday. The single most effective MCP control is the diff, and it needs a baseline to diff against.",
+      "server": "*",
+      "tool": null,
+      "location": "*",
+      "evidence": {},
+      "remediation": "Run 'mcp-scrutiny baseline --config <file> --out mcp-baseline.json', commit the file, and pass it back with --baseline on every later scan."
+    }
+  ],
+  "errors": []
+}

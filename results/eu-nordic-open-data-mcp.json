@@ -1,0 +1,104 @@
+{
+  "tool": {
+    "name": "mcp-scrutiny",
+    "version": "0.1.3"
+  },
+  "summary": {
+    "servers": 1,
+    "tools": 49,
+    "findings": 3,
+    "worst_severity": "high",
+    "by_severity": {
+      "info": 1,
+      "low": 0,
+      "medium": 0,
+      "high": 2,
+      "critical": 0
+    }
+  },
+  "servers": [
+    {
+      "name": "eu-nordic-open-data-mcp",
+      "transport": "stdio",
+      "command": "npx",
+      "args": [
+        "-y",
+        "eu-nordic-open-data-mcp"
+      ],
+      "url": null,
+      "pinned": false,
+      "floating_package": "eu-nordic-open-data-mcp",
+      "tools": 49
+    }
+  ],
+  "findings": [
+    {
+      "detector": "pinning",
+      "severity": "high",
+      "title": "Unpinned package executed on every start: eu-nordic-open-data-mcp",
+      "detail": "'eu-nordic-open-data-mcp' launches eu-nordic-open-data-mcp through npx without a version. The client resolves the version at start time, so any future publish to that package name runs with your credentials. This is how postmark-mcp (Sept 2025) reached roughly 300 organisations.",
+      "server": "eu-nordic-open-data-mcp",
+      "tool": null,
+      "location": "eu-nordic-open-data-mcp",
+      "evidence": {
+        "package": "eu-nordic-open-data-mcp",
+        "runner": "npx",
+        "auto_confirm": true
+      },
+      "remediation": "Pin an exact version and an integrity hash: \"args\": [\"eu-nordic-open-data-mcp@<version>\"] and drop the -y flag. Re-pin deliberately, after reviewing the diff."
+    },
+    {
+      "detector": "toxic_flow",
+      "severity": "high",
+      "title": "Toxic flow within 'eu-nordic-open-data-mcp': reads credentials or secrets + sends email or messages",
+      "detail": "13 combination(s) exist where one tool reads credentials or secrets and another sends email or messages. Neither tool is malicious on its own; together they reads credentials and can send mail. This is the postmark-mcp shape: the mail tool was legitimate, the credentials were reachable, and the combination was the incident. Both sides live in the same server, which may well be by design; confirm it.",
+      "server": "eu-nordic-open-data-mcp",
+      "tool": "fmi_station_weather",
+      "location": "eu-nordic-open-data-mcp.fmi_station_weather",
+      "evidence": {
+        "source_capability": "read_secret",
+        "sink_capability": "send_email",
+        "cross_server": false,
+        "pair_count": 13,
+        "example": {
+          "source": "eu-nordic-open-data-mcp.fmi_station_weather",
+          "sink": "eu-nordic-open-data-mcp.brreg_company_events"
+        },
+        "sources": [
+          "eu-nordic-open-data-mcp.fmi_station_weather"
+        ],
+        "sinks": [
+          "eu-nordic-open-data-mcp.brreg_company_events",
+          "eu-nordic-open-data-mcp.brreg_company_lookup",
+          "eu-nordic-open-data-mcp.digitraffic_licence_info",
+          "eu-nordic-open-data-mcp.digitraffic_port_calls",
+          "eu-nordic-open-data-mcp.digitraffic_port_congestion_summary",
+          "eu-nordic-open-data-mcp.eu_vat_rates_licence_info",
+          "eu-nordic-open-data-mcp.eu_vat_standard_rates",
+          "eu-nordic-open-data-mcp.fingrid_dataset",
+          "eu-nordic-open-data-mcp.fmi_active_alerts",
+          "eu-nordic-open-data-mcp.fmi_alerts_licence_info",
+          "eu-nordic-open-data-mcp.fmi_fingrid_licence_info",
+          "eu-nordic-open-data-mcp.fmi_sea_level_observations",
+          "eu-nordic-open-data-mcp.fmi_weather_observations"
+        ],
+        "servers": [
+          "eu-nordic-open-data-mcp"
+        ]
+      },
+      "remediation": "Break the path, not the tools: scope the credential so the source tool cannot reach anything valuable, or require explicit user confirmation on the sink tool (destructiveHint / human-in-the-loop), or split the two capabilities across trust boundaries that cannot share a context window."
+    },
+    {
+      "detector": "drift",
+      "severity": "info",
+      "title": "No baseline supplied - drift detection is disabled",
+      "detail": "Without an approved snapshot the scanner cannot tell a tool that has always been there from one that appeared yesterday. The single most effective MCP control is the diff, and it needs a baseline to diff against.",
+      "server": "*",
+      "tool": null,
+      "location": "*",
+      "evidence": {},
+      "remediation": "Run 'mcp-scrutiny baseline --config <file> --out mcp-baseline.json', commit the file, and pass it back with --baseline on every later scan."
+    }
+  ],
+  "errors": []
+}

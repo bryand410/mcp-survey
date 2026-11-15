@@ -60,6 +60,6 @@
     }
   ],
   "errors": [
-    "hypequery__mcp: the server exited with status 1 before answering initialize; stderr: Error: --config flag is required | Usage: hypequery-mcp --config ./mcp-config.mjs | The config file should export { datasets, analytics }: |   export const datasets = { ... }; |   export const analytics = createDatasetClient({ ... });"
+    "hypequery__mcp: no tool definitions available (run 'capture' or pass --probe to query the server)"
   ]
 }
