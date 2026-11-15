@@ -1,0 +1,32 @@
+cff-version: 1.2.0
+message: "If you cite this report, cite it as below."
+title: "What 514 public MCP servers expose to the model"
+abstract: >-
+  A measurement of what the most-installed public Model Context Protocol
+  servers expose to the model: 514 npm packages with a measurable weekly
+  download count, 265 of which answered initialize without credentials,
+  covering 12 709 tool definitions. 165 intra-server toxic flows are reported,
+  plus one description that instructs the model not to disclose an outbound
+  transfer of the conversation. The report documents eight classes of false
+  positive that the scanner produced on this corpus and the corrections that
+  removed them, including the per-commit measurement of the semantic column.
+authors:
+  - family-names: "Tamouffe Teyo"
+    given-names: "Ulrich Bryand"
+    alias: "bryand410"
+version: "1.0"
+date-released: 2026-11-15
+license: CC-BY-4.0
+url: "https://github.com/bryand410/mcp-survey/blob/main/docs/2026-11-public-mcp-survey.md"
+repository-code: "https://github.com/bryand410/mcp-survey"
+keywords:
+  - Model Context Protocol
+  - MCP
+  - tool poisoning
+  - prompt injection
+  - supply chain security
+  - measurement study
+references:
+  - type: software
+    title: "mcp-scrutiny"
+    url: "https://pypi.org/project/mcp-scrutiny/"

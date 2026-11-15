@@ -103,3 +103,14 @@ used. Merging the corpus into a single scan invents cross-server shadowing that
 no client would see — 11 339 findings on this corpus against zero in the real
 measurement — and it writes the scanner version into its own output so a stale
 checkout cannot pass for a fixed one. Both failures happened here once.
+
+## Cite this
+
+```
+Tamouffe Teyo, U. B. (2026). What 514 public MCP servers expose to the model
+(1.0) [Report]. https://github.com/bryand410/mcp-survey
+```
+
+`CITATION.cff` carries the metadata, so GitHub renders a "Cite this repository"
+button and Zenodo reads the same file at deposit time. The report text and the
+captured data are CC-BY-4.0: reuse them, quote the numbers, keep the attribution.
