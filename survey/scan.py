@@ -28,9 +28,33 @@ TIMEOUT = float(os.environ.get("PROBE_TIMEOUT", "40"))
 WORKERS = int(os.environ.get("WORKERS", "8"))
 LIMIT = int(os.environ.get("LIMIT", "120"))
 
+#: The scanner invocation. On the runner this is the console script; locally
+#: it is `python -m mcp_scrutiny`, which is what makes the harness testable
+#: without installing the package on PATH.
+SCANNER = os.environ.get("MCP_SCANNER", "mcp-scrutiny").split()
+
 
 def slug(name: str) -> str:
     return name.replace("@", "").replace("/", "__").replace(".", "_")
+
+
+def _why(proc) -> str:
+    """The reason a server produced nothing, taken from the capture step.
+
+    This field exists because it was lost once. When the harness moved from
+    `scan --probe` to `capture` + `scan`, the exit status and stderr of the
+    server stopped being recorded, and 246 silent servers were all filed as
+    "no tool definitions available" — which says what the scanner saw, not why
+    the server never answered. The earlier run could say "39 of 45 exited with
+    a non-zero status because they need a token". This run could not.
+    """
+    for stream in (proc.stderr or "", proc.stdout or ""):
+        for line in reversed(stream.strip().splitlines()):
+            if "FAILED" in line or "error" in line.lower():
+                return line.strip()[:300]
+    if proc.returncode:
+        return f"exit status {proc.returncode}, no diagnostic on stderr"
+    return "no diagnostic produced"
 
 
 def scan_one(pkg: dict) -> dict:
@@ -54,9 +78,9 @@ def scan_one(pkg: dict) -> dict:
     # every detector fix required a new scan of 250 servers to find out whether
     # it had helped.
     try:
-        subprocess.run(
+        cap = subprocess.run(
             [
-                "mcp-scrutiny", "capture",
+                *SCANNER, "capture",
                 "--config", str(cfg),
                 "--out", str(dump),
                 "--timeout", str(TIMEOUT),
@@ -65,20 +89,36 @@ def scan_one(pkg: dict) -> dict:
             text=True,
             timeout=TIMEOUT + 120,
         )
+        reason = _why(cap)
     except subprocess.TimeoutExpired:
-        pass
+        reason = f"capture did not finish within {int(TIMEOUT + 120)}s"
 
     if not dump.exists():
         return {
             "package": name,
             "status": "no-report",
+            "reason": reason,
+            "seconds": round(time.time() - started, 1),
+        }
+
+    try:
+        payload = json.loads(dump.read_text(encoding="utf-8"))
+        captured = sum(len(s.get("tools", [])) for s in payload.get("servers", []))
+    except (json.JSONDecodeError, OSError):
+        captured = 0
+
+    if not captured:
+        return {
+            "package": name,
+            "status": "no-tools",
+            "reason": reason,
             "seconds": round(time.time() - started, 1),
         }
 
     try:
         subprocess.run(
             [
-                "mcp-scrutiny", "scan",
+                *SCANNER, "scan",
                 "--tools-json", str(dump),
                 "--format", "json", "--output", str(out),
                 "--no-color", "--fail-on", "none",
@@ -94,6 +134,7 @@ def scan_one(pkg: dict) -> dict:
         return {
             "package": name,
             "status": "no-report",
+            "reason": "capture succeeded but the scan wrote no report",
             "seconds": round(time.time() - started, 1),
         }
 

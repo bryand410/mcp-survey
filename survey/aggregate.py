@@ -58,7 +58,7 @@ def main() -> int:
 
     print(f"\nserveurs muets ({len(silent)}) :")
     for result in silent[:20]:
-        reason = (result.get("errors") or ["sans rapport"])[0]
+        reason = result.get("reason") or (result.get("errors") or ["sans rapport"])[0]
         print(f"  {result['package']:<44} {str(reason)[:70]}")
 
     summary = {
@@ -77,7 +77,11 @@ def main() -> int:
             for package, findings in flagged.items()
         },
         "silent_servers": [
-            {"package": r["package"], "reason": str((r.get("errors") or [""])[0])[:160]}
+            {
+                "package": r["package"],
+                "status": r.get("status"),
+                "reason": str(r.get("reason") or (r.get("errors") or [""])[0])[:300],
+            }
             for r in silent
         ],
     }
