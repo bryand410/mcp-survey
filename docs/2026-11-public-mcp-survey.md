@@ -96,10 +96,11 @@ design, not of the intent.
 
 ## The corrections, and why they matter more than the findings
 
-This is the part worth reading, because it is where the measurement was wrong
-eight times and the corrections are what the data now rests on. Seven of the
-eight are the same mistake in different places: **a pattern that matches a word
-where the signal is a grammatical relation between words.**
+This is the part worth reading, because it is where the measurement was wrong in
+eight classes of false positive and the corrections are what the data now rests
+on. The largest of them came as seven lexicons at once, and all seven are the
+same mistake in seven places: **a pattern that matches a word where the signal
+is a grammatical relation between words.**
 
 ### 1–2. Two regexes read the wrong grammatical role (71-server run)
 
