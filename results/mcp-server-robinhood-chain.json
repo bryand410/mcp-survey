@@ -1,18 +1,18 @@
 {
   "tool": {
     "name": "mcp-scrutiny",
-    "version": "0.1.4"
+    "version": "0.1.7"
   },
   "summary": {
     "servers": 1,
     "tools": 73,
-    "findings": 8,
+    "findings": 6,
     "worst_severity": "high",
     "by_severity": {
       "info": 1,
       "low": 0,
       "medium": 1,
-      "high": 6,
+      "high": 4,
       "critical": 0
     }
   },
@@ -46,115 +46,6 @@
         "auto_confirm": true
       },
       "remediation": "Pin an exact version and an integrity hash: \"args\": [\"mcp-server-robinhood-chain@<version>\"] and drop the -y flag. Re-pin deliberately, after reviewing the diff."
-    },
-    {
-      "detector": "semantic",
-      "severity": "high",
-      "title": "Description reads as instructions to the model (p=1.00): rhc_equities",
-      "detail": "The description of 'mcp-server-robinhood-chain.rhc_equities' scores 1.00 on the instruction-detection model, and carries intent signals: encoded_blob. Descriptions are documentation for a human, but they are delivered to the model as trusted context, so text that tells the model what to do is an attack surface rather than a description. The score is driven mainly by: encoded_blob, cross_tool, entropy, log_len.",
-      "server": "mcp-server-robinhood-chain",
-      "tool": "rhc_equities",
-      "location": "mcp-server-robinhood-chain.rhc_equities",
-      "evidence": {
-        "probability": 1.0,
-        "threshold": 0.5,
-        "intent_signals": [
-          "encoded_blob"
-        ],
-        "driving_features": [
-          {
-            "feature": "encoded_blob",
-            "contribution": 7.9739
-          },
-          {
-            "feature": "cross_tool",
-            "contribution": 6.1813
-          },
-          {
-            "feature": "entropy",
-            "contribution": 6.111
-          },
-          {
-            "feature": "log_words",
-            "contribution": -4.0401
-          },
-          {
-            "feature": "log_len",
-            "contribution": 1.8526
-          },
-          {
-            "feature": "hardcoded_recipient",
-            "contribution": -1.2458
-          }
-        ],
-        "active_features": {
-          "log_len": 7.189922170745808,
-          "log_words": 5.337538079701318,
-          "entropy": 4.952808149461287,
-          "non_ascii_ratio": 0.005283018867924529,
-          "encoded_blob": 1.0,
-          "cross_tool": 1.0,
-          "imperative_density": 0.00966183574879227,
-          "schema_defaults": 2.0,
-          "schema_nested_desc": 4.0
-        },
-        "description": "Robinhood Chain tokenized equities — every official Robinhood tokenized stock and ETF (NVDA, SPY, AAPL, …) with live price / market cap / liquidity and 24h trades, ETH volume, buys/sells and distinct buyers/sellers. IDENTITY IS THE ISSUER BEACON, NEVER THE NAME: a token is listed only if its contract is an EIP-1967 beacon proxy on Robinhood's issuer beacon 0xe10b6f6b275de231345c20d14ab812db62151b00, read from our own node (re-classified every 10 min). The day this shipped there were 20 fake 'Gam"
-      },
-      "remediation": "Read the description against what the tool actually does. If the text is legitimate, it usually means the tool should not have to instruct the model at all - move the guidance into the parameter descriptions or the server's own docs."
-    },
-    {
-      "detector": "semantic",
-      "severity": "high",
-      "title": "Description reads as instructions to the model (p=1.00): rhc_token_risk",
-      "detail": "The description of 'mcp-server-robinhood-chain.rhc_token_risk' scores 1.00 on the instruction-detection model, and carries intent signals: concealment. Descriptions are documentation for a human, but they are delivered to the model as trusted context, so text that tells the model what to do is an attack surface rather than a description. The score is driven mainly by: concealment, cross_tool, entropy, log_len.",
-      "server": "mcp-server-robinhood-chain",
-      "tool": "rhc_token_risk",
-      "location": "mcp-server-robinhood-chain.rhc_token_risk",
-      "evidence": {
-        "probability": 1.0,
-        "threshold": 0.5,
-        "intent_signals": [
-          "concealment"
-        ],
-        "driving_features": [
-          {
-            "feature": "concealment",
-            "contribution": 9.537
-          },
-          {
-            "feature": "cross_tool",
-            "contribution": 6.1813
-          },
-          {
-            "feature": "entropy",
-            "contribution": 4.5811
-          },
-          {
-            "feature": "log_words",
-            "contribution": -3.6221
-          },
-          {
-            "feature": "log_len",
-            "contribution": 1.6257
-          },
-          {
-            "feature": "hardcoded_recipient",
-            "contribution": -1.2458
-          }
-        ],
-        "active_features": {
-          "log_len": 6.893656354602635,
-          "log_words": 5.087596335232384,
-          "entropy": 4.758269996052275,
-          "non_ascii_ratio": 0.0010152284263959391,
-          "concealment": 1.0,
-          "cross_tool": 1.0,
-          "imperative_density": 0.012422360248447204,
-          "schema_nested_desc": 1.0
-        },
-        "description": "EVM-native risk assessment for a Robinhood Chain token, computed LIVE against a self-hosted RHC node. THIS IS NOT THE SOLANA RISK MODEL: EVM has no mint or freeze authority. Across 300 random RHC tokens only 2.3% even expose an owner() function and 0% expose mint in their own bytecode — so an ABSENT capability flag is the NORM and is NOT a safety signal. Never tell a user a token is safe because can_mint is false. The signals that actually discriminate are proxy upgradeability, LP custody and ab"
-      },
-      "remediation": "Read the description against what the tool actually does. If the text is legitimate, it usually means the tool should not have to instruct the model at all - move the guidance into the parameter descriptions or the server's own docs."
     },
     {
       "detector": "toxic_flow",

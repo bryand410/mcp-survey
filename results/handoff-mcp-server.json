@@ -1,18 +1,18 @@
 {
   "tool": {
     "name": "mcp-scrutiny",
-    "version": "0.1.4"
+    "version": "0.1.7"
   },
   "summary": {
     "servers": 1,
     "tools": 98,
-    "findings": 5,
+    "findings": 3,
     "worst_severity": "high",
     "by_severity": {
       "info": 1,
       "low": 0,
       "medium": 1,
-      "high": 3,
+      "high": 1,
       "critical": 0
     }
   },
@@ -46,118 +46,6 @@
         "auto_confirm": true
       },
       "remediation": "Pin an exact version and an integrity hash: \"args\": [\"handoff-mcp-server@<version>\"] and drop the -y flag. Re-pin deliberately, after reviewing the diff."
-    },
-    {
-      "detector": "semantic",
-      "severity": "high",
-      "title": "Description reads as instructions to the model (p=0.97): handoff_doc_export",
-      "detail": "The description of 'handoff-mcp-server.handoff_doc_export' scores 0.97 on the instruction-detection model, and carries intent signals: markup_injection. Descriptions are documentation for a human, but they are delivered to the model as trusted context, so text that tells the model what to do is an attack surface rather than a description. The score is driven mainly by: cross_tool, markup_injection, entropy, log_len.",
-      "server": "handoff-mcp-server",
-      "tool": "handoff_doc_export",
-      "location": "handoff-mcp-server.handoff_doc_export",
-      "evidence": {
-        "probability": 0.9745,
-        "threshold": 0.5,
-        "intent_signals": [
-          "markup_injection"
-        ],
-        "driving_features": [
-          {
-            "feature": "log_words",
-            "contribution": -6.6414
-          },
-          {
-            "feature": "cross_tool",
-            "contribution": 6.1813
-          },
-          {
-            "feature": "markup_injection",
-            "contribution": 4.2205
-          },
-          {
-            "feature": "entropy",
-            "contribution": 4.1784
-          },
-          {
-            "feature": "redaction_language",
-            "contribution": -4.0522
-          },
-          {
-            "feature": "log_len",
-            "contribution": 3.0702
-          }
-        ],
-        "active_features": {
-          "log_len": 8.779557455883728,
-          "log_words": 6.892641641172089,
-          "entropy": 4.707066239600571,
-          "non_ascii_ratio": 0.002308047391906447,
-          "markup_injection": 2.0,
-          "cross_tool": 1.0,
-          "imperative_density": 0.007113821138211382,
-          "redaction_language": 1.0,
-          "schema_defaults": 4.0,
-          "schema_nested_desc": 18.0
-        },
-        "description": "Export documents as PDF (REQ-PDF-006, bundle: REQ-PDF-020). Pass doc_id (one document, by id or slug) or doc_ids (several; one PDF each, in request order, duplicates exported once) or scope (REQ-PDF-021: documents selected by layer/doc_type/milestone/tags/task_id, AND-combined, usable with bundle=true for a merged PDF of the matches; no match is an error) — exactly one of the three, or doc_tree (REQ-PDF-026: see below) instead of all of them. The Markdown body is converted to Typst (headings, li"
-      },
-      "remediation": "Read the description against what the tool actually does. If the text is legitimate, it usually means the tool should not have to instruct the model at all - move the guidance into the parameter descriptions or the server's own docs."
-    },
-    {
-      "detector": "semantic",
-      "severity": "high",
-      "title": "Description reads as instructions to the model (p=1.00): handoff_doc_verify",
-      "detail": "The description of 'handoff-mcp-server.handoff_doc_verify' scores 1.00 on the instruction-detection model, and carries intent signals: injection_markers. Descriptions are documentation for a human, but they are delivered to the model as trusted context, so text that tells the model what to do is an attack surface rather than a description. The score is driven mainly by: injection_markers, entropy, log_len.",
-      "server": "handoff-mcp-server",
-      "tool": "handoff_doc_verify",
-      "location": "handoff-mcp-server.handoff_doc_verify",
-      "evidence": {
-        "probability": 0.9977,
-        "threshold": 0.5,
-        "intent_signals": [
-          "injection_markers"
-        ],
-        "driving_features": [
-          {
-            "feature": "injection_markers",
-            "contribution": 12.87
-          },
-          {
-            "feature": "log_words",
-            "contribution": -5.6968
-          },
-          {
-            "feature": "redaction_language",
-            "contribution": -4.0522
-          },
-          {
-            "feature": "entropy",
-            "contribution": 3.7538
-          },
-          {
-            "feature": "log_len",
-            "contribution": 2.7863
-          },
-          {
-            "feature": "hardcoded_recipient",
-            "contribution": -1.2458
-          }
-        ],
-        "active_features": {
-          "log_len": 8.408939605975984,
-          "log_words": 6.327936783729195,
-          "entropy": 4.653074144153533,
-          "non_ascii_ratio": 0.00490414623272403,
-          "injection_markers": 2.0,
-          "imperative_density": 0.012522361359570662,
-          "redaction_language": 1.0,
-          "schema_wide_enum": 1.0,
-          "schema_nested_desc": 16.0,
-          "schema_marker_in_props": 2.0
-        },
-        "description": "Operate on a document's verification matrix: generate (create a matrix from the document's current sections, error if one already exists), check (mark fragment_seq — or its sub_item_id/sub_item_index — verified, recording verified_at/reviewer/notes/content_hash_at_verify — fragment_seq may be a single section seq or an array of seqs to verify in one call), check_all (verify every section and sub_item in the matrix in one call, error if no matrix exists yet), skip (mark fragment_seq — or its sub_"
-      },
-      "remediation": "Read the description against what the tool actually does. If the text is legitimate, it usually means the tool should not have to instruct the model at all - move the guidance into the parameter descriptions or the server's own docs."
     },
     {
       "detector": "toxic_flow",

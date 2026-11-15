@@ -1,18 +1,18 @@
 {
   "tool": {
     "name": "mcp-scrutiny",
-    "version": "0.1.4"
+    "version": "0.1.7"
   },
   "summary": {
     "servers": 1,
     "tools": 33,
-    "findings": 5,
+    "findings": 3,
     "worst_severity": "high",
     "by_severity": {
       "info": 1,
       "low": 0,
       "medium": 0,
-      "high": 4,
+      "high": 2,
       "critical": 0
     }
   },
@@ -46,112 +46,6 @@
         "auto_confirm": true
       },
       "remediation": "Pin an exact version and an integrity hash: \"args\": [\"brightspace-mcp-server@<version>\"] and drop the -y flag. Re-pin deliberately, after reviewing the diff."
-    },
-    {
-      "detector": "semantic",
-      "severity": "high",
-      "title": "Description reads as instructions to the model (p=1.00): download_course_files",
-      "detail": "The description of 'brightspace-mcp-server.download_course_files' scores 1.00 on the instruction-detection model, and carries intent signals: concealment. Descriptions are documentation for a human, but they are delivered to the model as trusted context, so text that tells the model what to do is an attack surface rather than a description. The score is driven mainly by: concealment, cross_tool, log_len, entropy.",
-      "server": "brightspace-mcp-server",
-      "tool": "download_course_files",
-      "location": "brightspace-mcp-server.download_course_files",
-      "evidence": {
-        "probability": 1.0,
-        "threshold": 0.5,
-        "intent_signals": [
-          "concealment"
-        ],
-        "driving_features": [
-          {
-            "feature": "concealment",
-            "contribution": 9.537
-          },
-          {
-            "feature": "cross_tool",
-            "contribution": 6.1813
-          },
-          {
-            "feature": "log_words",
-            "contribution": -3.4821
-          },
-          {
-            "feature": "log_len",
-            "contribution": 1.5129
-          },
-          {
-            "feature": "hardcoded_recipient",
-            "contribution": -1.2458
-          },
-          {
-            "feature": "entropy",
-            "contribution": 0.9369
-          }
-        ],
-        "active_features": {
-          "log_len": 6.7464121285733745,
-          "log_words": 5.003946305945459,
-          "entropy": 4.294866316875616,
-          "concealment": 1.0,
-          "cross_tool": 1.0,
-          "imperative_density": 0.02027027027027027,
-          "schema_defaults": 5.0,
-          "schema_nested_desc": 8.0
-        },
-        "description": "Download every file in a course's Content area to a folder on the host computer, in sub-folders named after the course's modules. Use this when the user wants a whole course (or one module) saved, instead of calling download_file once per file. Ask the user where to save it before calling; never guess a directory. It is safe to run again: files already on disk are skipped by default, so a rerun fetches only what is new and never overwrites the user's annotated copies. Use dryRun first to preview"
-      },
-      "remediation": "Read the description against what the tool actually does. If the text is legitimate, it usually means the tool should not have to instruct the model at all - move the guidance into the parameter descriptions or the server's own docs."
-    },
-    {
-      "detector": "semantic",
-      "severity": "high",
-      "title": "Description reads as instructions to the model (p=1.00): get_assignments",
-      "detail": "The description of 'brightspace-mcp-server.get_assignments' scores 1.00 on the instruction-detection model, and carries intent signals: concealment. Descriptions are documentation for a human, but they are delivered to the model as trusted context, so text that tells the model what to do is an attack surface rather than a description. The score is driven mainly by: concealment, log_len, entropy.",
-      "server": "brightspace-mcp-server",
-      "tool": "get_assignments",
-      "location": "brightspace-mcp-server.get_assignments",
-      "evidence": {
-        "probability": 0.9974,
-        "threshold": 0.5,
-        "intent_signals": [
-          "concealment"
-        ],
-        "driving_features": [
-          {
-            "feature": "concealment",
-            "contribution": 9.537
-          },
-          {
-            "feature": "log_words",
-            "contribution": -4.6416
-          },
-          {
-            "feature": "log_len",
-            "contribution": 2.0708
-          },
-          {
-            "feature": "entropy",
-            "contribution": 1.4958
-          },
-          {
-            "feature": "hardcoded_recipient",
-            "contribution": -1.2458
-          },
-          {
-            "feature": "hidden_recipient",
-            "contribution": -0.7368
-          }
-        ],
-        "active_features": {
-          "log_len": 7.47477218239787,
-          "log_words": 5.697093486505405,
-          "entropy": 4.36594282677097,
-          "concealment": 1.0,
-          "imperative_density": 0.010101010101010102,
-          "schema_nested_desc": 1.0
-        },
-        "description": "Fetch assignments and quizzes for a specific course or all enrolled courses. Shows dropbox submissions and quizzes with due dates, status, and rubric info. Use this when the user asks about assignments, homework, what to submit, quizzes, or assignment details and rubrics. Read submissionStatus/attemptStatus, not just submission/attemptsUsed, to decide whether something was turned in: some tenants deny students access to submission or attempt data, in which case the status is \"unknown\" even thoug"
-      },
-      "remediation": "Read the description against what the tool actually does. If the text is legitimate, it usually means the tool should not have to instruct the model at all - move the guidance into the parameter descriptions or the server's own docs."
     },
     {
       "detector": "toxic_flow",

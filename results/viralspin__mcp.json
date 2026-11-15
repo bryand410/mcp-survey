@@ -1,18 +1,18 @@
 {
   "tool": {
     "name": "mcp-scrutiny",
-    "version": "0.1.4"
+    "version": "0.1.7"
   },
   "summary": {
     "servers": 1,
     "tools": 51,
-    "findings": 7,
+    "findings": 6,
     "worst_severity": "high",
     "by_severity": {
       "info": 1,
       "low": 0,
       "medium": 1,
-      "high": 5,
+      "high": 4,
       "critical": 0
     }
   },
@@ -46,58 +46,6 @@
         "auto_confirm": true
       },
       "remediation": "Pin an exact version and an integrity hash: \"args\": [\"@viralspin/mcp@<version>\"] and drop the -y flag. Re-pin deliberately, after reviewing the diff."
-    },
-    {
-      "detector": "semantic",
-      "severity": "high",
-      "title": "Description reads as instructions to the model (p=1.00): render_locally",
-      "detail": "The description of 'viralspin__mcp.render_locally' scores 1.00 on the instruction-detection model, and carries intent signals: injection_markers. Descriptions are documentation for a human, but they are delivered to the model as trusted context, so text that tells the model what to do is an attack surface rather than a description. The score is driven mainly by: injection_markers, cross_tool, entropy, log_len.",
-      "server": "viralspin__mcp",
-      "tool": "render_locally",
-      "location": "viralspin__mcp.render_locally",
-      "evidence": {
-        "probability": 1.0,
-        "threshold": 0.5,
-        "intent_signals": [
-          "injection_markers"
-        ],
-        "driving_features": [
-          {
-            "feature": "injection_markers",
-            "contribution": 6.2052
-          },
-          {
-            "feature": "cross_tool",
-            "contribution": 6.1813
-          },
-          {
-            "feature": "log_words",
-            "contribution": -3.6629
-          },
-          {
-            "feature": "entropy",
-            "contribution": 2.9318
-          },
-          {
-            "feature": "log_len",
-            "contribution": 1.5923
-          },
-          {
-            "feature": "hardcoded_recipient",
-            "contribution": -1.2458
-          }
-        ],
-        "active_features": {
-          "log_len": 6.8501261661455,
-          "log_words": 5.111987788356544,
-          "entropy": 4.548545852294894,
-          "injection_markers": 1.0,
-          "cross_tool": 1.0,
-          "schema_nested_desc": 8.0
-        },
-        "description": "Render a ViralSpin REEL on THIS computer (Mac or Windows) instead of the cloud: ViralSpin plans the reel and hands over the media, this machine does the Remotion draw and the audio mix, and the finished mp4 stays on disk (nothing is published or uploaded; 0 credits). First use downloads a ~0.5 GB render kit into ~/.viralspin/kit (needs Node 20+ and 8 GB free disk); later runs reuse it. WITH NO ARGUMENTS it renders the newest reel the person sent to their computer from the ViralSpin app (it says "
-      },
-      "remediation": "Read the description against what the tool actually does. If the text is legitimate, it usually means the tool should not have to instruct the model at all - move the guidance into the parameter descriptions or the server's own docs."
     },
     {
       "detector": "toxic_flow",

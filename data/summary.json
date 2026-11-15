@@ -1,64 +1,22 @@
 {
  "tested": 514,
- "answered": 265,
- "silent": 249,
- "tools": 12709,
+ "answered": 264,
+ "silent": 250,
+ "tools": 12663,
  "findings_excluding": [
   "drift",
   "pinning"
  ],
  "by_severity": {
-  "high": 182,
-  "medium": 72,
-  "low": 8
+  "high": 97,
+  "medium": 54,
+  "low": 7
  },
  "by_detector": {
-  "toxic_flow": 165,
-  "semantic": 97
+  "toxic_flow": 157,
+  "semantic": 1
  },
  "flagged_servers": {
-  "comfyui-mcp": [
-   {
-    "severity": "high",
-    "detector": "toxic_flow",
-    "title": "Toxic flow within 'comfyui-mcp': executes commands + sends data outbound"
-   },
-   {
-    "severity": "high",
-    "detector": "toxic_flow",
-    "title": "Toxic flow within 'comfyui-mcp': reads credentials or secrets + sends data outbound"
-   },
-   {
-    "severity": "high",
-    "detector": "toxic_flow",
-    "title": "Toxic flow within 'comfyui-mcp': reads credentials or secrets + sends email or messages"
-   },
-   {
-    "severity": "high",
-    "detector": "toxic_flow",
-    "title": "Toxic flow within 'comfyui-mcp': reads environment variables + sends data outbound"
-   },
-   {
-    "severity": "medium",
-    "detector": "toxic_flow",
-    "title": "Toxic flow within 'comfyui-mcp': executes commands + writes or deletes files"
-   },
-   {
-    "severity": "medium",
-    "detector": "toxic_flow",
-    "title": "Toxic flow within 'comfyui-mcp': reads files + sends data outbound"
-   },
-   {
-    "severity": "medium",
-    "detector": "toxic_flow",
-    "title": "Toxic flow within 'comfyui-mcp': reads environment variables + sends email or messages"
-   },
-   {
-    "severity": "low",
-    "detector": "toxic_flow",
-    "title": "Toxic flow within 'comfyui-mcp': reads files + modifies a database"
-   }
-  ],
   "premiere-pro-mcp": [
    {
     "severity": "high",
@@ -77,16 +35,6 @@
    }
   ],
   "@agentistics/mcp": [
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Description reads as instructions to the model (p=1.00): agentistics_session_away"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Description reads as instructions to the model (p=1.00): agentistics_task_activity"
-   },
    {
     "severity": "high",
     "detector": "toxic_flow",
@@ -120,16 +68,6 @@
   "brightspace-mcp-server": [
    {
     "severity": "high",
-    "detector": "semantic",
-    "title": "Description reads as instructions to the model (p=1.00): download_course_files"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Description reads as instructions to the model (p=1.00): get_assignments"
-   },
-   {
-    "severity": "high",
     "detector": "toxic_flow",
     "title": "Toxic flow within 'brightspace-mcp-server': reads credentials or secrets + sends email or messages"
    }
@@ -153,13 +91,6 @@
     "severity": "high",
     "detector": "toxic_flow",
     "title": "Toxic flow within 'mearl__mcp-server': executes commands + sends data outbound"
-   }
-  ],
-  "mojulo": [
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Description reads as instructions to the model (p=0.89): forward_context"
    }
   ],
   "@pascal-app/mcp": [
@@ -203,22 +134,12 @@
   ],
   "@transloadit/mcp-server": [
    {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Description reads as instructions to the model (p=0.99): transloadit_create_assembly"
-   },
-   {
     "severity": "medium",
     "detector": "toxic_flow",
     "title": "Toxic flow within 'transloadit__mcp-server': reads files + sends data outbound"
    }
   ],
   "@doitintl/doit-mcp-server": [
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Description reads as instructions to the model (p=1.00): get_widget"
-   },
    {
     "severity": "high",
     "detector": "toxic_flow",
@@ -316,11 +237,6 @@
    },
    {
     "severity": "medium",
-    "detector": "semantic",
-    "title": "Description reads as instructions to the model (p=0.77): pinepaper_audio_beats"
-   },
-   {
-    "severity": "medium",
     "detector": "toxic_flow",
     "title": "Toxic flow within 'pinepaper_studio__mcp-server': executes commands + writes or deletes files"
    },
@@ -371,36 +287,6 @@
    }
   ],
   "@reclaimprotocol/agent": [
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Description reads as instructions to the model (p=1.00): check_attestor"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Description reads as instructions to the model (p=1.00): create_org"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Description reads as instructions to the model (p=0.96): create_theme"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Description reads as instructions to the model (p=0.99): list_themes"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Description reads as instructions to the model (p=1.00): proxy_callback_events"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Description reads as instructions to the model (p=0.99): run_proof_via_pod"
-   },
    {
     "severity": "high",
     "detector": "toxic_flow",
@@ -477,42 +363,12 @@
   ],
   "limostudio-mcp": [
    {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Description reads as instructions to the model (p=1.00): create_clip_media"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Description reads as instructions to the model (p=0.98): duplicate_clip"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Description reads as instructions to the model (p=1.00): duplicate_project"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Description reads as instructions to the model (p=0.98): generate_image"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Description reads as instructions to the model (p=0.99): reverse_clip"
-   },
-   {
     "severity": "medium",
     "detector": "toxic_flow",
     "title": "Toxic flow within 'limostudio-mcp': executes commands + writes or deletes files"
    }
   ],
   "@viralspin/mcp": [
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Description reads as instructions to the model (p=1.00): render_locally"
-   },
    {
     "severity": "high",
     "detector": "toxic_flow",
@@ -571,21 +427,6 @@
   "@infracodebase/mcp": [
    {
     "severity": "high",
-    "detector": "semantic",
-    "title": "Description reads as instructions to the model (p=1.00): create_workspace"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Description reads as instructions to the model (p=1.00): link_workspace_to_repo"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Description reads as instructions to the model (p=0.87): setup_workspace"
-   },
-   {
-    "severity": "high",
     "detector": "toxic_flow",
     "title": "Toxic flow within 'infracodebase__mcp': executes commands + sends data outbound"
    },
@@ -601,11 +442,6 @@
    }
   ],
   "devharness": [
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Description reads as instructions to the model (p=0.99): request"
-   },
    {
     "severity": "high",
     "detector": "toxic_flow",
@@ -625,16 +461,6 @@
   "camofox-mcp": [
    {
     "severity": "high",
-    "detector": "semantic",
-    "title": "Description reads as instructions to the model (p=1.00): camofox_get_page_html"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Description reads as instructions to the model (p=0.99): toggle_display"
-   },
-   {
-    "severity": "high",
     "detector": "toxic_flow",
     "title": "Toxic flow within 'camofox-mcp': executes commands + sends data outbound"
    },
@@ -651,16 +477,6 @@
   ],
   "handoff-mcp-server": [
    {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Description reads as instructions to the model (p=0.97): handoff_doc_export"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Description reads as instructions to the model (p=1.00): handoff_doc_verify"
-   },
-   {
     "severity": "medium",
     "detector": "toxic_flow",
     "title": "Toxic flow within 'handoff-mcp-server': executes commands + writes or deletes files"
@@ -674,11 +490,6 @@
    }
   ],
   "layoutbridge-spm": [
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Description reads as instructions to the model (p=0.99): place_image"
-   },
    {
     "severity": "medium",
     "detector": "toxic_flow",
@@ -729,11 +540,6 @@
   "@chrischall/myatriumhealth-mcp": [
    {
     "severity": "high",
-    "detector": "semantic",
-    "title": "Description reads as instructions to the model (p=0.98): mah_upload_slots"
-   },
-   {
-    "severity": "high",
     "detector": "toxic_flow",
     "title": "Toxic flow within 'chrischall__myatriumhealth-mcp': reads credentials or secrets + sends data outbound"
    },
@@ -765,35 +571,6 @@
     "severity": "high",
     "detector": "toxic_flow",
     "title": "Toxic flow within 'mcp-jira-cloud': reads credentials or secrets + sends email or messages"
-   }
-  ],
-  "@dnsdoctor/mcp": [
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Description reads as instructions to the model (p=1.00): audit_spf_includes"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Description reads as instructions to the model (p=1.00): check_domain_names"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Description reads as instructions to the model (p=1.00): check_reverse_dns"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Description reads as instructions to the model (p=0.94): lookup_registration"
-   }
-  ],
-  "agent-referee-mcp": [
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Description reads as instructions to the model (p=0.99): sealed_review"
    }
   ],
   "@adrata/adrata-mcp": [
@@ -845,81 +622,6 @@
   "crawlora-mcp": [
    {
     "severity": "high",
-    "detector": "semantic",
-    "title": "Description reads as instructions to the model (p=1.00): datasets_llms_item"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Description reads as instructions to the model (p=1.00): datasets_llms_search"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Description reads as instructions to the model (p=0.98): googleplay_developer"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Description reads as instructions to the model (p=1.00): googleplay_list"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Description reads as instructions to the model (p=0.99): luma_place_events"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Description reads as instructions to the model (p=1.00): mlb_statcast_pitch_tempo"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Description reads as instructions to the model (p=0.97): nba_games"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Description reads as instructions to the model (p=1.00): nypost_article"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Description reads as instructions to the model (p=1.00): nypost_author"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Description reads as instructions to the model (p=1.00): sbsnews_author"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Description reads as instructions to the model (p=0.97): smh_article"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Description reads as instructions to the model (p=0.97): theage_article"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Description reads as instructions to the model (p=1.00): tiktok_mobile_place_info"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Description reads as instructions to the model (p=0.99): yahoo_sports_scoreboard"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Description reads as instructions to the model (p=0.99): youtube_transcript"
-   },
-   {
-    "severity": "high",
     "detector": "toxic_flow",
     "title": "Toxic flow within 'crawlora-mcp': executes commands + sends data outbound"
    },
@@ -932,11 +634,6 @@
     "severity": "high",
     "detector": "toxic_flow",
     "title": "Toxic flow within 'crawlora-mcp': reads credentials or secrets + sends email or messages"
-   },
-   {
-    "severity": "medium",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: datasets_creators_search"
    },
    {
     "severity": "medium",
@@ -956,44 +653,7 @@
     "title": "Toxic flow within 'renzo_johnson__firebase-mcp': reads credentials or secrets + sends email or messages"
    }
   ],
-  "mcp-yandex-wordstat": [
-   {
-    "severity": "medium",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: dynamics"
-   },
-   {
-    "severity": "medium",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: list_regions"
-   },
-   {
-    "severity": "medium",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: raw_request"
-   },
-   {
-    "severity": "medium",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: regions"
-   },
-   {
-    "severity": "medium",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: top_requests"
-   }
-  ],
   "@quackai/q402-mcp": [
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Description reads as instructions to the model (p=1.00): q402_pay"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Description reads as instructions to the model (p=1.00): q402_x402_fetch"
-   },
    {
     "severity": "high",
     "detector": "toxic_flow",
@@ -1021,16 +681,6 @@
    }
   ],
   "mcp-server-robinhood-chain": [
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Description reads as instructions to the model (p=1.00): rhc_equities"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Description reads as instructions to the model (p=1.00): rhc_token_risk"
-   },
    {
     "severity": "high",
     "detector": "toxic_flow",
@@ -1101,25 +751,6 @@
     "title": "Toxic flow within 'devglow-mcp': reads credentials or secrets + sends email or messages"
    }
   ],
-  "omniflow-mcp": [
-   {
-    "severity": "medium",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: flow_postprod"
-   },
-   {
-    "severity": "medium",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: vids_avatar"
-   }
-  ],
-  "audionaut-mcp": [
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Description reads as instructions to the model (p=1.00): get_project_info"
-   }
-  ],
   "easy-email-builder-mcp": [
    {
     "severity": "high",
@@ -1160,49 +791,7 @@
     "title": "Description reads as instructions to the model (p=1.00): log_turn"
    }
   ],
-  "@theyahia/mindbox-mcp": [
-   {
-    "severity": "medium",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: create_order"
-   },
-   {
-    "severity": "medium",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: get_customer"
-   },
-   {
-    "severity": "medium",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: get_product_list"
-   },
-   {
-    "severity": "medium",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: get_segments"
-   },
-   {
-    "severity": "medium",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: run_operation"
-   },
-   {
-    "severity": "medium",
-    "detector": "semantic",
-    "title": "Mixed-script text in tool description: update_customer"
-   }
-  ],
   "n2c-mcp": [
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Description reads as instructions to the model (p=1.00): deploy_workflow"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Description reads as instructions to the model (p=0.96): file-processing"
-   },
    {
     "severity": "high",
     "detector": "toxic_flow",
@@ -1224,76 +813,7 @@
     "title": "Toxic flow within 'n2c-mcp': reads files + sends data outbound"
    }
   ],
-  "@pagai/mcp": [
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Description reads as instructions to the model (p=1.00): update_client"
-   }
-  ],
-  "blixtworks-mcp": [
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Description reads as instructions to the model (p=1.00): email_validate"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Description reads as instructions to the model (p=1.00): http_headers"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Description reads as instructions to the model (p=1.00): image_crop"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Description reads as instructions to the model (p=1.00): image_info"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Description reads as instructions to the model (p=1.00): image_palette"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Description reads as instructions to the model (p=1.00): image_resize"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Description reads as instructions to the model (p=1.00): metadata"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Description reads as instructions to the model (p=1.00): robots_check"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Description reads as instructions to the model (p=1.00): rss_parse"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Description reads as instructions to the model (p=1.00): sitemap_parse"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Description reads as instructions to the model (p=1.00): url_expand"
-   }
-  ],
   "makehybrid-mcp": [
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Description reads as instructions to the model (p=1.00): complete_rooms_work_ready"
-   },
    {
     "severity": "high",
     "detector": "toxic_flow",
@@ -1325,11 +845,6 @@
   "toolrouter-mcp": [
    {
     "severity": "high",
-    "detector": "semantic",
-    "title": "Description reads as instructions to the model (p=1.00): discover"
-   },
-   {
-    "severity": "high",
     "detector": "toxic_flow",
     "title": "Toxic flow within 'toolrouter-mcp': reads credentials or secrets + sends email or messages"
    },
@@ -1346,39 +861,7 @@
     "title": "Toxic flow within 'namesniper-mcp': reads credentials or secrets + sends email or messages"
    }
   ],
-  "wolt-mcp": [
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Description reads as instructions to the model (p=0.87): use_saved_address"
-   }
-  ],
   "@cognitiondesk/mcp": [
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Description reads as instructions to the model (p=0.98): create_skill"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Description reads as instructions to the model (p=1.00): ingest_knowledge_github"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Description reads as instructions to the model (p=0.98): list_assistant_versions"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Description reads as instructions to the model (p=0.99): manage_loops"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Description reads as instructions to the model (p=0.98): resolve_skills"
-   },
    {
     "severity": "high",
     "detector": "toxic_flow",
@@ -1444,13 +927,6 @@
     "title": "Toxic flow within 'sloflash__ml-training-mcp': executes commands + writes or deletes files"
    }
   ],
-  "filament-mcp": [
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Description reads as instructions to the model (p=1.00): read_filament_docs"
-   }
-  ],
   "mcp-interaction-studio": [
    {
     "severity": "high",
@@ -1461,28 +937,6 @@
     "severity": "medium",
     "detector": "toxic_flow",
     "title": "Toxic flow within 'mcp-interaction-studio': executes commands + writes or deletes files"
-   }
-  ],
-  "@iflow-mcp/super-win-cli-mcp-server": [
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Description reads as instructions to the model (p=1.00): execute_command"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Description reads as instructions to the model (p=1.00): get_command_history"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Description reads as instructions to the model (p=0.99): ssh_disconnect"
-   },
-   {
-    "severity": "high",
-    "detector": "semantic",
-    "title": "Description reads as instructions to the model (p=1.00): ssh_execute"
    }
   ]
  },
@@ -1495,17 +949,17 @@
   {
    "package": "rea-agents",
    "status": "no-tools",
-   "reason": "rea-agents: FAILED - rea-agents: the server exited with status 0 before answering initialize; stderr: npm warn deprecated prebuild-install@7.1.3: No longer maintained. Please contact the author of the relevant native addon; alternatives are available."
+   "reason": "rea-agents: FAILED - rea-agents: no response to initialize within 40s; stderr: npm warn deprecated prebuild-install@7.1.3: No longer maintained. Please contact the author of the relevant native addon; alternatives are available."
   },
   {
    "package": "@zereight/mcp-gitlab",
    "status": "no-tools",
-   "reason": "zereight__mcp-gitlab: FAILED - zereight__mcp-gitlab: the server exited with status 1 before answering initialize; stderr: \u001b[31mERROR\u001b[39m [09:49:53.135] (2505): \u001b[36mGITLAB_PERSONAL_ACCESS_TOKEN environment variable is not set\u001b[39m | \u001b[32mINFO\u001b[39m [09:49:53.146] (2505): \u001b[36mEither set GITLAB_PERSO"
+   "reason": "zereight__mcp-gitlab: FAILED - zereight__mcp-gitlab: the server exited with status 1 before answering initialize; stderr: \u001b[31mERROR\u001b[39m [22:40:36.338] (2508): \u001b[36mGITLAB_PERSONAL_ACCESS_TOKEN environment variable is not set\u001b[39m | \u001b[32mINFO\u001b[39m [22:40:36.343] (2508): \u001b[36mEither set GITLAB_PERSO"
   },
   {
    "package": "@currents/mcp",
    "status": "no-tools",
-   "reason": "currents__mcp: FAILED - currents__mcp: the server exited with status 1 before answering initialize; stderr: [09:49:51.122] \u001b[31mERROR\u001b[39m (2467): \u001b[36mCURRENTS_API_KEY is not set. Add your Currents API key to the environment (for example: export CURRENTS_API_KEY=<your-key>).\u001b[39m"
+   "reason": "currents__mcp: FAILED - currents__mcp: the server exited with status 1 before answering initialize; stderr: [22:40:35.129] \u001b[31mERROR\u001b[39m (2485): \u001b[36mCURRENTS_API_KEY is not set. Add your Currents API key to the environment (for example: export CURRENTS_API_KEY=<your-key>).\u001b[39m"
   },
   {
    "package": "kordoc",
@@ -1521,6 +975,11 @@
    "package": "@benborla29/mcp-server-mysql",
    "status": "no-tools",
    "reason": "benborla29__mcp-server-mysql: FAILED - benborla29__mcp-server-mysql: the server exited with status 1 before answering tools/list; stderr: npm warn deprecated node-domexception@1.0.0: Use your platform's native DOMException instead"
+  },
+  {
+   "package": "12306-mcp",
+   "status": "no-tools",
+   "reason": "12306-mcp: FAILED - 12306-mcp: no response to initialize within 40s"
   },
   {
    "package": "@hypequery/mcp",
@@ -1540,7 +999,12 @@
   {
    "package": "dsh-computer-use-win",
    "status": "no-tools",
-   "reason": "dsh-computer-use-win: FAILED - dsh-computer-use-win: the server exited with status 1 before answering initialize; stderr: npm error code EBADPLATFORM | npm error notsup Unsupported platform for dsh-computer-use-win@0.5.7: wanted {\"os\":\"win32\"} (current: {\"os\":\"linux\"}) | npm error notsup Valid os:  "
+   "reason": "dsh-computer-use-win: FAILED - dsh-computer-use-win: the server exited with status 1 before answering initialize; stderr: npm error code EBADPLATFORM | npm error notsup Unsupported platform for dsh-computer-use-win@0.6.0: wanted {\"os\":\"win32\"} (current: {\"os\":\"linux\"}) | npm error notsup Valid os:  "
+  },
+  {
+   "package": "comfyui-mcp",
+   "status": "no-tools",
+   "reason": "comfyui-mcp: FAILED - comfyui-mcp: no response to initialize within 40s; stderr: [comfyui-mcp] ComfyUI not detected on ports 8188, 8000. Defaulting to 8188. | [2026-11-15T22:41:24.858Z] [INFO] No autoloaded workflows discovered {\"dir\":\"/home/runner/.comfyui-mcp/workflows\"} | [2026-11-15T22:41:24.911"
   },
   {
    "package": "ffmpeg-skill",
@@ -1555,12 +1019,12 @@
   {
    "package": "@claude-flow/mcp",
    "status": "no-tools",
-   "reason": "claude-flow__mcp: FAILED - claude-flow__mcp: the server exited with status 1 before answering initialize; stderr: npm error could not determine executable to run | npm error A complete log of this run can be found in: /home/runner/.npm/_logs/2026-11-15T09_50_01_442Z-debug-0.log"
+   "reason": "claude-flow__mcp: FAILED - claude-flow__mcp: the server exited with status 1 before answering initialize; stderr: npm error could not determine executable to run | npm error A complete log of this run can be found in: /home/runner/.npm/_logs/2026-11-15T22_40_48_545Z-debug-0.log"
   },
   {
    "package": "@hui-xu-ai/dsh-wensu",
    "status": "no-tools",
-   "reason": "hui-xu-ai__dsh-wensu: FAILED - hui-xu-ai__dsh-wensu: the server exited with status 1 before answering initialize; stderr: npm error could not determine executable to run | npm error A complete log of this run can be found in: /home/runner/.npm/_logs/2026-11-15T09_50_02_835Z-debug-0.log"
+   "reason": "hui-xu-ai__dsh-wensu: FAILED - hui-xu-ai__dsh-wensu: the server exited with status 1 before answering initialize; stderr: npm error could not determine executable to run | npm error A complete log of this run can be found in: /home/runner/.npm/_logs/2026-11-15T22_40_50_078Z-debug-0.log"
   },
   {
    "package": "@agimon-ai/po-style-system-tooling",
@@ -1590,7 +1054,7 @@
   {
    "package": "@procedures/mcp-server",
    "status": "no-tools",
-   "reason": "procedures__mcp-server: FAILED - procedures__mcp-server: the server exited with status 1 before answering initialize; stderr: npm error could not determine executable to run | npm error A complete log of this run can be found in: /home/runner/.npm/_logs/2026-11-15T09_50_22_526Z-debug-0.log"
+   "reason": "procedures__mcp-server: FAILED - procedures__mcp-server: the server exited with status 1 before answering initialize; stderr: npm error could not determine executable to run | npm error A complete log of this run can be found in: /home/runner/.npm/_logs/2026-11-15T22_41_16_145Z-debug-0.log"
   },
   {
    "package": "mcp-local-rag",
@@ -1600,7 +1064,7 @@
   {
    "package": "@lark-apaas/nestjs-mcp",
    "status": "no-tools",
-   "reason": "lark-apaas__nestjs-mcp: FAILED - lark-apaas__nestjs-mcp: the server exited with status 1 before answering initialize; stderr: npm error could not determine executable to run | npm error A complete log of this run can be found in: /home/runner/.npm/_logs/2026-11-15T09_50_31_797Z-debug-0.log"
+   "reason": "lark-apaas__nestjs-mcp: FAILED - lark-apaas__nestjs-mcp: the server exited with status 1 before answering initialize; stderr: npm error could not determine executable to run | npm error A complete log of this run can be found in: /home/runner/.npm/_logs/2026-11-15T22_41_25_879Z-debug-0.log"
   },
   {
    "package": "gdharness",
@@ -1615,7 +1079,7 @@
   {
    "package": "trace-mcp",
    "status": "no-tools",
-   "reason": "trace-mcp: FAILED - trace-mcp: no response to initialize within 40s; stderr: {\"level\":30,\"time\":1794736278872,\"pid\":4536,\"hostname\":\"runnervmccnms\",\"name\":\"trace-mcp\",\"root\":\"/home/runner/work/mcp-survey/mcp-survey\",\"msg\":\"Auto-registered project\"} | {\"level\":30,\"time\":1794736278913,\"pid\":4536,\"host"
+   "reason": "trace-mcp: FAILED - trace-mcp: no response to initialize within 40s"
   },
   {
    "package": "@abyssinia-labs/sokie",
@@ -1630,7 +1094,7 @@
   {
    "package": "@kud/mcp-jenkins",
    "status": "no-tools",
-   "reason": "kud__mcp-jenkins: FAILED - kud__mcp-jenkins: the server exited with status 1 before answering initialize; stderr: {\"level\":\"error\",\"msg\":\"Failed to initialize Jenkins clients\",\"time\":\"2026-11-15T09:50:48.200Z\",\"fields\":{\"error\":\"Missing MCP_JENKINS_URL. Provide via:\\n  1. CLI: --url <url>\\n  2. Envi"
+   "reason": "kud__mcp-jenkins: FAILED - kud__mcp-jenkins: the server exited with status 1 before answering initialize; stderr: {\"level\":\"error\",\"msg\":\"Failed to initialize Jenkins clients\",\"time\":\"2026-11-15T22:41:49.905Z\",\"fields\":{\"error\":\"Missing MCP_JENKINS_URL. Provide via:\\n  1. CLI: --url <url>\\n  2. Envi"
   },
   {
    "package": "@roychri/mcp-server-asana",
@@ -1640,7 +1104,7 @@
   {
    "package": "@mcp-z/server",
    "status": "no-tools",
-   "reason": "mcp-z__server: FAILED - mcp-z__server: the server exited with status 1 before answering initialize; stderr: npm error could not determine executable to run | npm error A complete log of this run can be found in: /home/runner/.npm/_logs/2026-11-15T09_50_57_193Z-debug-0.log"
+   "reason": "mcp-z__server: FAILED - mcp-z__server: the server exited with status 1 before answering initialize; stderr: npm error could not determine executable to run | npm error A complete log of this run can be found in: /home/runner/.npm/_logs/2026-11-15T22_42_03_574Z-debug-0.log"
   },
   {
    "package": "@onelogin/onelogin-mcp",
@@ -1675,7 +1139,7 @@
   {
    "package": "@maroonedsoftware/mcp",
    "status": "no-tools",
-   "reason": "maroonedsoftware__mcp: FAILED - maroonedsoftware__mcp: the server exited with status 1 before answering initialize; stderr: npm error could not determine executable to run | npm error A complete log of this run can be found in: /home/runner/.npm/_logs/2026-11-15T09_51_14_875Z-debug-0.log"
+   "reason": "maroonedsoftware__mcp: FAILED - maroonedsoftware__mcp: the server exited with status 1 before answering initialize; stderr: npm error could not determine executable to run | npm error A complete log of this run can be found in: /home/runner/.npm/_logs/2026-11-15T22_42_17_631Z-debug-0.log"
   },
   {
    "package": "agentic-payments",
@@ -1715,7 +1179,7 @@
   {
    "package": "@jrmc/adonis-mcp",
    "status": "no-tools",
-   "reason": "jrmc__adonis-mcp: FAILED - jrmc__adonis-mcp: the server exited with status 1 before answering initialize; stderr: npm error could not determine executable to run | npm error A complete log of this run can be found in: /home/runner/.npm/_logs/2026-11-15T09_51_45_614Z-debug-0.log"
+   "reason": "jrmc__adonis-mcp: FAILED - jrmc__adonis-mcp: the server exited with status 1 before answering initialize; stderr: npm error could not determine executable to run | npm error A complete log of this run can be found in: /home/runner/.npm/_logs/2026-11-15T22_42_56_933Z-debug-0.log"
   },
   {
    "package": "agentic-text",
@@ -1765,7 +1229,7 @@
   {
    "package": "@fangjunjie/ssh-mcp-server",
    "status": "no-tools",
-   "reason": "fangjunjie__ssh-mcp-server: FAILED - fangjunjie__ssh-mcp-server: the server exited with status 1 before answering initialize; stderr: [2026-11-15T09:52:25.566Z] [ERROR] 【SSH MCP Server Error】: Missing required parameters, need to provide host, port, username and password, private key or agent"
+   "reason": "fangjunjie__ssh-mcp-server: FAILED - fangjunjie__ssh-mcp-server: the server exited with status 1 before answering initialize; stderr: [2026-11-15T22:43:51.201Z] [ERROR] 【SSH MCP Server Error】: Missing required parameters, need to provide host, port, username and password, private key or agent"
   },
   {
    "package": "@ngrislain/ergo-mcp",
@@ -1775,7 +1239,7 @@
   {
    "package": "datadog-mcp-server",
    "status": "no-tools",
-   "reason": "datadog-mcp-server: FAILED - datadog-mcp-server: the server exited with status 1 before answering initialize; stderr: Error: DD_API_KEY is required. | Please provide it via command line argument or .env file. |  Command line: --apiKey=your_api_key"
+   "reason": "datadog-mcp-server: FAILED - datadog-mcp-server: no response to initialize within 40s"
   },
   {
    "package": "@nxuss/lemma",
@@ -1795,7 +1259,7 @@
   {
    "package": "@stratusagent/plugin-mcp",
    "status": "no-tools",
-   "reason": "stratusagent__plugin-mcp: FAILED - stratusagent__plugin-mcp: the server exited with status 1 before answering initialize; stderr: npm error could not determine executable to run | npm error A complete log of this run can be found in: /home/runner/.npm/_logs/2026-11-15T09_52_33_375Z-debug-0.log"
+   "reason": "stratusagent__plugin-mcp: FAILED - stratusagent__plugin-mcp: the server exited with status 1 before answering initialize; stderr: npm error could not determine executable to run | npm error A complete log of this run can be found in: /home/runner/.npm/_logs/2026-11-15T22_43_54_427Z-debug-0.log"
   },
   {
    "package": "@davidfuchs/mcp-uptime-kuma",
@@ -1870,7 +1334,7 @@
   {
    "package": "@terreno/mcp",
    "status": "no-tools",
-   "reason": "terreno__mcp: FAILED - terreno__mcp: the server exited with status 1 before answering initialize; stderr: npm error could not determine executable to run | npm error A complete log of this run can be found in: /home/runner/.npm/_logs/2026-11-15T09_54_11_663Z-debug-0.log"
+   "reason": "terreno__mcp: FAILED - terreno__mcp: the server exited with status 1 before answering initialize; stderr: npm error could not determine executable to run | npm error A complete log of this run can be found in: /home/runner/.npm/_logs/2026-11-15T22_45_43_654Z-debug-0.log"
   },
   {
    "package": "@maiaos/cli",
@@ -1885,7 +1349,7 @@
   {
    "package": "dsh-artcraft-plugin-deckcraft",
    "status": "no-tools",
-   "reason": "dsh-artcraft-plugin-deckcraft: FAILED - dsh-artcraft-plugin-deckcraft: the server exited with status 1 before answering initialize; stderr: npm error could not determine executable to run | npm error A complete log of this run can be found in: /home/runner/.npm/_logs/2026-11-15T09_54_16_554Z-debug-0"
+   "reason": "dsh-artcraft-plugin-deckcraft: FAILED - dsh-artcraft-plugin-deckcraft: the server exited with status 1 before answering initialize; stderr: npm error could not determine executable to run | npm error A complete log of this run can be found in: /home/runner/.npm/_logs/2026-11-15T22_45_47_716Z-debug-0"
   },
   {
    "package": "@bevel-software/hexis-mcp",
@@ -1895,7 +1359,7 @@
   {
    "package": "dsh-artcraft-plugin-designcraft",
    "status": "no-tools",
-   "reason": "dsh-artcraft-plugin-designcraft: FAILED - dsh-artcraft-plugin-designcraft: the server exited with status 1 before answering initialize; stderr: npm error could not determine executable to run | npm error A complete log of this run can be found in: /home/runner/.npm/_logs/2026-11-15T09_54_24_490Z-deb"
+   "reason": "dsh-artcraft-plugin-designcraft: FAILED - dsh-artcraft-plugin-designcraft: the server exited with status 1 before answering initialize; stderr: npm error could not determine executable to run | npm error A complete log of this run can be found in: /home/runner/.npm/_logs/2026-11-15T22_45_54_581Z-deb"
   },
   {
    "package": "@kevinwatt/yt-dlp-mcp",
@@ -1960,7 +1424,7 @@
   {
    "package": "@diviops/mcp-server",
    "status": "no-tools",
-   "reason": "diviops__mcp-server: FAILED - diviops__mcp-server: the server exited with status 1 before answering initialize; stderr: npm error could not determine executable to run | npm error A complete log of this run can be found in: /home/runner/.npm/_logs/2026-11-15T09_55_14_445Z-debug-0.log"
+   "reason": "diviops__mcp-server: FAILED - diviops__mcp-server: the server exited with status 1 before answering initialize; stderr: npm error could not determine executable to run | npm error A complete log of this run can be found in: /home/runner/.npm/_logs/2026-11-15T22_46_39_982Z-debug-0.log"
   },
   {
    "package": "boxery-vm",
@@ -1990,7 +1454,7 @@
   {
    "package": "@hhxg/dsh-hhxg-market",
    "status": "no-tools",
-   "reason": "hhxg__dsh-hhxg-market: FAILED - hhxg__dsh-hhxg-market: the server exited with status 1 before answering initialize; stderr: npm error could not determine executable to run | npm error A complete log of this run can be found in: /home/runner/.npm/_logs/2026-11-15T09_55_29_956Z-debug-0.log"
+   "reason": "hhxg__dsh-hhxg-market: FAILED - hhxg__dsh-hhxg-market: the server exited with status 1 before answering initialize; stderr: npm error could not determine executable to run | npm error A complete log of this run can be found in: /home/runner/.npm/_logs/2026-11-15T22_47_01_801Z-debug-0.log"
   },
   {
    "package": "@node2flow/telegram-bot-mcp",
@@ -2005,7 +1469,7 @@
   {
    "package": "@usejunior/email-mcp",
    "status": "no-tools",
-   "reason": "usejunior__email-mcp: FAILED - usejunior__email-mcp: the server exited with status 1 before answering initialize; stderr: npm error could not determine executable to run | npm error A complete log of this run can be found in: /home/runner/.npm/_logs/2026-11-15T09_55_45_385Z-debug-0.log"
+   "reason": "usejunior__email-mcp: FAILED - usejunior__email-mcp: the server exited with status 1 before answering initialize; stderr: npm error could not determine executable to run | npm error A complete log of this run can be found in: /home/runner/.npm/_logs/2026-11-15T22_47_17_580Z-debug-0.log"
   },
   {
    "package": "@ahdev/dokploy-mcp",
@@ -2056,11 +1520,6 @@
    "package": "@morluto/rea",
    "status": "no-tools",
    "reason": "morluto__rea: FAILED - morluto__rea: the server exited with status 0 before answering initialize"
-  },
-  {
-   "package": "@munhq/sealkeep",
-   "status": "no-tools",
-   "reason": "munhq__sealkeep: FAILED - munhq__sealkeep: the server exited with status 0 before answering tools/list"
   },
   {
    "package": "@czp3009/factorio-mcp",
@@ -2185,7 +1644,7 @@
   {
    "package": "agent-mc-world",
    "status": "no-tools",
-   "reason": "agent-mc-world: FAILED - agent-mc-world: the server exited with status 1 before answering initialize; stderr: npm error could not determine executable to run | npm error A complete log of this run can be found in: /home/runner/.npm/_logs/2026-11-15T09_57_40_818Z-debug-0.log"
+   "reason": "agent-mc-world: FAILED - agent-mc-world: the server exited with status 1 before answering initialize; stderr: npm error could not determine executable to run | npm error A complete log of this run can be found in: /home/runner/.npm/_logs/2026-11-15T22_49_38_388Z-debug-0.log"
   },
   {
    "package": "zapsmtp-mcp",
@@ -2205,12 +1664,12 @@
   {
    "package": "zipline-mcp",
    "status": "no-tools",
-   "reason": "zipline-mcp: FAILED - zipline-mcp: the server exited with status 1 before answering initialize; stderr: file:///home/runner/.npm/_npx/5cff6543e9051ab1/node_modules/zipline-mcp/dist/index.js:26 |     throw new Error('Environment variable ZIPLINE_TOKEN is required.'); |           ^ | Error: Environmen"
+   "reason": "zipline-mcp: FAILED - zipline-mcp: no response to initialize within 40s"
   },
   {
    "package": "@msg2ai/ai-ambassador-toolkit",
    "status": "no-tools",
-   "reason": "msg2ai__ai-ambassador-toolkit: FAILED - msg2ai__ai-ambassador-toolkit: the server exited with status 1 before answering initialize; stderr: npm error could not determine executable to run | npm error A complete log of this run can be found in: /home/runner/.npm/_logs/2026-11-15T09_57_48_869Z-debug-0"
+   "reason": "msg2ai__ai-ambassador-toolkit: FAILED - msg2ai__ai-ambassador-toolkit: the server exited with status 1 before answering initialize; stderr: npm error could not determine executable to run | npm error A complete log of this run can be found in: /home/runner/.npm/_logs/2026-11-15T22_49_49_606Z-debug-0"
   },
   {
    "package": "@zerotal/arch",
@@ -2305,7 +1764,7 @@
   {
    "package": "obsidian-mcp-brain",
    "status": "no-tools",
-   "reason": "obsidian-mcp-brain: FAILED - obsidian-mcp-brain: the server exited with status 1 before answering initialize; stderr: 2026-11-15T09:58:31.783Z Could not read config file at /home/runner/.config/obsidian-mcp.json: ENOENT: no such file or directory, open '/home/runner/.config/obsidian-mcp.json'"
+   "reason": "obsidian-mcp-brain: FAILED - obsidian-mcp-brain: the server exited with status 1 before answering initialize; stderr: 2026-11-15T22:50:39.769Z Could not read config file at /home/runner/.config/obsidian-mcp.json: ENOENT: no such file or directory, open '/home/runner/.config/obsidian-mcp.json'"
   },
   {
    "package": "@backwork/mcp",
@@ -2390,7 +1849,7 @@
   {
    "package": "@srigi/mcp-google-images-search",
    "status": "no-tools",
-   "reason": "srigi__mcp-google-images-search: FAILED - srigi__mcp-google-images-search: the server exited with status 1 before answering initialize; stderr:     { |       code: 'invalid_type', |       expected: 'string', |       received: 'undefined', |       path: [ 'SEARCH_ENGINE_ID' ], |       message: 'Requi"
+   "reason": "srigi__mcp-google-images-search: FAILED - srigi__mcp-google-images-search: the server exited with status 1 before answering initialize; stderr: /home/runner/.npm/_npx/79b14f9af2237ad0/node_modules/@srigi/mcp-google-images-search/dist/cli.js:6 | (function(e,r){true?r(t):0})(this,(function(e){\"use str"
   },
   {
    "package": "ditto-workflows-mcp",
@@ -2480,7 +1939,7 @@
   {
    "package": "@chainreactionom/nano-mcp-server",
    "status": "no-tools",
-   "reason": "chainreactionom__nano-mcp-server: FAILED - chainreactionom__nano-mcp-server: the server exited with status 0 before answering initialize; stderr: npm warn deprecated crypto-js@3.1.9-1: Active development of CryptoJS has been discontinued. This library is no longer maintained. | npm warn deprecated n"
+   "reason": "chainreactionom__nano-mcp-server: FAILED - chainreactionom__nano-mcp-server: the server exited with status 0 before answering initialize; stderr: npm warn deprecated node-domexception@1.0.0: Use your platform's native DOMException instead | npm warn deprecated crypto-js@3.1.9-1: Active development o"
   },
   {
    "package": "@quick-desk/mcp",
@@ -2590,7 +2049,7 @@
   {
    "package": "@seofanboy/babbar-mcp-server",
    "status": "no-tools",
-   "reason": "seofanboy__babbar-mcp-server: FAILED - seofanboy__babbar-mcp-server: the server exited with status 1 before answering initialize; stderr: {\"level\":50,\"time\":1794736818545,\"pid\":17919,\"hostname\":\"runnervmccnms\",\"msg\":\"BABBAR_API_KEY environment variable is required\"}"
+   "reason": "seofanboy__babbar-mcp-server: FAILED - seofanboy__babbar-mcp-server: the server exited with status 1 before answering initialize; stderr: {\"level\":50,\"time\":1794783168742,\"pid\":18000,\"hostname\":\"runnervmccnms\",\"msg\":\"BABBAR_API_KEY environment variable is required\"}"
   },
   {
    "package": "@talktowp/mcp",
@@ -2615,7 +2074,7 @@
   {
    "package": "@buildwithlayer/mcp-analytics",
    "status": "no-tools",
-   "reason": "buildwithlayer__mcp-analytics: FAILED - buildwithlayer__mcp-analytics: the server exited with status 1 before answering initialize; stderr: npm error could not determine executable to run | npm error A complete log of this run can be found in: /home/runner/.npm/_logs/2026-11-15T10_00_20_309Z-debug-0"
+   "reason": "buildwithlayer__mcp-analytics: FAILED - buildwithlayer__mcp-analytics: the server exited with status 1 before answering initialize; stderr: npm error could not determine executable to run | npm error A complete log of this run can be found in: /home/runner/.npm/_logs/2026-11-15T22_52_52_050Z-debug-0"
   },
   {
    "package": "@fdavidjm/youtube-data-mcp-server",
@@ -2660,7 +2119,7 @@
   {
    "package": "litemcpjs",
    "status": "no-tools",
-   "reason": "litemcpjs: FAILED - litemcpjs: the server exited with status 1 before answering initialize; stderr: npm error could not determine executable to run | npm error A complete log of this run can be found in: /home/runner/.npm/_logs/2026-11-15T10_00_39_957Z-debug-0.log"
+   "reason": "litemcpjs: FAILED - litemcpjs: the server exited with status 1 before answering initialize; stderr: npm error could not determine executable to run | npm error A complete log of this run can be found in: /home/runner/.npm/_logs/2026-11-15T22_53_15_550Z-debug-0.log"
   },
   {
    "package": "agentcraft-mcp",

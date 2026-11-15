@@ -1,18 +1,18 @@
 {
   "tool": {
     "name": "mcp-scrutiny",
-    "version": "0.1.4"
+    "version": "0.1.7"
   },
   "summary": {
     "servers": 1,
     "tools": 132,
-    "findings": 4,
+    "findings": 3,
     "worst_severity": "high",
     "by_severity": {
       "info": 1,
       "low": 0,
       "medium": 1,
-      "high": 2,
+      "high": 1,
       "critical": 0
     }
   },
@@ -46,60 +46,6 @@
         "auto_confirm": true
       },
       "remediation": "Pin an exact version and an integrity hash: \"args\": [\"layoutbridge-spm@<version>\"] and drop the -y flag. Re-pin deliberately, after reviewing the diff."
-    },
-    {
-      "detector": "semantic",
-      "severity": "high",
-      "title": "Description reads as instructions to the model (p=0.99): place_image",
-      "detail": "The description of 'layoutbridge-spm.place_image' scores 0.99 on the instruction-detection model, and carries intent signals: hidden_recipient. Descriptions are documentation for a human, but they are delivered to the model as trusted context, so text that tells the model what to do is an attack surface rather than a description. The score is driven mainly by: hidden_recipient, entropy, log_len.",
-      "server": "layoutbridge-spm",
-      "tool": "place_image",
-      "location": "layoutbridge-spm.place_image",
-      "evidence": {
-        "probability": 0.9911,
-        "threshold": 0.5,
-        "intent_signals": [
-          "hidden_recipient"
-        ],
-        "driving_features": [
-          {
-            "feature": "hidden_recipient",
-            "contribution": 6.3853
-          },
-          {
-            "feature": "log_words",
-            "contribution": -4.4326
-          },
-          {
-            "feature": "entropy",
-            "contribution": 2.6656
-          },
-          {
-            "feature": "log_len",
-            "contribution": 2.0055
-          },
-          {
-            "feature": "hardcoded_recipient",
-            "contribution": -1.2458
-          },
-          {
-            "feature": "concealment",
-            "contribution": -0.8605
-          }
-        ],
-        "active_features": {
-          "log_len": 7.389563953677635,
-          "log_words": 5.572154032177765,
-          "entropy": 4.514690283744477,
-          "non_ascii_ratio": 0.004326328800988875,
-          "credentials": 1.0,
-          "imperative_density": 0.003816793893129771,
-          "hidden_recipient": 1.0,
-          "schema_nested_desc": 8.0
-        },
-        "description": "Place an image or PDF file (real path on the InDesign machine) into a graphic frame, replacing whatever it held (crop and scale are reset – to merely swap the file use relink_links). fit: fill_proportionally, fit_proportionally, fit_content_to_frame or center_content; without it the frame fitting options of the frame apply. pdf_crop chooses the PDF page box: media (InDesign default – the whole sheet including printer marks, the usual reason for misplaced ads), crop, trim, bleed (for bleed ads), "
-      },
-      "remediation": "Read the description against what the tool actually does. If the text is legitimate, it usually means the tool should not have to instruct the model at all - move the guidance into the parameter descriptions or the server's own docs."
     },
     {
       "detector": "toxic_flow",

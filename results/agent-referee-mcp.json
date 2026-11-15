@@ -1,18 +1,18 @@
 {
   "tool": {
     "name": "mcp-scrutiny",
-    "version": "0.1.4"
+    "version": "0.1.7"
   },
   "summary": {
     "servers": 1,
     "tools": 6,
-    "findings": 3,
+    "findings": 2,
     "worst_severity": "high",
     "by_severity": {
       "info": 1,
       "low": 0,
       "medium": 0,
-      "high": 2,
+      "high": 1,
       "critical": 0
     }
   },
@@ -46,58 +46,6 @@
         "auto_confirm": true
       },
       "remediation": "Pin an exact version and an integrity hash: \"args\": [\"agent-referee-mcp@<version>\"] and drop the -y flag. Re-pin deliberately, after reviewing the diff."
-    },
-    {
-      "detector": "semantic",
-      "severity": "high",
-      "title": "Description reads as instructions to the model (p=0.99): sealed_review",
-      "detail": "The description of 'agent-referee-mcp.sealed_review' scores 0.99 on the instruction-detection model, and carries intent signals: injection_markers. Descriptions are documentation for a human, but they are delivered to the model as trusted context, so text that tells the model what to do is an attack surface rather than a description. The score is driven mainly by: injection_markers, entropy, log_len, imperative_density.",
-      "server": "agent-referee-mcp",
-      "tool": "sealed_review",
-      "location": "agent-referee-mcp.sealed_review",
-      "evidence": {
-        "probability": 0.9927,
-        "threshold": 0.5,
-        "intent_signals": [
-          "injection_markers"
-        ],
-        "driving_features": [
-          {
-            "feature": "injection_markers",
-            "contribution": 6.2052
-          },
-          {
-            "feature": "log_words",
-            "contribution": -4.407
-          },
-          {
-            "feature": "entropy",
-            "contribution": 3.1267
-          },
-          {
-            "feature": "log_len",
-            "contribution": 1.9731
-          },
-          {
-            "feature": "hardcoded_recipient",
-            "contribution": -1.2458
-          },
-          {
-            "feature": "imperative_density",
-            "contribution": 0.9206
-          }
-        ],
-        "active_features": {
-          "log_len": 7.347299700743164,
-          "log_words": 5.556828061699537,
-          "entropy": 4.573329861036464,
-          "injection_markers": 1.0,
-          "credentials": 1.0,
-          "schema_nested_desc": 9.0
-        },
-        "description": "FREE OR PAID. Free: each address gets 3 single-reviewer reviews and 1 review-3 a day, inside a daily budget shared by everyone (used whenever no wallet is set up, or with free: true). Paid: $0.05, or $0.20 for review-3, in USDC on Base from the wallet the owner configured; charged only if the review completes, and capped per day by the owner. Multi-part (paid only, $0.60 for review-3x2, $0.70 for review-3x3): send the work as 2 or 3 pieces instead of one output, and three reviewers from three co"
-      },
-      "remediation": "Read the description against what the tool actually does. If the text is legitimate, it usually means the tool should not have to instruct the model at all - move the guidance into the parameter descriptions or the server's own docs."
     },
     {
       "detector": "drift",

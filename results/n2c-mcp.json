@@ -1,18 +1,18 @@
 {
   "tool": {
     "name": "mcp-scrutiny",
-    "version": "0.1.4"
+    "version": "0.1.7"
   },
   "summary": {
     "servers": 1,
     "tools": 36,
-    "findings": 8,
+    "findings": 6,
     "worst_severity": "high",
     "by_severity": {
       "info": 1,
       "low": 0,
       "medium": 1,
-      "high": 6,
+      "high": 4,
       "critical": 0
     }
   },
@@ -46,107 +46,6 @@
         "auto_confirm": true
       },
       "remediation": "Pin an exact version and an integrity hash: \"args\": [\"n2c-mcp@<version>\"] and drop the -y flag. Re-pin deliberately, after reviewing the diff."
-    },
-    {
-      "detector": "semantic",
-      "severity": "high",
-      "title": "Description reads as instructions to the model (p=1.00): deploy_workflow",
-      "detail": "The description of 'n2c-mcp.deploy_workflow' scores 1.00 on the instruction-detection model, and carries intent signals: concealment. Descriptions are documentation for a human, but they are delivered to the model as trusted context, so text that tells the model what to do is an attack surface rather than a description. The score is driven mainly by: concealment, entropy, log_len, imperative_density.",
-      "server": "n2c-mcp",
-      "tool": "deploy_workflow",
-      "location": "n2c-mcp.deploy_workflow",
-      "evidence": {
-        "probability": 0.9993,
-        "threshold": 0.5,
-        "intent_signals": [
-          "concealment"
-        ],
-        "driving_features": [
-          {
-            "feature": "concealment",
-            "contribution": 9.537
-          },
-          {
-            "feature": "log_words",
-            "contribution": -3.4016
-          },
-          {
-            "feature": "entropy",
-            "contribution": 1.647
-          },
-          {
-            "feature": "log_len",
-            "contribution": 1.5209
-          },
-          {
-            "feature": "hardcoded_recipient",
-            "contribution": -1.2458
-          },
-          {
-            "feature": "imperative_density",
-            "contribution": 0.9206
-          }
-        ],
-        "active_features": {
-          "log_len": 6.756932389247553,
-          "log_words": 4.955827057601261,
-          "entropy": 4.385171535072539,
-          "concealment": 1.0,
-          "schema_nested_desc": 2.0
-        },
-        "description": "Deploy a saved workflow to the user's own Cloudflare account, replacing any live version. The server recompiles the saved graph itself; no code you send is ever deployed. Save and validate first, and call check_setup early so missing connections are fixed in time. Unless the owner allowed this connection to deploy without asking, the call waits up to 90 seconds for the owner to approve it in an open Nodes2Cloud browser tab: tell the user to approve it there. Some protected connections need an ex"
-      },
-      "remediation": "Read the description against what the tool actually does. If the text is legitimate, it usually means the tool should not have to instruct the model at all - move the guidance into the parameter descriptions or the server's own docs."
-    },
-    {
-      "detector": "semantic",
-      "severity": "high",
-      "title": "Description reads as instructions to the model (p=0.96): file-processing",
-      "detail": "The description of 'n2c-mcp.file-processing' scores 0.96 on the instruction-detection model, and carries intent signals: hidden_recipient. Descriptions are documentation for a human, but they are delivered to the model as trusted context, so text that tells the model what to do is an attack surface rather than a description. The score is driven mainly by: hidden_recipient, imperative_density, log_words.",
-      "server": "n2c-mcp",
-      "tool": "file-processing",
-      "location": "n2c-mcp.file-processing",
-      "evidence": {
-        "probability": 0.9585,
-        "threshold": 0.5,
-        "intent_signals": [
-          "hidden_recipient"
-        ],
-        "driving_features": [
-          {
-            "feature": "hidden_recipient",
-            "contribution": 6.3853
-          },
-          {
-            "feature": "entropy",
-            "contribution": -1.3465
-          },
-          {
-            "feature": "hardcoded_recipient",
-            "contribution": -1.2458
-          },
-          {
-            "feature": "imperative_density",
-            "contribution": 0.9206
-          },
-          {
-            "feature": "concealment",
-            "contribution": -0.8605
-          },
-          {
-            "feature": "log_words",
-            "contribution": 0.7315
-          }
-        ],
-        "active_features": {
-          "log_len": 4.127134385045092,
-          "log_words": 2.4849066497880004,
-          "entropy": 4.004508552540467,
-          "hidden_recipient": 1.0
-        },
-        "description": "Accept a file, transform it, and store or forward the result."
-      },
-      "remediation": "Read the description against what the tool actually does. If the text is legitimate, it usually means the tool should not have to instruct the model at all - move the guidance into the parameter descriptions or the server's own docs."
     },
     {
       "detector": "toxic_flow",

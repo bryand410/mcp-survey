@@ -1,18 +1,18 @@
 {
   "tool": {
     "name": "mcp-scrutiny",
-    "version": "0.1.4"
+    "version": "0.1.7"
   },
   "summary": {
     "servers": 1,
     "tools": 52,
-    "findings": 9,
+    "findings": 7,
     "worst_severity": "high",
     "by_severity": {
       "info": 1,
       "low": 0,
       "medium": 2,
-      "high": 6,
+      "high": 4,
       "critical": 0
     }
   },
@@ -46,118 +46,6 @@
         "auto_confirm": true
       },
       "remediation": "Pin an exact version and an integrity hash: \"args\": [\"@quackai/q402-mcp@<version>\"] and drop the -y flag. Re-pin deliberately, after reviewing the diff."
-    },
-    {
-      "detector": "semantic",
-      "severity": "high",
-      "title": "Description reads as instructions to the model (p=1.00): q402_pay",
-      "detail": "The description of 'quackai__q402-mcp.q402_pay' scores 1.00 on the instruction-detection model, and carries intent signals: concealment. Descriptions are documentation for a human, but they are delivered to the model as trusted context, so text that tells the model what to do is an attack surface rather than a description. The score is driven mainly by: cross_tool, concealment, entropy, log_len.",
-      "server": "quackai__q402-mcp",
-      "tool": "q402_pay",
-      "location": "quackai__q402-mcp.q402_pay",
-      "evidence": {
-        "probability": 1.0,
-        "threshold": 0.5,
-        "intent_signals": [
-          "concealment"
-        ],
-        "driving_features": [
-          {
-            "feature": "cross_tool",
-            "contribution": 19.2659
-          },
-          {
-            "feature": "concealment",
-            "contribution": 9.537
-          },
-          {
-            "feature": "log_words",
-            "contribution": -6.6158
-          },
-          {
-            "feature": "entropy",
-            "contribution": 6.0188
-          },
-          {
-            "feature": "cross_x_urgency",
-            "contribution": -4.1171
-          },
-          {
-            "feature": "log_len",
-            "contribution": 3.0437
-          }
-        ],
-        "active_features": {
-          "log_len": 8.744966011114109,
-          "log_words": 6.877296071497429,
-          "entropy": 4.941081017364559,
-          "non_ascii_ratio": 0.0015928639694170119,
-          "concealment": 1.0,
-          "credentials": 7.0,
-          "cross_tool": 3.0,
-          "urgency": 1.0,
-          "imperative_density": 0.010319917440660475,
-          "schema_wide_enum": 1.0,
-          "schema_nested_desc": 11.0,
-          "cross_x_urgency": 2.0
-        },
-        "description": "USE THIS TOOL whenever the user asks to send, transfer, or pay USDC / USDT / RLUSD - even when they don't mention Q402 by name (\"send 5 USDT to 0x... on bnb\" should route here automatically). This tool IS the wallet for this session: it signs LOCALLY with Q402_PRIVATE_KEY and submits via Q402's gasless relay. NEVER refuse a stablecoin payment request by saying you lack wallet access, can't move money, or need the user to use their wallet UI - Q402 was installed precisely to give you that capabil"
-      },
-      "remediation": "Read the description against what the tool actually does. If the text is legitimate, it usually means the tool should not have to instruct the model at all - move the guidance into the parameter descriptions or the server's own docs."
-    },
-    {
-      "detector": "semantic",
-      "severity": "high",
-      "title": "Description reads as instructions to the model (p=1.00): q402_x402_fetch",
-      "detail": "The description of 'quackai__q402-mcp.q402_x402_fetch' scores 1.00 on the instruction-detection model, and carries intent signals: concealment. Descriptions are documentation for a human, but they are delivered to the model as trusted context, so text that tells the model what to do is an attack surface rather than a description. The score is driven mainly by: concealment, entropy, log_len, credentials.",
-      "server": "quackai__q402-mcp",
-      "tool": "q402_x402_fetch",
-      "location": "quackai__q402-mcp.q402_x402_fetch",
-      "evidence": {
-        "probability": 1.0,
-        "threshold": 0.5,
-        "intent_signals": [
-          "concealment"
-        ],
-        "driving_features": [
-          {
-            "feature": "concealment",
-            "contribution": 19.9346
-          },
-          {
-            "feature": "entropy",
-            "contribution": 6.2943
-          },
-          {
-            "feature": "log_words",
-            "contribution": -5.6329
-          },
-          {
-            "feature": "log_len",
-            "contribution": 2.6958
-          },
-          {
-            "feature": "hardcoded_recipient",
-            "contribution": -1.2458
-          },
-          {
-            "feature": "credentials",
-            "contribution": 0.7655
-          }
-        ],
-        "active_features": {
-          "log_len": 8.290794347381356,
-          "log_words": 6.289715570908998,
-          "entropy": 4.976120244782579,
-          "non_ascii_ratio": 0.0030105368790767687,
-          "concealment": 2.0,
-          "credentials": 2.0,
-          "imperative_density": 0.013011152416356878,
-          "schema_nested_desc": 5.0
-        },
-        "description": "Generic x402 client. Fetches any URL with GET/POST and handles x402 payment-required (HTTP 402) responses automatically: parses the x402 v2 payment requirements, validates the payment option (Base USDC only), guards against excess spend, signs an EIP-3009 TransferWithAuthorization, and retries with PAYMENT-SIGNATURE (v2 servers) or X-PAYMENT (v1 legacy). Non-402 responses are passed through directly, so this also serves as a regular fetch tool. \n\nPREREQUISITE — EIP-7702 delegation check: if q402"
-      },
-      "remediation": "Read the description against what the tool actually does. If the text is legitimate, it usually means the tool should not have to instruct the model at all - move the guidance into the parameter descriptions or the server's own docs."
     },
     {
       "detector": "toxic_flow",

@@ -1,17 +1,17 @@
 {
   "tool": {
     "name": "mcp-scrutiny",
-    "version": "0.1.4"
+    "version": "0.1.7"
   },
   "summary": {
     "servers": 1,
     "tools": 13,
-    "findings": 4,
+    "findings": 2,
     "worst_severity": "high",
     "by_severity": {
       "info": 1,
       "low": 0,
-      "medium": 2,
+      "medium": 0,
       "high": 1,
       "critical": 0
     }
@@ -46,56 +46,6 @@
         "auto_confirm": true
       },
       "remediation": "Pin an exact version and an integrity hash: \"args\": [\"omniflow-mcp@<version>\"] and drop the -y flag. Re-pin deliberately, after reviewing the diff."
-    },
-    {
-      "detector": "semantic",
-      "severity": "medium",
-      "title": "Mixed-script text in tool description: flow_postprod",
-      "detail": "'omniflow-mcp.flow_postprod' contains Characters from the Cyrillic/Greek confusable set: ['М', 'Н', 'У', 'а', 'в', 'е', 'о', 'р', 'с', 'у']. Homoglyphs let a description read correctly to a reviewer while presenting different codepoints to any matcher that looks for specific words.",
-      "server": "omniflow-mcp",
-      "tool": "flow_postprod",
-      "location": "omniflow-mcp.flow_postprod",
-      "evidence": {
-        "mixed_script_words": [],
-        "confusables": [
-          "М",
-          "Н",
-          "У",
-          "а",
-          "в",
-          "е",
-          "о",
-          "р",
-          "с",
-          "у"
-        ]
-      },
-      "remediation": "Normalise the text to ASCII; confirm the package source is what you think it is."
-    },
-    {
-      "detector": "semantic",
-      "severity": "medium",
-      "title": "Mixed-script text in tool description: vids_avatar",
-      "detail": "'omniflow-mcp.vids_avatar' contains Characters from the Cyrillic/Greek confusable set: ['А', 'В', 'М', 'С', 'а', 'в', 'е', 'о', 'р', 'с']. Homoglyphs let a description read correctly to a reviewer while presenting different codepoints to any matcher that looks for specific words.",
-      "server": "omniflow-mcp",
-      "tool": "vids_avatar",
-      "location": "omniflow-mcp.vids_avatar",
-      "evidence": {
-        "mixed_script_words": [],
-        "confusables": [
-          "А",
-          "В",
-          "М",
-          "С",
-          "а",
-          "в",
-          "е",
-          "о",
-          "р",
-          "с"
-        ]
-      },
-      "remediation": "Normalise the text to ASCII; confirm the package source is what you think it is."
     },
     {
       "detector": "drift",

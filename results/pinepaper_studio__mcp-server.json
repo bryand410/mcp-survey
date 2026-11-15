@@ -1,17 +1,17 @@
 {
   "tool": {
     "name": "mcp-scrutiny",
-    "version": "0.1.4"
+    "version": "0.1.7"
   },
   "summary": {
     "servers": 1,
     "tools": 81,
-    "findings": 7,
+    "findings": 6,
     "worst_severity": "high",
     "by_severity": {
       "info": 1,
       "low": 0,
-      "medium": 3,
+      "medium": 2,
       "high": 3,
       "critical": 0
     }
@@ -112,59 +112,6 @@
         ]
       },
       "remediation": "Break the path, not the tools: scope the credential so the source tool cannot reach anything valuable, or require explicit user confirmation on the sink tool (destructiveHint / human-in-the-loop), or split the two capabilities across trust boundaries that cannot share a context window."
-    },
-    {
-      "detector": "semantic",
-      "severity": "medium",
-      "title": "Description reads as instructions to the model (p=0.77): pinepaper_audio_beats",
-      "detail": "The description of 'pinepaper_studio__mcp-server.pinepaper_audio_beats' scores 0.77 on the instruction-detection model, and carries intent signals: injection_markers. Descriptions are documentation for a human, but they are delivered to the model as trusted context, so text that tells the model what to do is an attack surface rather than a description. The score is driven mainly by: injection_markers, entropy, log_len.",
-      "server": "pinepaper_studio__mcp-server",
-      "tool": "pinepaper_audio_beats",
-      "location": "pinepaper_studio__mcp-server.pinepaper_audio_beats",
-      "evidence": {
-        "probability": 0.775,
-        "threshold": 0.5,
-        "intent_signals": [
-          "injection_markers"
-        ],
-        "driving_features": [
-          {
-            "feature": "injection_markers",
-            "contribution": 6.2052
-          },
-          {
-            "feature": "redaction_language",
-            "contribution": -4.0522
-          },
-          {
-            "feature": "entropy",
-            "contribution": 3.9091
-          },
-          {
-            "feature": "log_words",
-            "contribution": -3.3294
-          },
-          {
-            "feature": "log_len",
-            "contribution": 1.5011
-          },
-          {
-            "feature": "hardcoded_recipient",
-            "contribution": -1.2458
-          }
-        ],
-        "active_features": {
-          "log_len": 6.731018100482083,
-          "log_words": 4.912654885736052,
-          "entropy": 4.672811298837705,
-          "non_ascii_ratio": 0.0023894862604540022,
-          "injection_markers": 1.0,
-          "redaction_language": 1.0,
-          "schema_nested_desc": 6.0
-        },
-        "description": "Detect beats in audio and bake an item's animation onto them.\n\nACTIONS:\n- analyze: Onsets, BPM, confidence and duration. Params: source (asset id, data URL or URL),\n  sensitivity, minGap. Read-only — run it first to see what the track gives you.\n- animate_to_beat: Write a keyframe track that pulses on the beat. Params: itemId, plus EITHER\n  source (analyze first) OR beats[] (times you already have). grid:true uses an even pulse from the\n  detected tempo instead of the raw onsets — the difference"
-      },
-      "remediation": "Read the description against what the tool actually does. If the text is legitimate, it usually means the tool should not have to instruct the model at all - move the guidance into the parameter descriptions or the server's own docs."
     },
     {
       "detector": "toxic_flow",
